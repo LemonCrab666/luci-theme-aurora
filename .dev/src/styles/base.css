@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* LuCI Base Styles - 基础样式 */
+
+/* CSS 变量 - 保持与原LuCI兼容 */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #06b6d4;
+}
+
+[data-darkmode="true"] {
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+}
+
+/* 全局重置和基础样式 */
+*,
+*::before,
+*::after {
+  @apply box-border;
+}
+
+html {
+  @apply text-sm leading-normal;
+}
+
+body {
+  @apply font-sans text-gray-900 bg-white;
+  @apply dark:text-gray-100 dark:bg-gray-900;
+  @apply transition-colors duration-200;
+}
+
+/* 链接样式 */
+a {
+  @apply text-blue-600 no-underline;
+  @apply dark:text-blue-400;
+  @apply transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-blue-800 underline;
+  @apply dark:text-blue-300;
+}
+
+a:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+  @apply dark:ring-offset-gray-900;
+}
+
+/* 表格基础样式 */
+.table {
+  @apply w-full border-collapse;
+}
+
+.tr {
+  @apply table-row;
+}
+
+.th,
+.td {
+  @apply table-cell p-2 text-left align-middle border-b border-gray-200;
+  @apply dark:border-gray-700;
+}
+
+.th {
+  @apply font-medium text-gray-700 bg-gray-50;
+  @apply dark:text-gray-300 dark:bg-gray-800;
+}
+
+/* 容器布局 */
+.container {
+  @apply max-w-7xl mx-auto px-4;
+  @apply sm:px-6 lg:px-8;
+}
+
+/* 工具类 */
+.pull-right {
+  @apply float-right;
+}
+
+.pull-left {
+  @apply float-left;
+}
+
+.nowrap {
+  @apply whitespace-nowrap;
+}
+
+.hidden {
+  @apply hidden;
+}
+
+.left {
+  @apply text-left;
+}
+
+.right {
+  @apply text-right;
+}
+
+.center {
+  @apply text-center;
+}
+
+.top {
+  @apply align-top;
+}
+
+.middle {
+  @apply align-middle;
+}
+
+.bottom {
+  @apply align-bottom;
+}

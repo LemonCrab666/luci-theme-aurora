@@ -1,0 +1,31 @@
+# Node & package manager
+.dev/node_modules/
+.dev/.pnpm-store/
+.dev/pnpm-debug.log*
+.dev/npm-debug.log*
+.dev/yarn-debug.log*
+.dev/yarn-error.log*
+
+# Vite / tooling caches
+.dev/.vite/
+.dev/.cache/
+.dev/.turbo/
+.dev/.eslintcache
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Env files (keep secrets local)
+.env
+.env.*.local
+
+# Test / coverage / temp
+coverage/
+.tmp/
+tmp/
+temp/
+

@@ -1,0 +1,32 @@
+/* LuCI Theme Design - Main CSS Entry Point */
+
+/* 导入基础样式和组件 */
+@import "tailwindcss";
+@import "./base.css";
+@import "./components.css";
+@import "./layout.css";
+
+/* 移动端样式现在单独打包，由JavaScript动态加载 */
+
+/* 特定主题定制样式 */
+
+/* 自定义动画和过渡效果 */
+.theme-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* 特殊页面样式定制 */
+[data-page*="admin-"] .cbi-section {
+  @apply shadow-sm;
+}
+
+/* 主题特定的组件增强 */
+.ifacebox {
+  @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+/* 登录页面特殊样式 */
+.modal.login {
+  @apply bg-gradient-to-br from-blue-50 to-white;
+  @apply dark:from-gray-800 dark:to-gray-900;
+}
