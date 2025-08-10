@@ -14,60 +14,50 @@ export default defineConfig({
   ],
   build: {
     outDir: resolve(projectRoot, 'htdocs/luci-static'),
-    emptyOutDir: false, // 不清空目录，避免删除其他文件
-    // CSS 使用 lightningcss 压缩以获得更高压缩率
+    emptyOutDir: false,
     cssMinify: 'lightningcss',
     rollupOptions: {
       input: {
-        // 主要入口  
-        main: resolve(__dirname, 'src/scripts/main.js'),
-        style: resolve(__dirname, 'src/styles/main.css'),
-        // 登录页面专用入口
-        login: resolve(__dirname, 'src/scripts/login.js'),
-        // 移动端样式单独打包
-        mobile: resolve(__dirname, 'src/styles/mobile.css')
+        // JS 主要入口改为 resource
+        main: resolve(__dirname, 'src/resource/main.js'),
+        // 登录页面脚本保持层级：resource/view/design/login.js -> resources/view/design/login-design.js
+        'view/design/login': resolve(__dirname, 'src/resource/view/design/login.js'),
+        // CSS 入口改为 media，保持层级：media/main.css -> design/main.css
+        style: resolve(__dirname, 'src/media/main.css'),
+        // 移动端样式单独打包：media/mobile.css -> design/mobile.css
+        mobile: resolve(__dirname, 'src/media/mobile.css')
       },
       output: {
         entryFileNames: (chunkInfo) => {
-          // 为JS文件添加design主题后缀，避免与LuCI原有文件重名
+          // JS 输出到 resources，保持入口名（包含子路径）并加 -design 后缀
+          // 例如 'view/design/login' -> resources/view/design/login-design.js
+          const name = chunkInfo.name || 'index'
+          if (name.includes('/')) {
+            return `resources/${name}-design.js`
+          }
           return 'resources/[name]-design.js'
         },
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name || ''
-          
-          // CSS 文件
+          // CSS 放到 design/ 目录，保持文件名
           if (info.endsWith('.css')) {
             return 'design/[name].[ext]'
           }
-          
           // 图片资源
           if (/\.(png|jpe?g|gif|svg|webp|avif)$/i.test(info)) {
-            return 'design/images/[name].[ext]'
+            return 'design/[name].[ext]'
           }
-          
           // 字体资源
           if (/\.(woff2?|eot|ttf|otf)$/i.test(info)) {
-            return 'design/fonts/[name].[ext]'
+            return 'design/[name].[ext]'
           }
-          
-          // 其他资源
           return 'design/[name].[ext]'
         },
-        chunkFileNames: 'resources/chunks/[name]-[hash].js',
-        // 手动代码分割
+        chunkFileNames: 'resources/[name]-design-[hash].js',
         manualChunks: (id) => {
-          // 将工具函数单独打包
-          if (id.includes('/utils.js')) {
-            return 'utils'
-          }
-          // 将菜单系统单独打包
-          if (id.includes('/menu.js')) {
-            return 'menu'
-          }
-          // 将认证系统单独打包
-          if (id.includes('/auth.js')) {
-            return 'auth'
-          }
+          if (id.includes('/utils.js')) return 'utils'
+          if (id.includes('/menu.js')) return 'menu'
+          if (id.includes('/auth.js')) return 'auth'
         }
       }
     },
@@ -112,8 +102,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@styles': resolve(__dirname, 'src/styles'),
-      '@scripts': resolve(__dirname, 'src/scripts'),
+      '@media': resolve(__dirname, 'src/media'),
+      '@resource': resolve(__dirname, 'src/resource'),
       '@assets': resolve(__dirname, 'src/assets')
     }
   },

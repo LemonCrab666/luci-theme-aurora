@@ -38,12 +38,11 @@
 
 <div id="view">
 	<div class="spinning">{{ _('Loading view…') }}</div>
-	<script src="{{ media }}/resources/login-design.js"></script>
-	<script>
-		L.require('ui').then(function(ui) {
-			ui.instantiateView('design.sysauth');
-		});
-	</script>
+    <script>
+        L.require('ui').then(function(ui) {
+            ui.instantiateView('design.login-design');
+        });
+    </script>
 </div>
 
 {% include('footer', { blank_page: true }) %}

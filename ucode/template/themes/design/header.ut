@@ -30,9 +30,9 @@
 			</script>
 		{% endif %}
 		<meta name="viewport" content="initial-scale=1.0">
-		<link rel="stylesheet" href="{{ media }}/design/style.css">
-		<link rel="icon" href="{{ media }}/design/images/logo_48.png" sizes="48x48">
-		<link rel="icon" href="{{ media }}/design/images/logo.svg" sizes="any">
+		<link rel="stylesheet" href="{{ media }}/style.css">
+		<link rel="icon" href="{{ media }}/logo_48.png" sizes="48x48">
+		<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
 		{% if (node?.css): %}
 		<link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
 		{% endif %}

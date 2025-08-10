@@ -14,7 +14,7 @@
 			</span>
 			<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
 		</footer>
-		<script src="{{ media }}/resources/main-design.js"></script>
+		<script src="{{ resource }}/main-design.js"></script>
 		{% endif %}
 	</body>
 </html>

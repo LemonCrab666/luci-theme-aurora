@@ -3,8 +3,8 @@
  * 轻量化的登录页面脚本
  */
 
-import { initThemeSystem } from './utils.js';
-import { authHandler } from './auth.js';
+import { initThemeSystem } from '../../utils.js';
+import { authHandler } from '../../auth.js';
 
 // 登录页面初始化
 document.addEventListener('DOMContentLoaded', () => {
@@ -113,3 +113,5 @@ loginStyles.textContent = `
   }
 `;
 document.head.appendChild(loginStyles);
+
+
