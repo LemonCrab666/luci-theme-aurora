@@ -89,7 +89,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         // CSS 入口改为 media，保持层级：media/main.css -> design/main.css
-        style: resolve(__dirname, 'src/media/main.css'),
+        main: resolve(__dirname, 'src/media/main.css'),
         // 移动端样式单独打包：media/mobile.css -> design/mobile.css
         mobile: resolve(__dirname, 'src/media/mobile.css')
       },
