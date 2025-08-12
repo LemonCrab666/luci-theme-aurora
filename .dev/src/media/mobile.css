@@ -1,1 +1,45 @@
+/* Mobile-specific styles for Aurora Theme */
 @import "tailwindcss";
+
+@layer utilities {
+  /* 移动端特殊优化 */
+  @media (max-width: 640px) {
+    /* 触摸优化 */
+    .touch-target {
+      @apply min-h-[44px] min-w-[44px];
+    }
+    
+    /* 移动端导航 */
+    .mobile-nav {
+      @apply fixed bottom-0 left-0 right-0 bg-white/90 border-t border-slate-200 p-2 z-50;
+      backdrop-filter: blur(20px) saturate(180%);
+    }
+    
+    [data-darkmode="true"] .mobile-nav {
+      @apply bg-slate-900/90 border-slate-700;
+    }
+    
+    /* 移动端卡片间距 */
+    .mobile-card {
+      @apply mx-2 my-4 rounded-xl;
+    }
+    
+    /* 移动端表格横向滚动 */
+    .mobile-table-container {
+      @apply overflow-x-auto -mx-4 px-4;
+    }
+    
+    /* 移动端按钮大小 */
+    .mobile-btn {
+      @apply px-6 py-3 text-base min-h-[48px];
+    }
+    
+    /* 禁用移动端hover效果 */
+    @media (hover: none) {
+      .hover-disabled:hover {
+        transform: none !important;
+        background: inherit !important;
+      }
+    }
+  }
+}
