@@ -90,8 +90,13 @@
 ### 6. **Legacy Component Mappings**
 ```css
 @layer components {
-  /* 映射旧类名到新组件 */
-  #maincontent { @apply layout-main; }
+  /* 映射旧类名到新组件（Tailwind v4 不要 @apply 自定义组件类到选择器）*/
+  #maincontent {
+    @apply pt-20 px-6 mx-auto;
+    max-width: var(--layout-max-width);
+    width: var(--layout-fixed-width);
+    min-height: calc(100vh - var(--layout-header-height));
+  }
   .cbi-button { @apply btn; }
   .alert-message { @apply alert; }
 }
@@ -114,6 +119,10 @@
 /* 使用方式 */
 background: rgb(var(--color-aurora-emerald));
 background: rgba(var(--color-aurora-emerald), 0.5);
+
+/* 统一品牌渐变（按钮 / 标签 / 顶部菜单 hover）*/
+--gradient-primary-start: #499ecb;  /* 基于需求：Aurora 基色 */
+--gradient-primary-end: #4fc3c7;    /* 与菜单 hover 渐变保持一致 */
 ```
 
 ### 字体系统
@@ -124,11 +133,49 @@ background: rgba(var(--color-aurora-emerald), 0.5);
 
 ### 布局系统
 ```css
---layout-max-width: 1600px;    /* 最大内容宽度 */
+--layout-max-width: 1600px;    /* 最大内容宽度上限 */
 --layout-header-height: 80px;  /* 头部高度 */
+--layout-fixed-width: 1280px;  /* 固定页面宽度（全站统一） */
 ```
 
 ### 动画系统
+### 表单与交互系统（统一规范）
+```css
+/* 按钮（主/中性/积极）复用 .btn/.btn-neutral/.btn-positive 约定 */
+.btn { /* 主按钮：使用 --gradient-primary-* 统一渐变、圆角lg、阴影、中等字重、轻微悬浮提升 */ }
+.btn-neutral { /* 中性按钮：毛玻璃浅底、边框、阴影、悬浮提升 */ }
+.btn-positive { /* 强调按钮：更大内边距、同品牌渐变、提升更明显 */ }
+
+/* 单选/复选 */
+.cbi-checkbox input[type="checkbox"],
+.cbi-checkbox input[type="radio"] { /* 统一尺寸 16px，accent-color #499ecb */ }
+
+/* 下拉选择（原生） */
+.cbi-input-select { /* 圆角lg、浅底毛玻璃、淡边框、聚焦描边光晕 */ }
+
+/* 自定义下拉（.cbi-dropdown） */
+.cbi-dropdown { /* 内填充、圆角lg、边框+阴影、hover 提示色、focus 高亮；列表项 hover 使用统一品牌渐变 */ }
+.cbi-dropdown ul li:hover { /* 极光渐变行高亮、文字白色 */ }
+
+/* 标签页（.tabs / .cbi-tabmenu） */
+.tabs, .cbi-tabmenu { /* 底部分隔线、间距统一 */ }
+.tab-link, .cbi-tab a { /* 圆角t-lg、hover 背景半透明、active 使用统一品牌渐变 */ }
+
+/* 间距与圆角基线 */
+.cbi-section { /* 下间距：mb-8 md:mb-10 */ }
+.cbi-value { /* 行间距：mb-3 md:mb-4 */ }
+.radius { /* 默认圆角：.rounded-lg；容器：.rounded-xl/2xl */ }
+
+/* 边框与阴影基线 */
+.border-base { /* rgba(148,163,184,0.12~0.2) */ }
+.shadow-base { /* 0 2~8px 8~32px，透明度浅，hover 轻微提升 */ }
+```
+
+统一规范确保：
+- 交互状态具备一致的 hover/active/focus 表现
+- 渐变仅用于主/强调态，保持信息层级清晰
+- 暗色模式下维持等价对比度与可读性
+
 ```css
 --animation-duration-fast: 200ms;
 --animation-duration-normal: 300ms;
@@ -165,27 +212,92 @@ background: rgba(var(--color-aurora-emerald), 0.5);
 
 ## 📱 响应式设计
 
-### 断点系统
-- **桌面端**: `> 1024px` - 95%宽度，最大1600px
-- **平板端**: `≤ 1024px` - 98%宽度
-- **手机端**: `≤ 768px` - 100%宽度
-
-### 响应式策略
+### 固定宽度策略（推荐）
+- 容器宽度固定：`width: var(--layout-fixed-width)`，保持视觉稳定与可读性。
+- 断点仅调整左右内边距，避免容器宽度波动：
 ```css
 @media (max-width: 1024px) {
-  .layout-main {
-    @apply px-4;
-    width: 98%;
-  }
+  .layout-main, #maincontent { @apply px-4; }
 }
-
 @media (max-width: 768px) {
-  .layout-main {
-    @apply px-3;
-    width: 100%;
-  }
+  .layout-main, #maincontent { @apply px-3; }
 }
 ```
+
+如需自适应宽度，可将固定宽度策略替换为百分比，但本主题默认固定宽度以提升信息密度与可读性。
+
+## 📐 布局规范：全局内容水平垂直居中
+
+目标：所有页面在视窗内居中展示；当内容较多时，容器被内容自然撑开并铺满，不造成居中错位。
+
+实现（以 `#maincontent` 为容器、`#view` 为主要内容区；固定宽度由 `--layout-fixed-width` 控制）：
+
+```css
+/* 容器：网格居中 + 子项拉伸 */
+#maincontent {
+  width: var(--layout-fixed-width);
+  display: grid;
+  grid-auto-rows: min-content;   /* 子项按内容高度布局 */
+  align-content: center;         /* 垂直居中 */
+  justify-content: center;       /* 水平居中轨道 */
+  justify-items: stretch;        /* 子项横向拉伸 */
+}
+
+/* 主要内容区：默认铺满容器，超出时自然扩展 */
+#view {
+  align-self: stretch;            /* 垂直铺满 */
+  justify-self: stretch;          /* 水平铺满 */
+}
+```
+
+注意：登录态下 `#view` 可能为空，为避免空容器影响布局，约定空内容时隐藏（实现细节见下节）。
+
+## 🔒 登录态与未登录页面规范
+
+- 遮罩层元素：`#modal_overlay`
+  - 默认隐藏：`display: none; pointer-events: none;`
+  - 仅在 `<body class="modal-overlay-active">` 时显示并居中：`fixed inset-0 grid place-items-center`
+- 登录卡片：`.modal.login`
+  - 无毛玻璃与边框，保留柔和阴影
+  - 宽度：`max-w-lg; w-full`
+- 视图区域：`#view`
+  - 登录态或内容为空时隐藏：`:empty { display: none }` 和 `.modal-overlay-active #view { display: none }`
+- 按钮渐变：
+  - 浅色：`linear-gradient(135deg, var(--gradient-primary-start), var(--gradient-primary-end))`
+  - 深色：`linear-gradient(135deg, rgb(var(--color-aurora-night-teal)), rgb(var(--color-aurora-night-emerald)))`
+
+## 📲 移动端交互与主题规范
+
+为确保移动端日/夜模式、主色、渐变与状态一致性，制定以下规范（依赖 `:root` 中的 `--gradient-primary-*` 变量）：
+
+### 1. 导航（.mobile-nav）
+- 背景毛玻璃：浅色 `bg-white/90`，深色 `bg-slate-900/90`
+- 边框：浅色 `border-slate-200`，深色 `border-slate-700`
+- 激活项 `.mobile-nav .active`：
+  - 文字对比增强（浅色 `#0f172a`，深色 `#e2e8f0`）
+  - 顶部指示条 `::before` 使用统一品牌渐变 `linear-gradient(135deg, var(--gradient-primary-start), var(--gradient-primary-end))`
+  - 投影：`0 2px 6px rgba(73, 158, 203, 0.35)`
+
+### 2. 行为状态（按钮等）
+- 基础按钮（.mobile-btn）：
+  - 渐变背景：使用统一品牌渐变
+  - 圆角：`rounded-lg`
+  - 投影：浅色 `0 6px 20px rgba(73, 158, 203, 0.3)`，深色 `0 6px 20px rgba(0,0,0,0.45)`
+- Hover（有悬浮能力的设备）：
+  - 位移：`translateY(-2px)`
+  - 投影：`0 8px 28px rgba(73, 158, 203, 0.4)`
+- Focus：
+  - 描边光晕：`0 0 0 3px rgba(73, 158, 203, 0.2)`
+- Active：
+  - 位移归零，投影减弱：`0 4px 14px rgba(73, 158, 203, 0.28)`
+
+### 3. 触摸目标
+- 交互元素最小可点击尺寸：`min-h/min-w 44px`
+
+### 4. 列表与内容
+- 移动卡片内外边距：`.mobile-card { mx-2 my-4 }`
+- 表格容器：启用横向滚动 `.mobile-table-container { overflow-x-auto -mx-4 px-4 }`
+
 
 ## 🎯 维护优势
 
@@ -219,6 +331,10 @@ background: rgba(var(--color-aurora-emerald), 0.5);
     /* 自定义CSS属性 */
   }
   
+  /* LuCI CBI 区块间距建议 */
+  .cbi-section { @apply mb-8 md:mb-10; }
+  .cbi-section h3 { @apply mb-4; }
+
   [data-darkmode="true"] .new-component {
     /* 暗色模式样式 */
   }
