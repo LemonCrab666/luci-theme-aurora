@@ -194,6 +194,51 @@ background: rgba(var(--color-aurora-emerald), 0.5);
 - 复杂样式使用原生CSS属性
 - 响应式使用 `@media` 查询
 
+### 2.1 按钮与动作区间距规范（统一标准）
+
+为提升信息密度与可点击性，统一按钮尺寸与动作区间距如下（已在 `@main.css` 落地）：
+
+- 尺寸规范
+  - 基线按钮 `button, .btn, .cbi-button`：高度 h-8（约 32px），内边距 `px-3 py-1.5`，字重中等，圆角 `rounded-lg`，轻阴影。
+  - 强调按钮 `.cbi-button-positive`：高度 h-9（约 36px），`px-3.5 py-2`，同品牌渐变，轻悬浮提升，投影稍强。
+  - 幽灵/描边按钮（`.cbi-button-neutral`, `.cbi-button-{add,edit,remove}`）：高度 h-8，透明背景、淡描边、轻阴影，视觉层级更轻。
+  - 次要填充按钮（`.cbi-button-action`）：高度 h-8，浅填充（浅色白/深色石板）、细描边与轻阴影，作为主操作旁的次级操作。
+  - 破坏/禁用类（`.cbi-button-negative`）：高度 h-8，幽灵态（透明背景+中性描边），通过边框/阴影与位置表达层级，避免强烈用色。
+
+- 动作区布局
+  - 页面级动作区 `.cbi-page-actions`：`display:flex; align-items:center; gap: .5rem; flex-wrap:wrap;`，超出自动换行。
+  - 分组容器 `.btn-group`：用于并排的同级按钮组，`gap: .5rem; flex-wrap:wrap`。
+  - CBI 区块操作 `.cbi-section-actions > div`：采用同样的 `flex + gap` 布局。
+  - 回退策略：在非 Flex 容器下，通过兄弟选择器为相邻按钮添加 `margin-left: .5rem`，在分组/动作区内清零相邻间距，避免双重间距。
+
+- 下拉按钮（应用按钮）
+  - `.cbi-dropdown.btn` 统一用按钮尺寸（h-8；min-width: 160px；左右内边距 12px），右侧 `▾` 图标对齐。
+  - 默认仅显示选中项：`li[display="0"]`；当容器带 `.open` 时，`ul` 作为下拉层展示全部项。
+  - 下拉层样式：浅色 `bg-white/95` + `backdrop-blur` + `border` + `shadow-lg`；深色对应 `bg-slate-800/95` 与较深边框。
+
+- 交互反馈
+  - Hover：轻微上移 `translateY(-2px → -0.5)`，阴影加深；Active：还原位移，阴影减弱。
+  - Focus：外发光 `0 0 0 3px rgba(73, 158, 203, 0.2)`；暗色模式下保持对比等价。
+
+以上规范保证：
+- 不同页面按钮与动作区风格一致且紧凑不拥挤
+- 移动端具备合理的换行与触控面积
+- 强调/中性/操作按钮层级清晰、信息权重明确
+
+### 2.2 层级与对比（不增加色彩负担）
+
+在不引入额外颜色的前提下，通过“质感与权重”来区分按钮层级：
+
+- 主操作（Primary）：保留品牌渐变与略强阴影，获得最高权重（`.cbi-button-positive`）。
+- 次要操作（Secondary）：浅填充+细描边+轻阴影（`.cbi-button-action`），与主操作并列但层级更低。
+- 中性/工具类（Neutral/Utility）：幽灵或描边按钮（`.cbi-button-neutral`, `.cbi-button-{add,edit,remove}`），透明背景，视觉负担最轻。
+- 破坏/禁用（Negative/Disabled）：避免使用强烈红色，采用中性描边与幽灵态，通过位置和文案承担语义（`.cbi-button-negative`）。
+
+交互对比：
+- Hover：仅轻微位移与阴影变化，避免背景强烈变色。
+- Focus：统一外发光 `0 0 0 3px rgba(73, 158, 203, 0.2)`，保证可达性。
+- Active：位移归零，阴影减弱，反馈即时但不刺眼。
+
 ### 3. **暗色模式支持**
 ```css
 .component {
