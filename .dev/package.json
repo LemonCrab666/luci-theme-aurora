@@ -1,5 +1,5 @@
 {
-	"name": "luci-theme-design",
+	"name": "luci-theme-aurora",
 	"version": "1.0.0",
 	"description": "Modern OpenWrt LuCI theme built with Vite and TailwindCSS",
 	"type": "module",

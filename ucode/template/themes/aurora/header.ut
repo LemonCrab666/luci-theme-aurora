@@ -9,26 +9,22 @@
 	import { getuid, getspnam } from 'luci.core';
 
 	const boardinfo = ubus.call('system', 'board');
-	const darkpref = (theme == 'design-dark' ? 'true' : (theme == 'design-light' ? 'false' : null));
 
 	http.prepare_content('text/html; charset=UTF-8');
 -%}
 
 <!DOCTYPE html>
-<html lang="{{ dispatcher.lang }}" {{ darkpref ? `data-darkmode="${darkpref}"` : '' }}>
+<html lang="{{ dispatcher.lang }}">
 	<head>
 		<meta charset="utf-8">
 		<title>{{ striptags(`${boardinfo.hostname ?? '?'}${node ? ` - ${node.title}` : ''}`) }} - LuCI</title>
-		{% if (!darkpref): %}
-			<script>
-				var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)'),
-				    rootElement = document.querySelector(':root'),
-				    setDarkMode = function(match) { rootElement.setAttribute('data-darkmode', match.matches) };
-
-				mediaQuery.addEventListener('change', setDarkMode);
-				setDarkMode(mediaQuery);
-			</script>
-		{% endif %}
+		<script>
+			document.documentElement.classList.toggle(
+  				"dark",
+  				localStorage.theme === "dark" ||
+    				(!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+			);
+		</script>
 		<meta name="viewport" content="initial-scale=1.0">
 		<link rel="stylesheet" href="{{ media }}/main.css">
 		<link rel="stylesheet" media="only screen and (max-device-width: 854px)" href="{{ media }}/mobile.css" />

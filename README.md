@@ -1,4 +1,4 @@
-# LuCI Theme Design - 开发指南
+# LuCI Theme aurora - 开发指南
 
 基于 Vite + TailwindCSS 的现代化 OpenWrt LuCI 主题开发环境。
 
@@ -7,7 +7,7 @@
 ### 目录结构说明
 
 ```
-luci-theme-design/
+luci-theme-aurora/
 ├── .dev/                    # 开发相关文件
 │   ├── src/                 # 源代码
 │   ├── scripts/             # 构建脚本
@@ -35,7 +35,7 @@ luci-theme-design/
 ### OpenWrt编译
 
 ```bash
-make package/luci-theme-design/{clean,compile}
+make package/luci-theme-aurora/{clean,compile}
 ```
 
 

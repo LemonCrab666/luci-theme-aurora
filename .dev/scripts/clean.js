@@ -15,20 +15,20 @@ function removeAllChildren(targetDir) {
 function cleanBuildOutput() {
   // 从 .dev/ 目录向上一级到项目根目录
   const projectRoot = path.resolve('..'); 
-  const designDir = path.join(projectRoot, 'htdocs', 'luci-static', 'design');
+  const auroraDir = path.join(projectRoot, 'htdocs', 'luci-static', 'aurora');
   const resourcesDir = path.join(projectRoot, 'htdocs', 'luci-static', 'resources');
 
   console.log('🧹 开始清理构建产物...');
 
-  // 清理 design 目录（保留 public）
-  if (fs.existsSync(designDir)) {
-    for (const item of fs.readdirSync(designDir)) {
+  // 清理 aurora 目录（保留 public）
+  if (fs.existsSync(auroraDir)) {
+    for (const item of fs.readdirSync(auroraDir)) {
       if (item !== 'public') {
-        const itemPath = path.join(designDir, item);
+        const itemPath = path.join(auroraDir, item);
         console.log(`   删除: ${itemPath}`);
         fs.rmSync(itemPath, { recursive: true, force: true });
       } else {
-        console.log(`   保留: ${path.join(designDir, 'public')}`);
+        console.log(`   保留: ${path.join(auroraDir, 'public')}`);
       }
     }
   }

@@ -100,19 +100,19 @@ export default defineConfig({
     cssMinify: "lightningcss",
     rollupOptions: {
       input: {
-        // CSS 入口改为 media，保持层级：media/main.css -> design/main.css
+        // CSS 入口改为 media，保持层级：media/main.css -> aurora/main.css
         main: resolve(__dirname, "src/media/main.css"),
-        // 移动端样式单独打包：media/mobile.css -> design/mobile.css
+        // 移动端样式单独打包：media/mobile.css -> aurora/mobile.css
         mobile: resolve(__dirname, "src/media/mobile.css"),
       },
       output: {
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name || "";
-          // CSS 放到 design/ 目录，保持文件名
+          // CSS 放到 aurora/ 目录，保持文件名
           if (info.endsWith(".css")) {
-            return "design/[name].[ext]";
+            return "aurora/[name].[ext]";
           }
-          return "design/[name].[ext]";
+          return "aurora/[name].[ext]";
         },
       },
     },
@@ -123,12 +123,12 @@ export default defineConfig({
   },
 server: {
   proxy: {
-    "/luci-static/design/main.css": {
+    "/luci-static/aurora/main.css": {
       target: "http://localhost:5173",
       changeOrigin: true,
       rewrite: (path) => "/src/media/main.css",
     },
-    "/luci-static/design/main.css?v=6.0.0": {
+    "/luci-static/aurora/main.css?v=6.0.0": {
       target: "http://localhost:5173",
       changeOrigin: true,
       rewrite: (path) => "/src/media/main.css",
@@ -140,7 +140,7 @@ server: {
       "@": resolve(__dirname, "src"),
       "@media": resolve(__dirname, "src/media"),
       "@resource": resolve(__dirname, "src/resource"),
-      "@assets": resolve(__dirname, "src/assets/design"),
+      "@assets": resolve(__dirname, "src/assets/aurora"),
     },
   },
 });

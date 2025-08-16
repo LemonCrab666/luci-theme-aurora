@@ -14,7 +14,7 @@
 			</span>
 			<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
 		</footer>
-		<script>L.require('menu-design')</script>
+		<script>L.require('menu-aurora')</script>
 		{% endif %}
 	</body>
 </html>

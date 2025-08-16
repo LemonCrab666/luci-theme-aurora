@@ -2,57 +2,54 @@
 @import "tailwindcss";
 
 /* Dark Mode Variant Configuration */
-@custom-variant dark (&:where([data-darkmode="true"], [data-darkmode="true"] *));
-
-/* =============================================================================
-   DESIGN TOKENS & THEME VARIABLES
-   ============================================================================= */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Custom Font Family */
   --font-sans: 'Lato', 'Inter', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
-    /* Aurora Color Palette - Light Mode */
+
+  /* Aurora Color Palette - Light Mode */
+  --color-aurora-green: #6ee7b7;
   --color-aurora-green-50: oklch(97.2% 0.019 158.743);
   --color-aurora-green-100: oklch(94.8% 0.045 159.652);
   --color-aurora-green-200: oklch(90.5% 0.089 160.125);
   --color-aurora-green-300: oklch(84.7% 0.148 160.742);
-  --color-aurora-green-400: oklch(77.1% 0.198 161.205);
-  --color-aurora-green-500: oklch(89.6% 0.143 162.4); /* 柔和翡翠绿 - 主色 */
-  --color-aurora-green: var(--color-aurora-green-500); /* 主色简写 */
+  --color-aurora-green-400: oklch(89.6% 0.143 162.4);
+  --color-aurora-green-500: oklch(77.1% 0.198 161.205);
   --color-aurora-green-600: oklch(64.3% 0.175 161.428);
   --color-aurora-green-700: oklch(55.2% 0.142 162.113);
   --color-aurora-green-800: oklch(47.1% 0.112 162.895);
   --color-aurora-green-900: oklch(40.8% 0.089 163.742);
   --color-aurora-green-950: oklch(27.9% 0.061 165.128);
-  
+
+  --color-aurora-teal: #4fc3c7;
   --color-aurora-teal-50: oklch(97.8% 0.016 185.234);
   --color-aurora-teal-100: oklch(95.1% 0.041 186.152);
   --color-aurora-teal-200: oklch(90.8% 0.079 187.063);
   --color-aurora-teal-300: oklch(85.2% 0.128 187.894);
   --color-aurora-teal-400: oklch(77.9% 0.168 188.745);
-  --color-aurora-teal-500: oklch(75.8% 0.145 188.2); /* 青蓝色 - 主色 */
-  --color-aurora-teal: var(--color-aurora-teal-500); /* 主色简写 */
+  --color-aurora-teal-500: oklch(75.8% 0.145 188.2);
   --color-aurora-teal-600: oklch(62.1% 0.145 189.632);
   --color-aurora-teal-700: oklch(53.4% 0.118 190.485);
   --color-aurora-teal-800: oklch(45.8% 0.094 191.328);
   --color-aurora-teal-900: oklch(39.7% 0.074 192.156);
   --color-aurora-teal-950: oklch(28.2% 0.052 193.864);
-  
+
+  --color-aurora-sky: #499ecb;
   --color-aurora-sky-50: oklch(97.4% 0.015 242.187);
   --color-aurora-sky-100: oklch(94.6% 0.031 243.059);
   --color-aurora-sky-200: oklch(89.7% 0.061 244.128);
   --color-aurora-sky-300: oklch(82.5% 0.108 245.306);
   --color-aurora-sky-400: oklch(73.8% 0.159 246.584);
-  --color-aurora-sky-500: oklch(68.5% 0.169 237.3); /* 深天蓝 - 主色 */
-  --color-aurora-sky: var(--color-aurora-sky-500); /* 主色简写 */
+  --color-aurora-sky-500: oklch(68.5% 0.169 237.3);
   --color-aurora-sky-600: oklch(57.2% 0.182 248.947);
   --color-aurora-sky-700: oklch(49.1% 0.156 249.823);
   --color-aurora-sky-800: oklch(42.6% 0.127 250.694);
   --color-aurora-sky-900: oklch(37.8% 0.103 251.546);
   --color-aurora-sky-950: oklch(27.1% 0.072 253.189);
-    
-    /* Aurora Color Palette - Dark Mode */
+
+  /* Aurora Color Palette - Dark Mode */
+  --color-aurora-night-slate: #0f172a;
   --color-aurora-night-slate-50: oklch(96.8% 0.008 245.123);
   --color-aurora-night-slate-100: oklch(93.2% 0.018 246.084);
   --color-aurora-night-slate-200: oklch(86.4% 0.035 247.159);
@@ -62,10 +59,11 @@
   --color-aurora-night-slate-600: oklch(41.8% 0.145 252.258);
   --color-aurora-night-slate-700: oklch(33.6% 0.142 253.586);
   --color-aurora-night-slate-800: oklch(26.8% 0.128 254.926);
-  --color-aurora-night-slate-900: oklch(11.8% 0.042 264.7); /* 深夜蓝黑 - 主色 */
+  --color-aurora-night-slate-900: oklch(11.8% 0.042 264.7);
   --color-aurora-night-slate-950: oklch(11.2% 0.089 257.847);
-  --color-aurora-night-slate: var(--color-aurora-night-slate-900); /* 主色简写 */
-  
+
+
+  --color-aurora-night-teal: #134e4a;
   --color-aurora-night-teal-50: oklch(96.9% 0.012 168.245);
   --color-aurora-night-teal-100: oklch(92.8% 0.028 169.137);
   --color-aurora-night-teal-200: oklch(85.6% 0.055 170.029);
@@ -75,10 +73,10 @@
   --color-aurora-night-teal-600: oklch(41.5% 0.172 173.597);
   --color-aurora-night-teal-700: oklch(33.8% 0.168 174.489);
   --color-aurora-night-teal-800: oklch(27.6% 0.148 175.381);
-  --color-aurora-night-teal-900: oklch(29.5% 0.074 175.4); /* 深青绿 - 主色 */
+  --color-aurora-night-teal-900: oklch(29.5% 0.074 175.4);
   --color-aurora-night-teal-950: oklch(18.9% 0.089 177.165);
-  --color-aurora-night-teal: var(--color-aurora-night-teal-900); /* 主色简写 */
-  
+
+  --color-aurora-night-emerald: #065f46;
   --color-aurora-night-emerald-50: oklch(97.1% 0.015 155.743);
   --color-aurora-night-emerald-100: oklch(94.2% 0.035 156.652);
   --color-aurora-night-emerald-200: oklch(88.9% 0.068 157.561);
@@ -88,16 +86,13 @@
   --color-aurora-night-emerald-600: oklch(51.8% 0.198 161.197);
   --color-aurora-night-emerald-700: oklch(43.6% 0.185 162.106);
   --color-aurora-night-emerald-800: oklch(36.8% 0.156 163.015);
-  --color-aurora-night-emerald-900: oklch(34.2% 0.118 163.2); /* 深翡翠 - 主色 */
+  --color-aurora-night-emerald-900: oklch(34.2% 0.118 163.2);
   --color-aurora-night-emerald-950: oklch(22.1% 0.089 164.833);
-  --color-aurora-night-emerald: var(--color-aurora-night-emerald-900); /* 主色简写 */
+
 }
 
-/* =============================================================================
-   GLOBAL BASE STYLES
-   ============================================================================= */
-
 @layer base {
+
   /* Font Face Declaration */
   @font-face {
     font-display: swap;
@@ -123,145 +118,198 @@
     @apply dark:text-slate-100 dark:bg-gradient-to-br dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald;
     @apply bg-fixed;
     @apply relative;
-  }
-
-  /* Background Decorations */
-  body::before {
-    @apply fixed inset-0 pointer-events-none -z-10;
-    @apply fixed inset-0 pointer-events-none -z-10 content-[''];
-    /* @apply bg-gradient-to-br from-[#e0f2fe] via-[#bae6fd] to-[#f0fdfa]; */
+    @apply before:fixed before:inset-0 before:pointer-events-none before:-z-10 before:content-[''];
   }
 
   /* Typography Base */
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-slate-900 dark:text-slate-100 font-semibold tracking-tight leading-tight;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-slate-900 dark:text-slate-100 font-sans tracking-tight leading-tight font-semibold;
   }
-  
-  h1 { @apply text-3xl mb-4; }
-  h2 { @apply text-2xl mb-4; }
-  h3 { @apply text-xl mb-4; }
-  h4 { @apply text-lg mb-2; }
-  h5 { @apply text-base mb-2; }
-  h6 { @apply text-sm mb-2; }
-  
-  p { 
-    @apply text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4; 
+
+  h1 {
+    @apply text-3xl mb-4;
   }
-  
-  small { 
-    @apply text-slate-500 dark:text-slate-400 text-xs font-normal; 
+
+  h2 {
+    @apply text-2xl mb-4;
+  }
+
+  h3 {
+    @apply text-xl mb-4;
+  }
+
+  h4 {
+    @apply text-lg mb-2;
+  }
+
+  h5 {
+    @apply text-base mb-2;
+  }
+
+  h6 {
+    @apply text-sm mb-2;
+  }
+
+  p {
+    @apply text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4;
+  }
+
+  small {
+    @apply text-slate-500 dark:text-slate-400 text-xs font-normal;
   }
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     @apply w-2;
   }
-  
+
   ::-webkit-scrollbar-track {
     @apply bg-slate-400/5;
+    @apply dark:bg-aurora-night-slate;
   }
-  
-  ::-webkit-scrollbar-track:where([data-darkmode="true"], [data-darkmode="true"] *) {
-    @apply bg-aurora-night-slate;
-  }
-  
+
   ::-webkit-scrollbar-thumb {
     @apply rounded bg-slate-400/30 dark:bg-aurora-teal;
+    @apply hover:bg-slate-400/50 dark:hover:bg-aurora-night-emerald;
   }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-400/50 dark:bg-aurora-night-emerald;
-  }
+
 }
 
-/* =============================================================================
-   COMPONENT LIBRARY
-   ============================================================================= */
-
 @layer components {
+
   /* Layout Components */
   @layer layout {
-  .layout-main {
-    @apply pt-20 px-6 mx-auto w-4/5 max-w-7xl min-h-screen;
-  }
+    .layout-main {
+      @apply pt-20 px-6 mx-auto w-4/5 max-w-7xl min-h-screen;
+    }
 
-  .layout-view {
+    .layout-view {
       @apply w-full p-8 mb-8 rounded-2xl border transition-all duration-300 shadow bg-white border-slate-400/15;
       @apply dark:bg-white/85 dark:border-slate-400/15 dark:shadow-black/25;
       @apply backdrop-blur-xl backdrop-saturate-150;
-  }
-
-  .layout-view:hover {
-      @apply -translate-y-0.5 shadow-2xl shadow-slate-900/15 dark:shadow-black/35;
+      @apply hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-slate-900/15 dark:hover:shadow-black/35;
     }
 
-  .header {
-    @apply fixed top-0 left-0 right-0 z-50 px-6 py-3 transition-all duration-300 flex items-center justify-between;
+    header {
+      @apply fixed top-0 left-0 right-0 z-50 px-6 py-3 transition-all duration-300 flex items-center justify-between;
       @apply bg-white/5 border-b border-white/10 dark:bg-white/5 dark:border-slate-400/5;
-  }
-
-  .header:hover {
-      @apply bg-white/15 border-b border-white/20 shadow-lg shadow-slate-900/25;
-      @apply dark:bg-white/20 dark:border-slate-400/15 dark:shadow-black/40;
-      @apply backdrop-blur-xl backdrop-saturate-150;
+      @apply hover:bg-white/15 hover:border-b hover:border-white/20 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150;
+      @apply dark:hover:bg-white/20 dark:hover:border-slate-400/15 dark:hover:shadow-black/40;
     }
 
-  .brand {
+    .brand {
       @apply inline-block text-xl font-semibold no-underline tracking-tight transition-all duration-200 flex-shrink-0;
       @apply text-slate-900 dark:text-slate-100 hover:-translate-y-0.5 hover:text-aurora-sky;
     }
 
-  .nav {
-    @apply flex items-center gap-1 m-0 p-0 list-none absolute left-1/2 transform -translate-x-1/2;
-  }
+    .nav {
+      @apply flex items-center gap-1 m-0 p-0 list-none absolute left-1/2 transform -translate-x-1/2;
+    }
 
-  .nav > li {
-    @apply relative;
-  }
+    .nav>li {
+      @apply relative;
+    }
 
-  .menu {
+    .menu {
       @apply block px-3 py-2 rounded-lg text-xs font-normal no-underline relative transition-all duration-200;
       @apply text-slate-600 dark:text-slate-300;
       @apply hover:-translate-y-0.5 hover:text-slate-900 hover:bg-white/12 dark:hover:text-slate-100 dark:hover:bg-white/18;
       @apply hover:backdrop-blur-sm;
     }
 
-  .footer {
-      @apply mt-16 py-8 text-center text-xs border-t text-slate-500 bg-white/12 border-slate-400/20;
-      @apply dark:text-slate-400 dark:bg-white/18 dark:border-slate-400/15;
-      @apply backdrop-blur-xl;
-  }
+    footer {
+      @apply py-2 mt-auto border-t text-xs text-slate-500 border-slate-400/20;
+      @apply dark:text-slate-400 dark:border-slate-400/15;
+      @apply flex flex-wrap items-center justify-center;
+    }
 
-  .footer a {
-      @apply no-underline transition-colors duration-200 text-aurora-sky hover:text-aurora-teal;
+    footer span {
+      @apply inline-block text-center text-slate-500 dark:text-slate-400;
+    }
+
+    footer a {
+      @apply no-underline text-aurora-sky hover:text-aurora-night-slate-500;
+    }
+
+    footer .breadcrumb {
+      @apply px-3.5 py-1.5 m-0 mb-4;
+      @apply bg-gradient-to-b from-white/20 to-white/10;
+      @apply border border-slate-400/30 rounded-sm;
+      @apply flex flex-0;
+    }
+
+    footer .breadcrumb li {
+      @apply list-none;
+    }
+
+    footer .breadcrumb li:not(:last-child)::after {
+      content: "|";
+      @apply px-1.5 text-slate-400 dark:text-slate-500;
+    }
+
+    footer .breadcrumb li.active a {
+      @apply text-slate-600 dark:text-slate-300;
+    }
+
+    footer .breadcrumb a {
+      @apply text-aurora-sky hover:text-aurora-teal;
+    }
+
+    footer ul.breadcrumb {
+      @apply ml-auto;
     }
   }
 
   /* Button Components */
   @layer button {
-    .btn-primary {
-    @apply px-4 py-2 rounded-lg font-medium text-white transition-all duration-200 inline-flex items-center justify-center gap-2 text-xs;
-      @apply bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-lg;
-      @apply hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0;
+
+    /* 基线按钮 - 高度 h-8（约 32px），内边距 px-3 py-1.5，字重中等，圆角 rounded-lg，轻阴影 */
+    button,
+    .btn,
+    .cbi-button {
+      @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium text-white transition-all duration-200;
+      @apply bg-gradient-to-br from-aurora-sky to-aurora-teal shadow-md;
+      @apply hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 hover:bg-gradient-to-br hover:from-aurora-sky hover:via-aurora-teal hover:to-aurora-green;
+      @apply h-8 px-3 py-1.5 text-sm m-1.5;
     }
 
-    .btn-secondary {
-      @apply px-4 py-2 rounded-lg font-medium border transition-all duration-200 inline-flex items-center justify-center gap-2;
-      @apply text-slate-900 bg-white/85 border-slate-400/20 shadow-md;
-      @apply hover:-translate-y-0.5 hover:bg-white/95;
-      @apply dark:bg-white/85 dark:border-slate-400/15 dark:shadow-black/25 dark:hover:bg-white/95;
-  }
+    /* 强调按钮 - 高度 h-9（约 36px），px-3.5 py-2，同品牌渐变，轻悬浮提升，投影稍强 */
+    .cbi-button-positive {
+      @apply w-full font-semibold text-sm px-3.5 py-2 h-9 border-0 shadow-lg;
+      @apply hover:shadow-xl;
+    }
 
-  .btn-positive {
-      @apply w-full px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 text-sm border-0;
-      @apply bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-xl;
-      @apply hover:-translate-y-1 hover:shadow-2xl active:translate-y-0;
+    /* 主要按钮 - 继承基线样式，调整内边距和阴影 */
+    .btn-primary {
+      @apply px-4 py-2 text-xs shadow-lg;
+      @apply hover:shadow-xl;
+    }
+
+    /* 次要按钮 - 浅填充（浅色白/深色石板）、细描边与轻阴影 */
+    .btn-secondary {
+      @apply text-slate-900 bg-white/85 border border-slate-400/20 shadow-md;
+      @apply dark:bg-white/85 dark:border-slate-400/15 dark:shadow-black/25;
+      @apply hover:bg-white/95 dark:hover:bg-white/95;
+    }
+
+    /* 积极按钮 - 全宽，大尺寸，增强悬停效果 */
+    .btn-positive {
+      @apply w-full px-6 py-3 font-semibold text-sm border-0 shadow-xl;
+      @apply hover:-translate-y-1 hover:shadow-2xl;
     }
   }
 
   /* Input Components */
   @layer input {
-    .input-text, .input-password, .input-email {
+
+    .input-text,
+    .input-password,
+    .input-email {
       @apply px-4 py-3 rounded-lg border transition-all duration-200 text-sm font-normal;
       @apply text-slate-900 bg-white/85 border-slate-400/20;
       @apply dark:bg-white/85 dark:border-slate-400/15;
@@ -283,55 +331,209 @@
     }
   }
 
+  @layer progress {
+    .cbi-progressbar {
+      @apply w-full bg-slate-300 dark:bg-slate-800 rounded-full h-3 overflow-hidden;
+    }
+
+    .cbi-progressbar>div {
+      @apply h-full bg-gradient-to-r from-aurora-sky to-aurora-teal transition-all duration-300;
+    }
+
+    .cbi-progressbar {
+      @apply relative cursor-help;
+      @apply before:content-[attr(title)] before:text-xs/normal before:text-slate-900 before:rounded-lg before:shadow-lg;
+      @apply before:absolute before:z-50 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1 before:whitespace-nowrap;
+      @apply before:dark:bg-slate-900 before:dark:text-slate-100;
+    }
+  }
+
   /* Card Components */
   @layer card {
-    .card {
-      @apply rounded-2xl p-6 border transition-all duration-300 bg-white/95 border-slate-400/15 shadow-lg;
-      @apply hover:-translate-y-1 hover:shadow-2xl;
-      @apply dark:bg-white/85 dark:border-slate-400/15 dark:shadow-black/25 dark:hover:shadow-black/35;
-      @apply backdrop-blur-xl backdrop-saturate-150;
+
+    /* CBI Section Components - 系统状态卡片组件 */
+    .cbi-section {
+      @apply rounded-xl p-5 border transition-all duration-300 bg-white/90 border-slate-400/10 shadow-md mb-4;
+      @apply dark:bg-white/80 dark:border-slate-400/10 dark:shadow-black/20;
+      @apply backdrop-blur-md backdrop-saturate-125;
     }
 
-    .card-header {
-      @apply pb-4 mb-4 border-b border-slate-400/15 dark:border-slate-400/10;
+    .cbi-section h3 {
+      @apply text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4 pb-3 border-b border-slate-400/15 dark:border-slate-400/10;
     }
 
-    .card-title {
-      @apply text-lg font-semibold mb-0 text-slate-900 dark:text-slate-100;
+    .ifacebox {
+      @apply border border-slate-400/30 mx-2.5 text-center whitespace-nowrap;
+      @apply bg-gradient-to-b from-white/95 to-white/85 rounded border-slate-400/30;
+      @apply shadow-inner shadow-slate-400/5;
+      @apply inline-flex flex-col leading-tight min-w-[100px];
+      @apply dark:from-white/90 dark:to-white/80 dark:border-slate-400/40;
     }
 
-    .card-content {
-      @apply text-sm leading-relaxed text-slate-600 dark:text-slate-300;
+    .ifacebox-head {
+      @apply border-b border-slate-400/30 rounded-t-sm p-0.5;
+      @apply bg-slate-200 text-slate-900 font-medium;
+      @apply dark:bg-slate-700 dark:text-slate-100;
+    }
+
+    .ifacebox-head[style] {
+      @apply text-shadow-sm;
+    }
+
+    .ifacebox-head.active {
+      @apply bg-aurora-sky text-white;
+    }
+
+    .ifacebox-body {
+      @apply p-1;
+    }
+
+    /* Network Interface Badge */
+    .ifacebadge {
+      @apply inline-block flex-row border border-slate-400/30 p-0.5;
+      @apply bg-gradient-to-b from-white/95 from-white/95 via-white/90 to-white/85;
+      @apply text-slate-900 text-shadow-sm rounded shadow-inner shadow-slate-400/5;
+      @apply cursor-default leading-tight;
+      @apply dark:from-white/90 dark:via-white/85 dark:to-white/80 dark:text-slate-100;
+    }
+
+    .ifacebadge img {
+      @apply w-8 h-8 align-middle;
+    }
+
+    .ifacebadge-active {
+      @apply border-black font-bold;
+      @apply dark:border-white;
+    }
+
+    /* Network Status Table */
+    .network-status-table {
+      @apply flex flex-wrap;
+    }
+
+    .network-status-table .ifacebox {
+      @apply m-2 flex-grow;
+    }
+
+    .network-status-table .ifacebox-body {
+      @apply flex flex-col h-full text-left;
+    }
+
+    .network-status-table .ifacebox-body > * {
+      @apply m-1;
+    }
+
+    .network-status-table .ifacebox-body > span {
+      @apply flex-10 flex-auto h-full;
+    }
+
+    .network-status-table .ifacebox-body > div {
+      @apply -m-0.5 flex flex-wrap;
+    }
+
+    /* Large Interface Badge */
+    .ifacebadge.large,
+    .network-status-table .ifacebox-body .ifacebadge {
+      @apply flex flex-1 p-1 min-w-[220px] m-0.5;
+    }
+
+    .ifacebadge.large {
+      @apply inline-flex;
+    }
+
+    .network-status-table .ifacebox-body .ifacebadge > span {
+      @apply overflow-hidden text-ellipsis;
+    }
+
+    .ifacebadge > *,
+    .ifacebadge.large > * {
+      @apply mx-0.5;
+    }
+
+    .cbi-section .fade-in {
+      @apply opacity-0 animate-pulse;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 
   /* Table Components */
   @layer table {
-  .table {
-      @apply w-full border-collapse rounded-xl overflow-hidden border shadow-xl bg-white/95 border-slate-400/15;
-      @apply dark:bg-white/85 dark:shadow-black/25;
-      @apply backdrop-blur-xl backdrop-saturate-150;
+    .table {
+      @apply w-full border-collapse mb-2;
+    }
+
+    .table th {
+      @apply px-4 py-3 text-left font-semibold text-sm border-b;
+      @apply text-slate-900 bg-slate-50/50 border-slate-400/25;
+      @apply dark:text-slate-100 dark:bg-slate-800/30 dark:border-slate-400/20;
+    }
+
+    .table td {
+      @apply px-4 py-3 text-sm border-b text-slate-700 border-slate-400/20;
+      @apply dark:text-slate-300 dark:border-slate-400/15;
+    }
+
+    .table .td .left {
+      @apply text-left;
+    }
+
+    .table tr {
+      @apply border-b border-slate-400/10 dark:border-slate-400/5;
+      @apply last:border-b-0;
+      @apply hover:bg-slate-50/30 dark:hover:bg-slate-800/20;
+    }
+
+    /* 系统状态表格特殊样式 */
+    .cbi-section .table {
+      @apply bg-transparent border-0 shadow-none;
+    }
+
+    .cbi-section .table td {
+      @apply text-slate-700 dark:text-slate-300;
+      @apply first:w-1/3 first:text-slate-600 dark:first:text-slate-400;
+      @apply last:text-slate-800 dark:last:text-slate-200;
+    }
+
   }
 
-  .table th {
-      @apply px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider border-b;
-      @apply text-slate-900 bg-white/15 border-slate-400/25;
-      @apply dark:text-slate-100 dark:bg-white/20 dark:border-slate-400/20;
-  }
+  @layer message {
+    .alert-message {
+      @apply relative p-6 rounded-xl shadow-lg backdrop-blur-sm mb-3;
+      @apply bg-aurora-sky dark:bg-aurora-night-slate-900;
+    }
 
-  .table td {
-      @apply px-4 py-3 text-sm border-b text-slate-600 border-slate-400/25;
-      @apply dark:text-slate-300 dark:border-slate-400/20;
-  }
+    .alert-message.warning {
+      @apply bg-gradient-to-br from-aurora-sky to-aurora-teal
+    }
 
-  .table tr:hover {
-      @apply bg-white/15 dark:bg-white/20;
-  }
+    .alert-message h4 {
+      @apply text-lg font-sans text-slate-900 dark:text-slate-100 mb-2;
+    }
+
+    .alert-message p {
+      @apply text-sm text-slate-700 dark:text-slate-300 mb-4 leading-relaxed;
+    }
+
+    .alert-message .right {
+      @apply flex justify-end;
+    }
   }
 
   /* Modal Components */
   @layer modal {
-  .modal {
+    .modal {
       @apply rounded-2xl p-8 max-w-md border shadow-2xl bg-white/85 border-slate-400/25;
       @apply dark:bg-white/85 dark:border-slate-400/20 dark:shadow-black/25;
       @apply backdrop-blur-xl backdrop-saturate-150;
@@ -360,9 +562,9 @@
       @apply px-4 py-2 rounded-t-lg text-sm font-medium no-underline transition-all duration-200;
       @apply text-slate-500 hover:text-slate-900 hover:bg-white/15;
       @apply dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-white/20;
-  }
+    }
 
-  .tab-link.active {
+    .tab-link.active {
       @apply text-white bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-lg;
     }
   }
@@ -391,7 +593,7 @@
     .dropdown-menu a {
       @apply block px-4 py-3 text-sm no-underline rounded-lg mx-2 transition-all duration-200 font-medium;
       @apply text-slate-600 dark:text-slate-300;
-      @apply hover:text-white hover:translate-x-1 hover:bg-gradient-to-r hover:from-aurora-green hover:via-aurora-teal hover:to-aurora-sky hover:shadow-lg;
+      @apply hover:text-slate-900 hover:translate-x-1 hover:bg-gradient-to-r hover:from-aurora-sky hover:to-aurora-teal hover:shadow-lg;
       @apply hover:backdrop-blur-md hover:backdrop-saturate-125;
     }
   }
@@ -426,62 +628,27 @@
 
   /* Legacy Component Mappings */
   @layer legacy {
+
     /* Legacy Layout Mapping */
-  #maincontent {
-    @apply pt-20 px-6 mx-auto w-4/5 max-w-7xl min-h-screen;
-  }
-
-  #view {
-      @apply w-full p-8 mb-8 rounded-2xl border transition-all duration-300 shadow-2xl;
-      @apply bg-white/95 border-slate-400/15 backdrop-blur-xl backdrop-saturate-150;
+    #maincontent.container {
+      @apply pt-16 px-6 mx-auto w-4/5 max-w-7xl! min-h-screen;
     }
 
-    #view:empty { 
-      @apply hidden; 
-    }
-
-  #view:hover {
-      @apply -translate-y-0.5 shadow-2xl;
-    }
-
-    #view:where([data-darkmode="true"], [data-darkmode="true"] *) {
-      @apply bg-white/85 border-slate-400/15 shadow-black/25;
-    }
-
-    #view:hover:where([data-darkmode="true"], [data-darkmode="true"] *) {
-      @apply shadow-black/35;
-    }
-
-    /* Legacy Header Mapping */
-header {
-    @apply fixed top-0 left-0 right-0 z-50 px-6 py-3 transition-all duration-300 flex items-center justify-between;
-      @apply bg-white/5 border-b border-white/10 dark:bg-white/5 dark:border-slate-400/5;
-  }
-
-  header:hover {
-      @apply bg-white/15 border-b border-white/20 shadow-lg backdrop-blur-xl backdrop-saturate-150;
-      @apply dark:bg-white/20 dark:border-slate-400/15 dark:shadow-black/40;
-    }
-
-    /* Legacy Button Mappings */
-  button, .btn, .cbi-button {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium text-white transition-all duration-200 text-sm px-3 py-1.5 h-8;
-      @apply bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-md;
-      @apply hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0;
-  }
-
-  .cbi-button-positive {
-      @apply w-full rounded-lg font-semibold text-white transition-all duration-300 text-sm px-3.5 py-2 h-9 border-0;
-      @apply bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-lg;
-      @apply hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0;
+    #view {
+      @apply w-full p-8 mb-8 rounded-3xl border-2 transition-all duration-300 shadow-2xl;
+      @apply bg-gradient-to-br from-white/95 via-white/90 to-white/85 border-slate-400/20;
+      @apply backdrop-blur-2xl backdrop-saturate-150;
+      @apply dark:from-white/90 dark:via-white/85 dark:to-white/80 dark:border-slate-400/25;
+      @apply hover:shadow-2xl hover:shadow-slate-400/30 dark:hover:border-slate-400/35;
+      @apply empty:hidden;
     }
 
     /* Legacy Form Mappings */
-  input[type="text"], 
-  input[type="password"], 
-  .password-input,
-  select,
-  textarea {
+    input[type="text"],
+    input[type="password"],
+    .password-input,
+    select,
+    textarea {
       @apply px-4 py-3 rounded-lg border transition-all duration-200 text-sm font-normal;
       @apply text-slate-900 bg-white/85 border-slate-400/25;
       @apply dark:bg-white/85 dark:border-slate-400/20;
@@ -489,18 +656,19 @@ header {
     }
 
     /* Legacy Tab Mappings */
-  .cbi-tabmenu {
+    .cbi-tabmenu {
       @apply flex gap-1 mb-6 border-b border-slate-400/25 dark:border-slate-400/20;
-  }
+    }
 
-  .cbi-tab a, .cbi-tab-disabled a {
+    .cbi-tab a {
       @apply px-4 py-2 rounded-t-lg text-sm font-medium no-underline transition-all duration-200;
       @apply text-slate-500 hover:text-slate-900 hover:bg-white/15;
       @apply dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-white/20;
+      @apply text-white bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-lg;
     }
 
-    .cbi-tab[data-tab-active="true"] a {
-      @apply text-white bg-gradient-to-r from-aurora-green via-aurora-teal to-aurora-sky shadow-lg;
+    .cbi-tab-disabled a {
+      @apply text-slate-400 dark:text-slate-600;
     }
 
     /* Legacy Modal Overlay */
@@ -518,7 +686,7 @@ header {
     }
 
     /* Legacy System Log */
-  #syslog {
+    #syslog {
       @apply w-full rounded-xl border p-6 transition-all duration-200 text-slate-200 font-sans text-xs leading-snug;
       @apply bg-aurora-night-slate border-slate-400/25 resize-y min-h-96 max-h-screen;
       @apply dark:border-slate-400/30 dark:shadow-black/40;
@@ -528,6 +696,7 @@ header {
 
   /* Page-Specific Components */
   @layer page-specific {
+
     /* Login Modal Enhancements */
     .login-modal {
       @apply max-w-lg w-full mx-4 bg-gradient-to-br from-aurora-green/15 via-aurora-teal/25 to-transparent;
@@ -568,5 +737,3 @@ header {
     }
   }
 }
-
-
