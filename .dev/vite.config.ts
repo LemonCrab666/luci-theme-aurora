@@ -121,20 +121,29 @@ export default defineConfig({
     cssCodeSplit: true,
     cssTarget: "es2018",
   },
-server: {
-  proxy: {
-    "/luci-static/aurora/main.css": {
-      target: "http://localhost:5173",
-      changeOrigin: true,
-      rewrite: (path) => "/src/media/main.css",
-    },
-    "/luci-static/aurora/main.css?v=6.0.0": {
-      target: "http://localhost:5173",
-      changeOrigin: true,
-      rewrite: (path) => "/src/media/main.css",
+
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    proxy: {
+      "/luci-static/aurora/main.css": {
+        target: "http://localhost:5173", 
+        changeOrigin: true,
+        rewrite: (path) => "/src/media/main.css", 
+      },
+      '/luci-static': {
+        target: 'http://192.168.6.77',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/cgi-bin': {
+        target: 'http://192.168.6.77',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
-},
+
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),

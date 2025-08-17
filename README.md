@@ -35,7 +35,7 @@ luci-theme-aurora/
 ### OpenWrt编译
 
 ```bash
-make package/luci-theme-aurora/{clean,compile}
+make package/luci-theme-aurora/compile
 ```
 
 
@@ -43,4 +43,3 @@ make package/luci-theme-aurora/{clean,compile}
 
 - [TailwindCSS 文档](https://tailwindcss.com/docs)
 - [Vite 文档](https://vitejs.dev/guide/)
-- [LuCI 开发文档](https://github.com/openwrt/luci/wiki)
