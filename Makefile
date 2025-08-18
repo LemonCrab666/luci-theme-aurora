@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2025 Aurora Theme
+# Copyright (C) 2025 eamonxg <eamonxiong@gmail.com>
 #
 # This is free software, licensed under the Apache License, Version 2.0 .
 #
@@ -8,9 +8,14 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=Aurora Theme (ucode)
 LUCI_DEPENDS:=+luci-base
+
 PKG_VERSION:=0.0.1
 PKG_RELEASE:=1
 PKG_LICENSE:=Apache-2.0
+
+LUCI_MINIFY_CSS:=
+
+CONFIG_LUCI_CSSTIDY:=
 
 define Package/luci-theme-aurora/postrm
 #!/bin/sh
