@@ -181,19 +181,7 @@
 @layer components {
 
   @layer layout {
-    /* 基础布局层 - Base Layout Layer */
-    @layer base {
-      .layout-main {
-        @apply mx-auto min-h-screen w-4/5 max-w-7xl px-6 pt-16;
-      }
 
-      .layout-view {
-        @apply mb-6 w-full rounded-lg border border-slate-200 bg-white p-6 shadow-sm;
-        @apply dark:border-slate-700 dark:bg-slate-800;
-      }
-    }
-
-    /* 头部导航层 - Header Navigation Layer */
     @layer header {
       header {
         @apply fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300;
@@ -224,7 +212,33 @@
       }
     }
 
-    /* 底部层 - Footer Layer */
+    @layer Content {
+
+      /* Legacy Layout Mapping */
+      #maincontent.container {
+        @apply mx-auto min-h-screen w-4/5 !max-w-7xl px-6 pt-16;
+      }
+
+      #view {
+        @apply mb-8 w-full rounded-3xl border-2 p-8 shadow-2xl transition-all duration-300;
+        @apply border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85;
+        @apply backdrop-blur-2xl backdrop-saturate-150;
+        @apply dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85;
+        @apply dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150;
+        @apply hover:shadow-2xl hover:shadow-slate-400/30 dark:hover:shadow-black/50;
+        @apply hover:border-slate-400/30 dark:hover:border-slate-600/35;
+        @apply empty:hidden;
+      }
+
+      /* Legacy System Log */
+      #syslog {
+        @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200;
+        @apply bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25;
+        @apply dark:border-slate-400/30 dark:shadow-black/40;
+        @apply focus:border-aurora-teal focus:ring-aurora-teal/20 focus:shadow-lg focus:ring-2 focus:outline-none;
+      }
+    }
+
     @layer footer {
       footer {
         @apply mt-auto border-t border-slate-200 py-2 text-xs text-slate-500;
@@ -269,7 +283,6 @@
       }
     }
 
-    /* 接口徽章系统层 - Interface Badge System Layer */
     @layer interface-badge-system {
 
       /* Network Interface Badge */
@@ -384,38 +397,7 @@
       }
     }
 
-    /* 传统布局映射层 - Legacy Layout Mapping Layer */
-    @layer legacy {
-
-      /* Legacy Layout Mapping */
-      #maincontent.container {
-        @apply mx-auto min-h-screen w-4/5 !max-w-7xl px-6 pt-16;
-      }
-
-      #view {
-        @apply mb-8 w-full rounded-3xl border-2 p-8 shadow-2xl transition-all duration-300;
-        @apply border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85;
-        @apply backdrop-blur-2xl backdrop-saturate-150;
-        @apply dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85;
-        @apply dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150;
-        @apply hover:shadow-2xl hover:shadow-slate-400/30 dark:hover:shadow-black/50;
-        @apply hover:border-slate-400/30 dark:hover:border-slate-600/35;
-        @apply empty:hidden;
-      }
-
-      /* Legacy System Log */
-      #syslog {
-        @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200;
-        @apply bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25;
-        @apply dark:border-slate-400/30 dark:shadow-black/40;
-        @apply focus:border-aurora-teal focus:ring-aurora-teal/20 focus:shadow-lg focus:ring-2 focus:outline-none;
-      }
-    }
-
-    /* Page-Specific Components */
     @layer page-specific {
-
-      /* System Log Components */
       .syslog-container {
         @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200;
         @apply bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25;
@@ -438,11 +420,11 @@
         @apply bg-aurora-sky dark:bg-aurora-sky-500;
         @apply px-4 py-2 text-sm;
         @apply transition-all duration-200;
-        @apply hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400;
+        @apply hover:bg-gradient-to-r hover:from-aurora-sky hover:to-aurora-teal dark:hover:from-aurora-sky-500 dark:hover:to-aurora-teal-500;
         @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
         @apply dark:focus:ring-offset-slate-900;
-        @apply shadow-sm hover:shadow-md;
-        @apply transform hover:scale-[1.02] active:scale-[0.98];
+        @apply shadow-sm hover:shadow-md cursor-pointer;
+        /* @apply transform hover:scale-[1.02] active:scale-[0.98]; */
       }
 
       /* 按钮间距调整 */
@@ -507,51 +489,24 @@
         @apply cursor-default;
       }
 
-      /* 危险操作按钮 - 停止 */
-      .cbi-button-action:contains("停止") {
-        @apply bg-red-600 dark:bg-red-500;
-        @apply hover:bg-red-700 dark:hover:bg-red-600;
-        @apply focus:ring-red-600/30;
-        @apply shadow-red-600/20 hover:shadow-red-700/30;
-      }
-
-      /* 重启按钮特殊样式 */
-      .cbi-button-action:contains("重启") {
-        @apply bg-amber-600 dark:bg-amber-500;
-        @apply hover:bg-amber-700 dark:hover:bg-amber-600;
-        @apply focus:ring-amber-600/30;
-        @apply shadow-amber-600/20 hover:shadow-amber-700/30;
-      }
-
-      /* 重新加载按钮特殊样式 */
-      .cbi-button-action:contains("重新加载") {
-        @apply bg-blue-600 dark:bg-blue-500;
-        @apply hover:bg-blue-700 dark:hover:bg-blue-600;
-        @apply focus:ring-blue-600/30;
-        @apply shadow-blue-600/20 hover:shadow-blue-700/30;
-      }
-
-      /* 启动按钮特殊样式 */
-      .cbi-button-action:contains("启动") {
-        @apply bg-emerald-600 dark:bg-emerald-500;
-        @apply hover:bg-emerald-700 dark:hover:bg-emerald-600;
-        @apply focus:ring-emerald-600/30;
-        @apply shadow-emerald-600/20 hover:shadow-emerald-700/30;
-      }
-
       /* 按钮组容器样式 */
       .cbi-section-actions div {
-        @apply flex items-center gap-2;
-        @apply flex-wrap;
+        @apply flex flex-row items-center gap-2;
+        @apply flex-nowrap;
       }
 
       /* 表格中的按钮组 */
       .td.cbi-section-actions {
-        @apply p-3;
+        @apply p-3 whitespace-nowrap overflow-x-auto;
       }
 
       .td.cbi-section-actions div {
         @apply justify-start;
+      }
+
+      .td.cbi-section-actions .btn,
+      .td.cbi-section-actions .cbi-button {
+        @apply inline-flex whitespace-nowrap w-auto flex-none;
       }
     }
 
@@ -666,38 +621,39 @@
 
   @layer input {
 
-    /* Base Input Styles */
-    .input-text,
-    .input-password,
-    .input-email {
-      @apply rounded-lg border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-400/20 bg-white/85 text-slate-900;
-      @apply dark:border-slate-400/15 dark:bg-white/85;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/10 focus:bg-white/95 focus:ring-2 focus:outline-none;
+    input[type="text"],
+    input[type="password"] {
+      @apply rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
+      @apply border-slate-300/50 bg-white/90 text-slate-900;
+      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
+      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
+      @apply placeholder-slate-400 dark:placeholder-slate-500;
     }
 
-    .select {
-      @apply rounded-lg border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-400/20 bg-white/85 text-slate-900;
-      @apply dark:border-slate-400/15 dark:bg-white/85;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/10 focus:bg-white/95 focus:ring-2 focus:outline-none;
-    }
 
-    .textarea {
-      @apply min-h-32 resize-y rounded-lg border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-400/20 bg-white/85 text-slate-900;
-      @apply dark:border-slate-400/15 dark:bg-white/85;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/10 focus:bg-white/95 focus:ring-2 focus:outline-none;
-    }
+  }
 
-    /* Password Input Variant - 密码输入框变体 */
-    .password-input {
+  @layer select {
+    select {
+      @apply rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
+      @apply border-slate-300/50 bg-white/90 text-slate-900;
+      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
+      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
+      @apply placeholder-slate-400 dark:placeholder-slate-500;
+    }
+  }
+
+  @layer textarea {
+    textarea {
       @apply w-full rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
       @apply border-slate-300/50 bg-white/90 text-slate-900;
       @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
       @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
       @apply placeholder-slate-400 dark:placeholder-slate-500;
+      @apply min-h-32 resize-y;
     }
   }
 
@@ -717,6 +673,7 @@
       @apply dark:focus:ring-offset-slate-900;
       @apply cursor-pointer;
       @apply appearance-none;
+      @apply relative;
     }
 
     /* 复选框选中状态 */
@@ -728,7 +685,7 @@
     /* 复选框选中状态的勾选标记 */
     .cbi-checkbox input[type="checkbox"]:checked::after {
       @apply absolute inset-0 flex items-center justify-center content-['✓'];
-      @apply text-sm font-bold text-white;
+      @apply text-sm font-bold leading-none text-white;
     }
 
     /* 复选框悬停效果 */
@@ -743,30 +700,6 @@
     }
   }
 
-  @layer textarea {
-
-    /* 文本域 */
-    .cbi-input-textarea {
-      @apply w-full rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-300/50 bg-white/90 text-slate-900;
-      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
-      @apply placeholder-slate-400 dark:placeholder-slate-500;
-      @apply min-h-32 resize-y;
-    }
-
-    /* 文本域悬停效果 */
-    .cbi-input-textarea:hover {
-      @apply border-slate-400/60 dark:border-slate-500/60;
-    }
-
-    /* 文本域焦点状态 */
-    .cbi-input-textarea:focus {
-      @apply border-aurora-sky dark:border-aurora-sky-400;
-      @apply ring-aurora-sky/20 dark:ring-aurora-sky-400/20 ring-2;
-    }
-  }
 
   @layer progress {
     .cbi-progressbar {
@@ -787,6 +720,7 @@
   }
 
   @layer dropdown {
+
     /* 基础下拉菜单样式 */
     @layer base {
 
@@ -829,8 +763,7 @@
       }
     }
 
-    /* 传统下拉菜单样式 */
-    @layer traditional {
+    @layer nav {
       .dropdown-menu {
         @apply scale-95 shadow-2xl;
         @apply border-white/20 bg-white/10 dark:border-slate-400/10 dark:bg-white/15 dark:shadow-black/30;
@@ -845,6 +778,7 @@
       .dropdown-menu a {
         @apply font-medium;
         @apply hover:from-aurora-sky hover:to-aurora-teal hover:translate-x-1 hover:bg-gradient-to-r hover:shadow-lg;
+        @apply hover:text-slate-700 dark:hover:text-slate-300;
         @apply hover:backdrop-blur-md hover:backdrop-saturate-125;
       }
     }
@@ -870,7 +804,6 @@
         @apply text-xs text-slate-400 dark:text-slate-500;
       }
 
-      /* CBI 下拉菜单隐藏输入 */
       .cbi-dropdown input[type="hidden"] {
         @apply hidden;
       }
@@ -1588,7 +1521,7 @@
     /* 禁用状态的分段控制器 */
     .cbi-tab-disabled a {
       @apply text-slate-400 dark:text-slate-500;
-      @apply cursor-not-allowed opacity-60;
+      @apply  opacity-60;
       @apply bg-slate-100/50 dark:bg-slate-800/50;
     }
 
@@ -1617,6 +1550,7 @@
   }
 
   @layer tab {
+
     /* 基础标签页容器 */
     #tabmenu {
       @apply mb-8 w-full;
@@ -1737,40 +1671,18 @@
     .cbi-tabmenu .cbi-tab a,
     .cbi-tabmenu .cbi-tab-disabled a {
       @apply block px-4 py-2 text-center text-sm font-medium no-underline;
-      @apply rounded-2xl transition-all duration-300 ease-out;
+      @apply rounded-2xl;
       @apply text-slate-600 dark:text-slate-400;
-      @apply hover:text-slate-900 dark:hover:text-slate-200;
-      @apply hover:bg-slate-100 dark:hover:bg-slate-800/50;
-      @apply hover:scale-105;
     }
 
     .cbi-tabmenu .cbi-tab a {
       @apply text-white dark:text-white;
-      @apply from-aurora-sky to-aurora-teal bg-gradient-to-r;
-      @apply dark:from-aurora-sky-500 dark:to-aurora-teal-500;
-      @apply dark:shadow-aurora-sky/20 shadow-md;
+      @apply bg-slate-900;
+      @apply dark:bg-slate-100;
       @apply font-semibold;
     }
 
-    .cbi-tabmenu .cbi-tab-disabled a {
-      @apply text-slate-400 dark:text-slate-500;
-      @apply bg-slate-50 dark:bg-slate-800/30;
-      @apply border border-slate-200/50 dark:border-slate-600/30;
-      @apply cursor-not-allowed;
-      @apply hover:scale-100 hover:bg-slate-50 dark:hover:bg-slate-800/30;
-    }
 
-    .cbi-tabmenu .cbi-tab a:focus,
-    .cbi-tabmenu .cbi-tab-disabled a:focus {
-      @apply ring-aurora-sky/30 ring-2 ring-offset-2 ring-offset-white outline-none dark:ring-offset-slate-900;
-    }
-
-    .cbi-tabmenu .cbi-tab a:hover {
-      @apply from-aurora-sky-600 to-aurora-teal-600;
-      @apply dark:from-aurora-sky-400 dark:to-aurora-teal-400;
-      @apply dark:shadow-aurora-sky/30 shadow-lg;
-      @apply scale-105 transform;
-    }
 
     /* 标签页内容显示控制 - 纯Tailwind CSS写法 */
     [data-tab-title] {
@@ -1793,6 +1705,7 @@
   }
 
   @layer card {
+
     /* CBI Section Components - 系统状态卡片组件 */
     .cbi-section {
       @apply mb-4 rounded-xl border-2 bg-white p-6 shadow-lg;
