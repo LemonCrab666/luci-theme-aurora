@@ -154,6 +154,10 @@
     @apply mb-2 text-sm;
   }
 
+  hr {
+    @apply border-0;
+  }
+
   p {
     @apply mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300;
   }
@@ -523,7 +527,7 @@
       /* 页面操作按钮 */
       .cbi-page-actions .btn,
       .cbi-page-actions .cbi-button {
-        @apply rounded-xl px-6 py-3 text-sm font-medium transition-all duration-200;
+        @apply rounded-xl text-sm font-medium transition-all duration-200;
         @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
         @apply dark:focus:ring-offset-slate-900;
       }
@@ -655,10 +659,16 @@
       @apply placeholder-slate-400 dark:placeholder-slate-500;
       @apply min-h-32 resize-y;
     }
+
+    #syslog {
+      @apply bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900;
+    }
+
+
   }
 
   @layer checkbox {
-
+    
     /* 复选框容器 */
     .cbi-checkbox {
       @apply relative inline-flex items-center;
@@ -682,10 +692,10 @@
       @apply dark:bg-aurora-sky-500 dark:border-aurora-sky-500;
     }
 
-    /* 复选框选中状态的勾选标记 */
+    /* 复选框选中状态的勾选标记（使用边框绘制以避免字符乱码/对齐问题） */
     .cbi-checkbox input[type="checkbox"]:checked::after {
-      @apply absolute inset-0 flex items-center justify-center content-['✓'];
-      @apply text-sm font-bold leading-none text-white;
+      @apply absolute block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-315 content-[''] pointer-events-none;
+      @apply h-[0.85rem] w-[0.5rem] border-b-2 border-r-2 border-white;
     }
 
     /* 复选框悬停效果 */
@@ -766,30 +776,33 @@
     @layer nav {
       .dropdown-menu {
         @apply scale-95 shadow-2xl;
-        @apply border-white/20 bg-white/10 dark:border-slate-400/10 dark:bg-white/15 dark:shadow-black/30;
-        @apply backdrop-blur-lg backdrop-saturate-150;
+        @apply border-slate-200/70 bg-white/80 text-slate-800;
+        @apply dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100;
+        @apply backdrop-blur-md backdrop-saturate-150;
       }
 
       .dropdown:hover .dropdown-menu {
-        @apply scale-100 border-white/30 bg-white/20 dark:border-slate-400/20 dark:bg-white/25 dark:shadow-black/50;
-        @apply backdrop-blur-xl backdrop-saturate-150;
+        @apply scale-100 border-slate-300/80 bg-white/85 dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
       }
 
       .dropdown-menu a {
-        @apply font-medium;
-        @apply hover:from-aurora-sky hover:to-aurora-teal hover:translate-x-1 hover:bg-gradient-to-r hover:shadow-lg;
-        @apply hover:text-slate-700 dark:hover:text-slate-300;
-        @apply hover:backdrop-blur-md hover:backdrop-saturate-125;
+        @apply font-medium text-slate-700 dark:text-slate-200 rounded-lg transition-all duration-150 ease-out;
+        @apply hover:bg-slate-200/60 dark:hover:bg-slate-700/70;
+        @apply hover:text-slate-900 dark:hover:text-white hover:font-semibold;
+        @apply hover:translate-x-0.5;
+        @apply hover:ring-1 hover:ring-inset hover:ring-slate-300/60 dark:hover:ring-slate-600/60;
+        @apply focus-visible:ring-2 focus-visible:ring-aurora-sky/30 focus-visible:ring-offset-2 focus-visible:outline-none;
+        @apply focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900;
       }
     }
 
     @layer cbi {
       .cbi-dropdown.btn.cbi-button-apply.important {
-        @apply from-aurora-sky to-aurora-teal bg-gradient-to-r text-white;
-        @apply dark:from-aurora-sky-500 dark:to-aurora-teal-500;
+        @apply bg-aurora-sky text-white;
+        @apply dark:bg-aurora-sky-500;
         @apply shadow-lg hover:shadow-xl;
         @apply hover:scale-[1.02] active:scale-[0.98];
-        @apply relative inline-flex items-center justify-between gap-2 rounded-xl px-6 py-3;
+        @apply relative inline-flex items-center justify-between gap-2 rounded-xl ;
         @apply text-sm font-medium transition-all duration-200;
         @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
         @apply dark:focus:ring-offset-slate-900;
@@ -835,6 +848,7 @@
         @apply border-slate-300/60 dark:border-slate-500/40;
       }
     }
+  }
   }
 
   @layer message {
@@ -1040,6 +1054,9 @@
       @apply rounded-xl border border-slate-200/30 bg-white dark:border-slate-700/20 dark:bg-slate-800;
       @apply overflow-hidden shadow-sm dark:shadow-black/20;
     }
+
+    /* 表格中的 cbi-value-field 需保持单元格布局，避免被表单 flex 影响 */
+    .table .cbi-value-field { @apply table-cell align-middle; }
 
     .table th {
       @apply border-b px-4 py-3 text-left text-sm font-semibold;
@@ -1342,10 +1359,32 @@
         @apply mb-2;
       }
 
-      /* 值字段容器 */
-      .cbi-value-field {
-        @apply flex-1;
+      /* 值字段容器（仅表单内，且为 .cbi-value 的直接子元素） */
+      .cbi-map .cbi-value > .cbi-value-field {
+        @apply flex flex-row items-center gap-3 flex-wrap flex-1;
       }
+
+      /* 值字段内的换行符删除，保证并排（仅表单内） */
+      .cbi-map .cbi-value > .cbi-value-field br { @apply hidden; }
+
+      /* 值字段内直系子元素并排且垂直居中（仅表单内） */
+      .cbi-map .cbi-value > .cbi-value-field > * { @apply inline-flex items-center gap-2; }
+
+      /* 复选框描述文字与勾选框保持同一行并垂直居中（仅表单内） */
+      .cbi-map .cbi-value > .cbi-value-field .cbi-value-description {
+        @apply mt-0 inline-block leading-normal ml-3;
+      }
+
+      /* 表单项整体垂直间距（该区域的每个 cbi-value） */
+      .cbi-map .cbi-section-node .cbi-value { @apply py-2; }
+      .cbi-map .cbi-section-node .cbi-value + .cbi-value { @apply mt-3; }
+
+      /* 输出区与后续元素的间距（按钮与描述之间，仅表单内） */
+      .cbi-map .cbi-value > .cbi-value-field output { @apply mr-3; }
+
+      /* 表单内标题与表格的额外顶部间距 */
+      .cbi-map .cbi-section-node > h3 { @apply mt-6; }
+      .cbi-map .cbi-section-node > .table { @apply mt-4; }
 
       /* 值容器 */
       .cbi-value {
@@ -1376,7 +1415,7 @@
 
       /* 动态列表项目 */
       .cbi-dynlist .item {
-        @apply flex items-center justify-between rounded-lg border p-3;
+        @apply relative flex flex-col items-start gap-2 rounded-lg border p-3 pr-8 pointer-events-none;
         @apply border-slate-200/50 bg-white/80 dark:border-slate-600/40 dark:bg-slate-800/80;
         @apply cursor-move transition-all duration-200;
         @apply hover:bg-white dark:hover:bg-slate-800;
@@ -1384,12 +1423,47 @@
         @apply hover:shadow-sm dark:hover:shadow-black/10;
         @apply focus:outline-none focus:ring-2 focus:ring-aurora-sky/20 focus:border-aurora-sky;
         @apply dark:focus:ring-aurora-sky-400/20 dark:focus:border-aurora-sky-400;
+        @apply overflow-visible;
+      }
+
+      /* 恢复子元素的点击事件（文本选择、拖拽等） */
+      .cbi-dynlist .item > * { @apply pointer-events-auto; }
+
+      /* 删除标记伪元素（右侧交叉线，纯 Tailwind 写法） */
+      .cbi-dynlist .item::before,
+      .cbi-dynlist .item::after {
+        @apply absolute top-1 right-1 h-3 w-[2px] bg-red-600 dark:bg-red-500;
+        @apply transition-colors duration-200;
+        @apply pointer-events-auto cursor-pointer;
+        @apply rounded-full;
+      }
+      
+      .cbi-dynlist .item::before {
+        @apply rotate-45;
+      }
+      
+      .cbi-dynlist .item::after {
+        @apply -rotate-45;
+      }
+      
+      .cbi-dynlist .item:hover::before,
+      .cbi-dynlist .item:hover::after {
+        @apply bg-red-700 dark:bg-red-400;
       }
 
       /* 动态列表项目文本 */
       .cbi-dynlist .item span {
         @apply text-sm font-medium text-slate-700 dark:text-slate-300;
-        @apply flex-1;
+        @apply flex-1 max-w-full break-words;
+      }
+
+      /* 文件名等加粗文本与代码块的溢出处理 */
+      .cbi-dynlist .item strong {
+        @apply block mb-1 max-w-full break-words font-semibold text-slate-800 dark:text-slate-100;
+      }
+      .cbi-dynlist .item code {
+        @apply block w-full max-w-full overflow-x-auto whitespace-pre text-xs leading-snug font-mono;
+        @apply text-slate-800 dark:text-slate-200;
       }
 
       /* 动态列表项目隐藏输入 */
@@ -1478,185 +1552,6 @@
 
   @layer segmented {
 
-    /* 基础分段控制器容器 */
-    .cbi-tabmenu {
-      @apply inline-flex items-center gap-1 rounded-2xl bg-slate-100/40 p-1 dark:bg-slate-800/30;
-      @apply border border-slate-200/40 dark:border-slate-700/30;
-      @apply relative;
-    }
-
-    /* 分段控制器项目 */
-    .cbi-tab {
-      @apply relative;
-    }
-
-    /* 分段控制器链接 */
-    .cbi-tab a {
-      @apply block px-4 py-2 text-center text-sm font-medium no-underline;
-      @apply text-slate-600 dark:text-slate-400;
-      @apply rounded-xl transition-all duration-300 ease-out;
-      @apply hover:text-slate-800 dark:hover:text-slate-300;
-      @apply relative overflow-hidden;
-    }
-
-    /* 激活状态的分段控制器 */
-    .cbi-tab.active a {
-      @apply bg-aurora-sky dark:bg-aurora-sky-500 text-white;
-      @apply shadow-sm;
-    }
-
-    /* 未激活状态的分段控制器 */
-    .cbi-tab:not(.active) a {
-      @apply text-slate-500 dark:text-slate-500;
-      @apply bg-slate-200/30 dark:bg-slate-700/30;
-      @apply border border-slate-300/40 dark:border-slate-600/40;
-    }
-
-    /* 未激活状态的悬停效果 */
-    .cbi-tab:not(.active):hover a {
-      @apply bg-slate-200/50 dark:bg-slate-700/50;
-      @apply text-slate-700 dark:text-slate-400;
-    }
-
-    /* 禁用状态的分段控制器 */
-    .cbi-tab-disabled a {
-      @apply text-slate-400 dark:text-slate-500;
-      @apply  opacity-60;
-      @apply bg-slate-100/50 dark:bg-slate-800/50;
-    }
-
-    /* 分段控制器的焦点状态 */
-    .cbi-tab a:focus {
-      @apply ring-aurora-sky/20 ring-2 ring-offset-1 ring-offset-white outline-none dark:ring-offset-slate-900;
-    }
-
-    /* 内容隐藏效果 */
-    .tab-content>div {
-      @apply hidden;
-    }
-
-    .tab-content>.active {
-      @apply block;
-    }
-
-    /* 错误提示样式 */
-    .cbi-tab-disabled[data-errors]::after {
-      @apply bg-red-500 text-white content-[attr(data-errors)];
-      @apply h-4 min-w-4 rounded-full text-center;
-      @apply mr-1 px-1 py-0.5;
-      @apply inline-flex flex-col justify-center;
-      @apply text-xs;
-    }
-  }
-
-  @layer tab {
-
-    /* 基础标签页容器 */
-    #tabmenu {
-      @apply mb-8 w-full;
-    }
-
-    /* 标签页列表 */
-    .tabs {
-      @apply relative flex items-center gap-0 border-b border-slate-200/40 dark:border-slate-700/30;
-    }
-
-    /* 标签页项目 - 系统管理 */
-    .tabmenu-item-password,
-    .tabmenu-item-dropbear,
-    .tabmenu-item-sshkeys,
-    .tabmenu-item-uhttpd,
-    .tabmenu-item-repokeys {
-      @apply relative;
-    }
-
-    /* 标签页项目 - HomeProxy 服务 */
-    .tabmenu-item-client,
-    .tabmenu-item-node,
-    .tabmenu-item-server,
-    .tabmenu-item-status {
-      @apply relative;
-    }
-
-    /* 标签页项目 - 系统日志 */
-    .tabmenu-item-syslog,
-    .tabmenu-item-dmesg {
-      @apply relative;
-    }
-
-    /* 新增：实时状态标签页项目 */
-    .tabmenu-item-load,
-    .tabmenu-item-bandwidth,
-    .tabmenu-item-connections {
-      @apply relative;
-    }
-
-    /* 标签页链接 */
-    .tabs a {
-      @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
-    }
-
-    /* 激活状态的标签页 - 系统管理 */
-    .tabmenu-item-password.active a,
-    .tabmenu-item-dropbear.active a,
-    .tabmenu-item-sshkeys.active a,
-    .tabmenu-item-uhttpd.active a,
-    .tabmenu-item-repokeys.active a {
-      @apply text-aurora-sky dark:text-aurora-sky-300 font-semibold;
-    }
-
-    /* 激活状态的标签页 - HomeProxy 服务 */
-    .tabmenu-item-client.active a,
-    .tabmenu-item-node.active a,
-    .tabmenu-item-server.active a,
-    .tabmenu-item-status.active a {
-      @apply text-aurora-sky dark:text-aurora-sky-300 font-semibold;
-    }
-
-    /* 激活状态的标签页 - 系统日志 */
-    .tabmenu-item-syslog.active a,
-    .tabmenu-item-dmesg.active a {
-      @apply text-aurora-sky dark:text-aurora-sky-300 font-semibold;
-    }
-
-    /* 新增：激活状态的标签页 - 实时状态 */
-    .tabmenu-item-load.active a,
-    .tabmenu-item-bandwidth.active a,
-    .tabmenu-item-connections.active a {
-      @apply text-aurora-sky dark:text-aurora-sky-300 font-semibold;
-    }
-
-    /* 激活状态的底部指示器 - 系统管理 */
-    .tabmenu-item-password.active::after,
-    .tabmenu-item-dropbear.active::after,
-    .tabmenu-item-sshkeys.active::after,
-    .tabmenu-item-uhttpd.active::after,
-    .tabmenu-item-repokeys.active::after {
-      @apply bg-aurora-sky dark:bg-aurora-sky-300 absolute bottom-0 left-0 h-0.5 w-full content-[''];
-    }
-
-    /* 激活状态的底部指示器 - HomeProxy 服务 */
-    .tabmenu-item-client.active::after,
-    .tabmenu-item-node.active::after,
-    .tabmenu-item-server.active::after,
-    .tabmenu-item-status.active::after {
-      @apply bg-aurora-sky dark:bg-aurora-sky-300 absolute bottom-0 left-0 h-0.5 w-full content-[''];
-    }
-
-    /* 激活状态的底部指示器 - 系统日志 */
-    .tabmenu-item-syslog.active::after,
-    .tabmenu-item-dmesg.active::after {
-      @apply bg-aurora-sky dark:bg-aurora-sky-300 absolute bottom-0 left-0 h-0.5 w-full content-[''];
-    }
-
-    /* 新增：激活状态的底部指示器 - 实时状态 */
-    .tabmenu-item-load.active::after,
-    .tabmenu-item-bandwidth.active::after,
-    .tabmenu-item-connections.active::after {
-      @apply bg-aurora-sky dark:bg-aurora-sky-300 absolute bottom-0 left-0 h-0.5 w-full content-[''];
-    }
-
-    /* cbi-tabmenu 标签样式 - 简约苹果风格 */
     .cbi-tabmenu {
       @apply inline-flex items-center gap-1 p-1;
       @apply bg-slate-100/50 dark:bg-slate-800/30;
@@ -1681,6 +1576,35 @@
       @apply dark:bg-slate-100;
       @apply font-semibold;
     }
+  }
+
+  @layer tab {
+
+    /* 基础标签页容器 */
+    #tabmenu {
+      @apply mb-8 w-full;
+    }
+
+    /* 标签页列表 */
+    .tabs {
+      @apply relative flex items-center gap-0 border-b border-slate-200/40 dark:border-slate-700/30;
+    }
+
+    /* 标签页链接 */
+    .tabs a {
+      @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
+    }
+
+    .tabs>.active>a {
+      @apply text-slate-900 dark:text-slate-100 font-semibold;
+    }
+
+    .tabs>.active::after {
+      @apply bg-slate-900 dark:bg-slate-100 absolute bottom-0 left-0 h-0.5 w-full content-[''];
+    }
+
+  
+
 
 
 
@@ -1800,4 +1724,3 @@
     }
   }
 
-}
