@@ -1,42 +1,32 @@
-import { defineConfig, Plugin, ResolvedConfig } from "vite";
+import { defineConfig, Plugin, ResolvedConfig, loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { resolve, join, relative, dirname } from "path";
-import { fileURLToPath } from "url";
 import { readFile, mkdir, writeFile, readdir } from "fs/promises";
 import { minify as terserMinify } from "terser";
 
-// 获取当前文件目录
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const projectRoot = resolve(__dirname, "..");
+const CURRENT_DIR = process.cwd();
+const PROJECT_ROOT = resolve(CURRENT_DIR, "..");
+const BUILD_OUTPUT = resolve(PROJECT_ROOT, "htdocs/luci-static");
 
-// 递归扫描文件
-async function walkDirectory(
-  dir: string,
-  extensions?: string[]
-): Promise<string[]> {
+// 工具函数：递归扫描文件
+async function scanFiles(dir: string, extensions: string[] = []): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const files: string[] = [];
 
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
-      files.push(...(await walkDirectory(fullPath, extensions)));
-    } else if (entry.isFile()) {
-      if (!extensions || extensions.some((ext) => fullPath.endsWith(ext))) {
-        files.push(fullPath);
-      }
+      files.push(...(await scanFiles(fullPath, extensions)));
+    } else if (entry.isFile() && (!extensions.length || extensions.some(ext => fullPath.endsWith(ext)))) {
+      files.push(fullPath);
     }
   }
   return files;
 }
 
 // LuCI JS 压缩插件
-function createLuciJsCompressPlugin(
-  srcDir: string,
-  outRelativeDir: string
-): Plugin {
+function createLuciJsCompressPlugin(): Plugin {
   let outDir: string;
-  let rootDir: string;
   let jsFiles: string[] = [];
 
   return {
@@ -48,16 +38,14 @@ function createLuciJsCompressPlugin(
     },
 
     async buildStart() {
-      rootDir = resolve(__dirname, srcDir);
-      jsFiles = await walkDirectory(rootDir, [".js"]);
+      const srcDir = resolve(CURRENT_DIR, "src/resource");
+      jsFiles = await scanFiles(srcDir, [".js"]);
     },
 
     async generateBundle() {
-      for (const absolutePath of jsFiles) {
+      for (const filePath of jsFiles) {
         try {
-          const sourceCode = await readFile(absolutePath, "utf-8");
-
-          // Terser 压缩，保留 LuCI 语法
+          const sourceCode = await readFile(filePath, "utf-8");
           const compressed = await terserMinify(sourceCode, {
             parse: { bare_returns: true },
             compress: false,
@@ -65,91 +53,112 @@ function createLuciJsCompressPlugin(
             format: { comments: false, beautify: false },
           });
 
-          const relativePath = relative(rootDir, absolutePath).replace(
-            /\\/g,
-            "/"
-          );
-          const outputPath = join(outDir, outRelativeDir, relativePath);
+          const relativePath = relative(resolve(CURRENT_DIR, "src/resource"), filePath).replace(/\\/g, "/");
+          const outputPath = join(outDir, "resources", relativePath);
 
           await mkdir(dirname(outputPath), { recursive: true });
           await writeFile(outputPath, compressed.code || sourceCode, "utf-8");
         } catch (error: any) {
-          console.error(
-            `LuCI JS compress failed for ${absolutePath}:`,
-            error?.message
-          );
+          console.error(`JS压缩失败: ${filePath}`, error?.message);
         }
       }
     },
   };
 }
 
-export default defineConfig({
-  plugins: [
-    // @ts-ignore - TailwindCSS v4插件类型兼容性问题
-    tailwindcss(),
-    createLuciJsCompressPlugin("src/resource", "resources"),
-  ],
+// 重定向插件
+function createRedirectPlugin(): Plugin {
+  return {
+    name: "redirect-plugin",
+    apply: "serve",
+    
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url === "/" || req.url === "/index.html") {
+          res.writeHead(302, { Location: "/cgi-bin/luci" });
+          res.end();
+          return;
+        }
+        next();
+      });
+    }
+  };
+}
 
-  // 静态资源目录，直接复制到输出目录
-  publicDir: resolve(__dirname, "src/assets"),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, CURRENT_DIR, "");
+  const OPENWRT_HOST = env.VITE_OPENWRT_HOST || "http://192.168.1.1";
+  const DEV_HOST = env.VITE_DEV_HOST || "127.0.0.1";
+  const DEV_PORT = parseInt(env.VITE_DEV_PORT || "5173", 10);
 
-  build: {
-    outDir: resolve(projectRoot, "htdocs/luci-static"),
-    emptyOutDir: false,
-    cssMinify: "lightningcss",
-    rollupOptions: {
-      input: {
-        // CSS 入口改为 media，保持层级：media/main.css -> aurora/main.css
-        main: resolve(__dirname, "src/media/main.css"),
-        // 移动端样式单独打包：media/mobile.css -> aurora/mobile.css
-        mobile: resolve(__dirname, "src/media/mobile.css"),
-      },
-      output: {
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name || "";
-          // CSS 放到 aurora/ 目录，保持文件名
-          if (info.endsWith(".css")) {
-            return "aurora/[name].[ext]";
-          }
-          return "aurora/[name].[ext]";
+  // 代理配置（依赖 env）
+  const proxyConfig = {
+    "/luci-static/aurora/main.css": {
+      target: `http://localhost:${DEV_PORT}`,
+      changeOrigin: true,
+      rewrite: (_path: string) => "/src/media/main.css",
+    },
+    "/luci-static": {
+      target: OPENWRT_HOST,
+      changeOrigin: true,
+      secure: false,
+    },
+    "/cgi-bin": {
+      target: OPENWRT_HOST,
+      changeOrigin: true,
+      secure: false,
+    },
+  } as const;
+
+  // 路径别名配置
+  const aliasConfig = {
+    "@": resolve(CURRENT_DIR, "src"),
+    "@media": resolve(CURRENT_DIR, "src/media"),
+    "@resource": resolve(CURRENT_DIR, "src/resource"),
+    "@assets": resolve(CURRENT_DIR, "src/assets/aurora"),
+  } as const;
+
+  return {
+    plugins: [
+      // @ts-ignore - TailwindCSS v4插件类型兼容性问题
+      tailwindcss(),
+      createLuciJsCompressPlugin(),
+      createRedirectPlugin(),
+    ],
+
+    publicDir: resolve(CURRENT_DIR, "src/assets"),
+
+    build: {
+      outDir: BUILD_OUTPUT,
+      emptyOutDir: false,
+      cssMinify: "lightningcss",
+      sourcemap: false,
+      target: "es2018",
+      cssCodeSplit: true,
+      cssTarget: "es2018",
+
+      rollupOptions: {
+        input: {
+          main: resolve(CURRENT_DIR, "src/media/main.css"),
+          mobile: resolve(CURRENT_DIR, "src/media/mobile.css"),
+        },
+        output: {
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.name || "";
+            return name.endsWith(".css") ? "aurora/[name].[ext]" : "aurora/[name].[ext]";
+          },
         },
       },
     },
-    sourcemap: false,
-    target: "es2018",
-    cssCodeSplit: true,
-    cssTarget: "es2018",
-  },
 
-  server: {
-    host: '0.0.0.0',
-    port: 5173,
-    proxy: {
-      "/luci-static/aurora/main.css": {
-        target: "http://localhost:5173", 
-        changeOrigin: true,
-        rewrite: (path) => "/src/media/main.css", 
-      },
-      '/luci-static': {
-        target: 'http://192.168.6.77',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/cgi-bin': {
-        target: 'http://192.168.6.77',
-        changeOrigin: true,
-        secure: false,
-      },
+    server: {
+      host: DEV_HOST,
+      port: DEV_PORT,
+      proxy: proxyConfig,
     },
-  },
 
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "src"),
-      "@media": resolve(__dirname, "src/media"),
-      "@resource": resolve(__dirname, "src/resource"),
-      "@assets": resolve(__dirname, "src/assets/aurora"),
+    resolve: {
+      alias: aliasConfig,
     },
-  },
+  };
 });
