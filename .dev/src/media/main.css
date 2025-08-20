@@ -113,11 +113,11 @@
 
   /* Body Styles */
   body {
-    @apply min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300;
-    @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald dark:bg-gradient-to-br dark:text-slate-100;
-    @apply bg-fixed;
-    @apply relative;
-    @apply before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-[''];
+    @apply min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300
+             dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald dark:bg-gradient-to-br dark:text-slate-100
+             bg-fixed
+             relative
+             before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-[''];
   }
 
   /* Typography Base */
@@ -172,13 +172,13 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-400/5;
-    @apply dark:bg-aurora-night-slate;
+    @apply bg-slate-400/5
+             dark:bg-aurora-night-slate;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply dark:bg-aurora-teal rounded bg-slate-400/30;
-    @apply dark:hover:bg-aurora-night-emerald hover:bg-slate-400/50;
+    @apply dark:bg-aurora-teal rounded bg-slate-400/30
+             dark:hover:bg-aurora-night-emerald hover:bg-slate-400/50;
   }
 }
 
@@ -188,16 +188,16 @@
 
     @layer header {
       header {
-        @apply fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300;
-        @apply border-b border-white/10 bg-white/5 dark:border-slate-700/30 dark:bg-slate-900/80;
-        @apply hover:border-b hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150;
-        @apply dark:hover:from-aurora-night-slate-800 dark:hover:via-aurora-night-teal-800 dark:hover:to-aurora-night-emerald-800 dark:hover:bg-gradient-to-r;
-        @apply dark:hover:border-slate-600/40 dark:hover:shadow-black/50;
+        @apply fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300
+             border-b border-white/10 bg-white/5 dark:border-slate-700/30 dark:bg-slate-900/80
+             hover:border-b hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150
+             dark:hover:from-aurora-night-slate-800 dark:hover:via-aurora-night-teal-800 dark:hover:to-aurora-night-emerald-800 dark:hover:bg-gradient-to-r
+             dark:hover:border-slate-600/40 dark:hover:shadow-black/50;
       }
 
       .brand {
-        @apply inline-block flex-shrink-0 text-xl font-semibold tracking-tight no-underline transition-all duration-200;
-        @apply hover:text-aurora-sky text-slate-900 hover:-translate-y-0.5 dark:text-slate-100;
+        @apply inline-block flex-shrink-0 text-xl font-semibold tracking-tight no-underline transition-all duration-200
+             hover:text-aurora-sky text-slate-900 hover:-translate-y-0.5 dark:text-slate-100;
       }
 
       .nav {
@@ -209,10 +209,10 @@
       }
 
       .menu {
-        @apply block rounded px-3 py-2 text-xs font-normal no-underline;
-        @apply text-slate-600 dark:text-slate-300;
-        @apply hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-slate-100;
-        @apply transition-colors duration-200;
+        @apply block rounded px-3 py-2 text-xs font-normal no-underline
+             text-slate-600 dark:text-slate-300
+             hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-slate-100
+             transition-colors duration-200;
       }
     }
 
@@ -224,30 +224,30 @@
       }
 
       #view {
-        @apply mb-8 w-full rounded-3xl border-2 p-8 shadow-2xl transition-all duration-300;
-        @apply border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85;
-        @apply backdrop-blur-2xl backdrop-saturate-150;
-        @apply dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85;
-        @apply dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150;
-        @apply hover:shadow-2xl hover:shadow-slate-400/30 dark:hover:shadow-black/50;
-        @apply hover:border-slate-400/30 dark:hover:border-slate-600/35;
-        @apply empty:hidden;
+        @apply mb-8 w-full rounded-3xl border-2 p-8 shadow-2xl transition-all duration-300
+             border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85
+             backdrop-blur-2xl backdrop-saturate-150
+             dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85
+             dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150
+             hover:shadow-2xl hover:shadow-slate-400/30 dark:hover:shadow-black/50
+             hover:border-slate-400/30 dark:hover:border-slate-600/35
+             empty:hidden;
       }
 
       /* Legacy System Log */
       #syslog {
-        @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200;
-        @apply bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25;
-        @apply dark:border-slate-400/30 dark:shadow-black/40;
-        @apply focus:border-aurora-teal focus:ring-aurora-teal/20 focus:shadow-lg focus:ring-2 focus:outline-none;
+        @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200
+             bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25
+             dark:border-slate-400/30 dark:shadow-black/40
+             focus:border-aurora-teal focus:ring-aurora-teal/20 focus:shadow-lg focus:ring-2 focus:outline-none;
       }
     }
 
     @layer footer {
       footer {
-        @apply mt-auto border-t border-slate-200 py-2 text-xs text-slate-500;
-        @apply dark:border-slate-700 dark:text-slate-400;
-        @apply flex flex-wrap items-center justify-center;
+        @apply mt-auto border-t border-slate-200 py-2 text-xs text-slate-500
+             dark:border-slate-700 dark:text-slate-400
+             flex flex-wrap items-center justify-center;
       }
 
       footer span {
@@ -259,10 +259,10 @@
       }
 
       footer .breadcrumb {
-        @apply m-0 mb-4 px-3 py-2;
-        @apply rounded border border-slate-200 bg-slate-50;
-        @apply dark:border-slate-700 dark:bg-slate-800;
-        @apply flex;
+        @apply m-0 mb-4 px-3 py-2
+             rounded border border-slate-200 bg-slate-50
+             dark:border-slate-700 dark:bg-slate-800
+             flex;
       }
 
       footer .breadcrumb li {
@@ -270,8 +270,7 @@
       }
 
       footer .breadcrumb li:not(:last-child)::after {
-        content: "|";
-        @apply px-2 text-slate-400;
+        @apply px-2 text-slate-400 content-['|'];
       }
 
       footer .breadcrumb li.active a {
@@ -287,126 +286,14 @@
       }
     }
 
-    @layer interface-badge-system {
 
-      /* Network Interface Badge */
-      .ifacebadge {
-        @apply inline-block flex-row border border-slate-200/50 p-1;
-        @apply rounded bg-white text-slate-900 shadow-sm;
-        @apply cursor-default leading-tight;
-        @apply dark:border-slate-600/40 dark:bg-slate-800 dark:text-slate-100;
-      }
-
-      .ifacebadge img {
-        @apply h-8 w-8 align-middle;
-      }
-
-      .ifacebadge-active {
-        @apply border-aurora-sky font-semibold;
-      }
-
-      .network-status-table .ifacebox-body>* {
-        @apply m-1;
-      }
-
-      .network-status-table .ifacebox-body>span {
-        @apply h-full flex-1 flex-auto;
-      }
-
-      .network-status-table .ifacebox-body>div {
-        @apply -m-0.5 flex flex-wrap;
-      }
-
-      /* Large Interface Badge */
-      .ifacebadge.large,
-      .network-status-table .ifacebox-body .ifacebadge {
-        @apply m-0.5 flex min-w-[220px] flex-1 p-2;
-      }
-
-      .ifacebadge.large {
-        @apply inline-flex;
-      }
-
-      .network-status-table .ifacebox-body .ifacebadge>span {
-        @apply overflow-hidden text-ellipsis;
-      }
-
-      .ifacebadge>*,
-      .ifacebadge.large>* {
-        @apply mx-0.5;
-      }
-
-      /* 表格中的接口徽章 */
-      .table .ifacebadge {
-        @apply inline-flex items-center gap-2 rounded-lg border px-2 py-1 text-xs;
-        @apply border-slate-300/50 bg-white/90 text-slate-700;
-        @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300;
-        @apply transition-all duration-200;
-      }
-
-      .table .ifacebadge:empty::before {
-        content: "—";
-        @apply text-slate-400 dark:text-slate-500;
-      }
-
-      .table .ifacebadge:hover {
-        @apply border-slate-400/60 bg-white dark:border-slate-500/60 dark:bg-slate-800;
-        @apply shadow-sm;
-      }
-
-      .table .ifacebadge img {
-        @apply h-5 w-5;
-      }
-
-      /* NFT规则中的接口徽章 */
-      .nft-rules .ifacebadge {
-        @apply inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs;
-        @apply border-slate-300/40 bg-white/80 text-slate-600;
-        @apply dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400;
-        @apply transition-all duration-200;
-      }
-
-      .nft-rules .ifacebadge:hover {
-        @apply border-slate-400/50 bg-white dark:border-slate-500/50 dark:bg-slate-800;
-        @apply shadow-sm;
-      }
-
-      .nft-rules .ifacebadge.cbi-tooltip-container {
-        @apply relative cursor-help;
-      }
-
-      .nft-rules .ifacebadge.cbi-tooltip-container .cbi-tooltip {
-        @apply absolute bottom-full left-1/2 mb-2 -translate-x-1/2 transform;
-      }
-
-      /* 下拉菜单中的接口徽章 */
-      .cbi-dropdown .ifacebadge {
-        @apply inline-flex items-center gap-1.5 rounded border px-2 py-1 text-xs;
-        @apply border-slate-300/40 bg-white/80 text-slate-600;
-        @apply dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400;
-        @apply transition-all duration-200;
-      }
-
-      .cbi-dropdown .ifacebadge img {
-        @apply h-4 w-4;
-      }
-
-      .cbi-dropdown .ifacebadge em {
-        @apply italic text-slate-500 dark:text-slate-500;
-      }
-
-      .cbi-dropdown .ifacebadge:hover {
-        @apply border-slate-400/50 bg-white dark:border-slate-500/50 dark:bg-slate-800;
-        @apply shadow-sm;
-      }
-    }
 
     @layer page-specific {
       .syslog-container {
-        @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200;
-        @apply bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25;
-        @apply dark:border-slate-400/30 dark:shadow-black/40;
-        @apply focus:border-aurora-teal focus:ring-aurora-teal/20 focus:shadow-lg focus:ring-2 focus:outline-none;
+        @apply w-full rounded-xl border p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200
+             bg-aurora-night-slate max-h-screen min-h-96 resize-y border-slate-400/25
+             dark:border-slate-400/30 dark:shadow-black/40
+             focus:border-aurora-teal focus:ring-aurora-teal/20 focus:shadow-lg focus:ring-2 focus:outline-none;
       }
     }
   }
@@ -420,14 +307,14 @@
       button,
       .btn,
       .cbi-button {
-        @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium text-white;
-        @apply bg-aurora-sky dark:bg-aurora-sky-500;
-        @apply px-4 py-2 text-sm;
-        @apply transition-all duration-200;
-        @apply hover:bg-gradient-to-r hover:from-aurora-sky hover:to-aurora-teal dark:hover:from-aurora-sky-500 dark:hover:to-aurora-teal-500;
-        @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
-        @apply shadow-sm hover:shadow-md cursor-pointer;
+        @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium text-white
+             bg-aurora-sky dark:bg-aurora-sky-500
+             px-4 py-2 text-sm
+             transition-all duration-200
+             hover:bg-gradient-to-r hover:from-aurora-sky hover:to-aurora-teal dark:hover:from-aurora-sky-500 dark:hover:to-aurora-teal-500
+             focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900
+             shadow-sm hover:shadow-md cursor-pointer;
         /* @apply transform hover:scale-[1.02] active:scale-[0.98]; */
       }
 
@@ -439,64 +326,64 @@
 
       /* 主要按钮 */
       .btn-primary {
-        @apply px-4 py-2 text-sm;
-        @apply bg-aurora-sky dark:bg-aurora-sky-500;
-        @apply hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400;
-        @apply focus:ring-aurora-sky/30;
-        @apply shadow-aurora-sky/20 hover:shadow-aurora-sky/30;
+        @apply px-4 py-2 text-sm
+             bg-aurora-sky dark:bg-aurora-sky-500
+             hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400
+             focus:ring-aurora-sky/30
+             shadow-aurora-sky/20 hover:shadow-aurora-sky/30;
       }
 
       /* 次要按钮 */
       .btn-secondary {
-        @apply border border-slate-300 bg-white text-slate-700;
-        @apply dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300;
-        @apply hover:bg-slate-50 dark:hover:bg-slate-600;
-        @apply focus:ring-slate-400/30;
-        @apply shadow-slate-400/10 hover:shadow-slate-400/20;
+        @apply border border-slate-300 bg-white text-slate-700
+             dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300
+             hover:bg-slate-50 dark:hover:bg-slate-600
+             focus:ring-slate-400/30
+             shadow-slate-400/10 hover:shadow-slate-400/20;
       }
 
       /* 积极按钮 */
       .btn-positive {
-        @apply w-full px-6 py-3 text-sm font-semibold;
-        @apply bg-aurora-sky dark:bg-aurora-sky-500;
-        @apply hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400;
-        @apply focus:ring-aurora-sky/30;
-        @apply shadow-aurora-sky/20 hover:shadow-aurora-sky/30;
+        @apply w-full px-6 py-3 text-sm font-semibold
+             bg-aurora-sky dark:bg-aurora-sky-500
+             hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400
+             focus:ring-aurora-sky/30
+             shadow-aurora-sky/20 hover:shadow-aurora-sky/30;
       }
 
       /* 操作按钮 - 启动/重启/重新加载 */
       .cbi-button-action {
-        @apply bg-aurora-sky dark:bg-aurora-sky-500;
-        @apply hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400;
-        @apply focus:ring-aurora-sky/30;
-        @apply shadow-aurora-sky/20 hover:shadow-aurora-sky/30;
-        @apply font-medium text-white;
+        @apply bg-aurora-sky dark:bg-aurora-sky-500
+             hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400
+             focus:ring-aurora-sky/30
+             shadow-aurora-sky/20 hover:shadow-aurora-sky/30
+             font-medium text-white;
       }
 
       /* 状态按钮 - 已启用 */
       .cbi-button-positive {
-        @apply bg-emerald-600 dark:bg-emerald-500;
-        @apply hover:bg-emerald-700 dark:hover:bg-emerald-600;
-        @apply focus:ring-emerald-600/30;
-        @apply shadow-emerald-600/20 hover:shadow-emerald-700/30;
-        @apply font-medium text-white;
-        @apply cursor-default;
+        @apply bg-emerald-600 dark:bg-emerald-500
+             hover:bg-emerald-700 dark:hover:bg-emerald-600
+             focus:ring-emerald-600/30
+             shadow-emerald-600/20 hover:shadow-emerald-700/30
+             font-medium text-white
+             cursor-default;
       }
 
       /* 状态按钮 - 已禁用 */
       .cbi-button-negative {
-        @apply bg-slate-300 dark:bg-slate-600;
-        @apply hover:bg-slate-400 dark:hover:bg-slate-700;
-        @apply focus:ring-slate-300/30;
-        @apply shadow-slate-300/20 hover:shadow-slate-400/30;
-        @apply font-medium text-slate-700 dark:text-slate-300;
-        @apply cursor-default;
+        @apply bg-slate-300 dark:bg-slate-600
+             hover:bg-slate-400 dark:hover:bg-slate-700
+             focus:ring-slate-300/30
+             shadow-slate-300/20 hover:shadow-slate-400/30
+             font-medium text-slate-700 dark:text-slate-300
+             cursor-default;
       }
 
       /* 按钮组容器样式 */
       .cbi-section-actions div {
-        @apply flex flex-row items-center gap-2;
-        @apply flex-nowrap;
+        @apply flex flex-row items-center gap-2
+             flex-nowrap;
       }
 
       /* 表格中的按钮组 */
@@ -519,31 +406,31 @@
 
       /* 页面操作容器 */
       .cbi-page-actions {
-        @apply mt-8 flex items-center justify-end gap-3 border-t pt-6;
-        @apply border-slate-200/50 dark:border-slate-700/30;
-        @apply flex-wrap;
+        @apply mt-8 flex items-center justify-end gap-3 border-t pt-6
+             border-slate-200/50 dark:border-slate-700/30
+             flex-wrap;
       }
 
       /* 页面操作按钮 */
       .cbi-page-actions .btn,
       .cbi-page-actions .cbi-button {
-        @apply rounded-xl text-sm font-medium transition-all duration-200;
-        @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
+        @apply rounded-xl text-sm font-medium transition-all duration-200
+             focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900;
       }
 
       /* 保存按钮 */
       .cbi-page-actions .cbi-button-save {
-        @apply bg-aurora-sky dark:bg-aurora-sky-500 text-white;
-        @apply hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400;
-        @apply shadow-sm hover:shadow-md;
+        @apply bg-aurora-sky dark:bg-aurora-sky-500 text-white
+             hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400
+             shadow-sm hover:shadow-md;
       }
 
       /* 复位按钮 */
       .cbi-page-actions .cbi-button-reset {
-        @apply bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300;
-        @apply border border-slate-300/50 dark:border-slate-600/50;
-        @apply hover:bg-slate-200 dark:hover:bg-slate-600;
+        @apply bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300
+             border border-slate-300/50 dark:border-slate-600/50
+             hover:bg-slate-200 dark:hover:bg-slate-600;
       }
     }
 
@@ -552,27 +439,27 @@
 
       /* 控制组容器 */
       .control-group {
-        @apply mt-2 flex items-center gap-3;
-        @apply flex-wrap;
+        @apply mt-2 flex items-center gap-3
+             flex-wrap;
       }
 
       /* 控制组中的按钮 */
       .control-group .btn,
       .control-group .cbi-button {
-        @apply rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200;
-        @apply bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300;
-        @apply border border-slate-300/50 dark:border-slate-600/50;
-        @apply hover:bg-slate-200 dark:hover:bg-slate-600;
-        @apply focus:ring-aurora-sky/20 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
+        @apply rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200
+             bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300
+             border border-slate-300/50 dark:border-slate-600/50
+             hover:bg-slate-200 dark:hover:bg-slate-600
+             focus:ring-aurora-sky/20 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900;
       }
 
       /* 控制组中的应用按钮 */
       .control-group .cbi-button-apply {
-        @apply bg-aurora-sky/10 dark:bg-aurora-sky/20 text-aurora-sky dark:text-aurora-sky-300;
-        @apply border-aurora-sky/30 dark:border-aurora-sky/40;
-        @apply hover:bg-aurora-sky/20 dark:hover:bg-aurora-sky/30;
-        @apply hover:border-aurora-sky/40 dark:hover:border-aurora-sky/50;
+        @apply bg-aurora-sky/10 dark:bg-aurora-sky/20 text-aurora-sky dark:text-aurora-sky-300
+             border-aurora-sky/30 dark:border-aurora-sky/40
+             hover:bg-aurora-sky/20 dark:hover:bg-aurora-sky/30
+             hover:border-aurora-sky/40 dark:hover:border-aurora-sky/50;
       }
     }
 
@@ -581,13 +468,13 @@
 
       /* 添加按钮 */
       .cbi-dynlist .btn.cbi-button-add {
-        @apply rounded-lg px-4 py-2 text-lg font-medium text-white;
-        @apply bg-aurora-sky dark:bg-aurora-sky-500;
-        @apply hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400;
-        @apply transition-all duration-200;
-        @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
-        @apply min-w-[40px];
+        @apply rounded-lg px-4 py-2 text-lg font-medium text-white
+             bg-aurora-sky dark:bg-aurora-sky-500
+             hover:bg-aurora-sky-600 dark:hover:bg-aurora-sky-400
+             transition-all duration-200
+             focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900
+             min-w-[40px];
       }
     }
 
@@ -596,29 +483,29 @@
 
       /* 模态框按钮行 */
       .modal .button-row {
-        @apply mt-6 flex justify-end gap-3 border-t border-slate-200/50 pt-4 dark:border-slate-700/30;
-        @apply sm:flex-row sm:gap-3;
+        @apply mt-6 flex justify-end gap-3 border-t border-slate-200/50 pt-4 dark:border-slate-700/30
+             sm:flex-row sm:gap-3;
       }
 
       .modal .btn {
-        @apply rounded-lg px-6 py-2.5 text-sm font-medium transition-all duration-200;
-        @apply border border-slate-300/50 bg-slate-100 text-slate-700;
-        @apply dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-200;
-        @apply hover:bg-slate-200 dark:hover:bg-slate-600;
-        @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
-        @apply sm:w-auto;
+        @apply rounded-lg px-6 py-2.5 text-sm font-medium transition-all duration-200
+             border border-slate-300/50 bg-slate-100 text-slate-700
+             dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-200
+             hover:bg-slate-200 dark:hover:bg-slate-600
+             focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900
+             sm:w-auto;
       }
 
       /* 登录模态框按钮 */
       .modal.login .btn.cbi-button-positive.important {
-        @apply w-full rounded-xl px-6 py-3 text-base font-semibold;
-        @apply from-aurora-sky to-aurora-teal bg-gradient-to-r text-white;
-        @apply dark:from-aurora-sky-500 dark:to-aurora-teal-500;
-        @apply shadow-lg transition-all duration-200 hover:shadow-xl;
-        @apply hover:scale-[1.02] active:scale-[0.98];
-        @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
+        @apply w-full rounded-xl px-6 py-3 text-base font-semibold
+             from-aurora-sky to-aurora-teal bg-gradient-to-r text-white
+             dark:from-aurora-sky-500 dark:to-aurora-teal-500
+             shadow-lg transition-all duration-200 hover:shadow-xl
+             hover:scale-[1.02] active:scale-[0.98]
+             focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900;
       }
     }
   }
@@ -627,12 +514,12 @@
 
     input[type="text"],
     input[type="password"] {
-      @apply rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-300/50 bg-white/90 text-slate-900;
-      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
-      @apply placeholder-slate-400 dark:placeholder-slate-500;
+      @apply rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200
+             border-slate-300/50 bg-white/90 text-slate-900
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100
+             focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none
+             dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800
+             placeholder-slate-400 dark:placeholder-slate-500;
     }
 
 
@@ -640,24 +527,24 @@
 
   @layer select {
     select {
-      @apply rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-300/50 bg-white/90 text-slate-900;
-      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
-      @apply placeholder-slate-400 dark:placeholder-slate-500;
+      @apply rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200
+             border-slate-300/50 bg-white/90 text-slate-900
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100
+             focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none
+             dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800
+             placeholder-slate-400 dark:placeholder-slate-500;
     }
   }
 
   @layer textarea {
     textarea {
-      @apply w-full rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200;
-      @apply border-slate-300/50 bg-white/90 text-slate-900;
-      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
-      @apply placeholder-slate-400 dark:placeholder-slate-500;
-      @apply min-h-32 resize-y;
+      @apply w-full rounded-xl border px-4 py-3 text-sm font-normal transition-all duration-200
+             border-slate-300/50 bg-white/90 text-slate-900
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100
+             focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none
+             dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800
+             placeholder-slate-400 dark:placeholder-slate-500
+             min-h-32 resize-y;
     }
 
     #syslog {
@@ -668,7 +555,7 @@
   }
 
   @layer checkbox {
-    
+
     /* 复选框容器 */
     .cbi-checkbox {
       @apply relative inline-flex items-center;
@@ -676,26 +563,26 @@
 
     /* 复选框输入框 */
     .cbi-checkbox input[type="checkbox"] {
-      @apply h-5 w-5 rounded-lg border-2 transition-all duration-200;
-      @apply text-aurora-sky border-slate-300/50 bg-white;
-      @apply dark:border-slate-600/50 dark:bg-slate-800;
-      @apply focus:ring-aurora-sky/20 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-      @apply dark:focus:ring-offset-slate-900;
-      @apply cursor-pointer;
-      @apply appearance-none;
-      @apply relative;
+      @apply h-5 w-5 rounded-lg border-2 transition-all duration-200
+             text-aurora-sky border-slate-300/50 bg-white
+             dark:border-slate-600/50 dark:bg-slate-800
+             focus:ring-aurora-sky/20 focus:ring-2 focus:ring-offset-2 focus:outline-none
+             dark:focus:ring-offset-slate-900
+             cursor-pointer
+             appearance-none
+             relative;
     }
 
     /* 复选框选中状态 */
     .cbi-checkbox input[type="checkbox"]:checked {
-      @apply bg-aurora-sky border-aurora-sky;
-      @apply dark:bg-aurora-sky-500 dark:border-aurora-sky-500;
+      @apply bg-aurora-sky border-aurora-sky
+             dark:bg-aurora-sky-500 dark:border-aurora-sky-500;
     }
 
     /* 复选框选中状态的勾选标记（使用边框绘制以避免字符乱码/对齐问题） */
     .cbi-checkbox input[type="checkbox"]:checked::after {
-      @apply absolute block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-315 content-[''] pointer-events-none;
-      @apply h-[0.85rem] w-[0.5rem] border-b-2 border-r-2 border-white;
+      @apply absolute block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-315 content-[''] pointer-events-none
+             h-[0.85rem] w-[0.5rem] border-b-2 border-r-2 border-white;
     }
 
     /* 复选框悬停效果 */
@@ -705,27 +592,8 @@
 
     /* 复选框标签 */
     .cbi-checkbox label {
-      @apply ml-3 cursor-pointer text-sm font-medium;
-      @apply text-slate-700 dark:text-slate-300;
-    }
-  }
-
-
-  @layer progress {
-    .cbi-progressbar {
-      @apply h-3 w-full overflow-hidden rounded-full bg-slate-300 dark:bg-slate-700;
-    }
-
-    .cbi-progressbar>div {
-      @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
-    }
-
-    .cbi-progressbar {
-      @apply relative cursor-help;
-      @apply before:rounded-lg before:text-xs/normal before:text-slate-900 before:shadow-lg before:content-[attr(title)] dark:before:text-slate-100;
-      @apply before:absolute before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1 before:whitespace-nowrap;
-      @apply before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100;
-      @apply before:dark:shadow-black/40;
+      @apply ml-3 cursor-pointer text-sm font-medium
+             text-slate-700 dark:text-slate-300;
     }
   }
 
@@ -749,22 +617,23 @@
       /* 通用下拉菜单链接 - 只定义基础样式 */
       .dropdown-menu a,
       .cbi-dropdown ul li[data-value] {
-        @apply block text-sm no-underline transition-all duration-200;
-        @apply cursor-pointer;
+        @apply block text-sm no-underline transition-all duration-200
+             cursor-pointer;
       }
     }
 
     @layer nav {
+
       /* 导航下拉菜单 - 使用绝对定位 */
       .dropdown-menu {
-        @apply absolute top-full left-0 z-[1000] mt-2 min-w-[200px] rounded-xl border py-2;
-        @apply border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800;
-        @apply shadow-lg dark:shadow-black/40;
-        @apply scale-95 shadow-2xl;
-        @apply border-slate-200/70 bg-white/80 text-slate-800;
-        @apply dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100;
-        @apply backdrop-blur-md backdrop-saturate-150;
-        @apply invisible opacity-0 transition-all duration-200;
+        @apply absolute top-full left-0 z-[1000] mt-2 min-w-[200px] rounded-xl border py-2
+             border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800
+             shadow-lg dark:shadow-black/40
+             scale-95 shadow-2xl
+             border-slate-200/70 bg-white/80 text-slate-800
+             dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100
+             backdrop-blur-md backdrop-saturate-150
+             invisible opacity-0 transition-all duration-200;
       }
 
       .dropdown:hover .dropdown-menu {
@@ -772,181 +641,428 @@
       }
 
       .dropdown-menu a {
-        @apply mx-2 block rounded-lg px-4 py-3;
-        @apply font-medium text-slate-700 dark:text-slate-200 transition-all duration-150 ease-out;
-        @apply hover:bg-slate-200/60 dark:hover:bg-slate-700/70;
-        @apply hover:text-slate-900 dark:hover:text-white hover:font-semibold;
-        @apply hover:translate-x-0.5;
-        @apply hover:ring-1 hover:ring-inset hover:ring-slate-300/60 dark:hover:ring-slate-600/60;
-        @apply focus-visible:ring-2 focus-visible:ring-aurora-sky/30 focus-visible:ring-offset-2 focus-visible:outline-none;
-        @apply focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900;
+        @apply mx-2 block rounded-lg px-4 py-3
+             font-medium text-slate-700 dark:text-slate-200 transition-all duration-150 ease-out
+             hover:bg-slate-200/60 dark:hover:bg-slate-700/70
+             hover:text-slate-900 dark:hover:text-white hover:font-semibold
+             hover:translate-x-0.5
+             hover:ring-1 hover:ring-inset hover:ring-slate-300/60 dark:hover:ring-slate-600/60
+             focus-visible:ring-2 focus-visible:ring-aurora-sky/30 focus-visible:ring-offset-2 focus-visible:outline-none
+             focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900;
       }
     }
 
     @layer cbi {
+
       /* CBI下拉菜单基础样式 - 苹果风格设计 */
       .cbi-dropdown {
         @apply inline-flex items-center relative;
       }
 
       /* 下拉菜单列表容器 */
-      .cbi-dropdown > ul {
-        @apply m-0 p-0 list-none;
-        @apply flex items-center;
+      .cbi-dropdown>ul {
+        @apply m-0 p-0 list-none
+             flex items-center;
       }
 
       /* 下拉菜单项目基础样式 - 清除所有padding */
-      .cbi-dropdown > ul > li {
+      .cbi-dropdown>ul>li {
         @apply hidden p-0;
       }
 
       /* 只显示第一个li项目 - 苹果风格按钮，清除padding */
-      .cbi-dropdown > ul > li:first-child {
+      .cbi-dropdown>ul>li:first-child {
         @apply block cursor-pointer;
         /* @apply text-sm font-medium; */
-        @apply text-slate-100 dark:text-slate-900;
-        @apply hover:text-slate-800 dark:hover:text-slate-100;
-        @apply transition-colors duration-150;
+        @apply text-slate-100 dark:text-slate-900
+             hover:text-slate-800 dark:hover:text-slate-100
+             transition-colors duration-150;
       }
 
       /* 更多按钮默认隐藏 */
-      .cbi-dropdown > .more {
+      .cbi-dropdown>.more {
         @apply hidden;
       }
 
       /* 箭头样式 - 苹果风格分割线 */
-      .cbi-dropdown > .open {
-        @apply cursor-pointer;
-        @apply px-2 py-1.5 text-sm;
-        @apply text-slate-100 dark:text-slate-900;
-        @apply hover:text-slate-600 dark:hover:text-slate-300;
-        @apply transition-colors duration-150;
-        @apply border-l border-slate-200 dark:border-slate-600;
-        @apply ml-2;
+      .cbi-dropdown>.open {
+        @apply cursor-pointer
+             px-2 py-1.5 text-sm
+             text-slate-100 dark:text-slate-900
+             hover:text-slate-600 dark:hover:text-slate-300
+             transition-colors duration-150
+             border-l border-slate-200 dark:border-slate-600
+             ml-2;
       }
 
       /* dropdown列表 - 苹果风格悬浮菜单 */
-      .cbi-dropdown > ul.dropdown {
-        @apply absolute top-full left-0 z-50 mt-1 min-w-[140px] rounded-xl border py-1;
-        @apply border-slate-200/60 bg-white/95 dark:border-slate-600/40 dark:bg-slate-800/95;
-        @apply shadow-xl backdrop-blur-sm;
-        @apply invisible opacity-0 scale-95;
-        @apply transition-all duration-200 ease-out;
-        @apply flex flex-col;
+      .cbi-dropdown>ul.dropdown {
+        @apply absolute top-full left-0 z-50 mt-1 min-w-[140px] rounded-xl border py-1
+             border-slate-200/60 bg-white/95 dark:border-slate-600/40 dark:bg-slate-800/95
+             shadow-xl backdrop-blur-sm
+             invisible opacity-0 scale-95
+             transition-all duration-200 ease-out
+             flex flex-col;
       }
 
       /* dropdown列表展开状态 */
-      .cbi-dropdown[open] > ul.dropdown {
+      .cbi-dropdown[open]>ul.dropdown {
         @apply visible opacity-100 scale-100;
       }
 
       /* dropdown列表中的项目 - 保留padding，苹果风格悬停效果 */
-      .cbi-dropdown > ul.dropdown > li {
-        @apply block w-full cursor-pointer;
-        @apply px-3 py-2 text-sm font-medium;
-        @apply text-slate-600 dark:text-slate-300;
-        @apply hover:bg-slate-50 dark:hover:bg-slate-700/50;
-        @apply hover:text-slate-800 dark:hover:text-slate-100;
-        @apply transition-all duration-150 ease-out;
-        @apply mx-1 rounded-lg;
+      .cbi-dropdown>ul.dropdown>li {
+        @apply block w-full cursor-pointer
+             px-3 py-2 text-sm font-medium
+             text-slate-600 dark:text-slate-300
+             hover:bg-slate-50 dark:hover:bg-slate-700/50
+             hover:text-slate-800 dark:hover:text-slate-100
+             transition-all duration-150 ease-out
+             mx-1 rounded-lg;
       }
 
       /* preview列表 - 与open并排显示，但只显示第一个li */
-      .cbi-dropdown > ul.preview {
+      .cbi-dropdown>ul.preview {
         @apply flex items-center;
       }
 
       /* preview列表中的项目默认隐藏 */
-      .cbi-dropdown > ul.preview > li {
+      .cbi-dropdown>ul.preview>li {
         @apply hidden;
       }
 
       /* preview列表只显示第一个li - 苹果风格按钮，清除padding */
-      .cbi-dropdown > ul.preview > li:first-child {
-        @apply block cursor-pointer;
-        @apply text-sm font-medium;
-        @apply text-slate-100 dark:text-slate-900;
-        @apply hover:text-slate-800 dark:hover:text-slate-100;
-        @apply transition-colors duration-150;
+      .cbi-dropdown>ul.preview>li:first-child {
+        @apply block cursor-pointer
+             text-sm font-medium
+             text-slate-100 dark:text-slate-900
+             hover:text-slate-800 dark:hover:text-slate-100
+             transition-colors duration-150;
       }
 
       .cbi-dropdown input[type="hidden"] {
         @apply hidden;
       }
-    }   
+    }
 
-    /* 系统设置专用下拉菜单样式 */
-    @layer system-settings {
 
-      /* 系统设置中的接口徽章 */
-      .cbi-dropdown .ifacebadge {
-        @apply inline-flex items-center px-3 py-1.5 text-xs font-medium;
-        @apply bg-slate-100 text-slate-700 dark:bg-slate-700/50 dark:text-slate-300;
-        @apply border border-slate-200/50 dark:border-slate-600/30;
-        @apply rounded-lg shadow-sm;
-        @apply transition-all duration-200;
-      }
+  }
 
-      .cbi-dropdown .ifacebadge img {
-        @apply mr-1 h-4 w-4;
-      }
+  @layer progress {
+    .cbi-progressbar {
+      @apply h-3 w-full overflow-hidden rounded-full bg-slate-300 dark:bg-slate-700;
+    }
 
-      .cbi-dropdown .ifacebadge em {
-        @apply text-slate-400 italic dark:text-slate-500;
-      }
+    .cbi-progressbar>div {
+      @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
+    }
 
-      /* 系统设置中的接口徽章悬停效果 */
-      .cbi-dropdown .ifacebadge:hover {
-        @apply bg-slate-200 dark:bg-slate-600/50;
-        @apply border-slate-300/60 dark:border-slate-500/40;
-      }
+    .cbi-progressbar {
+      @apply relative cursor-help
+             before:rounded-lg before:text-xs/normal before:text-slate-900 before:shadow-lg before:content-[attr(title)] dark:before:text-slate-100
+             before:absolute before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1 before:whitespace-nowrap
+             before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100
+             before:dark:shadow-black/40;
     }
   }
+
+  @layer tooltip {
+
+    /* 基础工具提示样式 */
+    .cbi-tooltip {
+      @apply hidden;
+    }
+
+    /* 工具提示容器悬停时显示 */
+    .cbi-tooltip-container:hover .cbi-tooltip {
+      @apply absolute z-50 block rounded px-2 py-1 text-xs text-slate-900 shadow-lg
+             max-w-xs bg-white whitespace-nowrap
+             dark:bg-slate-900 dark:text-slate-100;
+    }
+
+    /* 左侧工具提示 */
+    .cbi-tooltip.left {
+      @apply right-0 left-auto w-40 transform-none;
+    }
+
+    /* 工具提示文本不换行 */
+    .cbi-tooltip .nowrap {
+      @apply whitespace-nowrap;
+    }
+
+    /* 工具提示加粗文本 */
+    .cbi-tooltip strong {
+      @apply font-semibold;
+    }
+
+    /* NFT规则中的工具提示容器 */
+    .nft-rules .ifacebadge.cbi-tooltip-container {
+      @apply relative cursor-help;
+    }
+
+    /* NFT规则中的工具提示定位 */
+    .nft-rules .ifacebadge.cbi-tooltip-container .cbi-tooltip {
+      @apply absolute bottom-full left-1/2 mb-2 -translate-x-1/2 transform;
+    }
+
+    /* NFT集合中的工具提示容器 */
+    .nft-set.cbi-tooltip-container {
+      @apply relative cursor-help;
+    }
+
+    /* NFT集合：tooltip 贴合 nft-set-items 正下方 */
+    .nft-set.cbi-tooltip-container .cbi-tooltip {
+      @apply absolute z-50 top-full left-0 mt-1 transform-none whitespace-normal;
+    }
+
+
+    /* NFT集合工具提示内容样式 */
+    .nft-set .cbi-tooltip {
+      @apply bg-white/95 dark:bg-slate-800/95 border border-slate-200/60 dark:border-slate-600/40
+             rounded-lg shadow-xl backdrop-blur-sm p-2 max-w-xs;
+    }
+
+    .nft-set .cbi-tooltip .ifacebadge {
+      @apply block mb-1 last:mb-0 text-xs;
+    }
+  }
+
+  @layer badge {
+
+    /* 基础接口徽章样式 */
+    .ifacebadge {
+      @apply inline-flex items-center gap-1.5 rounded-lg border px-2 py-1.5 text-xs font-medium
+             border-slate-300/50 bg-white/90 text-slate-700
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300
+             transition-all duration-200
+             cursor-default;
+    }
+
+    /* 接口徽章图片 */
+    .ifacebadge img {
+      @apply h-5 w-5;
+    }
+
+    /* 接口徽章悬停效果 */
+    .ifacebadge:hover {
+      @apply border-slate-400/60 bg-white dark:border-slate-500/60 dark:bg-slate-800
+             shadow-sm;
+    }
+
+    /* 激活状态的接口徽章 */
+    .ifacebadge-active {
+      @apply border-aurora-sky font-semibold;
+    }
+
+    /* 大尺寸接口徽章 */
+    .ifacebadge.large {
+      @apply inline-flex min-w-[220px] flex-1 p-2;
+    }
+
+    /* 网络状态表格中的接口徽章 */
+    .network-status-table .ifacebox-body .ifacebadge {
+      @apply m-0.5 flex min-w-[220px] flex-1 p-2;
+    }
+
+    .network-status-table .ifacebox-body .ifacebadge>span {
+      @apply overflow-hidden text-ellipsis;
+    }
+
+    .ifacebadge>*,
+    .ifacebadge.large>* {
+      @apply mx-0.5;
+    }
+
+    /* 网络状态表格中的接口徽章布局 */
+    .network-status-table .ifacebox-body>* {
+      @apply m-1;
+    }
+
+    .network-status-table .ifacebox-body>span {
+      @apply h-full flex-1 flex-auto;
+    }
+
+    .network-status-table .ifacebox-body>div {
+      @apply -m-0.5 flex flex-wrap;
+    }
+
+    /* 表格中的接口徽章 */
+    .table .ifacebadge {
+      @apply inline-flex items-center gap-2 rounded-lg border px-2 py-1.5 text-xs
+             border-slate-300/50 bg-white/90 text-slate-700
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300
+             transition-all duration-200;
+    }
+
+    .table .ifacebadge:empty::before {
+      @apply text-slate-400 dark:text-slate-500 content-['—'];
+    }
+
+    .table .ifacebadge:hover {
+      @apply border-slate-400/60 bg-white dark:border-slate-500/60 dark:bg-slate-800
+             shadow-sm;
+    }
+
+    .table .ifacebadge img {
+      @apply h-5 w-5;
+    }
+
+    /* NFT规则中的接口徽章 */
+    .nft-rules .ifacebadge {
+      @apply inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs
+             border-slate-300/40 bg-white/80 text-slate-600
+             dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400
+             transition-all duration-200;
+    }
+
+    .nft-rules .ifacebadge:hover {
+      @apply border-slate-400/50 bg-white dark:border-slate-500/50 dark:bg-slate-800
+             shadow-sm;
+    }
+
+    /* NFT集合容器 */
+    .nft-set {
+      @apply inline-block align-middle;
+    }
+
+    /* NFT集合项目容器 - 单行显示，溢出隐藏 */
+    .nft-set-items {
+      @apply inline-block max-w-[200px] overflow-hidden align-middle
+             text-ellipsis whitespace-nowrap;
+    }
+
+    /* NFT集合项目 */
+    .nft-set-item {
+      @apply inline-block px-1;
+    }
+
+    /* NFT集合中的接口徽章 - 紧凑样式 */
+    .nft-set .ifacebadge {
+      @apply inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-xs
+             border-slate-300/30 bg-white/70 text-slate-500
+             dark:border-slate-600/30 dark:bg-slate-800/70 dark:text-slate-400
+             transition-all duration-200;
+    }
+
+    .nft-set .ifacebadge:hover {
+      @apply border-slate-400/40 bg-white dark:border-slate-500/40 dark:bg-slate-800
+             shadow-sm;
+    }
+
+    /* NFT集合中的接口徽章图片 */
+    .nft-set .ifacebadge img {
+      @apply h-3 w-3;
+    }
+
+    /* 下拉菜单中的接口徽章 */
+    .cbi-dropdown .ifacebadge {
+      @apply inline-flex items-center gap-1.5 rounded border px-2 py-1 text-xs
+             border-slate-300/40 bg-white/80 text-slate-600
+             dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400
+             transition-all duration-200;
+    }
+
+    .cbi-dropdown .ifacebadge img {
+      @apply h-4 w-4;
+    }
+
+    .cbi-dropdown .ifacebadge em {
+      @apply italic text-slate-500 dark:text-slate-500;
+    }
+
+    .cbi-dropdown .ifacebadge:hover {
+      @apply border-slate-400/50 bg-white dark:border-slate-500/50 dark:bg-slate-800
+             shadow-sm;
+    }
+
+    /* 系统设置专用下拉菜单中的接口徽章 */
+    .cbi-dropdown .ifacebadge {
+      @apply inline-flex items-center px-3 py-1.5 text-xs font-medium
+             bg-slate-100 text-slate-700 dark:bg-slate-700/50 dark:text-slate-300
+             border border-slate-200/50 dark:border-slate-600/30
+             rounded-lg shadow-sm
+             transition-all duration-200;
+    }
+
+    .cbi-dropdown .ifacebadge img {
+      @apply mr-1 h-4 w-4;
+    }
+
+    .cbi-dropdown .ifacebadge em {
+      @apply text-slate-400 italic dark:text-slate-500;
+    }
+
+    .cbi-dropdown .ifacebadge:hover {
+      @apply bg-slate-200 dark:bg-slate-600/50
+             border-slate-300/60 dark:border-slate-500/40;
+    }
+
+    /* 接口徽章容器样式 */
+    .ifacebox {
+      @apply mx-2.5 min-w-40 border-2 border-slate-200/25 text-center whitespace-nowrap
+             overflow-hidden rounded-xl bg-white shadow-md
+             dark:border-slate-600/20 dark:bg-slate-800
+             inline-flex flex-col leading-tight;
+    }
+
+    .ifacebox-head {
+      @apply rounded-t-sm border-b border-slate-200/40 px-3 py-2
+             text-center text-sm font-semibold text-slate-900
+             bg-slate-50 dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
+    }
+
+    .ifacebox-head.active {
+      @apply bg-aurora-sky border-aurora-sky text-white;
+    }
+
+    .ifacebox-body {
+      @apply flex flex-col items-center justify-center p-3;
+    }
   }
 
   @layer message {
     .alert-message {
-      @apply relative mb-4 rounded-2xl p-6 shadow-sm;
-      @apply bg-gradient-to-br from-white/95 via-white/90 to-white/85;
-      @apply dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85;
-      @apply border border-slate-200/30 dark:border-slate-700/30;
+      @apply relative mb-4 rounded-2xl p-6 shadow-sm
+             bg-gradient-to-br from-white/95 via-white/90 to-white/85
+             dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85
+             border border-slate-200/30 dark:border-slate-700/30;
     }
 
     /* Success State - 成功状态 */
     .alert-message.success {
-      @apply bg-gradient-to-br from-emerald-50/90 via-emerald-100/80 to-emerald-50/90;
-      @apply dark:from-emerald-900/20 dark:via-emerald-800/30 dark:to-emerald-900/20;
-      @apply border-emerald-200/40 dark:border-emerald-800/30;
-      @apply text-emerald-900 dark:text-emerald-100;
-      @apply shadow-emerald-500/10 dark:shadow-emerald-400/5;
+      @apply bg-gradient-to-br from-emerald-50/90 via-emerald-100/80 to-emerald-50/90
+             dark:from-emerald-900/20 dark:via-emerald-800/30 dark:to-emerald-900/20
+             border-emerald-200/40 dark:border-emerald-800/30
+             text-emerald-900 dark:text-emerald-100
+             shadow-emerald-500/10 dark:shadow-emerald-400/5;
     }
 
     /* Info State - 信息状态 */
     .alert-message.info {
-      @apply bg-gradient-to-br from-blue-50/90 via-blue-100/80 to-blue-50/90;
-      @apply dark:from-blue-900/20 dark:via-blue-800/30 dark:to-blue-900/20;
-      @apply border-blue-200/40 dark:border-blue-800/30;
-      @apply text-blue-900 dark:text-blue-100;
-      @apply shadow-blue-500/10 dark:shadow-blue-400/5;
+      @apply bg-gradient-to-br from-blue-50/90 via-blue-100/80 to-blue-50/90
+             dark:from-blue-900/20 dark:via-blue-800/30 dark:to-blue-900/20
+             border-blue-200/40 dark:border-blue-800/30
+             text-blue-900 dark:text-blue-100
+             shadow-blue-500/10 dark:shadow-blue-400/5;
     }
 
     /* Warning State - 警告状态 */
     .alert-message.warning {
-      @apply bg-gradient-to-br from-amber-50/90 via-amber-100/80 to-amber-50/90;
-      @apply dark:from-amber-900/20 dark:via-amber-800/30 dark:to-amber-900/20;
-      @apply border-amber-200/40 dark:border-amber-800/30;
-      @apply text-amber-900 dark:text-amber-100;
-      @apply shadow-amber-500/10 dark:shadow-amber-400/5;
+      @apply bg-gradient-to-br from-amber-50/90 via-amber-100/80 to-amber-50/90
+             dark:from-amber-900/20 dark:via-amber-800/30 dark:to-amber-900/20
+             border-amber-200/40 dark:border-amber-800/30
+             text-amber-900 dark:text-amber-100
+             shadow-amber-500/10 dark:shadow-amber-400/5;
     }
 
     /* Error State - 错误状态 */
     .alert-message.error,
     .alert-message.danger {
-      @apply bg-gradient-to-br from-red-50/90 via-red-100/80 to-red-50/90;
-      @apply dark:from-red-900/20 dark:via-red-800/30 dark:to-red-900/20;
-      @apply border-red-200/40 dark:border-red-800/30;
-      @apply text-red-900 dark:text-red-100;
-      @apply shadow-red-500/10 dark:shadow-red-400/5;
+      @apply bg-gradient-to-br from-red-50/90 via-red-100/80 to-red-50/90
+             dark:from-red-900/20 dark:via-red-800/30 dark:to-red-900/20
+             border-red-200/40 dark:border-red-800/30
+             text-red-900 dark:text-red-100
+             shadow-red-500/10 dark:shadow-red-400/5;
     }
 
     .alert-message h4 {
@@ -964,10 +1080,10 @@
 
   @layer modal {
     .modal {
-      @apply max-w-3xl rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl;
-      @apply dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
-      @apply backdrop-blur-xl backdrop-saturate-150;
-      @apply sm:mx-auto sm:max-w-md;
+      @apply max-w-3xl rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl
+             dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25
+             backdrop-blur-xl backdrop-saturate-150
+             sm:mx-auto sm:max-w-md;
     }
 
     .modal-header {
@@ -992,15 +1108,15 @@
     }
 
     .modal pre {
-      @apply rounded-lg bg-slate-50 p-4 font-mono text-sm dark:bg-slate-800/50;
-      @apply border border-slate-200/50 text-slate-700 dark:border-slate-700/30 dark:text-slate-300;
-      @apply max-h-64 overflow-x-auto overflow-y-auto;
-      @apply sm:max-h-64 sm:p-4 sm:text-sm;
+      @apply rounded-lg bg-slate-50 p-4 font-mono text-sm dark:bg-slate-800/50
+             border border-slate-200/50 text-slate-700 dark:border-slate-700/30 dark:text-slate-300
+             max-h-64 overflow-x-auto overflow-y-auto
+             sm:max-h-64 sm:p-4 sm:text-sm;
     }
 
     .modal pre.errors {
-      @apply border-red-200/50 bg-red-50 dark:border-red-800/30 dark:bg-red-900/20;
-      @apply text-red-700 dark:text-red-300;
+      @apply border-red-200/50 bg-red-50 dark:border-red-800/30 dark:bg-red-900/20
+             text-red-700 dark:text-red-300;
     }
 
     .modal p {
@@ -1008,8 +1124,8 @@
     }
 
     .modal code {
-      @apply rounded bg-slate-100 px-2 py-1 text-sm dark:bg-slate-700;
-      @apply font-mono text-slate-800 dark:text-slate-200;
+      @apply rounded bg-slate-100 px-2 py-1 text-sm dark:bg-slate-700
+             font-mono text-slate-800 dark:text-slate-200;
     }
 
     .modal em {
@@ -1057,18 +1173,18 @@
     /* 输入框样式 */
     .modal.login .cbi-value-field input[type="text"],
     .modal.login .cbi-value-field input[type="password"] {
-      @apply w-full rounded-xl border px-4 py-3 transition-all duration-200;
-      @apply border-slate-300/50 bg-white/90 text-slate-900;
-      @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-      @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
-      @apply placeholder-slate-400 dark:placeholder-slate-500;
+      @apply w-full rounded-xl border px-4 py-3 transition-all duration-200
+             border-slate-300/50 bg-white/90 text-slate-900
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100
+             focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none
+             dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800
+             placeholder-slate-400 dark:placeholder-slate-500;
     }
 
     /* 分隔线 */
     .modal.login hr {
-      @apply my-8 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent;
-      @apply dark:via-slate-600;
+      @apply my-8 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent
+             dark:via-slate-600;
     }
 
     /* 模态框覆盖层 */
@@ -1080,48 +1196,31 @@
       @apply pointer-events-auto fixed inset-0 z-[2000] grid place-items-center bg-white/45 p-4 backdrop-blur-sm;
       display: grid !important;
     }
-
-    /* 响应式设计 */
-    @media (max-width: 640px) {
-      .modal {
-        @apply mx-4 max-w-sm p-6;
-      }
-
-      .modal pre {
-        @apply max-h-48 p-3 text-xs;
-      }
-
-      .modal .button-row {
-        @apply flex-col gap-2;
-      }
-
-      .modal .btn {
-        @apply w-full;
-      }
-    }
   }
 
   @layer table {
     .table {
-      @apply mb-6 w-full border-collapse;
-      @apply rounded-xl border border-slate-200/30 bg-white dark:border-slate-700/20 dark:bg-slate-800;
-      @apply overflow-hidden shadow-sm dark:shadow-black/20;
+      @apply mb-6 w-full border-collapse
+             rounded-xl border border-slate-200/30 bg-white dark:border-slate-700/20 dark:bg-slate-800
+             overflow-hidden shadow-sm dark:shadow-black/20;
     }
 
     /* 表格中的 cbi-value-field 需保持单元格布局，避免被表单 flex 影响 */
-    .table .cbi-value-field { @apply table-cell align-middle; }
+    .table .cbi-value-field {
+      @apply table-cell align-middle;
+    }
 
     .table th {
-      @apply border-b px-4 py-3 text-left text-sm font-semibold;
-      @apply border-slate-400/25 bg-slate-50/50 text-slate-900;
-      @apply dark:border-slate-400/20 dark:bg-slate-800/30 dark:text-slate-100;
-      @apply sticky top-0 z-10;
+      @apply border-b px-4 py-3 text-left text-sm font-semibold
+             border-slate-400/25 bg-slate-50/50 text-slate-900
+             dark:border-slate-400/20 dark:bg-slate-800/30 dark:text-slate-100
+             sticky top-0 z-10;
     }
 
     .table td {
-      @apply border-b border-slate-400/20 px-4 py-3 text-sm text-slate-700;
-      @apply dark:border-slate-400/15 dark:text-slate-300;
-      @apply transition-colors duration-200;
+      @apply border-b border-slate-400/20 px-4 py-3 text-sm text-slate-700
+             dark:border-slate-400/15 dark:text-slate-300
+             transition-colors duration-200;
     }
 
     .table .td .left {
@@ -1129,11 +1228,11 @@
     }
 
     .table tr {
-      @apply border-b border-slate-400/10 dark:border-slate-400/5;
-      @apply last:border-b-0;
-      @apply hover:bg-slate-50/40 dark:hover:bg-slate-700/30;
-      @apply transition-all duration-200;
-      @apply relative;
+      @apply border-b border-slate-400/10 dark:border-slate-400/5
+             last:border-b-0
+             hover:bg-slate-50/40 dark:hover:bg-slate-700/30
+             transition-all duration-200
+             relative;
     }
 
     /* 表格行样式变体 */
@@ -1152,8 +1251,8 @@
 
     /* 悬浮时的左侧指示器 - 使用伪元素避免抖动 */
     .table tr::before {
-      @apply absolute top-0 bottom-0 left-0 w-1 content-[''];
-      @apply bg-transparent transition-colors duration-200;
+      @apply absolute top-0 bottom-0 left-0 w-1 content-['']
+             bg-transparent transition-colors duration-200;
     }
 
     .table tr:hover::before {
@@ -1162,37 +1261,24 @@
 
     /* 可排序表头 */
     .table th[data-sortable-row="true"] {
-      @apply cursor-pointer select-none;
-      @apply hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
-      @apply transition-colors duration-200;
+      @apply cursor-pointer select-none
+             hover:bg-slate-100/50 dark:hover:bg-slate-700/40
+             transition-colors duration-200;
     }
 
     .table th[data-sortable-row="true"]:hover::after {
-      @apply ml-2 text-slate-400 content-['↕'] dark:text-slate-500;
-      @apply text-xs font-normal;
+      @apply ml-2 text-slate-400 content-['↕'] dark:text-slate-500
+             text-xs font-normal;
     }
 
     /* 表格标题和描述 */
     .cbi-section h3 {
-      @apply mt-6 mb-4 text-lg font-semibold first:mt-0;
-      @apply text-slate-800 dark:text-slate-200;
-      @apply border-b border-slate-200/40 pb-2 dark:border-slate-700/30;
+      @apply mt-6 mb-4 text-lg font-semibold first:mt-0
+             text-slate-800 dark:text-slate-200
+             border-b border-slate-200/40 pb-2 dark:border-slate-700/30;
     }
 
-    /* 接口徽章优化 */
-    .table .ifacebadge {
-      @apply inline-flex items-center px-3 py-1.5 text-xs font-medium;
-      @apply bg-slate-100 text-slate-700 dark:bg-slate-700/50 dark:text-slate-300;
-      @apply border border-slate-200/50 dark:border-slate-600/30;
-      @apply rounded-lg shadow-sm;
-      @apply transition-colors duration-200;
-      @apply hover:bg-slate-200 dark:hover:bg-slate-600/50;
-      @apply hover:border-slate-300/60 dark:hover:border-slate-500/40;
-    }
 
-    .table .ifacebadge:empty::before {
-      @apply text-slate-400 content-['-'] dark:text-slate-500;
-    }
 
     /* 特殊值样式 */
     .table .td:contains("-") {
@@ -1214,9 +1300,7 @@
       @apply px-4 py-3;
     }
 
-    .table .ifacebadge {
-      @apply px-3 py-1.5 text-xs;
-    }
+
 
     /* 小屏幕适配 */
     .table {
@@ -1228,9 +1312,7 @@
       @apply sm:px-3 sm:py-2;
     }
 
-    .table .ifacebadge {
-      @apply sm:px-2 sm:py-1 sm:text-xs;
-    }
+
 
     /* 表格空状态 */
     .table:empty::before {
@@ -1243,8 +1325,8 @@
     }
 
     .table.loading::after {
-      @apply absolute inset-0 bg-white/50 content-[''] dark:bg-slate-800/50;
-      @apply flex items-center justify-center;
+      @apply absolute inset-0 bg-white/50 content-[''] dark:bg-slate-800/50
+             flex items-center justify-center;
     }
 
     /* NFT 防火墙规则表样式 */
@@ -1253,8 +1335,8 @@
     }
 
     .nft-table h3 {
-      @apply mb-4 text-xl font-semibold text-slate-900 dark:text-slate-100;
-      @apply border-b border-slate-200/40 pb-2 dark:border-slate-700/30;
+      @apply mb-4 text-xl font-semibold text-slate-900 dark:text-slate-100
+             border-b border-slate-200/40 pb-2 dark:border-slate-700/30;
     }
 
     .nft-chains {
@@ -1262,19 +1344,19 @@
     }
 
     .nft-chain {
-      @apply rounded-xl border border-slate-200/30 bg-white dark:border-slate-700/20 dark:bg-slate-800;
-      @apply shadow-sm dark:shadow-black/20;
+      @apply rounded-xl border border-slate-200/30 bg-white dark:border-slate-700/20 dark:bg-slate-800
+             shadow-sm dark:shadow-black/20;
     }
 
     .nft-chain h4 {
-      @apply mb-3 p-4 pb-3 text-lg font-medium text-slate-800 dark:text-slate-200;
-      @apply border-b border-slate-200/30 dark:border-slate-700/20;
-      @apply bg-slate-50/50 dark:bg-slate-700/30;
+      @apply mb-3 p-4 pb-3 text-lg font-medium text-slate-800 dark:text-slate-200
+             border-b border-slate-200/30 dark:border-slate-700/20
+             bg-slate-50/50 dark:bg-slate-700/30;
     }
 
     .nft-chain-hook {
-      @apply bg-slate-50/30 px-4 py-3 dark:bg-slate-700/20;
-      @apply border-b border-slate-200/20 dark:border-slate-700/15;
+      @apply bg-slate-50/30 px-4 py-3 dark:bg-slate-700/20
+             border-b border-slate-200/20 dark:border-slate-700/15;
     }
 
     .nft-chain-hook ul {
@@ -1295,52 +1377,32 @@
     }
 
     .nft-rules .tr {
-      @apply border-b border-slate-200/20 dark:border-slate-700/15;
-      @apply hover:bg-slate-50/40 dark:hover:bg-slate-700/30;
-      @apply transition-colors duration-200;
+      @apply border-b border-slate-200/20 dark:border-slate-700/15
+             hover:bg-slate-50/40 dark:hover:bg-slate-700/30
+             transition-colors duration-200;
     }
 
     .nft-rules .tr.table-titles {
-      @apply bg-slate-100/50 dark:bg-slate-700/40;
-      @apply hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
+      @apply bg-slate-100/50 dark:bg-slate-700/40
+             hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
     }
 
     .nft-rules .th {
-      @apply px-3 py-2 text-left text-sm font-medium;
-      @apply text-slate-700 dark:text-slate-300;
-      @apply border-b border-slate-300/30 dark:border-slate-600/20;
+      @apply px-3 py-2 text-left text-sm font-medium
+             text-slate-700 dark:text-slate-300
+             border-b border-slate-300/30 dark:border-slate-600/20;
     }
 
     .nft-rules .td {
-      @apply px-3 py-2 align-top text-sm;
-      @apply text-slate-600 dark:text-slate-400;
+      @apply px-3 py-2 align-top text-sm
+             text-slate-600 dark:text-slate-400;
     }
 
     .nft-rules .td.center {
       @apply text-center;
     }
 
-    /* NFT 接口徽章样式 */
-    .nft-rules .ifacebadge {
-      @apply mx-0.5 mb-1 inline-block px-2 py-1 text-xs font-medium;
-      @apply bg-slate-100 text-slate-700 dark:bg-slate-700/50 dark:text-slate-300;
-      @apply border border-slate-200/50 dark:border-slate-600/30;
-      @apply rounded-md shadow-sm;
-      @apply transition-colors duration-200;
-    }
 
-    .nft-rules .ifacebadge:hover {
-      @apply bg-slate-200 dark:bg-slate-600/50;
-      @apply border-slate-300/60 dark:border-slate-500/40;
-    }
-
-    .nft-rules .ifacebadge.cbi-tooltip-container {
-      @apply cursor-help;
-    }
-
-    .nft-rules .ifacebadge.cbi-tooltip-container .cbi-tooltip {
-      @apply p-2;
-    }
 
     /* NFT 集合和列表样式 */
     .nft-set,
@@ -1350,8 +1412,8 @@
 
     .nft-set-items,
     .nft-list-items {
-      @apply inline-block max-w-[200px] overflow-hidden align-middle;
-      @apply text-ellipsis;
+      @apply inline-block max-w-[200px] overflow-hidden align-middle
+             text-ellipsis;
     }
 
     .nft-set-item {
@@ -1360,16 +1422,16 @@
 
     /* NFT 计数器样式 */
     .nft-counter {
-      @apply bg-slate-100 dark:bg-slate-700/50;
-      @apply border border-slate-200/50 dark:border-slate-600/30;
-      @apply text-slate-700 dark:text-slate-300;
+      @apply bg-slate-100 dark:bg-slate-700/50
+             border border-slate-200/50 dark:border-slate-600/30
+             text-slate-700 dark:text-slate-300;
     }
 
     /* NFT 注释样式 */
     .nft-comment {
-      @apply bg-amber-100/50 dark:bg-amber-900/30;
-      @apply border-amber-200/50 dark:border-amber-800/30;
-      @apply text-amber-800 dark:text-amber-200;
+      @apply bg-amber-100/50 dark:bg-amber-900/30
+             border-amber-200/50 dark:border-amber-800/30
+             text-amber-800 dark:text-amber-200;
     }
 
     /* NFT 变量样式 */
@@ -1384,9 +1446,9 @@
 
     /* NFT 链接样式 */
     .nft-rules a {
-      @apply text-slate-600 dark:text-slate-400;
-      @apply hover:text-slate-800 dark:hover:text-slate-200;
-      @apply underline decoration-slate-400/50;
+      @apply text-slate-600 dark:text-slate-400
+             hover:text-slate-800 dark:hover:text-slate-200
+             underline decoration-slate-400/50;
     }
 
     /* NFT 空链样式 */
@@ -1402,42 +1464,58 @@
 
       /* 值描述文本 */
       .cbi-value-description {
-        @apply mt-2 text-xs text-slate-500 dark:text-slate-400;
-        @apply leading-relaxed;
+        @apply mt-2 text-xs text-slate-500 dark:text-slate-400
+             leading-relaxed;
       }
 
       /* 值标题 */
       .cbi-value-title {
-        @apply block text-sm font-medium text-slate-700 dark:text-slate-300;
-        @apply mb-2;
+        @apply block text-sm font-medium text-slate-700 dark:text-slate-300
+             mb-2;
       }
 
       /* 值字段容器（仅表单内，且为 .cbi-value 的直接子元素） */
-      .cbi-map .cbi-value > .cbi-value-field {
+      .cbi-map .cbi-value>.cbi-value-field {
         @apply flex flex-row items-center gap-3 flex-wrap flex-1;
       }
 
       /* 值字段内的换行符删除，保证并排（仅表单内） */
-      .cbi-map .cbi-value > .cbi-value-field br { @apply hidden; }
+      .cbi-map .cbi-value>.cbi-value-field br {
+        @apply hidden;
+      }
 
       /* 值字段内直系子元素并排且垂直居中（仅表单内） */
-      .cbi-map .cbi-value > .cbi-value-field > * { @apply inline-flex items-center gap-2; }
+      .cbi-map .cbi-value>.cbi-value-field>* {
+        @apply inline-flex items-center gap-2;
+      }
 
       /* 复选框描述文字与勾选框保持同一行并垂直居中（仅表单内） */
-      .cbi-map .cbi-value > .cbi-value-field .cbi-value-description {
+      .cbi-map .cbi-value>.cbi-value-field .cbi-value-description {
         @apply mt-0 inline-block leading-normal ml-3;
       }
 
       /* 表单项整体垂直间距（该区域的每个 cbi-value） */
-      .cbi-map .cbi-section-node .cbi-value { @apply py-2; }
-      .cbi-map .cbi-section-node .cbi-value + .cbi-value { @apply mt-3; }
+      .cbi-map .cbi-section-node .cbi-value {
+        @apply py-2;
+      }
+
+      .cbi-map .cbi-section-node .cbi-value+.cbi-value {
+        @apply mt-3;
+      }
 
       /* 输出区与后续元素的间距（按钮与描述之间，仅表单内） */
-      .cbi-map .cbi-value > .cbi-value-field output { @apply mr-3; }
+      .cbi-map .cbi-value>.cbi-value-field output {
+        @apply mr-3;
+      }
 
       /* 表单内标题与表格的额外顶部间距 */
-      .cbi-map .cbi-section-node > h3 { @apply mt-6; }
-      .cbi-map .cbi-section-node > .table { @apply mt-4; }
+      .cbi-map .cbi-section-node>h3 {
+        @apply mt-6;
+      }
+
+      .cbi-map .cbi-section-node>.table {
+        @apply mt-4;
+      }
 
       /* 值容器 */
       .cbi-value {
@@ -1450,11 +1528,11 @@
 
       /* 输入框组样式 */
       .cbi-input-text {
-        @apply rounded-lg border px-3 py-2 text-sm transition-all duration-200;
-        @apply border-slate-300/50 bg-white/90 text-slate-900;
-        @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-        @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-        @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
+        @apply rounded-lg border px-3 py-2 text-sm transition-all duration-200
+             border-slate-300/50 bg-white/90 text-slate-900
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100
+             focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none
+             dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
       }
     }
 
@@ -1468,37 +1546,39 @@
 
       /* 动态列表项目 */
       .cbi-dynlist .item {
-        @apply relative flex flex-col items-start gap-2 rounded-lg border p-3 pr-8 pointer-events-none;
-        @apply border-slate-200/50 bg-white/80 dark:border-slate-600/40 dark:bg-slate-800/80;
-        @apply cursor-move transition-all duration-200;
-        @apply hover:bg-white dark:hover:bg-slate-800;
-        @apply hover:border-slate-300/60 dark:hover:border-slate-500/50;
-        @apply hover:shadow-sm dark:hover:shadow-black/10;
-        @apply focus:outline-none focus:ring-2 focus:ring-aurora-sky/20 focus:border-aurora-sky;
-        @apply dark:focus:ring-aurora-sky-400/20 dark:focus:border-aurora-sky-400;
+        @apply relative flex flex-col items-start gap-2 rounded-lg border p-3 pr-8 pointer-events-none
+             border-slate-200/50 bg-white/80 dark:border-slate-600/40 dark:bg-slate-800/80
+             cursor-move transition-all duration-200
+             hover:bg-white dark:hover:bg-slate-800
+             hover:border-slate-300/60 dark:hover:border-slate-500/50
+             hover:shadow-sm dark:hover:shadow-black/10
+             focus:outline-none focus:ring-2 focus:ring-aurora-sky/20 focus:border-aurora-sky
+             dark:focus:ring-aurora-sky-400/20 dark:focus:border-aurora-sky-400;
         @apply overflow-visible;
       }
 
       /* 恢复子元素的点击事件（文本选择、拖拽等） */
-      .cbi-dynlist .item > * { @apply pointer-events-auto; }
+      .cbi-dynlist .item>* {
+        @apply pointer-events-auto;
+      }
 
       /* 删除标记伪元素（右侧交叉线，纯 Tailwind 写法） */
       .cbi-dynlist .item::before,
       .cbi-dynlist .item::after {
-        @apply absolute top-1 right-1 h-3 w-[2px] bg-red-600 dark:bg-red-500;
-        @apply transition-colors duration-200;
-        @apply pointer-events-auto cursor-pointer;
-        @apply rounded-full;
+        @apply absolute top-1 right-1 h-3 w-[2px] bg-red-600 dark:bg-red-500
+             transition-colors duration-200
+             pointer-events-auto cursor-pointer
+             rounded-full;
       }
-      
+
       .cbi-dynlist .item::before {
         @apply rotate-45;
       }
-      
+
       .cbi-dynlist .item::after {
         @apply -rotate-45;
       }
-      
+
       .cbi-dynlist .item:hover::before,
       .cbi-dynlist .item:hover::after {
         @apply bg-red-700 dark:bg-red-400;
@@ -1506,17 +1586,18 @@
 
       /* 动态列表项目文本 */
       .cbi-dynlist .item span {
-        @apply text-sm font-medium text-slate-700 dark:text-slate-300;
-        @apply flex-1 max-w-full break-words;
+        @apply text-sm font-medium text-slate-700 dark:text-slate-300
+             flex-1 max-w-full break-words;
       }
 
       /* 文件名等加粗文本与代码块的溢出处理 */
       .cbi-dynlist .item strong {
         @apply block mb-1 max-w-full break-words font-semibold text-slate-800 dark:text-slate-100;
       }
+
       .cbi-dynlist .item code {
-        @apply block w-full max-w-full overflow-x-auto whitespace-pre text-xs leading-snug font-mono;
-        @apply text-slate-800 dark:text-slate-200;
+        @apply block w-full max-w-full overflow-x-auto whitespace-pre text-xs leading-snug font-mono
+             text-slate-800 dark:text-slate-200;
       }
 
       /* 动态列表项目隐藏输入 */
@@ -1526,36 +1607,36 @@
 
       /* 添加项目区域 */
       .cbi-dynlist .add-item {
-        @apply flex items-center gap-2 rounded-lg border-2 border-dashed p-3;
-        @apply border-slate-300/40 dark:border-slate-600/40;
-        @apply bg-slate-50/50 dark:bg-slate-800/30;
-        @apply transition-all duration-200;
-        @apply hover:border-slate-400/60 dark:hover:border-slate-500/60;
-        @apply hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
+        @apply flex items-center gap-2 rounded-lg border-2 border-dashed p-3
+             border-slate-300/40 dark:border-slate-600/40
+             bg-slate-50/50 dark:bg-slate-800/30
+             transition-all duration-200
+             hover:border-slate-400/60 dark:hover:border-slate-500/60
+             hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
       }
 
       /* 添加项目输入框 */
       .cbi-dynlist .add-item input[type="text"] {
-        @apply flex-1 rounded-lg border px-3 py-2 text-sm transition-all duration-200;
-        @apply border-slate-300/50 bg-white/90 text-slate-900;
-        @apply dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100;
-        @apply focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none;
-        @apply dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
+        @apply flex-1 rounded-lg border px-3 py-2 text-sm transition-all duration-200
+             border-slate-300/50 bg-white/90 text-slate-900
+             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100
+             focus:border-aurora-sky focus:ring-aurora-sky/20 focus:bg-white focus:ring-2 focus:outline-none
+             dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 dark:focus:bg-slate-800;
       }
 
       /* 添加按钮 */
       .cbi-dynlist .add-item .btn.cbi-button-add {
-        @apply flex h-8 w-8 items-center justify-center rounded-lg;
-        @apply bg-aurora-sky text-white font-bold text-lg leading-none;
-        @apply hover:bg-aurora-sky-600 transition-colors duration-200;
-        @apply focus:outline-none focus:ring-2 focus:ring-aurora-sky/20 focus:ring-offset-2;
-        @apply dark:focus:ring-offset-slate-800;
+        @apply flex h-8 w-8 items-center justify-center rounded-lg
+             bg-aurora-sky text-white font-bold text-lg leading-none
+             hover:bg-aurora-sky-600 transition-colors duration-200
+             focus:outline-none focus:ring-2 focus:ring-aurora-sky/20 focus:ring-offset-2
+             dark:focus:ring-offset-slate-800;
       }
 
       /* 项目状态样式 */
       .cbi-dynlist .item.flash {
-        @apply border-aurora-sky/60 bg-aurora-sky/5;
-        @apply animate-pulse;
+        @apply border-aurora-sky/60 bg-aurora-sky/5
+             animate-pulse;
       }
 
       /* 拖拽状态 */
@@ -1574,8 +1655,8 @@
 
       /* 地图描述 */
       .cbi-map-descr {
-        @apply mb-6 text-sm text-slate-600 dark:text-slate-400;
-        @apply leading-relaxed;
+        @apply mb-6 text-sm text-slate-600 dark:text-slate-400
+             leading-relaxed;
       }
     }
 
@@ -1606,10 +1687,10 @@
   @layer segmented {
 
     .cbi-tabmenu {
-      @apply inline-flex items-center gap-1 p-1;
-      @apply bg-slate-100/50 dark:bg-slate-800/30;
-      @apply border border-slate-200/40 dark:border-slate-700/30;
-      @apply rounded-3xl;
+      @apply inline-flex items-center gap-1 p-1
+             bg-slate-100/50 dark:bg-slate-800/30
+             border border-slate-200/40 dark:border-slate-700/30
+             rounded-3xl;
     }
 
     .cbi-tabmenu li {
@@ -1618,16 +1699,16 @@
 
     .cbi-tabmenu .cbi-tab a,
     .cbi-tabmenu .cbi-tab-disabled a {
-      @apply block px-4 py-2 text-center text-sm font-medium no-underline;
-      @apply rounded-2xl;
-      @apply text-slate-600 dark:text-slate-400;
+      @apply block px-4 py-2 text-center text-sm font-medium no-underline
+             rounded-2xl
+             text-slate-600 dark:text-slate-400;
     }
 
     .cbi-tabmenu .cbi-tab a {
-      @apply text-white dark:text-white;
-      @apply bg-slate-900;
-      @apply dark:bg-slate-100;
-      @apply font-semibold;
+      @apply text-white dark:text-white
+             bg-slate-900
+             dark:bg-slate-100
+             font-semibold;
     }
   }
 
@@ -1656,7 +1737,7 @@
       @apply bg-slate-900 dark:bg-slate-100 absolute bottom-0 left-0 h-0.5 w-full content-[''];
     }
 
-  
+
 
 
 
@@ -1685,9 +1766,9 @@
 
     /* CBI Section Components - 系统状态卡片组件 */
     .cbi-section {
-      @apply mb-4 rounded-xl border-2 bg-white p-6 shadow-lg;
-      @apply border-slate-200/30 dark:border-slate-600/25;
-      @apply dark:bg-slate-800;
+      @apply mb-4 rounded-xl border-2 bg-white p-6 shadow-lg
+             border-slate-200/30 dark:border-slate-600/25
+             dark:bg-slate-800;
     }
 
     .cbi-section h3 {
@@ -1696,35 +1777,13 @@
 
     /* Network Interface Components - 网络接口组件 */
     .ifacebox {
-      @apply mx-2.5 min-w-40 border-2 border-slate-200/25 text-center whitespace-nowrap;
-      @apply overflow-hidden rounded-xl bg-white shadow-md;
-      @apply dark:border-slate-600/20 dark:bg-slate-800;
-      @apply inline-flex flex-col leading-tight;
+      @apply mx-2.5 min-w-40 border-2 border-slate-200/25 text-center whitespace-nowrap
+             overflow-hidden rounded-xl bg-white shadow-md
+             dark:border-slate-600/20 dark:bg-slate-800
+             inline-flex flex-col leading-tight;
     }
 
-    /* Tooltip Styles */
-    .cbi-tooltip {
-      @apply hidden;
-    }
 
-    .cbi-tooltip-container:hover .cbi-tooltip {
-      @apply absolute z-50 block rounded px-2 py-1 text-xs text-slate-900 shadow-lg;
-      @apply left-1/2 -translate-x-1/2 -translate-y-full transform;
-      @apply max-w-xs bg-white whitespace-nowrap;
-      @apply dark:bg-slate-900 dark:text-slate-100;
-    }
-
-    .cbi-tooltip.left {
-      @apply right-0 left-auto w-40 transform-none;
-    }
-
-    .cbi-tooltip .nowrap {
-      @apply whitespace-nowrap;
-    }
-
-    .cbi-tooltip strong {
-      @apply font-semibold;
-    }
 
     /* Fade In Animation */
     .cbi-section .fade-in {
@@ -1732,9 +1791,9 @@
     }
 
     .ifacebox-head {
-      @apply rounded-t-sm border-b border-slate-200/40 px-3 py-2;
-      @apply text-center text-sm font-semibold text-slate-900;
-      @apply bg-slate-50 dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
+      @apply rounded-t-sm border-b border-slate-200/40 px-3 py-2
+             text-center text-sm font-semibold text-slate-900
+             bg-slate-50 dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
     }
 
     .ifacebox-head.active {
@@ -1745,35 +1804,6 @@
       @apply flex flex-col items-center justify-center p-3;
     }
 
-    .network-status-table .ifacebox-body>* {
-      @apply m-1;
-    }
 
-    .network-status-table .ifacebox-body>span {
-      @apply h-full flex-1 flex-auto;
-    }
-
-    .network-status-table .ifacebox-body>div {
-      @apply -m-0.5 flex flex-wrap;
-    }
-
-    /* Large Interface Badge */
-    .ifacebadge.large,
-    .network-status-table .ifacebox-body .ifacebadge {
-      @apply m-0.5 flex min-w-[220px] flex-1 p-2;
-    }
-
-    .ifacebadge.large {
-      @apply inline-flex;
-    }
-
-    .network-status-table .ifacebox-body .ifacebadge>span {
-      @apply overflow-hidden text-ellipsis;
-    }
-
-    .ifacebadge>*,
-    .ifacebadge.large>* {
-      @apply mx-0.5;
-    }
   }
-
+}
