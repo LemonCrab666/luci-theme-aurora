@@ -731,62 +731,49 @@
 
   @layer dropdown {
 
-    /* 基础下拉菜单样式 */
+    /* 基础下拉菜单样式 - 最小化通用样式 */
     @layer base {
 
-      /* 通用下拉菜单容器 */
+      /* 通用下拉菜单容器 - 只定义基础定位 */
       .dropdown,
       .cbi-dropdown {
-        @apply relative inline-block;
+        @apply relative;
       }
 
-      /* 通用下拉菜单列表 */
-      .dropdown-menu,
-      .cbi-dropdown ul {
-        @apply invisible absolute top-full left-0 z-[1000] mt-2 min-w-[200px] rounded-xl border py-2 opacity-0;
-        @apply border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800;
-        @apply shadow-lg dark:shadow-black/40;
-        @apply transition-all duration-200;
-      }
-
-      /* 通用下拉菜单项目 */
+      /* 通用下拉菜单项目 - 只定义基础样式 */
       .dropdown-menu li,
       .cbi-dropdown ul li {
         @apply m-0 list-none;
       }
 
-      /* 通用下拉菜单链接 */
+      /* 通用下拉菜单链接 - 只定义基础样式 */
       .dropdown-menu a,
       .cbi-dropdown ul li[data-value] {
-        @apply mx-2 block rounded-lg px-4 py-3 text-sm no-underline transition-all duration-200;
-        @apply text-slate-600 dark:text-slate-300;
-        @apply hover:bg-aurora-sky/10 dark:hover:bg-aurora-sky/20;
-        @apply hover:text-aurora-sky dark:hover:text-aurora-sky-300;
+        @apply block text-sm no-underline transition-all duration-200;
         @apply cursor-pointer;
-      }
-
-      /* 通用下拉菜单展开状态 */
-      .dropdown:hover .dropdown-menu,
-      .cbi-dropdown:focus-within ul,
-      .cbi-dropdown:hover ul {
-        @apply visible opacity-100;
       }
     }
 
     @layer nav {
+      /* 导航下拉菜单 - 使用绝对定位 */
       .dropdown-menu {
+        @apply absolute top-full left-0 z-[1000] mt-2 min-w-[200px] rounded-xl border py-2;
+        @apply border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800;
+        @apply shadow-lg dark:shadow-black/40;
         @apply scale-95 shadow-2xl;
         @apply border-slate-200/70 bg-white/80 text-slate-800;
         @apply dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100;
         @apply backdrop-blur-md backdrop-saturate-150;
+        @apply invisible opacity-0 transition-all duration-200;
       }
 
       .dropdown:hover .dropdown-menu {
-        @apply scale-100 border-slate-300/80 bg-white/85 dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
+        @apply visible opacity-100 scale-100 border-slate-300/80 bg-white/85 dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
       }
 
       .dropdown-menu a {
-        @apply font-medium text-slate-700 dark:text-slate-200 rounded-lg transition-all duration-150 ease-out;
+        @apply mx-2 block rounded-lg px-4 py-3;
+        @apply font-medium text-slate-700 dark:text-slate-200 transition-all duration-150 ease-out;
         @apply hover:bg-slate-200/60 dark:hover:bg-slate-700/70;
         @apply hover:text-slate-900 dark:hover:text-white hover:font-semibold;
         @apply hover:translate-x-0.5;
@@ -797,30 +784,96 @@
     }
 
     @layer cbi {
-      .cbi-dropdown.btn.cbi-button-apply.important {
-        @apply bg-aurora-sky text-white;
-        @apply dark:bg-aurora-sky-500;
-        @apply shadow-lg hover:shadow-xl;
-        @apply hover:scale-[1.02] active:scale-[0.98];
-        @apply relative inline-flex items-center justify-between gap-2 rounded-xl ;
-        @apply text-sm font-medium transition-all duration-200;
-        @apply focus:ring-aurora-sky/30 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-        @apply dark:focus:ring-offset-slate-900;
+      /* CBI下拉菜单基础样式 - 苹果风格设计 */
+      .cbi-dropdown {
+        @apply inline-flex items-center relative;
+      }
+
+      /* 下拉菜单列表容器 */
+      .cbi-dropdown > ul {
+        @apply m-0 p-0 list-none;
+        @apply flex items-center;
+      }
+
+      /* 下拉菜单项目基础样式 - 清除所有padding */
+      .cbi-dropdown > ul > li {
+        @apply hidden p-0;
+      }
+
+      /* 只显示第一个li项目 - 苹果风格按钮，清除padding */
+      .cbi-dropdown > ul > li:first-child {
+        @apply block cursor-pointer;
+        /* @apply text-sm font-medium; */
+        @apply text-slate-100 dark:text-slate-900;
+        @apply hover:text-slate-800 dark:hover:text-slate-100;
+        @apply transition-colors duration-150;
+      }
+
+      /* 更多按钮默认隐藏 */
+      .cbi-dropdown > .more {
+        @apply hidden;
+      }
+
+      /* 箭头样式 - 苹果风格分割线 */
+      .cbi-dropdown > .open {
         @apply cursor-pointer;
+        @apply px-2 py-1.5 text-sm;
+        @apply text-slate-100 dark:text-slate-900;
+        @apply hover:text-slate-600 dark:hover:text-slate-300;
+        @apply transition-colors duration-150;
+        @apply border-l border-slate-200 dark:border-slate-600;
+        @apply ml-2;
       }
 
-      .cbi-dropdown .open {
-        @apply text-xs text-slate-400 dark:text-slate-500;
+      /* dropdown列表 - 苹果风格悬浮菜单 */
+      .cbi-dropdown > ul.dropdown {
+        @apply absolute top-full left-0 z-50 mt-1 min-w-[140px] rounded-xl border py-1;
+        @apply border-slate-200/60 bg-white/95 dark:border-slate-600/40 dark:bg-slate-800/95;
+        @apply shadow-xl backdrop-blur-sm;
+        @apply invisible opacity-0 scale-95;
+        @apply transition-all duration-200 ease-out;
+        @apply flex flex-col;
       }
 
-      .cbi-dropdown .more {
-        @apply text-xs text-slate-400 dark:text-slate-500;
+      /* dropdown列表展开状态 */
+      .cbi-dropdown[open] > ul.dropdown {
+        @apply visible opacity-100 scale-100;
+      }
+
+      /* dropdown列表中的项目 - 保留padding，苹果风格悬停效果 */
+      .cbi-dropdown > ul.dropdown > li {
+        @apply block w-full cursor-pointer;
+        @apply px-3 py-2 text-sm font-medium;
+        @apply text-slate-600 dark:text-slate-300;
+        @apply hover:bg-slate-50 dark:hover:bg-slate-700/50;
+        @apply hover:text-slate-800 dark:hover:text-slate-100;
+        @apply transition-all duration-150 ease-out;
+        @apply mx-1 rounded-lg;
+      }
+
+      /* preview列表 - 与open并排显示，但只显示第一个li */
+      .cbi-dropdown > ul.preview {
+        @apply flex items-center;
+      }
+
+      /* preview列表中的项目默认隐藏 */
+      .cbi-dropdown > ul.preview > li {
+        @apply hidden;
+      }
+
+      /* preview列表只显示第一个li - 苹果风格按钮，清除padding */
+      .cbi-dropdown > ul.preview > li:first-child {
+        @apply block cursor-pointer;
+        @apply text-sm font-medium;
+        @apply text-slate-100 dark:text-slate-900;
+        @apply hover:text-slate-800 dark:hover:text-slate-100;
+        @apply transition-colors duration-150;
       }
 
       .cbi-dropdown input[type="hidden"] {
         @apply hidden;
       }
-    }
+    }   
 
     /* 系统设置专用下拉菜单样式 */
     @layer system-settings {
