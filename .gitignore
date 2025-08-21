@@ -6,26 +6,14 @@
 .dev/yarn-debug.log*
 .dev/yarn-error.log*
 
-# Vite / tooling caches
-.dev/.vite/
-.dev/.cache/
-.dev/.turbo/
-.dev/.eslintcache
-
-# Editors / OS
+# Editors
 .vscode/
-.idea/
-.DS_Store
-Thumbs.db
-*.swp
 
 # Env files (keep secrets local)
 .env
 .env.*.local
 
-# Test / coverage / temp
-coverage/
-.tmp/
-tmp/
-temp/
+# AI
+CLAUDE.md
+CLAUDE.local.md
 
