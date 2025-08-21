@@ -14,7 +14,7 @@
   --spacing-content-padding: 2rem;
   --spacing-form-gap: 0.75rem;
   --spacing-button-gap: 0.5rem;
-  
+
   /* Border Radius System */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -22,18 +22,18 @@
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
   --radius-3xl: 3rem;
-  
+
   /* Opacity System */
   --opacity-backdrop: 0.85;
   --opacity-border-light: 0.2;
   --opacity-border-dark: 0.3;
   --opacity-hover: 0.1;
-  
+
   /* Transition System */
   --transition-fast: 150ms;
   --transition-base: 200ms;
   --transition-slow: 300ms;
-  
+
   /* Aurora Color Palette - Light Mode */
   --color-aurora-green: #6ee7b7;
   --color-aurora-green-50: oklch(97.2% 0.019 158.743);
@@ -133,35 +133,47 @@
   }
 
   body {
-    @apply relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 
-           before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-[''] 
-           dark:bg-gradient-to-br dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald dark:text-slate-100;
+    @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-[''] dark:bg-gradient-to-br dark:text-slate-100;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-sans leading-tight font-semibold tracking-tight text-slate-900 
-           dark:text-slate-100;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans leading-tight font-semibold tracking-tight text-slate-900 dark:text-slate-100;
   }
 
-  h1 { @apply mb-4 text-3xl; }
-  h2 { @apply mb-4 text-2xl; }
-  h3 { @apply mb-4 text-xl; }
-  h4 { @apply mb-2 text-lg; }
-  h5 { @apply mb-2 text-base; }
-  h6 { @apply mb-2 text-sm; }
+  h1 {
+    @apply mb-4 text-3xl;
+  }
+  h2 {
+    @apply mb-4 text-2xl;
+  }
+  h3 {
+    @apply mb-4 text-xl;
+  }
+  h4 {
+    @apply mb-2 text-lg;
+  }
+  h5 {
+    @apply mb-2 text-base;
+  }
+  h6 {
+    @apply mb-2 text-sm;
+  }
 
   hr {
     @apply border-0;
   }
 
   p {
-    @apply mb-4 text-sm leading-relaxed text-slate-600 
-           dark:text-slate-300;
+    @apply mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300;
   }
 
   small {
-    @apply text-xs font-normal text-slate-500 
-           dark:text-slate-400;
+    @apply text-xs font-normal text-slate-500 dark:text-slate-400;
   }
 
   ::-webkit-scrollbar {
@@ -169,14 +181,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-400/5 
-           dark:bg-aurora-night-slate;
+    @apply dark:bg-aurora-night-slate bg-slate-400/5;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded bg-slate-400/30 transition-colors duration-200 
-           hover:bg-slate-400/50 
-           dark:bg-aurora-teal dark:hover:bg-aurora-night-emerald;
+    @apply dark:bg-aurora-teal dark:hover:bg-aurora-night-emerald rounded bg-slate-400/30 transition-colors duration-200 hover:bg-slate-400/50;
   }
 }
 
@@ -184,29 +193,23 @@
   @layer layout {
     @layer header {
       header {
-        @apply fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 
-               hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 
-               dark:border-slate-700/30 dark:bg-slate-900/80 dark:hover:border-slate-600/40 dark:hover:bg-gradient-to-r dark:hover:from-aurora-night-slate-800 dark:hover:via-aurora-night-teal-800 dark:hover:to-aurora-night-emerald-800 dark:hover:shadow-black/50;
+        @apply dark:hover:from-aurora-night-slate-800 dark:hover:via-aurora-night-teal-800 dark:hover:to-aurora-night-emerald-800 fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 dark:border-slate-700/30 dark:bg-slate-900/80 dark:hover:border-slate-600/40 dark:hover:bg-gradient-to-r dark:hover:shadow-black/50;
       }
 
       .brand {
-        @apply inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 
-               hover:-translate-y-0.5 hover:text-aurora-sky 
-               dark:text-slate-100;
+        @apply hover:text-aurora-sky inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 dark:text-slate-100;
       }
 
       .nav {
         @apply absolute left-1/2 m-0 flex -translate-x-1/2 transform list-none items-center gap-1 p-0;
-        
+
         & > li {
           @apply relative;
         }
       }
 
       .menu {
-        @apply block rounded px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-colors duration-200 
-               hover:bg-slate-100 hover:text-slate-900 
-               dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100;
+        @apply block rounded px-3 py-2 text-xs font-normal text-slate-600 no-underline transition-colors duration-200 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100;
       }
     }
 
@@ -216,55 +219,46 @@
       }
 
       #view {
-        @apply mb-8 w-full rounded-3xl border-2 border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-8 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 empty:hidden 
-               hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 
-               dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85 dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150 dark:hover:border-slate-600/35 dark:hover:shadow-black/50;
+        @apply mb-8 w-full rounded-3xl border-2 border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-8 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85 dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150 dark:hover:border-slate-600/35 dark:hover:shadow-black/50;
       }
 
       #syslog {
-        @apply max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 bg-aurora-night-slate p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 
-               focus:border-aurora-teal focus:shadow-lg focus:ring-2 focus:ring-aurora-teal/20 focus:outline-none 
-               dark:border-slate-400/30 dark:shadow-black/40;
+        @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-slate-400/30 dark:shadow-black/40;
       }
     }
 
     @layer footer {
       footer {
-        @apply mt-auto flex flex-wrap items-center justify-center border-t border-slate-200 py-2 text-xs text-slate-500 
-               dark:border-slate-700 dark:text-slate-400;
-        
+        @apply mt-auto flex flex-wrap items-center justify-center border-t border-slate-200 py-2 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400;
+
         & span {
           @apply inline-block text-center;
         }
-        
+
         & a {
-          @apply text-aurora-sky no-underline 
-                 hover:text-aurora-sky-600;
+          @apply text-aurora-sky hover:text-aurora-sky-600 no-underline;
         }
-        
+
         & .breadcrumb {
-          @apply m-0 mb-4 flex rounded border border-slate-200 bg-slate-50 px-3 py-2 
-                 dark:border-slate-700 dark:bg-slate-800;
-          
+          @apply m-0 mb-4 flex rounded border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800;
+
           & li {
             @apply list-none;
-            
+
             &:not(:last-child)::after {
               @apply px-2 text-slate-400 content-['|'];
             }
-            
+
             &.active a {
-              @apply text-slate-600 
-                     dark:text-slate-300;
+              @apply text-slate-600 dark:text-slate-300;
             }
           }
-          
+
           & a {
-            @apply text-aurora-sky 
-                   hover:text-aurora-sky-600;
+            @apply text-aurora-sky hover:text-aurora-sky-600;
           }
         }
-        
+
         & ul.breadcrumb {
           @apply ml-auto;
         }
@@ -273,20 +267,17 @@
 
     @layer page-specific {
       .syslog-container {
-        @apply max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 bg-aurora-night-slate p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 
-               focus:border-aurora-teal focus:shadow-lg focus:ring-2 focus:ring-aurora-teal/20 focus:outline-none 
-               dark:border-slate-400/30 dark:shadow-black/40;
+        @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-slate-400/30 dark:shadow-black/40;
       }
     }
   }
 
   @layer button {
     @layer base {
-      button, .btn, .cbi-button {
-        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-aurora-sky px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 
-               hover:bg-gradient-to-r hover:from-aurora-sky hover:to-aurora-teal hover:shadow-md 
-               focus:ring-2 focus:ring-aurora-sky/30 focus:ring-offset-2 focus:outline-none 
-               dark:bg-aurora-sky-500 dark:hover:from-aurora-sky-500 dark:hover:to-aurora-teal-500 dark:focus:ring-offset-slate-900;
+      button,
+      .btn,
+      .cbi-button {
+        @apply bg-aurora-sky hover:from-aurora-sky hover:to-aurora-teal focus:ring-aurora-sky/30 dark:bg-aurora-sky-500 dark:hover:from-aurora-sky-500 dark:hover:to-aurora-teal-500 inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-gradient-to-r hover:shadow-md focus:ring-2 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-slate-900;
       }
 
       .btn + .btn,
@@ -295,45 +286,27 @@
       }
 
       .btn-primary {
-        @apply bg-aurora-sky px-4 py-2 text-sm shadow-aurora-sky/20 
-               hover:bg-aurora-sky-600 hover:shadow-aurora-sky/30 
-               focus:ring-aurora-sky/30 
-               dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400;
+        @apply bg-aurora-sky shadow-aurora-sky/20 hover:bg-aurora-sky-600 hover:shadow-aurora-sky/30 focus:ring-aurora-sky/30 dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400 px-4 py-2 text-sm;
       }
 
       .btn-secondary {
-        @apply border border-slate-300 bg-white text-slate-700 shadow-slate-400/10 
-               hover:bg-slate-50 hover:shadow-slate-400/20 
-               focus:ring-slate-400/30 
-               dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600;
+        @apply border border-slate-300 bg-white text-slate-700 shadow-slate-400/10 hover:bg-slate-50 hover:shadow-slate-400/20 focus:ring-slate-400/30 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600;
       }
 
       .btn-positive {
-        @apply w-full bg-aurora-sky px-6 py-3 text-sm font-semibold shadow-aurora-sky/20 
-               hover:bg-aurora-sky-600 hover:shadow-aurora-sky/30 
-               focus:ring-aurora-sky/30 
-               dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400;
+        @apply bg-aurora-sky shadow-aurora-sky/20 hover:bg-aurora-sky-600 hover:shadow-aurora-sky/30 focus:ring-aurora-sky/30 dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400 w-full px-6 py-3 text-sm font-semibold;
       }
 
       .cbi-button-action {
-        @apply bg-aurora-sky font-medium text-white shadow-aurora-sky/20 
-               hover:bg-aurora-sky-600 hover:shadow-aurora-sky/30 
-               focus:ring-aurora-sky/30 
-               dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400;
+        @apply bg-aurora-sky shadow-aurora-sky/20 hover:bg-aurora-sky-600 hover:shadow-aurora-sky/30 focus:ring-aurora-sky/30 dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400 font-medium text-white;
       }
 
       .cbi-button-positive {
-        @apply cursor-default bg-emerald-600 font-medium text-white shadow-emerald-600/20 
-               hover:bg-emerald-700 hover:shadow-emerald-700/30 
-               focus:ring-emerald-600/30 
-               dark:bg-emerald-500 dark:hover:bg-emerald-600;
+        @apply cursor-default bg-emerald-600 font-medium text-white shadow-emerald-600/20 hover:bg-emerald-700 hover:shadow-emerald-700/30 focus:ring-emerald-600/30 dark:bg-emerald-500 dark:hover:bg-emerald-600;
       }
 
       .cbi-button-negative {
-        @apply cursor-default bg-slate-300 font-medium text-slate-700 shadow-slate-300/20 
-               hover:bg-slate-400 hover:shadow-slate-400/30 
-               focus:ring-slate-300/30 
-               dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700;
+        @apply cursor-default bg-slate-300 font-medium text-slate-700 shadow-slate-300/20 hover:bg-slate-400 hover:shadow-slate-400/30 focus:ring-slate-300/30 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700;
       }
 
       .cbi-section-actions {
@@ -344,11 +317,11 @@
 
       .td.cbi-section-actions {
         @apply overflow-x-auto p-3 whitespace-nowrap;
-        
+
         & div {
           @apply justify-start;
         }
-        
+
         & .btn,
         & .cbi-button {
           @apply inline-flex w-auto flex-none whitespace-nowrap;
@@ -358,26 +331,19 @@
 
     @layer page-actions {
       .cbi-page-actions {
-        @apply mt-8 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-6 
-               dark:border-slate-700/30;
-        
+        @apply mt-8 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-6 dark:border-slate-700/30;
+
         & .btn,
         & .cbi-button {
-          @apply rounded-xl text-sm font-medium transition-all duration-200 
-                 focus:ring-2 focus:ring-aurora-sky/30 focus:ring-offset-2 focus:outline-none 
-                 dark:focus:ring-offset-slate-900;
+          @apply focus:ring-aurora-sky/30 rounded-xl text-sm font-medium transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-slate-900;
         }
-        
+
         & .cbi-button-save {
-          @apply bg-aurora-sky text-white shadow-sm 
-                 hover:bg-aurora-sky-600 hover:shadow-md 
-                 dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400;
+          @apply bg-aurora-sky hover:bg-aurora-sky-600 dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400 text-white shadow-sm hover:shadow-md;
         }
-        
+
         & .cbi-button-reset {
-          @apply border border-slate-300/50 bg-slate-100 text-slate-700 
-                 hover:bg-slate-200 
-                 dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600;
+          @apply border border-slate-300/50 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600;
         }
       }
     }
@@ -385,51 +351,35 @@
     @layer control-group {
       .control-group {
         @apply mt-2 flex flex-wrap items-center gap-3;
-        
+
         & .btn,
         & .cbi-button {
-          @apply rounded-lg border border-slate-300/50 bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-200 
-                 hover:bg-slate-200 
-                 focus:ring-2 focus:ring-aurora-sky/20 focus:ring-offset-2 focus:outline-none 
-                 dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600 dark:focus:ring-offset-slate-900;
+          @apply focus:ring-aurora-sky/20 rounded-lg border border-slate-300/50 bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-slate-200 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600 dark:focus:ring-offset-slate-900;
         }
-        
+
         & .cbi-button-apply {
-          @apply border-aurora-sky/30 bg-aurora-sky/10 text-aurora-sky 
-                 hover:border-aurora-sky/40 hover:bg-aurora-sky/20 
-                 dark:border-aurora-sky/40 dark:bg-aurora-sky/20 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/50 dark:hover:bg-aurora-sky/30;
+          @apply border-aurora-sky/30 bg-aurora-sky/10 text-aurora-sky hover:border-aurora-sky/40 hover:bg-aurora-sky/20 dark:border-aurora-sky/40 dark:bg-aurora-sky/20 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/50 dark:hover:bg-aurora-sky/30;
         }
       }
     }
 
     @layer dynamic-list {
       .cbi-dynlist .btn.cbi-button-add {
-        @apply min-w-[40px] rounded-lg bg-aurora-sky px-4 py-2 text-lg font-medium text-white transition-all duration-200 
-               hover:bg-aurora-sky-600 
-               focus:ring-2 focus:ring-aurora-sky/30 focus:ring-offset-2 focus:outline-none 
-               dark:bg-aurora-sky-500 dark:focus:ring-offset-slate-900;
+        @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/30 dark:bg-aurora-sky-500 min-w-[40px] rounded-lg px-4 py-2 text-lg font-medium text-white transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-slate-900;
       }
     }
 
     @layer modal {
       .modal .button-row {
-        @apply mt-6 flex justify-end gap-3 border-t border-slate-200/50 pt-4 sm:flex-row sm:gap-3 
-               dark:border-slate-700/30;
+        @apply mt-6 flex justify-end gap-3 border-t border-slate-200/50 pt-4 sm:flex-row sm:gap-3 dark:border-slate-700/30;
       }
 
       .modal .btn {
-        @apply rounded-lg border border-slate-300/50 bg-slate-100 px-6 py-2.5 text-sm font-medium text-slate-700 transition-all duration-200 sm:w-auto 
-               hover:bg-slate-200 
-               focus:ring-2 focus:ring-aurora-sky/30 focus:ring-offset-2 focus:outline-none 
-               dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 dark:focus:ring-offset-slate-900;
+        @apply focus:ring-aurora-sky/30 rounded-lg border border-slate-300/50 bg-slate-100 px-6 py-2.5 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-slate-200 focus:ring-2 focus:ring-offset-2 focus:outline-none sm:w-auto dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 dark:focus:ring-offset-slate-900;
       }
 
       .modal.login .btn.cbi-button-positive.important {
-        @apply w-full rounded-xl bg-gradient-to-r from-aurora-sky to-aurora-teal px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-200 
-               hover:scale-[1.02] hover:shadow-xl 
-               focus:ring-2 focus:ring-aurora-sky/30 focus:ring-offset-2 focus:outline-none 
-               active:scale-[0.98] 
-               dark:from-aurora-sky-500 dark:to-aurora-teal-500 dark:focus:ring-offset-slate-900;
+        @apply from-aurora-sky to-aurora-teal focus:ring-aurora-sky/30 dark:from-aurora-sky-500 dark:to-aurora-teal-500 w-full rounded-xl bg-gradient-to-r px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none active:scale-[0.98] dark:focus:ring-offset-slate-900;
       }
     }
   }
@@ -437,52 +387,40 @@
   @layer input {
     input[type="text"],
     input[type="password"] {
-      @apply rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 
-             focus:border-aurora-sky focus:bg-white focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-aurora-sky-400 dark:focus:bg-slate-800 dark:focus:ring-aurora-sky-400/20;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
     }
   }
 
   @layer select {
     select {
-      @apply rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 
-             focus:border-aurora-sky focus:bg-white focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-aurora-sky-400 dark:focus:bg-slate-800 dark:focus:ring-aurora-sky-400/20;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
     }
   }
 
   @layer textarea {
     textarea {
-      @apply min-h-32 w-full resize-y rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 
-             focus:border-aurora-sky focus:bg-white focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-aurora-sky-400 dark:focus:bg-slate-800 dark:focus:ring-aurora-sky-400/20;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-h-32 w-full resize-y rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
     }
 
     #syslog {
-      @apply bg-slate-900 text-slate-100 
-             dark:bg-slate-100 dark:text-slate-900;
+      @apply bg-slate-900 text-slate-100 dark:bg-slate-100 dark:text-slate-900;
     }
   }
 
   @layer checkbox {
     .cbi-checkbox {
       @apply relative inline-flex items-center;
-      
+
       & input[type="checkbox"] {
-        @apply relative h-5 w-5 cursor-pointer appearance-none rounded-lg border-2 border-slate-300/50 bg-white text-aurora-sky transition-all duration-200 
-               focus:ring-2 focus:ring-aurora-sky/20 focus:ring-offset-2 focus:outline-none 
-               hover:border-slate-400/60 
-               checked:border-aurora-sky checked:bg-aurora-sky 
-               dark:border-slate-600/50 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 dark:focus:ring-offset-slate-900;
-        
+        @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-5 w-5 cursor-pointer appearance-none rounded-lg border-2 border-slate-300/50 bg-white transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
+
         &:checked::after {
           @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.85rem] w-[0.5rem] -translate-x-1/2 -translate-y-1/2 -rotate-315 border-r-2 border-b-2 border-white content-[''];
         }
       }
-      
+
       & label {
-        @apply ml-3 cursor-pointer text-sm font-medium text-slate-700 
-               dark:text-slate-300;
+        @apply ml-3 cursor-pointer text-sm font-medium text-slate-700 dark:text-slate-300;
       }
     }
   }
@@ -507,80 +445,66 @@
 
     @layer nav {
       .dropdown-menu {
-        @apply invisible absolute top-full left-0 z-[1000] mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 
-               dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
+        @apply invisible absolute top-full left-0 z-[1000] mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
       }
 
       .dropdown:hover .dropdown-menu {
-        @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl 
-               dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
+        @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
       }
 
       .dropdown-menu a {
-        @apply mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out 
-               hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset 
-               focus-visible:ring-2 focus-visible:ring-aurora-sky/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none 
-               dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+        @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
       }
     }
 
     @layer cbi {
       .cbi-dropdown {
         @apply relative inline-flex items-center;
-        
+
         & > ul {
           @apply m-0 flex list-none items-center p-0;
-          
+
           & > li {
             @apply hidden p-0;
-            
+
             &:first-child {
-              @apply block cursor-pointer text-sm font-medium text-slate-100 transition-colors duration-150 
-                     hover:text-slate-800 
-                     dark:text-slate-900 dark:hover:text-slate-100;
+              @apply block cursor-pointer text-sm font-medium text-slate-100 transition-colors duration-150 hover:text-slate-800 dark:text-slate-900 dark:hover:text-slate-100;
             }
           }
-          
+
           &.dropdown {
-            @apply invisible absolute top-full left-0 z-50 mt-1 flex min-w-[140px] scale-95 flex-col rounded-xl border border-slate-200/60 bg-white/95 py-1 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out 
-                   dark:border-slate-600/40 dark:bg-slate-800/95;
-            
+            @apply invisible absolute top-full left-0 z-50 mt-1 flex min-w-[140px] scale-95 flex-col rounded-xl border border-slate-200/60 bg-white/95 py-1 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out dark:border-slate-600/40 dark:bg-slate-800/95;
+
             & > li {
-              @apply mx-1 block w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all duration-150 ease-out 
-                     hover:bg-slate-50 hover:text-slate-800 
-                     dark:text-slate-300 dark:hover:bg-slate-700/50 dark:hover:text-slate-100;
+              @apply mx-1 block w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all duration-150 ease-out hover:bg-slate-50 hover:text-slate-800 dark:text-slate-300 dark:hover:bg-slate-700/50 dark:hover:text-slate-100;
             }
           }
-          
+
           &.preview {
             @apply flex items-center;
-            
+
             & > li {
               @apply hidden;
-              
+
               &:first-child {
-                @apply block cursor-pointer text-sm font-medium text-slate-100 transition-colors duration-150 
-                       hover:text-slate-800 
-                       dark:text-slate-900 dark:hover:text-slate-100;
+                @apply block cursor-pointer text-sm font-medium text-slate-100 transition-colors duration-150 hover:text-slate-800 dark:text-slate-900 dark:hover:text-slate-100;
               }
             }
           }
         }
-        
+
         & > .more {
           @apply hidden;
         }
-        
+
         & > .open {
-          @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-100 transition-colors duration-150 
-                 hover:text-slate-600 
-                 dark:border-slate-600 dark:text-slate-900 dark:hover:text-slate-300;
+          @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-100 transition-colors duration-150 hover:text-slate-600 dark:border-slate-600 dark:text-slate-900 dark:hover:text-slate-300;
         }
-        
+
         &[open] > ul.dropdown {
           @apply visible scale-100 opacity-100;
         }
-        
+
         & input[type="hidden"] {
           @apply hidden;
         }
@@ -609,8 +533,7 @@
 
     .cbi-tooltip-container {
       &:hover .cbi-tooltip {
-        @apply absolute z-50 block max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg 
-               dark:bg-slate-900 dark:text-slate-100;
+        @apply absolute z-50 block max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg dark:bg-slate-900 dark:text-slate-100;
       }
     }
 
@@ -618,11 +541,11 @@
       &.left {
         @apply right-0 left-auto w-40 transform-none;
       }
-      
+
       & .nowrap {
         @apply whitespace-nowrap;
       }
-      
+
       & strong {
         @apply font-semibold;
       }
@@ -630,7 +553,7 @@
 
     .nft-rules .ifacebadge.cbi-tooltip-container {
       @apply relative cursor-help;
-      
+
       & .cbi-tooltip {
         @apply absolute bottom-full left-1/2 mb-2 -translate-x-1/2 transform;
       }
@@ -638,11 +561,10 @@
 
     .nft-set.cbi-tooltip-container {
       @apply relative cursor-help;
-      
+
       & .cbi-tooltip {
-        @apply absolute top-full left-0 z-50 mt-1 max-w-xs transform-none whitespace-normal rounded-lg border border-slate-200/60 bg-white/95 p-2 shadow-xl backdrop-blur-sm 
-               dark:border-slate-600/40 dark:bg-slate-800/95;
-        
+        @apply absolute top-full left-0 z-50 mt-1 max-w-xs transform-none rounded-lg border border-slate-200/60 bg-white/95 p-2 whitespace-normal shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
+
         & .ifacebadge {
           @apply mb-1 block text-xs last:mb-0;
         }
@@ -652,22 +574,20 @@
 
   @layer badge {
     .ifacebadge {
-      @apply inline-flex cursor-default items-center gap-1.5 rounded-lg border border-slate-300/50 bg-white/90 px-2 py-1.5 text-xs font-medium text-slate-700 transition-all duration-200 
-             hover:border-slate-400/60 hover:bg-white hover:shadow-sm 
-             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
-      
+      @apply inline-flex cursor-default items-center gap-1.5 rounded-lg border border-slate-300/50 bg-white/90 px-2 py-1.5 text-xs font-medium text-slate-700 transition-all duration-200 hover:border-slate-400/60 hover:bg-white hover:shadow-sm dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
+
       & img {
         @apply h-5 w-5;
       }
-      
+
       &-active {
         @apply border-aurora-sky font-semibold;
       }
-      
+
       &.large {
         @apply inline-flex min-w-[220px] flex-1 p-2;
       }
-      
+
       & > *,
       &.large > * {
         @apply mx-0.5;
@@ -676,62 +596,55 @@
 
     .network-status-table .ifacebox-body {
       @apply -m-0.5 flex flex-wrap;
-      
+
       & .ifacebadge {
         @apply m-0.5 flex min-w-[220px] flex-1 p-2;
-        
+
         & > span {
           @apply overflow-hidden text-ellipsis;
         }
       }
-      
+
       & > * {
         @apply m-1;
       }
-      
+
       & > span {
         @apply h-full flex-1 flex-auto;
       }
     }
 
     .table .ifacebadge {
-      @apply inline-flex items-center gap-2 rounded-lg border border-slate-300/50 bg-white/90 px-2 py-1.5 text-xs text-slate-700 transition-all duration-200 
-             hover:border-slate-400/60 hover:bg-white hover:shadow-sm 
-             dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
-      
+      @apply inline-flex items-center gap-2 rounded-lg border border-slate-300/50 bg-white/90 px-2 py-1.5 text-xs text-slate-700 transition-all duration-200 hover:border-slate-400/60 hover:bg-white hover:shadow-sm dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
+
       &:empty::before {
-        @apply text-slate-400 
-               dark:text-slate-500;
-        content: '—';
+        @apply text-slate-400 dark:text-slate-500;
+        content: "—";
       }
-      
+
       & img {
         @apply h-5 w-5;
       }
     }
 
     .nft-rules .ifacebadge {
-      @apply inline-flex items-center gap-1.5 rounded-md border border-slate-300/40 bg-white/80 px-2 py-1 text-xs text-slate-600 transition-all duration-200 
-             hover:border-slate-400/50 hover:bg-white hover:shadow-sm 
-             dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:border-slate-500/50 dark:hover:bg-slate-800;
+      @apply inline-flex items-center gap-1.5 rounded-md border border-slate-300/40 bg-white/80 px-2 py-1 text-xs text-slate-600 transition-all duration-200 hover:border-slate-400/50 hover:bg-white hover:shadow-sm dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:border-slate-500/50 dark:hover:bg-slate-800;
     }
 
     .nft-set {
       @apply inline-block align-middle;
-      
+
       &-items {
         @apply inline-block max-w-[200px] overflow-hidden align-middle text-ellipsis whitespace-nowrap;
       }
-      
+
       &-item {
         @apply inline-block px-1;
       }
-      
+
       & .ifacebadge {
-        @apply inline-flex items-center gap-1 rounded border border-slate-300/30 bg-white/70 px-1.5 py-0.5 text-xs text-slate-500 transition-all duration-200 
-               hover:border-slate-400/40 hover:bg-white hover:shadow-sm 
-               dark:border-slate-600/30 dark:bg-slate-800/70 dark:text-slate-400 dark:hover:border-slate-500/40 dark:hover:bg-slate-800;
-        
+        @apply inline-flex items-center gap-1 rounded border border-slate-300/30 bg-white/70 px-1.5 py-0.5 text-xs text-slate-500 transition-all duration-200 hover:border-slate-400/40 hover:bg-white hover:shadow-sm dark:border-slate-600/30 dark:bg-slate-800/70 dark:text-slate-400 dark:hover:border-slate-500/40 dark:hover:bg-slate-800;
+
         & img {
           @apply h-3 w-3;
         }
@@ -739,33 +652,28 @@
     }
 
     .cbi-dropdown .ifacebadge {
-      @apply inline-flex items-center rounded-lg border border-slate-200/50 bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition-all duration-200 
-             hover:border-slate-300/60 hover:bg-slate-200 
-             dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/50;
-      
+      @apply inline-flex items-center rounded-lg border border-slate-200/50 bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/60 hover:bg-slate-200 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/50;
+
       & img {
         @apply mr-1 h-4 w-4;
       }
-      
+
       & em {
-        @apply italic text-slate-400 
-               dark:text-slate-500;
+        @apply text-slate-400 italic dark:text-slate-500;
       }
     }
 
     .ifacebox {
-      @apply mx-2.5 inline-flex min-w-40 flex-col overflow-hidden rounded-xl border-2 border-slate-200/25 bg-white text-center leading-tight whitespace-nowrap shadow-md 
-             dark:border-slate-600/20 dark:bg-slate-800;
-      
+      @apply mx-2.5 inline-flex min-w-40 flex-col overflow-hidden rounded-xl border-2 border-slate-200/25 bg-white text-center leading-tight whitespace-nowrap shadow-md dark:border-slate-600/20 dark:bg-slate-800;
+
       &-head {
-        @apply rounded-t-sm border-b border-slate-200/40 bg-slate-50 px-3 py-2 text-center text-sm font-semibold text-slate-900 
-               dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
-        
+        @apply rounded-t-sm border-b border-slate-200/40 bg-slate-50 px-3 py-2 text-center text-sm font-semibold text-slate-900 dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
+
         &.active {
           @apply border-aurora-sky bg-aurora-sky text-white;
         }
       }
-      
+
       &-body {
         @apply flex flex-col items-center justify-center p-3;
       }
@@ -774,38 +682,33 @@
 
   @layer message {
     .alert-message {
-      @apply relative mb-4 rounded-2xl border border-slate-200/30 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-sm 
-             dark:border-slate-700/30 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85;
-      
+      @apply relative mb-4 rounded-2xl border border-slate-200/30 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-sm dark:border-slate-700/30 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85;
+
       &.success {
-        @apply border-emerald-200/40 bg-gradient-to-br from-emerald-50/90 via-emerald-100/80 to-emerald-50/90 text-emerald-900 shadow-emerald-500/10 
-               dark:border-emerald-800/30 dark:from-emerald-900/20 dark:via-emerald-800/30 dark:to-emerald-900/20 dark:text-emerald-100 dark:shadow-emerald-400/5;
+        @apply border-emerald-200/40 bg-gradient-to-br from-emerald-50/90 via-emerald-100/80 to-emerald-50/90 text-emerald-900 shadow-emerald-500/10 dark:border-emerald-800/30 dark:from-emerald-900/20 dark:via-emerald-800/30 dark:to-emerald-900/20 dark:text-emerald-100 dark:shadow-emerald-400/5;
       }
-      
+
       &.info {
-        @apply border-blue-200/40 bg-gradient-to-br from-blue-50/90 via-blue-100/80 to-blue-50/90 text-blue-900 shadow-blue-500/10 
-               dark:border-blue-800/30 dark:from-blue-900/20 dark:via-blue-800/30 dark:to-blue-900/20 dark:text-blue-100 dark:shadow-blue-400/5;
+        @apply border-blue-200/40 bg-gradient-to-br from-blue-50/90 via-blue-100/80 to-blue-50/90 text-blue-900 shadow-blue-500/10 dark:border-blue-800/30 dark:from-blue-900/20 dark:via-blue-800/30 dark:to-blue-900/20 dark:text-blue-100 dark:shadow-blue-400/5;
       }
-      
+
       &.warning {
-        @apply border-amber-200/40 bg-gradient-to-br from-amber-50/90 via-amber-100/80 to-amber-50/90 text-amber-900 shadow-amber-500/10 
-               dark:border-amber-800/30 dark:from-amber-900/20 dark:via-amber-800/30 dark:to-amber-900/20 dark:text-amber-100 dark:shadow-amber-400/5;
+        @apply border-amber-200/40 bg-gradient-to-br from-amber-50/90 via-amber-100/80 to-amber-50/90 text-amber-900 shadow-amber-500/10 dark:border-amber-800/30 dark:from-amber-900/20 dark:via-amber-800/30 dark:to-amber-900/20 dark:text-amber-100 dark:shadow-amber-400/5;
       }
-      
+
       &.error,
       &.danger {
-        @apply border-red-200/40 bg-gradient-to-br from-red-50/90 via-red-100/80 to-red-50/90 text-red-900 shadow-red-500/10 
-               dark:border-red-800/30 dark:from-red-900/20 dark:via-red-800/30 dark:to-red-900/20 dark:text-red-100 dark:shadow-red-400/5;
+        @apply border-red-200/40 bg-gradient-to-br from-red-50/90 via-red-100/80 to-red-50/90 text-red-900 shadow-red-500/10 dark:border-red-800/30 dark:from-red-900/20 dark:via-red-800/30 dark:to-red-900/20 dark:text-red-100 dark:shadow-red-400/5;
       }
-      
+
       & h4 {
         @apply mb-2 text-lg font-semibold;
       }
-      
+
       & p {
         @apply mb-3 text-sm leading-relaxed;
       }
-      
+
       & .right {
         @apply mt-4 flex justify-end;
       }
@@ -814,104 +717,88 @@
 
   @layer modal {
     .modal {
-      @apply max-w-3xl rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto sm:max-w-md 
-             dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
-      
+      @apply max-w-3xl rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto sm:max-w-md dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
+
       & h4 {
-        @apply mb-4 text-xl font-semibold text-slate-900 
-               dark:text-slate-100;
+        @apply mb-4 text-xl font-semibold text-slate-900 dark:text-slate-100;
       }
-      
+
       & h5 {
-        @apply mb-3 text-lg font-medium text-red-600 
-               dark:text-red-400;
+        @apply mb-3 text-lg font-medium text-red-600 dark:text-red-400;
       }
-      
+
       & pre {
-        @apply max-h-64 overflow-x-auto overflow-y-auto rounded-lg border border-slate-200/50 bg-slate-50 p-4 font-mono text-sm text-slate-700 sm:max-h-64 sm:p-4 sm:text-sm 
-               dark:border-slate-700/30 dark:bg-slate-800/50 dark:text-slate-300;
-        
+        @apply max-h-64 overflow-x-auto overflow-y-auto rounded-lg border border-slate-200/50 bg-slate-50 p-4 font-mono text-sm text-slate-700 sm:max-h-64 sm:p-4 sm:text-sm dark:border-slate-700/30 dark:bg-slate-800/50 dark:text-slate-300;
+
         &.errors {
-          @apply border-red-200/50 bg-red-50 text-red-700 
-                 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-300;
+          @apply border-red-200/50 bg-red-50 text-red-700 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-300;
         }
       }
-      
+
       & p {
-        @apply mb-4 text-sm leading-relaxed text-slate-600 
-               dark:text-slate-400;
+        @apply mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400;
       }
-      
+
       & code {
-        @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-800 
-               dark:bg-slate-700 dark:text-slate-200;
+        @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-slate-700 dark:text-slate-200;
       }
-      
+
       & em {
-        @apply italic text-slate-500 
-               dark:text-slate-500;
+        @apply text-slate-500 italic dark:text-slate-500;
       }
-      
+
       &.login {
         @apply mx-auto w-full max-w-lg;
-        
+
         & h4 {
-          @apply mb-8 text-center text-2xl font-bold text-slate-900 
-                 dark:text-slate-100;
+          @apply mb-8 text-center text-2xl font-bold text-slate-900 dark:text-slate-100;
         }
-        
+
         & .cbi-map {
           @apply space-y-6;
         }
-        
+
         & .cbi-section {
           @apply mb-0 border-0 bg-transparent p-0 shadow-none;
-          
+
           &-node {
             @apply space-y-6;
           }
         }
-        
+
         & .cbi-value {
           @apply space-y-2;
-          
+
           &-title {
-            @apply mb-2 block text-sm font-medium text-slate-700 
-                   dark:text-slate-300;
+            @apply mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300;
           }
-          
+
           &-field {
             @apply relative;
-            
+
             & input[type="text"],
             & input[type="password"] {
-              @apply w-full rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-400 transition-all duration-200 
-                     focus:border-aurora-sky focus:bg-white focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-                     dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-aurora-sky-400 dark:focus:bg-slate-800 dark:focus:ring-aurora-sky-400/20;
+              @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
             }
           }
         }
-        
+
         & hr {
-          @apply my-8 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent 
-                 dark:via-slate-600;
+          @apply my-8 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-600;
         }
       }
     }
 
     .modal-header {
-      @apply mb-6 border-b border-slate-400/25 pb-4 
-             dark:border-slate-400/20;
+      @apply mb-6 border-b border-slate-400/25 pb-4 dark:border-slate-400/20;
     }
 
     .modal-title {
-      @apply mb-0 text-xl font-semibold text-slate-900 
-             dark:text-slate-100;
+      @apply mb-0 text-xl font-semibold text-slate-900 dark:text-slate-100;
     }
 
     .modal-content {
-      @apply mb-6 text-sm leading-relaxed text-slate-600 
-             dark:text-slate-300;
+      @apply mb-6 text-sm leading-relaxed text-slate-600 dark:text-slate-300;
     }
 
     #modal_overlay {
@@ -926,105 +813,89 @@
 
   @layer table {
     .table {
-      @apply mb-6 w-full border-collapse overflow-hidden rounded-xl border border-slate-200/30 bg-white shadow-sm 
-             dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
-      
+      @apply mb-6 w-full border-collapse overflow-hidden rounded-xl border border-slate-200/30 bg-white shadow-sm dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
+
       & .cbi-value-field {
         @apply table-cell align-middle;
       }
-      
+
       & th {
-        @apply sticky top-0 z-10 border-b border-slate-400/25 bg-slate-50/50 px-4 py-3 text-left text-sm font-semibold text-slate-900 
-               dark:border-slate-400/20 dark:bg-slate-800/30 dark:text-slate-100;
-        
+        @apply sticky top-0 z-10 border-b border-slate-400/25 bg-slate-50/50 px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:border-slate-400/20 dark:bg-slate-800/30 dark:text-slate-100;
+
         &[data-sortable-row="true"] {
-          @apply cursor-pointer select-none transition-colors duration-200 
-                 hover:bg-slate-100/50 
-                 dark:hover:bg-slate-700/40;
-          
+          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
+
           &:hover::after {
-            @apply ml-2 text-xs font-normal text-slate-400 content-['↕'] 
-                   dark:text-slate-500;
+            @apply ml-2 text-xs font-normal text-slate-400 content-['↕'] dark:text-slate-500;
           }
         }
       }
-      
+
       & td {
-        @apply border-b border-slate-400/20 px-4 py-3 text-sm text-slate-700 transition-colors duration-200 
-               dark:border-slate-400/15 dark:text-slate-300;
+        @apply border-b border-slate-400/20 px-4 py-3 text-sm text-slate-700 transition-colors duration-200 dark:border-slate-400/15 dark:text-slate-300;
       }
-      
+
       & .td {
         &.left {
           @apply text-left;
         }
-        
+
         &.center {
           @apply text-center;
         }
-        
+
         &:contains("-") {
-          @apply italic text-slate-400 
-                 dark:text-slate-500;
+          @apply text-slate-400 italic dark:text-slate-500;
         }
-        
+
         &[data-title] {
           @apply relative;
         }
       }
-      
+
       & tr {
-        @apply relative border-b border-slate-400/10 transition-all duration-200 last:border-b-0 
-               hover:bg-slate-50/40 
-               dark:border-slate-400/5 dark:hover:bg-slate-700/30;
-        
+        @apply relative border-b border-slate-400/10 transition-all duration-200 last:border-b-0 hover:bg-slate-50/40 dark:border-slate-400/5 dark:hover:bg-slate-700/30;
+
         &::before {
           @apply absolute top-0 bottom-0 left-0 w-1 bg-transparent transition-colors duration-200 content-[''];
         }
-        
+
         &:hover::before {
-          @apply bg-aurora-sky/40 
-                 dark:bg-aurora-sky/50;
+          @apply bg-aurora-sky/40 dark:bg-aurora-sky/50;
         }
       }
-      
+
       & .cbi-rowstyle-1 {
-        @apply bg-white 
-               dark:bg-slate-800;
-        
+        @apply bg-white dark:bg-slate-800;
+
         &:hover {
-          @apply bg-slate-100/50 
-                 dark:bg-slate-700/40;
+          @apply bg-slate-100/50 dark:bg-slate-700/40;
         }
       }
-      
+
       & .cbi-rowstyle-2 {
-        @apply bg-slate-50/30 
-               dark:bg-slate-700/20;
-        
+        @apply bg-slate-50/30 dark:bg-slate-700/20;
+
         &:hover {
-          @apply bg-slate-100/50 
-                 dark:bg-slate-700/40;
+          @apply bg-slate-100/50 dark:bg-slate-700/40;
         }
       }
-      
+
       &:empty::before {
-        @apply block py-8 text-center text-slate-400 content-['暂无数据'] 
-               dark:text-slate-500;
+        @apply block py-8 text-center text-slate-400 content-['暂无数据'] dark:text-slate-500;
       }
-      
+
       &.loading {
         @apply opacity-60;
-        
+
         &::after {
-          @apply absolute inset-0 flex items-center justify-center bg-white/50 content-[''] 
-                 dark:bg-slate-800/50;
+          @apply absolute inset-0 flex items-center justify-center bg-white/50 content-[''] dark:bg-slate-800/50;
         }
       }
-      
+
       @media (max-width: 640px) {
         @apply text-sm;
-        
+
         & th,
         & td {
           @apply px-3 py-2;
@@ -1033,16 +904,14 @@
     }
 
     .cbi-section h3 {
-      @apply mt-6 mb-4 border-b border-slate-200/40 pb-2 text-lg font-semibold text-slate-800 first:mt-0 
-             dark:border-slate-700/30 dark:text-slate-200;
+      @apply mt-6 mb-4 border-b border-slate-200/40 pb-2 text-lg font-semibold text-slate-800 first:mt-0 dark:border-slate-700/30 dark:text-slate-200;
     }
 
     .nft-table {
       @apply mb-8;
-      
+
       & h3 {
-        @apply mb-4 border-b border-slate-200/40 pb-2 text-xl font-semibold text-slate-900 
-               dark:border-slate-700/30 dark:text-slate-100;
+        @apply mb-4 border-b border-slate-200/40 pb-2 text-xl font-semibold text-slate-900 dark:border-slate-700/30 dark:text-slate-100;
       }
     }
 
@@ -1051,135 +920,116 @@
     }
 
     .nft-chain {
-      @apply rounded-xl border border-slate-200/30 bg-white shadow-sm 
-             dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
-      
+      @apply rounded-xl border border-slate-200/30 bg-white shadow-sm dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
+
       & h4 {
-        @apply mb-3 border-b border-slate-200/30 bg-slate-50/50 p-4 pb-3 text-lg font-medium text-slate-800 
-               dark:border-slate-700/20 dark:bg-slate-700/30 dark:text-slate-200;
+        @apply mb-3 border-b border-slate-200/30 bg-slate-50/50 p-4 pb-3 text-lg font-medium text-slate-800 dark:border-slate-700/20 dark:bg-slate-700/30 dark:text-slate-200;
       }
-      
+
       &-hook {
-        @apply border-b border-slate-200/20 bg-slate-50/30 px-4 py-3 
-               dark:border-slate-700/15 dark:bg-slate-700/20;
-        
+        @apply border-b border-slate-200/20 bg-slate-50/30 px-4 py-3 dark:border-slate-700/15 dark:bg-slate-700/20;
+
         & ul {
           @apply m-0 list-none p-0;
         }
-        
+
         & li {
-          @apply mb-1 text-sm text-slate-600 last:mb-0 
-                 dark:text-slate-400;
+          @apply mb-1 text-sm text-slate-600 last:mb-0 dark:text-slate-400;
         }
-        
+
         & strong {
-          @apply font-semibold text-slate-800 
-                 dark:text-slate-200;
+          @apply font-semibold text-slate-800 dark:text-slate-200;
         }
       }
     }
 
     .nft-rules {
       @apply w-full border-collapse;
-      
+
       & .tr {
-        @apply border-b border-slate-200/20 transition-colors duration-200 
-               hover:bg-slate-50/40 
-               dark:border-slate-700/15 dark:hover:bg-slate-700/30;
-        
+        @apply border-b border-slate-200/20 transition-colors duration-200 hover:bg-slate-50/40 dark:border-slate-700/15 dark:hover:bg-slate-700/30;
+
         &.table-titles {
-          @apply bg-slate-100/50 hover:bg-slate-100/50 
-                 dark:bg-slate-700/40 dark:hover:bg-slate-700/40;
+          @apply bg-slate-100/50 hover:bg-slate-100/50 dark:bg-slate-700/40 dark:hover:bg-slate-700/40;
         }
       }
-      
+
       & .th {
-        @apply border-b border-slate-300/30 px-3 py-2 text-left text-sm font-medium text-slate-700 
-               dark:border-slate-600/20 dark:text-slate-300;
+        @apply border-b border-slate-300/30 px-3 py-2 text-left text-sm font-medium text-slate-700 dark:border-slate-600/20 dark:text-slate-300;
       }
-      
+
       & .td {
-        @apply px-3 py-2 align-top text-sm text-slate-600 
-               dark:text-slate-400;
-        
+        @apply px-3 py-2 align-top text-sm text-slate-600 dark:text-slate-400;
+
         &.center {
           @apply text-center;
-          
+
           & em {
-            @apply italic text-slate-400 
-                   dark:text-slate-500;
+            @apply text-slate-400 italic dark:text-slate-500;
           }
         }
       }
-      
+
       & var {
-        @apply italic text-slate-500 
-               dark:text-slate-500;
+        @apply text-slate-500 italic dark:text-slate-500;
       }
-      
+
       & em {
-        @apply italic text-slate-400 
-               dark:text-slate-500;
+        @apply text-slate-400 italic dark:text-slate-500;
       }
-      
+
       & a {
-        @apply text-slate-600 underline decoration-slate-400/50 
-               hover:text-slate-800 
-               dark:text-slate-400 dark:hover:text-slate-200;
+        @apply text-slate-600 underline decoration-slate-400/50 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200;
       }
     }
 
     .nft-set,
     .nft-list {
       @apply inline-block align-middle;
-      
+
       &-items {
         @apply inline-block max-w-[200px] overflow-hidden align-middle text-ellipsis;
       }
-      
+
       &-item {
         @apply inline-block px-1;
       }
     }
 
     .nft-counter {
-      @apply border border-slate-200/50 bg-slate-100 text-slate-700 
-             dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300;
+      @apply border border-slate-200/50 bg-slate-100 text-slate-700 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300;
     }
 
     .nft-comment {
-      @apply border-amber-200/50 bg-amber-100/50 text-amber-800 
-             dark:border-amber-800/30 dark:bg-amber-900/30 dark:text-amber-200;
+      @apply border-amber-200/50 bg-amber-100/50 text-amber-800 dark:border-amber-800/30 dark:bg-amber-900/30 dark:text-amber-200;
     }
   }
 
   @layer form {
     @layer base {
       .cbi-value-description {
-        @apply mt-2 text-xs leading-relaxed text-slate-500 
-               dark:text-slate-400;
+        @apply mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400;
       }
 
       .cbi-value-title {
-        @apply mb-2 block text-sm font-medium text-slate-700 
-               dark:text-slate-300;
+        @apply mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300;
       }
 
       .cbi-map .cbi-value > .cbi-value-field {
         @apply flex flex-1 flex-row flex-wrap items-center gap-3;
-        
+
         & br {
           @apply hidden;
         }
-        
+
         & > * {
           @apply inline-flex items-center gap-2;
         }
-        
+
         & .cbi-value-description {
           @apply mt-0 ml-3 inline-block leading-normal;
         }
-        
+
         & output {
           @apply mr-3;
         }
@@ -1188,16 +1038,16 @@
       .cbi-map .cbi-section-node {
         & .cbi-value {
           @apply py-2;
-          
+
           & + .cbi-value {
             @apply mt-3;
           }
         }
-        
+
         & > h3 {
           @apply mt-6;
         }
-        
+
         & > .table {
           @apply mt-4;
         }
@@ -1212,93 +1062,76 @@
       }
 
       .cbi-input-text {
-        @apply rounded-lg border border-slate-300/50 bg-white/90 px-3 py-2 text-sm text-slate-900 transition-all duration-200 
-               focus:border-aurora-sky focus:bg-white focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-               dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:border-aurora-sky-400 dark:focus:bg-slate-800 dark:focus:ring-aurora-sky-400/20;
+        @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/50 bg-white/90 px-3 py-2 text-sm text-slate-900 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:bg-slate-800;
       }
     }
 
     @layer dynamic-list {
       .cbi-dynlist {
         @apply space-y-2;
-        
+
         & .item {
-          @apply pointer-events-none relative flex cursor-move flex-col items-start gap-2 overflow-visible rounded-lg border border-slate-200/50 bg-white/80 p-3 pr-8 transition-all duration-200 
-                 hover:border-slate-300/60 hover:bg-white hover:shadow-sm 
-                 focus:border-aurora-sky focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-                 dark:border-slate-600/40 dark:bg-slate-800/80 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20;
-          
+          @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 pointer-events-none relative flex cursor-move flex-col items-start gap-2 overflow-visible rounded-lg border border-slate-200/50 bg-white/80 p-3 pr-8 transition-all duration-200 hover:border-slate-300/60 hover:bg-white hover:shadow-sm focus:ring-2 focus:outline-none dark:border-slate-600/40 dark:bg-slate-800/80 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10;
+
           & > * {
             @apply pointer-events-auto;
           }
-          
+
           &::before,
           &::after {
-            @apply pointer-events-auto absolute top-1 right-1 h-3 w-[2px] cursor-pointer rounded-full bg-red-600 transition-colors duration-200 
-                   dark:bg-red-500;
+            @apply pointer-events-auto absolute top-1 right-1 h-3 w-[2px] cursor-pointer rounded-full bg-red-600 transition-colors duration-200 dark:bg-red-500;
           }
-          
+
           &::before {
             @apply rotate-45;
           }
-          
+
           &::after {
             @apply -rotate-45;
           }
-          
+
           &:hover::before,
           &:hover::after {
-            @apply bg-red-700 
-                   dark:bg-red-400;
+            @apply bg-red-700 dark:bg-red-400;
           }
-          
+
           & span {
-            @apply max-w-full flex-1 break-words text-sm font-medium text-slate-700 
-                   dark:text-slate-300;
+            @apply max-w-full flex-1 text-sm font-medium break-words text-slate-700 dark:text-slate-300;
           }
-          
+
           & strong {
-            @apply mb-1 block max-w-full break-words font-semibold text-slate-800 
-                   dark:text-slate-100;
+            @apply mb-1 block max-w-full font-semibold break-words text-slate-800 dark:text-slate-100;
           }
-          
+
           & code {
-            @apply block w-full max-w-full overflow-x-auto font-mono text-xs leading-snug whitespace-pre text-slate-800 
-                   dark:text-slate-200;
+            @apply block w-full max-w-full overflow-x-auto font-mono text-xs leading-snug whitespace-pre text-slate-800 dark:text-slate-200;
           }
-          
+
           & input[type="hidden"] {
             @apply hidden;
           }
-          
+
           &.flash {
-            @apply animate-pulse border-aurora-sky/60 bg-aurora-sky/5;
+            @apply border-aurora-sky/60 bg-aurora-sky/5 animate-pulse;
           }
-          
+
           &:active {
             @apply scale-95 shadow-lg;
           }
         }
-        
+
         & .add-item {
-          @apply flex items-center gap-2 rounded-lg border-2 border-dashed border-slate-300/40 bg-slate-50/50 p-3 transition-all duration-200 
-                 hover:border-slate-400/60 hover:bg-slate-100/50 
-                 dark:border-slate-600/40 dark:bg-slate-800/30 dark:hover:border-slate-500/60 dark:hover:bg-slate-700/40;
-          
+          @apply flex items-center gap-2 rounded-lg border-2 border-dashed border-slate-300/40 bg-slate-50/50 p-3 transition-all duration-200 hover:border-slate-400/60 hover:bg-slate-100/50 dark:border-slate-600/40 dark:bg-slate-800/30 dark:hover:border-slate-500/60 dark:hover:bg-slate-700/40;
+
           & input[type="text"] {
-            @apply flex-1 rounded-lg border border-slate-300/50 bg-white/90 px-3 py-2 text-sm text-slate-900 transition-all duration-200 
-                   focus:border-aurora-sky focus:bg-white focus:ring-2 focus:ring-aurora-sky/20 focus:outline-none 
-                   dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:border-aurora-sky-400 dark:focus:bg-slate-800 dark:focus:ring-aurora-sky-400/20;
+            @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 flex-1 rounded-lg border border-slate-300/50 bg-white/90 px-3 py-2 text-sm text-slate-900 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:bg-slate-800;
           }
-          
+
           & .btn.cbi-button-add {
-            @apply flex h-8 w-8 items-center justify-center rounded-lg bg-aurora-sky text-lg leading-none font-bold text-white transition-colors duration-200 
-                   hover:bg-aurora-sky-600 
-                   focus:ring-2 focus:ring-aurora-sky/20 focus:ring-offset-2 focus:outline-none 
-                   dark:focus:ring-offset-slate-800;
+            @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 flex h-8 w-8 items-center justify-center rounded-lg text-lg leading-none font-bold text-white transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-slate-800;
           }
         }
-        
+
         & .control-group {
           @apply flex items-center gap-2;
         }
@@ -1307,8 +1140,7 @@
 
     @layer map-description {
       .cbi-map-descr {
-        @apply mb-6 text-sm leading-relaxed text-slate-600 
-               dark:text-slate-400;
+        @apply mb-6 text-sm leading-relaxed text-slate-600 dark:text-slate-400;
       }
     }
 
@@ -1333,22 +1165,19 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply inline-flex items-center gap-1 rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 
-             dark:border-slate-700/30 dark:bg-slate-800/30;
-      
+      @apply inline-flex items-center gap-1 rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
+
       & li {
         @apply m-0 list-none;
       }
-      
+
       & .cbi-tab a,
       & .cbi-tab-disabled a {
-        @apply block rounded-2xl px-4 py-2 text-center text-sm font-medium text-slate-600 no-underline 
-               dark:text-slate-400;
+        @apply block rounded-2xl px-4 py-2 text-center text-sm font-medium text-slate-600 no-underline dark:text-slate-400;
       }
-      
+
       & .cbi-tab a {
-        @apply bg-slate-900 font-semibold text-white 
-               dark:bg-slate-100 dark:text-slate-900;
+        @apply bg-slate-900 font-semibold text-white dark:bg-slate-100 dark:text-slate-900;
       }
     }
   }
@@ -1359,24 +1188,19 @@
     }
 
     .tabs {
-      @apply relative flex items-center gap-0 border-b border-slate-200/40 
-             dark:border-slate-700/30;
-      
+      @apply relative flex items-center gap-0 border-b border-slate-200/40 dark:border-slate-700/30;
+
       & a {
-        @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 
-               hover:text-slate-700 
-               dark:text-slate-400 dark:hover:text-slate-300;
+        @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
       }
-      
+
       & > .active {
         & > a {
-          @apply font-semibold text-slate-900 
-                 dark:text-slate-100;
+          @apply font-semibold text-slate-900 dark:text-slate-100;
         }
-        
+
         &::after {
-          @apply absolute bottom-0 left-0 h-0.5 w-full bg-slate-900 content-[''] 
-                 dark:bg-slate-100;
+          @apply absolute bottom-0 left-0 h-0.5 w-full bg-slate-900 content-[''] dark:bg-slate-100;
         }
       }
     }
@@ -1400,28 +1224,24 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-4 rounded-xl border-2 border-slate-200/30 bg-white p-6 shadow-lg 
-             dark:border-slate-600/25 dark:bg-slate-800;
-      
+      @apply mb-4 rounded-xl border-2 border-slate-200/30 bg-white p-6 shadow-lg dark:border-slate-600/25 dark:bg-slate-800;
+
       & h3 {
-        @apply mb-4 border-b border-slate-200/40 pb-3 text-xl font-semibold text-slate-900 
-               dark:border-slate-600/30 dark:text-slate-100;
+        @apply mb-4 border-b border-slate-200/40 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-600/30 dark:text-slate-100;
       }
-      
+
       & .fade-in {
         @apply animate-pulse opacity-0;
       }
     }
 
     .ifacebox {
-      @apply mx-2.5 inline-flex min-w-40 flex-col overflow-hidden rounded-xl border-2 border-slate-200/25 bg-white text-center leading-tight whitespace-nowrap shadow-md 
-             dark:border-slate-600/20 dark:bg-slate-800;
+      @apply mx-2.5 inline-flex min-w-40 flex-col overflow-hidden rounded-xl border-2 border-slate-200/25 bg-white text-center leading-tight whitespace-nowrap shadow-md dark:border-slate-600/20 dark:bg-slate-800;
     }
 
     .ifacebox-head {
-      @apply rounded-t-sm border-b border-slate-200/40 bg-slate-50 px-3 py-2 text-center text-sm font-semibold text-slate-900 
-             dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
-      
+      @apply rounded-t-sm border-b border-slate-200/40 bg-slate-50 px-3 py-2 text-center text-sm font-semibold text-slate-900 dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
+
       &.active {
         @apply border-aurora-sky bg-aurora-sky text-white;
       }
