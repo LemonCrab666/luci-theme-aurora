@@ -127,7 +127,7 @@
   }
 
   html {
-    @apply font-sans scrollbar scrollbar-track-slate-400/5 scrollbar-thumb-slate-400/30 hover:scrollbar-thumb-slate-400/50 dark:scrollbar-track-aurora-night-slate dark:scrollbar-thumb-aurora-teal dark:hover:scrollbar-thumb-aurora-night-emerald h-full;
+    @apply scrollbar scrollbar-track-slate-400/5 scrollbar-thumb-slate-400/30 hover:scrollbar-thumb-slate-400/50 dark:scrollbar-track-aurora-night-slate dark:scrollbar-thumb-aurora-teal dark:hover:scrollbar-thumb-aurora-night-emerald h-full font-sans;
   }
 
   * {
@@ -262,7 +262,6 @@
   }
 
   @layer button {
-    /* 基础按钮样式 + 主色系（填充） */
     button,
     .btn,
     .cbi-button,
@@ -277,17 +276,17 @@
     .cbi-button + .cbi-button,
     button + button,
     .btn + .cbi-button,
-    .cbi-button + .btn {
+    .cbi-button + .btn,
+    .cbi-section-node .cbi-button,
+    .cbi-section-node .btn {
       @apply ml-2;
     }
 
-    /* 三色系：柔和（描边/浅色背景） */
     .cbi-button-positive,
     .cbi-button-apply {
       @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 focus:ring-aurora-sky/30 focus:border-aurora-sky/70 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none;
     }
 
-    /* 三色系：中性（灰阶/次要/工具） */
     .btn-secondary,
     .cbi-button-reset,
     .cbi-button-negative,
@@ -721,7 +720,7 @@
 
   @layer modal {
     .modal {
-      @apply max-w-3xl rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto sm:max-w-md dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
+      @apply max-w-3xl max-h-[80vh] overflow-y-auto overscroll-contain rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto sm:max-w-md dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
 
       & h4 {
         @apply mb-4 text-xl font-semibold text-slate-900 dark:text-slate-100;
@@ -811,7 +810,6 @@
 
     .modal-overlay-active #modal_overlay {
       @apply pointer-events-auto fixed inset-0 z-[2000] grid place-items-center bg-white/45 p-4 backdrop-blur-sm;
-      display: grid !important;
     }
   }
 
