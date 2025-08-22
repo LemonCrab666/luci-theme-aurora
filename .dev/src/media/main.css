@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin "tailwind-scrollbar";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -125,7 +127,7 @@
   }
 
   html {
-    @apply h-full font-sans;
+    @apply font-sans scrollbar scrollbar-track-slate-400/5 scrollbar-thumb-slate-400/30 hover:scrollbar-thumb-slate-400/50 dark:scrollbar-track-aurora-night-slate dark:scrollbar-thumb-aurora-teal dark:hover:scrollbar-thumb-aurora-night-emerald h-full;
   }
 
   * {
@@ -148,18 +150,23 @@
   h1 {
     @apply mb-4 text-3xl;
   }
+
   h2 {
     @apply mb-4 text-2xl;
   }
+
   h3 {
     @apply mb-4 text-xl;
   }
+
   h4 {
     @apply mb-2 text-lg;
   }
+
   h5 {
     @apply mb-2 text-base;
   }
+
   h6 {
     @apply mb-2 text-sm;
   }
@@ -174,18 +181,6 @@
 
   small {
     @apply text-xs font-normal text-slate-500 dark:text-slate-400;
-  }
-
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply dark:bg-aurora-night-slate bg-slate-400/5;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply dark:bg-aurora-teal dark:hover:bg-aurora-night-emerald rounded bg-slate-400/30 transition-colors duration-200 hover:bg-slate-400/50;
   }
 }
 
@@ -267,44 +262,53 @@
   }
 
   @layer button {
+    /* 基础按钮样式 + 主色系（填充） */
     button,
     .btn,
-    .cbi-button {
-      @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none;
-      @apply bg-aurora-sky hover:from-aurora-sky hover:to-aurora-teal focus:ring-aurora-sky/30 text-white shadow-sm hover:bg-gradient-to-r hover:shadow-md;
-      @apply dark:bg-aurora-sky-500 dark:hover:from-aurora-sky-500 dark:hover:to-aurora-teal-500 dark:focus:ring-offset-slate-900;
+    .cbi-button,
+    .cbi-button-add,
+    .cbi-button-reload,
+    .cbi-button-edit,
+    .cbi-button-start {
+      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-slate-900;
     }
 
     .btn + .btn,
-    .cbi-button + .cbi-button {
+    .cbi-button + .cbi-button,
+    button + button,
+    .btn + .cbi-button,
+    .cbi-button + .btn {
       @apply ml-2;
     }
 
-    .btn-secondary,
-    .cbi-button-reset {
-      @apply border border-slate-300/50 bg-slate-100 text-slate-700 hover:bg-slate-200 focus:ring-slate-400/30;
-      @apply dark:border-slate-600/50 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600;
-    }
-
-    .cbi-button-positive {
-      @apply bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-600/30;
-      @apply dark:bg-emerald-500 dark:hover:bg-emerald-600;
-    }
-
-    .cbi-button-negative {
-      @apply bg-slate-300 text-slate-700 hover:bg-slate-400 focus:ring-slate-300/30;
-      @apply dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700;
-    }
-
+    /* 三色系：柔和（描边/浅色背景） */
+    .cbi-button-positive,
     .cbi-button-apply {
-      @apply border-aurora-sky/30 bg-aurora-sky/10 text-aurora-sky hover:border-aurora-sky/40 hover:bg-aurora-sky/20;
-      @apply dark:border-aurora-sky/40 dark:bg-aurora-sky/20 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/50 dark:hover:bg-aurora-sky/30;
+      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 focus:ring-aurora-sky/30 focus:border-aurora-sky/70 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none;
     }
 
-    .btn-positive,
-    .cbi-button-add {
-      @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/30 text-white;
-      @apply dark:bg-aurora-sky-500 dark:hover:bg-aurora-sky-400;
+    /* 三色系：中性（灰阶/次要/工具） */
+    .btn-secondary,
+    .cbi-button-reset,
+    .cbi-button-negative,
+    .cbi-button-stop,
+    .cbi-button-neutral,
+    .cbi-button-remove,
+    .cbi-button-kill,
+    .drag-handle {
+      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 focus:border-slate-400/80 focus:ring-slate-400/30 dark:border-slate-600/60 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-600/50 dark:hover:text-slate-200;
+    }
+
+    .pager {
+      @apply flex items-center justify-center gap-4 py-4;
+    }
+
+    .pager .text {
+      @apply text-sm font-medium text-slate-600 dark:text-slate-400;
+    }
+
+    .pager .btn.cbi-button-neutral {
+      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 focus:border-slate-400/80 focus:ring-slate-400/30 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 dark:border-slate-600/60 dark:bg-slate-700 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-600 dark:hover:text-slate-200 dark:disabled:hover:border-slate-600/60 dark:disabled:hover:bg-slate-700 dark:disabled:hover:text-slate-300;
     }
 
     .cbi-page-actions {
@@ -344,19 +348,19 @@
   @layer input {
     input[type="text"],
     input[type="password"] {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/70 bg-white px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
     }
   }
 
   @layer select {
     select {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/70 bg-white px-4 py-3 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100;
     }
   }
 
   @layer textarea {
     textarea {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-h-32 w-full resize-y rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-h-32 w-full resize-y rounded-xl border border-slate-300/70 bg-white px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
     }
 
     #syslog {
@@ -366,7 +370,7 @@
 
   @layer radio {
     input[type="radio"] {
-      @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300/50 bg-white transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
+      @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
 
       &:checked::after {
         @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.4rem] w-[0.4rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white content-[''];
@@ -382,34 +386,33 @@
         @apply cursor-pointer text-sm text-slate-700 transition-colors duration-200 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
       }
     }
-  }
-
-  @layer controls {
-    .controls {
-      @apply space-y-4;
-
-      & > div {
-        @apply flex items-start gap-3;
-
-        & > label:first-child {
-          @apply min-w-[120px] text-sm font-medium text-slate-700 dark:text-slate-300;
-        }
+    @layer controls {
+      .controls {
+        @apply space-y-4;
 
         & > div {
-          @apply flex items-center gap-2;
-        }
+          @apply flex items-start gap-3;
 
-        & > div > label {
-          @apply flex items-center;
+          & > label:first-child {
+            @apply min-w-[120px] text-sm font-medium text-slate-700 dark:text-slate-300;
+          }
+
+          & > div {
+            @apply flex items-center gap-2;
+          }
+
+          & > div > label {
+            @apply flex items-center;
+          }
         }
       }
     }
   }
-  
+
   @layer checkbox {
     input[type="checkbox"],
     .cbi-input-checkbox {
-      @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/50 bg-white transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
+      @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
 
       &:checked::after {
         @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.6rem] w-[0.35rem] -translate-x-1/2 -translate-y-1/2 -rotate-315 border-r border-b border-white content-[''];
@@ -441,30 +444,31 @@
       @apply relative;
     }
 
-    .dropdown-menu li,
-    .cbi-dropdown ul li {
-      @apply m-0 list-none;
-    }
-
-    .dropdown-menu a,
-    .cbi-dropdown ul li[data-value] {
-      @apply block cursor-pointer text-sm no-underline transition-all duration-200;
-    }
-
     .dropdown-menu {
       @apply invisible absolute top-full left-0 z-[1000] mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
+
+      & li {
+        @apply m-0 list-none;
+      }
+
+      & a {
+        @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+      }
     }
 
     .dropdown:hover .dropdown-menu {
       @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
     }
 
-    .dropdown-menu a {
-      @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+    .cbi-dropdown ul li {
+      @apply m-0 list-none;
     }
 
     .cbi-dropdown {
       @apply relative inline-flex items-center;
+
+      /* 基础样式 - 添加边框和背景突出交互区域 */
+      @apply rounded-lg border border-slate-200/60 bg-white/90 px-3 py-2 shadow-sm transition-all duration-200 hover:border-slate-300/80 hover:bg-white hover:shadow-md dark:border-slate-600/40 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
 
       & > ul {
         @apply m-0 flex list-none items-center p-0;
@@ -472,8 +476,8 @@
         & > li {
           @apply hidden p-0;
 
-          &:first-child {
-            @apply block cursor-pointer text-sm font-medium text-slate-100 transition-colors duration-150 hover:text-slate-800 dark:text-slate-900 dark:hover:text-slate-100;
+          &[selected] {
+            @apply block cursor-pointer text-sm font-medium text-slate-700 transition-colors duration-150 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
           }
         }
 
@@ -491,19 +495,25 @@
           & > li {
             @apply hidden;
 
-            &:first-child {
-              @apply block cursor-pointer text-sm font-medium text-slate-100 transition-colors duration-150 hover:text-slate-800 dark:text-slate-900 dark:hover:text-slate-100;
+            &[selected] {
+              @apply block cursor-pointer text-sm font-medium text-slate-700 transition-colors duration-150 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
             }
           }
         }
       }
 
+      /* 多选模式下的 .more 显示 */
+      &[multiple] > .more {
+        @apply block text-sm font-medium text-slate-600 dark:text-slate-400;
+      }
+
+      /* 非多选模式下隐藏 .more */
       & > .more {
         @apply hidden;
       }
 
       & > .open {
-        @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-100 transition-colors duration-150 hover:text-slate-600 dark:border-slate-600 dark:text-slate-900 dark:hover:text-slate-300;
+        @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-400 transition-colors duration-150 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
       }
 
       &[open] > ul.dropdown {
@@ -526,9 +536,8 @@
     }
 
     .cbi-progressbar {
-      @apply relative cursor-help before:absolute before:left-1/2 before:z-50 before:-translate-x-1/2 before:top-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      @apply relative cursor-help before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
     }
-
   }
 
   @layer badge {
@@ -635,7 +644,7 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-4 rounded-xl border-2 border-slate-200/30 bg-white p-6 shadow-lg dark:border-slate-600/25 dark:bg-slate-800;
+      @apply mb-4 overflow-auto rounded-xl border-2 border-slate-200/30 bg-white p-6 shadow-lg dark:border-slate-600/25 dark:bg-slate-800;
 
       & h3 {
         @apply mb-4 border-b border-slate-200/40 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-600/30 dark:text-slate-100;
@@ -645,6 +654,7 @@
         @apply animate-pulse opacity-0;
       }
     }
+
     .ifacebox {
       @apply mx-2.5 inline-flex min-w-40 flex-col items-center overflow-visible rounded-xl border-2 border-slate-200/25 bg-white text-center leading-tight whitespace-nowrap shadow-md dark:border-slate-600/20 dark:bg-slate-800;
 
@@ -668,7 +678,7 @@
         }
 
         & span:not(.cbi-tooltip-container):not(.cbi-tooltip) {
-          @apply inline my-1;
+          @apply my-1 inline;
         }
       }
     }
@@ -911,6 +921,7 @@
 
     .nft-chains {
       @apply space-y-6;
+
       & .nft-chain {
         @apply rounded-xl border border-slate-200/30 bg-white shadow-sm dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
 
@@ -1113,21 +1124,22 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply mb-1 inline-flex items-center gap-1 rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
+      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
 
       & li {
-        @apply m-0 list-none;
+        @apply m-0 min-w-fit flex-shrink-0 list-none;
       }
 
       & .cbi-tab a,
       & .cbi-tab-disabled a {
-        @apply block rounded-2xl px-4 py-2 text-center text-sm font-medium text-slate-600 no-underline dark:text-slate-400;
+        @apply block rounded-2xl px-4 py-2 text-center text-sm font-medium whitespace-nowrap text-slate-600 no-underline dark:text-slate-400;
       }
 
       & .cbi-tab a {
         @apply bg-slate-900 font-semibold text-white dark:bg-slate-100 dark:text-slate-900;
       }
     }
+
     [data-tab-title] {
       @apply hidden h-0 overflow-hidden transition-all duration-300 ease-in;
     }
