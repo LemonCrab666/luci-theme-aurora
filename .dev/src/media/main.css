@@ -336,7 +336,13 @@
     }
 
     .modal .button-row {
-      @apply mt-6 flex justify-end gap-3 border-t border-slate-200/50 pt-4 sm:flex-row sm:gap-3 dark:border-slate-700/30;
+      @apply flex justify-end gap-3 border-t border-slate-200/30 p-6 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+      @apply flex-shrink-0;
+    }
+
+    .modal .right {
+      @apply flex justify-end gap-3 border-t border-slate-200/30 p-6 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+      @apply flex-shrink-0;
     }
 
     .modal.login .btn.cbi-button-positive.important {
@@ -459,24 +465,19 @@
       @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
     }
 
-    .cbi-dropdown ul li {
-      @apply m-0 list-none;
-    }
-
     .cbi-dropdown {
       @apply relative inline-flex items-center;
 
-      /* 基础样式 - 添加边框和背景突出交互区域 */
-      @apply rounded-lg border border-slate-200/60 bg-white/90 px-3 py-2 shadow-sm transition-all duration-200 hover:border-slate-300/80 hover:bg-white hover:shadow-md dark:border-slate-600/40 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
+      @apply rounded-lg border border-slate-200/60 bg-white/90 shadow-sm transition-all duration-200 hover:border-slate-300/80 hover:bg-white hover:shadow-md dark:border-slate-600/40 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
 
       & > ul {
         @apply m-0 flex list-none items-center p-0;
 
         & > li {
-          @apply hidden p-0;
+          @apply m-0 hidden list-none p-0;
 
           &[selected] {
-            @apply block cursor-pointer text-sm font-medium text-slate-700 transition-colors duration-150 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
+            @apply dark:text-aurora-sky-300 block cursor-pointer text-sm font-medium text-slate-700 transition-colors duration-150;
           }
         }
 
@@ -484,7 +485,11 @@
           @apply invisible absolute top-full left-0 z-50 mt-1 flex min-w-[140px] scale-95 flex-col rounded-xl border border-slate-200/60 bg-white/95 py-1 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out dark:border-slate-600/40 dark:bg-slate-800/95;
 
           & > li {
-            @apply mx-1 block w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all duration-150 ease-out hover:bg-slate-50 hover:text-slate-800 dark:text-slate-300 dark:hover:bg-slate-700/50 dark:hover:text-slate-100;
+            @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 mx-1 block w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all duration-150 ease-out dark:text-slate-300;
+
+            &[selected] {
+              @apply bg-aurora-sky/20 text-aurora-sky-800 dark:bg-aurora-sky/25 dark:text-aurora-sky-200;
+            }
           }
         }
 
@@ -495,18 +500,16 @@
             @apply hidden;
 
             &[selected] {
-              @apply block cursor-pointer text-sm font-medium text-slate-700 transition-colors duration-150 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
+              @apply block cursor-pointer text-sm font-medium transition-colors duration-150;
             }
           }
         }
       }
 
-      /* 多选模式下的 .more 显示 */
       &[multiple] > .more {
         @apply block text-sm font-medium text-slate-600 dark:text-slate-400;
       }
 
-      /* 非多选模式下隐藏 .more */
       & > .more {
         @apply hidden;
       }
@@ -720,10 +723,67 @@
 
   @layer modal {
     .modal {
-      @apply max-w-3xl max-h-[80vh] overflow-y-auto overscroll-contain rounded-2xl border border-slate-400/25 bg-white/85 p-8 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto sm:max-w-md dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
+      @apply max-h-[80vh] min-w-[600px] max-w-4xl rounded-2xl border border-slate-400/25 bg-white/85 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
+      @apply flex flex-col px-8;
 
       & h4 {
-        @apply mb-4 text-xl font-semibold text-slate-900 dark:text-slate-100;
+        @apply mb-4 pt-8 px-8 text-xl font-semibold text-slate-900 dark:text-slate-100;
+        @apply text-center;
+      }
+
+      /* 模态框内容区域 */
+      & .cbi-map {
+        @apply flex-1;
+      }
+
+      /* 标签菜单 - 固定在顶部不参与滚动 */
+      & .cbi-tabmenu {
+        @apply flex-shrink-0 mb-4 px-8 pb-0;
+      }
+
+      /* 标签内容区域 - 可滚动 */
+      & .cbi-section-node-tabbed {
+        @apply flex-1 overflow-y-auto overscroll-contain px-8 pt-0;
+      }
+
+      /* 针对 tabs 的优化 - 只让内容区域滚动 */
+      & .cbi-section-node {
+        @apply overflow-y-auto overscroll-contain;
+      }
+
+      /* 确保内容区域有最大高度限制，避免按钮被挤出 */
+      & .cbi-section-node-tabbed {
+        @apply max-h-[calc(80vh-240px)];
+      }
+
+      /* 针对这种模态框结构的特殊处理 */
+      & .cbi-section {
+        @apply flex-shrink-0 border-0 bg-transparent shadow-none;
+      }
+
+      /* 确保按钮区域固定在底部 */
+      & .button-row {
+        @apply flex-shrink-0;
+      }
+
+      /* 标签页容器不滚动 */
+      & [id^="container."] {
+        @apply flex-shrink-0;
+      }
+
+      /* 确保模态框内容不会溢出 */
+      & .cbi-map {
+        @apply min-h-0;
+      }
+
+      /* 优化 modal 内的 cbi-section 样式 */
+      & .cbi-section {
+        @apply border-0 bg-transparent shadow-none;
+      }
+
+      /* 优化 modal 内的 cbi-value 样式 */
+      & .cbi-value {
+        @apply border-0 bg-transparent;
       }
 
       & h5 {
@@ -751,7 +811,11 @@
       }
 
       &.login {
-        @apply mx-auto w-full max-w-lg;
+        @apply mx-auto w-full min-w-[500px] max-w-lg;
+
+        & .cbi-map {
+          @apply flex-1 overflow-y-auto overscroll-contain p-8;
+        }
 
         & h4 {
           @apply mb-8 text-center text-2xl font-bold text-slate-900 dark:text-slate-100;
