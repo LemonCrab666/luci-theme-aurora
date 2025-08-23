@@ -8,7 +8,6 @@ const CURRENT_DIR = process.cwd();
 const PROJECT_ROOT = resolve(CURRENT_DIR, "..");
 const BUILD_OUTPUT = resolve(PROJECT_ROOT, "htdocs/luci-static");
 
-// 工具函数：递归扫描文件
 async function scanFiles(dir: string, extensions: string[] = []): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const files: string[] = [];
@@ -24,7 +23,6 @@ async function scanFiles(dir: string, extensions: string[] = []): Promise<string
   return files;
 }
 
-// LuCI JS 压缩插件
 function createLuciJsCompressPlugin(): Plugin {
   let outDir: string;
   let jsFiles: string[] = [];
@@ -59,14 +57,13 @@ function createLuciJsCompressPlugin(): Plugin {
           await mkdir(dirname(outputPath), { recursive: true });
           await writeFile(outputPath, compressed.code || sourceCode, "utf-8");
         } catch (error: any) {
-          console.error(`JS压缩失败: ${filePath}`, error?.message);
+          console.error(`JS compress failed: ${filePath}`, error?.message);
         }
       }
     },
   };
 }
 
-// 重定向插件
 function createRedirectPlugin(): Plugin {
   return {
     name: "redirect-plugin",
@@ -87,11 +84,10 @@ function createRedirectPlugin(): Plugin {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, CURRENT_DIR, "");
-  const OPENWRT_HOST = env.VITE_OPENWRT_HOST || "http://192.168.1.1";
+  const OPENWRT_HOST = env.VITE_OPENWRT_HOST || "http://192.168.1.1:80";
   const DEV_HOST = env.VITE_DEV_HOST || "127.0.0.1";
-  const DEV_PORT = parseInt(env.VITE_DEV_PORT || "5173", 10);
+  const DEV_PORT = Number(env.VITE_DEV_PORT) || 5173;
 
-  // 代理配置（依赖 env）
   const proxyConfig = {
     "/luci-static/aurora/main.css": {
       target: `http://localhost:${DEV_PORT}`,
@@ -110,17 +106,9 @@ export default defineConfig(({ mode }) => {
     },
   } as const;
 
-  // 路径别名配置
-  const aliasConfig = {
-    "@": resolve(CURRENT_DIR, "src"),
-    "@media": resolve(CURRENT_DIR, "src/media"),
-    "@resource": resolve(CURRENT_DIR, "src/resource"),
-    "@assets": resolve(CURRENT_DIR, "src/assets/aurora"),
-  } as const;
 
   return {
     plugins: [
-      // @ts-ignore - TailwindCSS v4插件类型兼容性问题
       tailwindcss(),
       createLuciJsCompressPlugin(),
       createRedirectPlugin(),
@@ -130,23 +118,14 @@ export default defineConfig(({ mode }) => {
 
     build: {
       outDir: BUILD_OUTPUT,
-      emptyOutDir: false,
       cssMinify: "lightningcss",
-      sourcemap: false,
-      target: "es2018",
-      cssCodeSplit: true,
-      cssTarget: "es2018",
 
       rollupOptions: {
         input: {
-          main: resolve(CURRENT_DIR, "src/media/main.css"),
-          mobile: resolve(CURRENT_DIR, "src/media/mobile.css"),
+          main: resolve(CURRENT_DIR, "src/media/main.css")
         },
         output: {
-          assetFileNames: (assetInfo) => {
-            const name = assetInfo.name || "";
-            return name.endsWith(".css") ? "aurora/[name].[ext]" : "aurora/[name].[ext]";
-          },
+          assetFileNames: "aurora/[name].[ext]",
         },
       },
     },
@@ -155,10 +134,6 @@ export default defineConfig(({ mode }) => {
       host: DEV_HOST,
       port: DEV_PORT,
       proxy: proxyConfig,
-    },
-
-    resolve: {
-      alias: aliasConfig,
-    },
+    }
   };
 });
