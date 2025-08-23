@@ -14,7 +14,6 @@ PKG_RELEASE:=20250818
 PKG_LICENSE:=Apache-2.0
 
 LUCI_MINIFY_CSS:=
-
 CONFIG_LUCI_CSSTIDY:=
 
 define Package/luci-theme-aurora/postrm

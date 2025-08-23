@@ -5,6 +5,106 @@
 return baseclass.extend({
 	__init__() {
 		ui.menu.load().then(L.bind(this.render, this));
+		this.initMobileMenu();
+	},
+
+	initMobileMenu() {
+		const menuToggle = document.getElementById('mobile-menu-btn');
+		const overlay = document.getElementById('mobile-menu-overlay');
+		
+		if (menuToggle && overlay) {
+			menuToggle.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const isOpen = overlay.classList.contains('mobile-menu-open');
+				
+				if (isOpen) {
+					this.closeMobileMenu();
+				} else {
+					this.openMobileMenu();
+				}
+			});
+
+			// Close mobile menu when clicking overlay
+			overlay.addEventListener('click', (e) => {
+				if (e.target === overlay) {
+					this.closeMobileMenu();
+				}
+			});
+
+			// Close mobile menu when pressing Escape key
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && overlay.classList.contains('mobile-menu-open')) {
+					this.closeMobileMenu();
+				}
+			});
+		}
+	},
+
+	openMobileMenu() {
+		const overlay = document.getElementById('mobile-menu-overlay');
+		const menuToggle = document.getElementById('mobile-menu-btn');
+		
+		overlay.classList.add('mobile-menu-open');
+		menuToggle.classList.add('active');
+		menuToggle.setAttribute('aria-expanded', 'true');
+		
+		// Prevent body scrolling
+		document.body.style.overflow = 'hidden';
+	},
+
+	closeMobileMenu() {
+		const overlay = document.getElementById('mobile-menu-overlay');
+		const menuToggle = document.getElementById('mobile-menu-btn');
+		
+		overlay.classList.remove('mobile-menu-open');
+		menuToggle.classList.remove('active');
+		menuToggle.setAttribute('aria-expanded', 'false');
+		
+		// Restore body scrolling
+		document.body.style.overflow = '';
+	},
+
+	renderMobileMenu(tree, url, level) {
+		const mobileNavList = document.querySelector('#mobile-nav-list');
+		const children = ui.menu.getChildren(tree);
+
+		if (!mobileNavList || children.length === 0) return;
+
+		// Clear existing mobile menu items on first render
+		if (!level) {
+			mobileNavList.innerHTML = '';
+		}
+
+		children.forEach(child => {
+			const submenu = ui.menu.getChildren(child);
+			const hasSubmenu = submenu.length > 0;
+			const linkUrl = hasSubmenu ? '#' : L.url(url, child.name);
+			
+			const li = E('li', { 'class': 'mobile-nav-item' }, [
+				E('a', { 
+					'class': 'mobile-nav-link',
+					'href': linkUrl,
+					'data-has-submenu': hasSubmenu ? 'true' : 'false'
+				}, [_(child.title)])
+			]);
+
+			// Add submenu items if they exist
+			if (hasSubmenu && level < 1) {
+				const submenuUl = E('ul', { 'class': 'mobile-nav-submenu' });
+				submenu.forEach(subchild => {
+					const subLi = E('li', { 'class': 'mobile-nav-subitem' }, [
+						E('a', { 
+							'class': 'mobile-nav-sublink',
+							'href': L.url(url, child.name, subchild.name)
+						}, [_(subchild.title)])
+					]);
+					submenuUl.appendChild(subLi);
+				});
+				li.appendChild(submenuUl);
+			}
+
+			mobileNavList.appendChild(li);
+		});
 	},
 
 	render(tree) {
@@ -64,7 +164,7 @@ return baseclass.extend({
 		children.forEach(child => {
 			const submenu = this.renderMainMenu(child, url + '/' + child.name, (level || 0) + 1);
 			const subclass = (!level && submenu.firstElementChild) ? 'dropdown' : '';
-			const linkclass = (!level && submenu.firstElementChild) ? 'menu' : '';
+			const linkclass = (!level && submenu.firstElementChild) ? 'menu' : 'menu';
 			const linkurl = submenu.firstElementChild ? '#' : L.url(url, child.name);
 
 			const li = E('li', { 'class': subclass }, [
@@ -77,6 +177,7 @@ return baseclass.extend({
 			ul.appendChild(li);
 		});
 
+		// Show navigation for desktop
 		ul.style.display = '';
 
 		return ul;
@@ -95,8 +196,12 @@ return baseclass.extend({
 				E('a', { 'href': L.url(child.name) }, [ _(child.title) ])
 			]));
 
-			if (isActive)
+			if (isActive) {
+				// Render desktop menu
 				this.renderMainMenu(child, child.name);
+				// Render mobile menu
+				this.renderMobileMenu(child, child.name);
+			}
 		});
 
 		if (ul.children.length > 1)

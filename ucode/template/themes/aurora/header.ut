@@ -1,4 +1,8 @@
 {#
+ luci-theme-aurora:
+ Copyright 2025 eamonxg <eamonxiong@gmail.com>
+ This theme is derived from luci-theme-bootstrap UT template.
+ luci-theme-bootstrap:
  Copyright 2008 Steven Barth <steven@midlink.org>
  Copyright 2012 David Menting <david@nut-bolt.nl>
  Copyright 2008-2022 Jo-Philipp Wich <jo@mein.io>
@@ -45,8 +49,22 @@
 		<header>
 			<a class="brand" href="/">{{ striptags(boardinfo.hostname ?? '?') }}</a>
 			<ul class="nav" id="topmenu" style="display:none"></ul>
+			<div class="mobile-controls">
+				<button class="mobile-menu-toggle" id="mobile-menu-btn" title="{{ _('Menu') }}">
+					<img src="{{ media }}/images/menu.svg" alt="Menu" />
+				</button>
+			</div>
 			<div id="indicators" class="pull-right"></div>
 		</header>
+
+		<!-- Mobile menu overlay -->
+		<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+			<nav class="mobile-nav">
+				<ul class="mobile-nav-list" id="mobile-nav-list">
+					<!-- Mobile menu items will be rendered here -->
+				</ul>
+			</nav>
+		</div>
 
 		<div id="maincontent" class="container">
 			{% if (getuid() == 0 && getspnam('root')?.pwdp === ''): %}

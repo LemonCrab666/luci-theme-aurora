@@ -1,4 +1,8 @@
 {#
+ luci-theme-aurora:
+ Copyright 2025 eamonxg <eamonxiong@gmail.com>
+ This theme is derived from luci-theme-bootstrap UT template.
+ luci-theme-bootstrap:
  Copyright 2022 Jo-Philipp Wich <jo@mein.io>
  Licensed to the public under the Apache License 2.0.
 -#}
