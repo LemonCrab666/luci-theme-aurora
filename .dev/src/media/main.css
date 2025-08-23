@@ -210,11 +210,11 @@
 
     @layer content {
       #maincontent.container {
-        @apply mx-auto min-h-screen w-4/5 !max-w-7xl px-6 pt-16;
+        @apply mx-auto min-h-screen w-11/12 !max-w-6xl px-4 pt-16;
       }
 
       #view {
-        @apply mb-8 w-full rounded-3xl border-2 border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-8 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85 dark:shadow-black/40 dark:backdrop-blur-2xl dark:backdrop-saturate-150 dark:hover:border-slate-600/35 dark:hover:shadow-black/50;
+        @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85 dark:shadow-black/40 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-slate-600/35 dark:hover:shadow-black/50;
       }
 
       #syslog {
@@ -311,7 +311,7 @@
     }
 
     .cbi-page-actions {
-      @apply mt-8 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-6 dark:border-slate-700/30;
+      @apply mt-6 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-4 dark:border-slate-700/30;
     }
 
     .cbi-section-actions div {
@@ -319,7 +319,7 @@
     }
 
     .td.cbi-section-actions {
-      @apply overflow-x-auto p-3 whitespace-nowrap;
+      @apply p-2;
 
       & div {
         @apply justify-start;
@@ -332,16 +332,16 @@
     }
 
     .control-group {
-      @apply mt-2 flex flex-wrap items-center gap-3;
+      @apply flex flex-wrap items-center gap-3;
     }
 
     .modal .button-row {
-      @apply flex justify-end gap-3 border-t border-slate-200/30 p-6 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+      @apply flex justify-end gap-3 border-t border-slate-200/30 p-4 sm:flex-row sm:gap-3 dark:border-slate-700/20;
       @apply flex-shrink-0;
     }
 
     .modal .right {
-      @apply flex justify-end gap-3 border-t border-slate-200/30 p-6 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+      @apply flex justify-end gap-3 border-t border-slate-200/30 p-4 sm:flex-row sm:gap-3 dark:border-slate-700/20;
       @apply flex-shrink-0;
     }
 
@@ -353,19 +353,28 @@
   @layer input {
     input[type="text"],
     input[type="password"] {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/70 bg-white px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
     }
   }
 
   @layer select {
     select {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-xl border border-slate-300/70 bg-white px-4 py-3 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100;
+    }
+
+    /* 确保所有表单控件保持一致的尺寸 */
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="search"] {
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
     }
   }
 
   @layer textarea {
     textarea {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-h-32 w-full resize-y rounded-xl border border-slate-300/70 bg-white px-4 py-3 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-h-24 w-full resize-y rounded-lg border border-slate-300/70 bg-white px-3 py-2 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
     }
 
     #syslog {
@@ -482,7 +491,7 @@
         }
 
         &.dropdown {
-          @apply invisible absolute top-full left-0 z-50 mt-1 flex min-w-[140px] scale-95 flex-col rounded-xl border border-slate-200/60 bg-white/95 py-1 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out dark:border-slate-600/40 dark:bg-slate-800/95;
+          @apply invisible absolute left-0 z-50 mt-1 flex min-w-[140px] scale-95 flex-col overflow-auto rounded-xl border border-slate-200/60 bg-white/95 py-1 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out dark:border-slate-600/40 dark:bg-slate-800/95;
 
           & > li {
             @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 mx-1 block w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all duration-150 ease-out dark:text-slate-300;
@@ -646,7 +655,7 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-4 overflow-auto rounded-xl border-2 border-slate-200/30 bg-white p-6 shadow-lg dark:border-slate-600/25 dark:bg-slate-800;
+      @apply mb-3 overflow-auto rounded-lg border border-slate-200/30 bg-white p-4 shadow-md dark:border-slate-600/25 dark:bg-slate-800;
 
       & h3 {
         @apply mb-4 border-b border-slate-200/40 pb-3 text-xl font-semibold text-slate-900 dark:border-slate-600/30 dark:text-slate-100;
@@ -723,11 +732,11 @@
 
   @layer modal {
     .modal {
-      @apply max-h-[80vh] min-w-[600px] max-w-4xl rounded-2xl border border-slate-400/25 bg-white/85 shadow-2xl backdrop-blur-xl backdrop-saturate-150 sm:mx-auto dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
-      @apply flex flex-col px-8;
+      @apply max-h-[75vh] max-w-5xl min-w-[500px] rounded-xl border border-slate-400/25 bg-white/85 shadow-xl backdrop-blur-lg backdrop-saturate-150 sm:mx-auto dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
+      @apply flex flex-col px-6;
 
       & h4 {
-        @apply mb-4 pt-8 px-8 text-xl font-semibold text-slate-900 dark:text-slate-100;
+        @apply mb-4 px-6 pt-6 text-lg font-semibold text-slate-900 dark:text-slate-100;
         @apply text-center;
       }
 
@@ -738,12 +747,12 @@
 
       /* 标签菜单 - 固定在顶部不参与滚动 */
       & .cbi-tabmenu {
-        @apply flex-shrink-0 mb-4 px-8 pb-0;
+        @apply mb-3 flex-shrink-0 px-6 pb-0;
       }
 
       /* 标签内容区域 - 可滚动 */
       & .cbi-section-node-tabbed {
-        @apply flex-1 overflow-y-auto overscroll-contain px-8 pt-0;
+        @apply flex-1 overflow-y-auto overscroll-contain px-6 pt-0;
       }
 
       /* 针对 tabs 的优化 - 只让内容区域滚动 */
@@ -811,18 +820,14 @@
       }
 
       &.login {
-        @apply mx-auto w-full min-w-[500px] max-w-lg;
-
-        & .cbi-map {
-          @apply flex-1 overflow-y-auto overscroll-contain p-8;
-        }
+        @apply mx-auto w-full max-w-lg min-w-[500px];
 
         & h4 {
           @apply mb-8 text-center text-2xl font-bold text-slate-900 dark:text-slate-100;
         }
 
         & .cbi-map {
-          @apply space-y-6;
+          @apply flex-1 space-y-6;
         }
 
         & .cbi-section {
@@ -834,13 +839,13 @@
         }
 
         & .cbi-value {
-          @apply space-y-2;
+          @apply space-y-3;
 
-          &-title {
-            @apply mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300;
+          &.cbi-value-title {
+            @apply mb-3 block text-sm font-medium text-slate-700 dark:text-slate-300;
           }
 
-          &-field {
+          &.cbi-value-field {
             @apply relative;
 
             & input[type="text"],
@@ -851,7 +856,15 @@
         }
 
         & hr {
-          @apply my-8 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-600;
+          @apply my-6 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-600;
+        }
+
+        & .alert-message {
+          @apply mb-6;
+        }
+
+        & .btn.cbi-button-positive.important {
+          @apply w-full rounded-xl px-6 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none active:scale-[0.98];
         }
       }
     }
@@ -881,7 +894,7 @@
     .table,
     .nft-table,
     .nft-rules {
-      @apply w-full border-collapse overflow-visible rounded-xl border border-slate-200/30 bg-white shadow-sm dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
+      @apply w-full border-collapse overflow-hidden rounded-lg border border-slate-200/40 bg-white shadow-sm dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
     }
 
     .table {
@@ -891,10 +904,19 @@
 
       & th,
       & .th {
-        @apply sticky top-0 z-10 border-b border-slate-400/25 bg-slate-50/50 px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:border-slate-400/20 dark:bg-slate-800/30 dark:text-slate-100;
+        @apply sticky top-0 z-10 border-b border-slate-200/60 bg-white/80 px-4 py-3 text-left text-sm font-medium text-slate-900 backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-100;
+
+        /* 第一行表头圆角 */
+        &:first-child {
+          @apply rounded-tl-lg;
+        }
+
+        &:last-child {
+          @apply rounded-tr-lg;
+        }
 
         &[data-sortable-row="true"] {
-          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-slate-100/50 dark:hover:bg-slate-700/40;
+          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-slate-50/60 dark:hover:bg-slate-700/60;
 
           &:hover::after {
             @apply ml-2 text-xs font-normal text-slate-400 content-['↕'] dark:text-slate-500;
@@ -904,7 +926,7 @@
 
       & td,
       & .td {
-        @apply border-b border-slate-400/20 px-4 py-3 text-sm text-slate-700 transition-colors duration-200 dark:border-slate-400/15 dark:text-slate-300;
+        @apply border-b border-slate-200/50 px-4 py-3 text-sm text-slate-700 dark:border-slate-600/40 dark:text-slate-300;
 
         &.left {
           @apply text-left;
@@ -912,10 +934,6 @@
 
         &.center {
           @apply text-center;
-
-          & em {
-            @apply text-slate-400 italic dark:text-slate-500;
-          }
         }
 
         &:contains("-") {
@@ -929,70 +947,66 @@
 
       & tr,
       & .tr {
-        @apply relative border-b border-slate-400/10 transition-all duration-200 last:border-b-0 hover:bg-slate-50/40 dark:border-slate-400/5 dark:hover:bg-slate-700/30;
-
-        &::before {
-          @apply absolute top-0 bottom-0 left-0 w-1 bg-transparent transition-colors duration-200 content-[''];
-        }
-
-        &:hover::before {
-          @apply bg-slate-700/20;
-        }
+        @apply transition-colors duration-200 hover:bg-slate-50/40 dark:hover:bg-slate-700/20;
 
         &.table-titles {
-          @apply bg-slate-100/50 hover:bg-slate-100/50 dark:bg-slate-700/40 dark:hover:bg-slate-700/40;
+          @apply bg-slate-50/60 dark:bg-slate-700/30;
         }
       }
 
       & .cbi-rowstyle-1 {
         @apply bg-white dark:bg-slate-800;
-
-        &:hover {
-          @apply bg-slate-100/50 dark:bg-slate-700/40;
-        }
       }
 
       & .cbi-rowstyle-2 {
-        @apply bg-slate-50/30 dark:bg-slate-700/20;
+        @apply bg-slate-50/50 dark:bg-slate-700/30;
+      }
 
-        &:hover {
-          @apply bg-slate-100/50 dark:bg-slate-700/40;
+      /* 为所有行添加微妙的边框 */
+      & tr {
+        @apply border-b border-slate-200/40 dark:border-slate-600/30;
+
+        /* 最后一行添加底部圆角 */
+        &:last-child {
+          & td:first-child {
+            @apply rounded-bl-lg;
+          }
+
+          & td:last-child {
+            @apply rounded-br-lg;
+          }
         }
       }
 
       &:empty::before {
-        @apply block py-8 text-center text-slate-400 content-['暂无数据'] dark:text-slate-500;
+        @apply block py-12 text-center text-slate-400 content-['暂无数据'] dark:text-slate-500;
       }
 
       &.loading {
         @apply opacity-60;
-
-        &::after {
-          @apply absolute inset-0 flex items-center justify-center bg-white/50 content-[''] dark:bg-slate-800/50;
-        }
       }
     }
 
     .cbi-section h3 {
-      @apply mt-6 mb-4 border-b border-slate-200/40 pb-2 text-lg font-semibold text-slate-800 first:mt-0 dark:border-slate-700/30 dark:text-slate-200;
+      @apply mt-4 mb-3 border-b border-slate-200/40 pb-2 text-lg font-medium text-slate-800 first:mt-0 dark:border-slate-600/30 dark:text-slate-200;
     }
 
     .nft-table h3 {
-      @apply mb-4 border-b border-slate-200/40 pb-2 text-xl font-semibold text-slate-900 dark:border-slate-700/30 dark:text-slate-100;
+      @apply mb-3 border-b border-slate-200/40 pb-2 text-lg font-medium text-slate-800 dark:border-slate-600/30 dark:text-slate-200;
     }
 
     .nft-chains {
-      @apply space-y-6;
+      @apply space-y-4;
 
       & .nft-chain {
-        @apply rounded-xl border border-slate-200/30 bg-white shadow-sm dark:border-slate-700/20 dark:bg-slate-800 dark:shadow-black/20;
+        @apply overflow-hidden rounded-lg bg-white dark:bg-slate-800;
 
         & h4 {
-          @apply mb-3 border-b border-slate-200/30 bg-slate-50/50 p-4 pb-3 text-lg font-medium text-slate-800 dark:border-slate-700/20 dark:bg-slate-700/30 dark:text-slate-200;
+          @apply mb-3 border-b border-slate-200/40 p-4 pb-3 text-lg font-medium text-slate-800 dark:border-slate-600/30 dark:text-slate-200;
         }
 
         &-hook {
-          @apply border-b border-slate-200/20 bg-slate-50/30 px-4 py-3 dark:border-slate-700/15 dark:bg-slate-700/20;
+          @apply p-4;
 
           & ul {
             @apply m-0 list-none p-0;
@@ -1003,7 +1017,7 @@
           }
 
           & strong {
-            @apply font-semibold text-slate-800 dark:text-slate-200;
+            @apply font-medium text-slate-800 dark:text-slate-200;
           }
         }
       }
@@ -1073,10 +1087,10 @@
 
     .cbi-map .cbi-section-node {
       & .cbi-value {
-        @apply py-2;
+        @apply py-1.5;
 
         & + .cbi-value {
-          @apply mt-3;
+          @apply mt-2;
         }
       }
 
@@ -1098,47 +1112,35 @@
     }
 
     .cbi-input-text {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/50 bg-white/90 px-3 py-2 text-sm text-slate-900 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:bg-slate-800;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/50 bg-white/90 px-3 py-1.5 text-sm text-slate-900 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:bg-slate-800;
     }
 
     .cbi-dynlist {
       @apply space-y-2;
 
       & .item {
-        @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 pointer-events-none relative flex cursor-move flex-col items-start gap-2 overflow-visible rounded-lg border border-slate-200/50 bg-white/80 p-3 pr-8 transition-all duration-200 hover:border-slate-300/60 hover:bg-white hover:shadow-sm focus:ring-2 focus:outline-none dark:border-slate-600/40 dark:bg-slate-800/80 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10;
+        @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 pointer-events-none relative flex cursor-move flex-col items-start gap-3 overflow-visible rounded-lg border border-slate-200/50 bg-white/80 px-4 py-3 pr-12 transition-all duration-200 hover:border-slate-300/60 hover:bg-white hover:shadow-sm focus:ring-2 focus:outline-none dark:border-slate-600/40 dark:bg-slate-800/80 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10;
 
         & > * {
           @apply pointer-events-auto;
         }
 
-        &::before,
+        /* 删除按钮样式 */
         &::after {
-          @apply pointer-events-auto absolute top-1 right-1 h-3 w-[2px] cursor-pointer rounded-full bg-red-600 transition-colors duration-200 dark:bg-red-500;
-        }
-
-        &::before {
-          @apply rotate-45;
-        }
-
-        &::after {
-          @apply -rotate-45;
-        }
-
-        &:hover::before,
-        &:hover::after {
-          @apply bg-red-700 dark:bg-red-400;
-        }
-
-        & span {
-          @apply max-w-full flex-1 text-sm font-medium break-words text-slate-700 dark:text-slate-300;
+          @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-200/90 hover:text-slate-800 dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:bg-slate-600/60 dark:hover:text-slate-200;
+          content: "×";
         }
 
         & strong {
-          @apply mb-1 block max-w-full font-semibold break-words text-slate-800 dark:text-slate-100;
+          @apply w-full text-base font-semibold text-slate-800 dark:text-slate-100;
         }
 
         & code {
-          @apply block w-full max-w-full overflow-x-auto font-mono text-xs leading-snug whitespace-pre text-slate-800 dark:text-slate-200;
+          @apply w-full overflow-x-auto rounded-md bg-slate-50 px-3 py-2 font-mono text-xs leading-relaxed text-slate-700 dark:bg-slate-700/50 dark:text-slate-300;
+        }
+
+        & br {
+          @apply hidden;
         }
 
         & input[type="hidden"] {
@@ -1155,14 +1157,14 @@
       }
 
       & .add-item {
-        @apply flex items-center gap-2 rounded-lg border-2 border-dashed border-slate-300/40 bg-slate-50/50 p-3 transition-all duration-200 hover:border-slate-400/60 hover:bg-slate-100/50 dark:border-slate-600/40 dark:bg-slate-800/30 dark:hover:border-slate-500/60 dark:hover:bg-slate-700/40;
+        @apply flex items-center gap-0 rounded-lg border-2 border-dashed border-slate-300/50 bg-white/90 px-3 py-1.5 transition-all duration-200 hover:border-slate-400/60 hover:bg-white hover:shadow-sm dark:border-slate-600/50 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
 
-        & input[type="text"] {
-          @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 flex-1 rounded-lg border border-slate-300/50 bg-white/90 px-3 py-2 text-sm text-slate-900 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:focus:bg-slate-800;
+        & textarea.cbi-input-text {
+          @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 flex-1 rounded-none border-0 bg-transparent px-0 py-0 text-sm text-slate-900 transition-all duration-200 focus:ring-0 focus:outline-none dark:text-slate-100;
         }
 
-        & .btn.cbi-button-add {
-          @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 flex h-8 w-8 items-center justify-center rounded-lg text-lg leading-none font-bold text-white transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-slate-800;
+        & .cbi-button {
+          @apply flex items-center justify-center rounded-r-lg border-l border-slate-200/50 bg-slate-100/80 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-200/90 hover:text-slate-800 dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:bg-slate-700/60 dark:hover:text-slate-200;
         }
       }
 
