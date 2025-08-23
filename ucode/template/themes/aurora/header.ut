@@ -60,6 +60,12 @@
 		<!-- Mobile menu overlay -->
 		<div class="mobile-menu-overlay" id="mobile-menu-overlay">
 			<nav class="mobile-nav">
+				<div class="mobile-nav-header">
+					<h3 class="mobile-nav-title">{{ _('Menu') }}</h3>
+					<button class="mobile-nav-close" id="mobile-nav-close" title="{{ _('Close Menu') }}">
+						<img src="{{ media }}/images/collapse.svg" alt="Close" />
+					</button>
+				</div>
 				<ul class="mobile-nav-list" id="mobile-nav-list">
 					<!-- Mobile menu items will be rendered here -->
 				</ul>

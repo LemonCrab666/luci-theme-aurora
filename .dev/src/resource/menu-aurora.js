@@ -11,8 +11,10 @@ return baseclass.extend({
 	initMobileMenu() {
 		const menuToggle = document.getElementById('mobile-menu-btn');
 		const overlay = document.getElementById('mobile-menu-overlay');
+		const closeBtn = document.getElementById('mobile-nav-close');
 		
 		if (menuToggle && overlay) {
+			// Open/close menu with toggle button
 			menuToggle.addEventListener('click', (e) => {
 				e.stopPropagation();
 				const isOpen = overlay.classList.contains('mobile-menu-open');
@@ -24,7 +26,15 @@ return baseclass.extend({
 				}
 			});
 
-			// Close mobile menu when clicking overlay
+			// Close menu with close button
+			if (closeBtn) {
+				closeBtn.addEventListener('click', (e) => {
+					e.stopPropagation();
+					this.closeMobileMenu();
+				});
+			}
+
+			// Close mobile menu when clicking overlay background
 			overlay.addEventListener('click', (e) => {
 				if (e.target === overlay) {
 					this.closeMobileMenu();
@@ -35,6 +45,16 @@ return baseclass.extend({
 			document.addEventListener('keydown', (e) => {
 				if (e.key === 'Escape' && overlay.classList.contains('mobile-menu-open')) {
 					this.closeMobileMenu();
+				}
+			});
+
+			// Handle submenu toggles
+			document.addEventListener('click', (e) => {
+				const submenuToggle = e.target.closest('.mobile-submenu-toggle');
+				if (submenuToggle) {
+					e.preventDefault();
+					e.stopPropagation();
+					this.toggleMobileSubmenu(submenuToggle);
 				}
 			});
 		}
@@ -60,8 +80,60 @@ return baseclass.extend({
 		menuToggle.classList.remove('active');
 		menuToggle.setAttribute('aria-expanded', 'false');
 		
+		// Close all open submenus
+		const allItems = document.querySelectorAll('.mobile-nav-item.submenu-expanded');
+		allItems.forEach(item => {
+			item.classList.remove('submenu-expanded');
+			const submenu = item.querySelector('.mobile-nav-submenu');
+			const toggle = item.querySelector('.mobile-submenu-toggle');
+			if (submenu) {
+				submenu.style.maxHeight = '0';
+				submenu.style.opacity = '0';
+			}
+			if (toggle) {
+				toggle.classList.remove('expanded');
+			}
+		});
+		
 		// Restore body scrolling
 		document.body.style.overflow = '';
+	},
+
+	toggleMobileSubmenu(toggle) {
+		const parentItem = toggle.closest('.mobile-nav-item');
+		const submenu = parentItem.querySelector('.mobile-nav-submenu');
+		const isExpanded = parentItem.classList.contains('submenu-expanded');
+
+		// Close other open submenus (accordion behavior)
+		const allItems = document.querySelectorAll('.mobile-nav-item.submenu-expanded');
+		allItems.forEach(item => {
+			if (item !== parentItem) {
+				item.classList.remove('submenu-expanded');
+				const otherSubmenu = item.querySelector('.mobile-nav-submenu');
+				const otherToggle = item.querySelector('.mobile-submenu-toggle');
+				if (otherSubmenu) {
+					otherSubmenu.style.maxHeight = '0';
+					otherSubmenu.style.opacity = '0';
+				}
+				if (otherToggle) {
+					otherToggle.classList.remove('expanded');
+				}
+			}
+		});
+
+		if (isExpanded) {
+			// Close submenu
+			parentItem.classList.remove('submenu-expanded');
+			toggle.classList.remove('expanded');
+			submenu.style.maxHeight = '0';
+			submenu.style.opacity = '0';
+		} else {
+			// Open submenu
+			parentItem.classList.add('submenu-expanded');
+			toggle.classList.add('expanded');
+			submenu.style.maxHeight = submenu.scrollHeight + 'px';
+			submenu.style.opacity = '1';
+		}
 	},
 
 	renderMobileMenu(tree, url, level) {
@@ -80,17 +152,43 @@ return baseclass.extend({
 			const hasSubmenu = submenu.length > 0;
 			const linkUrl = hasSubmenu ? '#' : L.url(url, child.name);
 			
-			const li = E('li', { 'class': 'mobile-nav-item' }, [
-				E('a', { 
-					'class': 'mobile-nav-link',
-					'href': linkUrl,
-					'data-has-submenu': hasSubmenu ? 'true' : 'false'
-				}, [_(child.title)])
-			]);
+			const li = E('li', { 'class': 'mobile-nav-item' });
+			
+			if (hasSubmenu) {
+				// Create main link with submenu toggle
+				const mainLink = E('div', { 'class': 'mobile-nav-link-wrapper' }, [
+					E('a', { 
+						'class': 'mobile-nav-link',
+						'href': linkUrl
+					}, [_(child.title)]),
+					E('button', { 
+						'class': 'mobile-submenu-toggle',
+						'aria-expanded': 'false',
+						'type': 'button'
+					}, [
+						E('svg', { 
+							'class': 'submenu-chevron',
+							'xmlns': 'http://www.w3.org/2000/svg',
+							'width': '16',
+							'height': '16',
+							'viewBox': '0 0 24 24',
+							'fill': 'none',
+							'stroke': 'currentColor',
+							'stroke-width': '2'
+						}, [
+							E('polyline', { 'points': '6,9 12,15 18,9' })
+						])
+					])
+				]);
+				
+				li.appendChild(mainLink);
 
-			// Add submenu items if they exist
-			if (hasSubmenu && level < 1) {
-				const submenuUl = E('ul', { 'class': 'mobile-nav-submenu' });
+				// Create submenu
+				const submenuUl = E('ul', { 
+					'class': 'mobile-nav-submenu',
+					'style': 'max-height: 0; opacity: 0;'
+				});
+				
 				submenu.forEach(subchild => {
 					const subLi = E('li', { 'class': 'mobile-nav-subitem' }, [
 						E('a', { 
@@ -100,7 +198,14 @@ return baseclass.extend({
 					]);
 					submenuUl.appendChild(subLi);
 				});
+				
 				li.appendChild(submenuUl);
+			} else {
+				// Simple link without submenu
+				li.appendChild(E('a', { 
+					'class': 'mobile-nav-link',
+					'href': linkUrl
+				}, [_(child.title)]));
 			}
 
 			mobileNavList.appendChild(li);
