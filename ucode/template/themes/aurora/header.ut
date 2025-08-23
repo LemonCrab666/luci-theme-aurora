@@ -50,9 +50,9 @@
 			<a class="brand" href="/">{{ striptags(boardinfo.hostname ?? '?') }}</a>
 			<ul class="nav" id="topmenu" style="display:none"></ul>
 			<div class="mobile-controls">
-				<button class="mobile-menu-toggle" id="mobile-menu-btn" title="{{ _('Menu') }}">
+				<div class="mobile-menu-toggle" id="mobile-menu-btn" title="{{ _('Menu') }}">
 					<img src="{{ media }}/images/menu.svg" alt="Menu" />
-				</button>
+				</div>
 			</div>
 			<div id="indicators" class="pull-right"></div>
 		</header>
@@ -61,10 +61,9 @@
 		<div class="mobile-menu-overlay" id="mobile-menu-overlay">
 			<nav class="mobile-nav">
 				<div class="mobile-nav-header">
-					<h3 class="mobile-nav-title">{{ _('Menu') }}</h3>
-					<button class="mobile-nav-close" id="mobile-nav-close" title="{{ _('Close Menu') }}">
+					<div class="mobile-nav-close" id="mobile-nav-close" title="{{ _('Close Menu') }}">
 						<img src="{{ media }}/images/collapse.svg" alt="Close" />
-					</button>
+					</div>
 				</div>
 				<ul class="mobile-nav-list" id="mobile-nav-list">
 					<!-- Mobile menu items will be rendered here -->

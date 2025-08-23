@@ -212,7 +212,7 @@
       }
 
       .mobile-menu-toggle {
-        @apply max-sm:inline-flex max-sm:h-10 max-sm:w-10 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-xl max-sm:border-0 max-sm:bg-white/10 max-sm:p-2 max-sm:transition-all max-sm:duration-200 max-sm:backdrop-blur-sm max-sm:hover:bg-white/20 max-sm:hover:scale-105 max-sm:active:scale-95 max-sm:dark:bg-slate-800/30 max-sm:dark:hover:bg-slate-700/40 sm:hidden;
+        @apply max-sm:inline-flex max-sm:h-10 max-sm:w-10 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-xl max-sm:bg-white/10 max-sm:p-2 max-sm:transition-all max-sm:duration-200 max-sm:backdrop-blur-sm max-sm:hover:bg-white/20 max-sm:hover:scale-105 max-sm:active:scale-95 max-sm:dark:bg-slate-800/30 max-sm:dark:hover:bg-slate-700/40 sm:hidden;
 
         & img {
           @apply max-sm:h-6 max-sm:w-6 max-sm:transition-transform max-sm:duration-200 max-sm:filter max-sm:brightness-0 max-sm:dark:brightness-100;
@@ -223,7 +223,7 @@
         @apply max-sm:bg-aurora-sky/25 max-sm:dark:bg-aurora-sky/20;
 
         & img {
-          @apply max-sm:rotate-180 max-sm:brightness-0;
+          @apply max-sm:rotate-180;
         }
       }
 
@@ -253,10 +253,10 @@
       }
 
       .mobile-nav-close {
-        @apply max-sm:flex max-sm:h-8 max-sm:w-8 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-lg max-sm:border-0 max-sm:bg-white/10 max-sm:p-1 max-sm:transition-all max-sm:duration-200 max-sm:hover:bg-white/20 max-sm:hover:scale-105 max-sm:active:scale-95 max-sm:dark:bg-slate-800/20 max-sm:dark:hover:bg-slate-700/30;
+        @apply max-sm:flex max-sm:h-8 max-sm:w-8 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-lg max-sm:bg-white/10 max-sm:p-1 max-sm:transition-all max-sm:duration-200 max-sm:hover:bg-white/20 max-sm:hover:scale-105 max-sm:active:scale-95 max-sm:dark:bg-slate-800/20 max-sm:dark:hover:bg-slate-700/30;
 
         & img {
-          @apply max-sm:h-4 max-sm:w-4 max-sm:rotate-180 max-sm:transition-transform max-sm:duration-200 max-sm:filter max-sm:brightness-0 max-sm:dark:brightness-100;
+          @apply max-sm:h-4 max-sm:w-4 max-sm:transition-transform max-sm:duration-200 max-sm:filter max-sm:brightness-0 max-sm:dark:brightness-100;
         }
       }
 
@@ -268,28 +268,8 @@
         @apply max-sm:border-b max-sm:border-white/5 max-sm:last:border-b-0 max-sm:dark:border-slate-700/10;
       }
 
-      .mobile-nav-link-wrapper {
-        @apply max-sm:flex max-sm:items-center max-sm:justify-between;
-      }
-
       .mobile-nav-link {
-        @apply max-sm:flex max-sm:flex-1 max-sm:items-center max-sm:px-6 max-sm:py-4 max-sm:text-base max-sm:font-medium max-sm:text-slate-700 max-sm:no-underline max-sm:transition-all max-sm:duration-300 max-sm:hover:bg-white/10 max-sm:hover:translate-x-1 max-sm:hover:text-slate-900 max-sm:dark:text-slate-300 max-sm:dark:hover:bg-slate-800/20 max-sm:dark:hover:text-slate-100;
-      }
-
-      .mobile-submenu-toggle {
-        @apply max-sm:flex max-sm:h-10 max-sm:w-10 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-lg max-sm:border-0 max-sm:bg-transparent max-sm:p-2 max-sm:text-slate-500 max-sm:transition-all max-sm:duration-300 max-sm:hover:bg-white/10 max-sm:hover:text-slate-700 max-sm:dark:text-slate-400 max-sm:dark:hover:bg-slate-800/20 max-sm:dark:hover:text-slate-300;
-
-        & .submenu-chevron {
-          @apply max-sm:transition-transform max-sm:duration-300;
-        }
-
-        &.expanded {
-          @apply max-sm:bg-aurora-sky/10 max-sm:text-aurora-sky-600 max-sm:dark:bg-aurora-sky/15 max-sm:dark:text-aurora-sky-400;
-
-          & .submenu-chevron {
-            @apply max-sm:rotate-180;
-          }
-        }
+        @apply max-sm:flex max-sm:w-full max-sm:items-center max-sm:px-6 max-sm:py-4 max-sm:text-base max-sm:font-medium max-sm:text-slate-700 max-sm:no-underline max-sm:transition-all max-sm:duration-300 max-sm:hover:bg-white/10 max-sm:hover:translate-x-1 max-sm:hover:text-slate-900 max-sm:dark:text-slate-300 max-sm:dark:hover:bg-slate-800/20 max-sm:dark:hover:text-slate-100;
       }
 
       .mobile-nav-submenu {

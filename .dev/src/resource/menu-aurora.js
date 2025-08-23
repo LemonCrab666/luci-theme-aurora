@@ -48,13 +48,20 @@ return baseclass.extend({
 				}
 			});
 
-			// Handle submenu toggles
+			// Handle mobile menu item clicks (including submenu expansion)
 			document.addEventListener('click', (e) => {
-				const submenuToggle = e.target.closest('.mobile-submenu-toggle');
-				if (submenuToggle) {
-					e.preventDefault();
-					e.stopPropagation();
-					this.toggleMobileSubmenu(submenuToggle);
+				const mobileNavLink = e.target.closest('.mobile-nav-link');
+				if (mobileNavLink) {
+					const parentItem = mobileNavLink.closest('.mobile-nav-item');
+					const submenu = parentItem ? parentItem.querySelector('.mobile-nav-submenu') : null;
+					
+					// If this link has a submenu, prevent default and toggle submenu
+					if (submenu) {
+						e.preventDefault();
+						e.stopPropagation();
+						this.toggleMobileSubmenu(parentItem);
+					}
+					// If no submenu, let the link navigate normally
 				}
 			});
 		}
@@ -85,13 +92,9 @@ return baseclass.extend({
 		allItems.forEach(item => {
 			item.classList.remove('submenu-expanded');
 			const submenu = item.querySelector('.mobile-nav-submenu');
-			const toggle = item.querySelector('.mobile-submenu-toggle');
 			if (submenu) {
 				submenu.style.maxHeight = '0';
 				submenu.style.opacity = '0';
-			}
-			if (toggle) {
-				toggle.classList.remove('expanded');
 			}
 		});
 		
@@ -99,8 +102,7 @@ return baseclass.extend({
 		document.body.style.overflow = '';
 	},
 
-	toggleMobileSubmenu(toggle) {
-		const parentItem = toggle.closest('.mobile-nav-item');
+	toggleMobileSubmenu(parentItem) {
 		const submenu = parentItem.querySelector('.mobile-nav-submenu');
 		const isExpanded = parentItem.classList.contains('submenu-expanded');
 
@@ -110,13 +112,9 @@ return baseclass.extend({
 			if (item !== parentItem) {
 				item.classList.remove('submenu-expanded');
 				const otherSubmenu = item.querySelector('.mobile-nav-submenu');
-				const otherToggle = item.querySelector('.mobile-submenu-toggle');
 				if (otherSubmenu) {
 					otherSubmenu.style.maxHeight = '0';
 					otherSubmenu.style.opacity = '0';
-				}
-				if (otherToggle) {
-					otherToggle.classList.remove('expanded');
 				}
 			}
 		});
@@ -124,13 +122,11 @@ return baseclass.extend({
 		if (isExpanded) {
 			// Close submenu
 			parentItem.classList.remove('submenu-expanded');
-			toggle.classList.remove('expanded');
 			submenu.style.maxHeight = '0';
 			submenu.style.opacity = '0';
 		} else {
 			// Open submenu
 			parentItem.classList.add('submenu-expanded');
-			toggle.classList.add('expanded');
 			submenu.style.maxHeight = submenu.scrollHeight + 'px';
 			submenu.style.opacity = '1';
 		}
@@ -155,31 +151,11 @@ return baseclass.extend({
 			const li = E('li', { 'class': 'mobile-nav-item' });
 			
 			if (hasSubmenu) {
-				// Create main link with submenu toggle
-				const mainLink = E('div', { 'class': 'mobile-nav-link-wrapper' }, [
-					E('a', { 
-						'class': 'mobile-nav-link',
-						'href': linkUrl
-					}, [_(child.title)]),
-					E('button', { 
-						'class': 'mobile-submenu-toggle',
-						'aria-expanded': 'false',
-						'type': 'button'
-					}, [
-						E('svg', { 
-							'class': 'submenu-chevron',
-							'xmlns': 'http://www.w3.org/2000/svg',
-							'width': '16',
-							'height': '16',
-							'viewBox': '0 0 24 24',
-							'fill': 'none',
-							'stroke': 'currentColor',
-							'stroke-width': '2'
-						}, [
-							E('polyline', { 'points': '6,9 12,15 18,9' })
-						])
-					])
-				]);
+				// Create main link that can expand submenu
+				const mainLink = E('a', { 
+					'class': 'mobile-nav-link',
+					'href': linkUrl
+				}, [_(child.title)]);
 				
 				li.appendChild(mainLink);
 
