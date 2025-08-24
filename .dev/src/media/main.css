@@ -171,11 +171,11 @@
   @layer layout {
     @layer header {
       header {
-        @apply dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 max-sm:bg-white/10 max-sm:px-4 max-sm:py-2 max-sm:backdrop-blur-xl max-sm:backdrop-saturate-150 dark:border-gray-700/40 dark:bg-gray-900/90 dark:hover:border-gray-600/50 dark:hover:bg-gray-800/95 dark:hover:shadow-black/30 max-sm:dark:bg-gray-900/95;
+        @apply fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 max-sm:bg-white/10 max-sm:px-4 max-sm:py-2 max-sm:backdrop-blur-xl max-sm:backdrop-saturate-150 dark:border-gray-700/40 dark:bg-gray-900/90 dark:hover:border-gray-600/50 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-sm:dark:bg-gray-900/95;
       }
 
       .brand {
-        @apply hover:text-aurora-sky inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-sm:text-lg dark:text-slate-100;
+        @apply hover:text-aurora-sky inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-sm:order-1 max-sm:flex-1 max-sm:text-lg dark:text-slate-100;
       }
 
       .nav {
@@ -191,7 +191,7 @@
       }
 
       .mobile-controls {
-        @apply max-sm:flex max-sm:items-center max-sm:gap-3 sm:hidden;
+        @apply max-sm:order-last max-sm:flex max-sm:shrink-0 max-sm:items-center max-sm:gap-2 sm:hidden;
         & .mobile-menu-toggle {
           @apply max-sm:inline-flex max-sm:h-10 max-sm:w-10 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-xl max-sm:bg-white/10 max-sm:p-2 max-sm:backdrop-blur-sm max-sm:transition-all max-sm:duration-200 max-sm:hover:scale-105 max-sm:hover:bg-white/20 max-sm:active:scale-95 sm:hidden max-sm:dark:bg-slate-800/30 max-sm:dark:hover:bg-slate-700/40;
 
@@ -266,7 +266,43 @@
       }
 
       #indicators {
-        @apply max-sm:hidden;
+        @apply flex flex-row-reverse items-center max-sm:order-2 max-sm:shrink-0;
+
+        & span[data-indicator] {
+          @apply relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-transparent transition-all duration-200 hover:bg-white/10 active:scale-95 active:bg-white/15 max-sm:h-10 max-sm:w-10 dark:hover:bg-slate-800/30 dark:active:bg-slate-700/40;
+
+          &::before {
+            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 brightness-0 filter transition-opacity duration-200 content-[''] dark:opacity-80 dark:brightness-100;
+          }
+
+          &:hover::before {
+            @apply opacity-100;
+          }
+
+          &[data-indicator="poll-status"] {
+            &[data-style="active"]::before {
+              @apply bg-[url('./images/refresh.svg')];
+            }
+
+            &[data-style="inactive"]::before {
+              @apply bg-[url('./images/pause.svg')];
+            }
+          }
+
+          &[data-indicator="uci-changes"]::before {
+            @apply bg-[url('./images/setting.svg')];
+          }
+
+          &[data-style="active"] {
+            &::before {
+              @apply opacity-90 dark:opacity-100;
+            }
+
+            &:hover::before {
+              @apply opacity-100;
+            }
+          }
+        }
       }
     }
 
@@ -280,7 +316,7 @@
       }
 
       #syslog {
-        @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600/40 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 dark:shadow-black/50;
+        @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
       }
     }
 
@@ -398,11 +434,11 @@
     }
 
     .modal .button-row {
-      @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 sm:flex-row sm:gap-3 max-sm:gap-2 max-sm:p-3 dark:border-slate-700/20;
+      @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-sm:gap-2 max-sm:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
     }
 
     .modal .right {
-      @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 sm:flex-row sm:gap-3 max-sm:gap-2 max-sm:p-3 dark:border-slate-700/20;
+      @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-sm:gap-2 max-sm:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
     }
 
     .modal.login .btn.cbi-button-positive.important {
@@ -1128,7 +1164,7 @@
       }
 
       & .cbi-value-description {
-        @apply mt-0 ml-3 inline-block leading-normal max-sm:ml-0 max-sm:mt-1;
+        @apply mt-0 ml-3 inline-block leading-normal max-sm:mt-1 max-sm:ml-0;
       }
 
       & output {
@@ -1239,7 +1275,7 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-gray-600/60 dark:hover:scrollbar-thumb-gray-500/80;
+      @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-gray-600/60 dark:hover:scrollbar-thumb-gray-500/80 mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
 
       & li {
         @apply m-0 min-w-fit flex-shrink-0 list-none;
