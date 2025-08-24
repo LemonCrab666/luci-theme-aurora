@@ -2,24 +2,6 @@
 
 @plugin "tailwind-scrollbar";
 
-/* 预先声明层的顺序，后声明的层优先级更高 */
-@layer base, components, message, dropdown, progress, badge, tooltip, card, modal, table, form, segmented, tab;
-
-/*
- * CSS Layer System (Priority: @layer > z-index):
- * 层声明顺序（后声明的层优先级更高）:
- * @layer base, components, message, dropdown, progress, badge, tooltip, card, modal, table, form, segmented, tab;
- * 
- * Z-Index within layers:
- * z-10: Base elements
- * z-20: Sticky elements
- * z-30: Header and mobile menu overlay
- * z-40: Alert messages
- * z-50: Dropdown menus
- * z-100: Modal overlays
- * z-1000+: High priority overlays
- */
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -128,7 +110,7 @@
   }
 
   html {
-    @apply scrollbar scrollbar-track-slate-400/5 scrollbar-thumb-slate-400/30 hover:scrollbar-thumb-slate-400/50 dark:scrollbar-track-aurora-night-slate dark:scrollbar-thumb-aurora-teal dark:hover:scrollbar-thumb-aurora-night-emerald h-full font-sans;
+    @apply scrollbar scrollbar-track-slate-400/5 scrollbar-thumb-slate-400/30 hover:scrollbar-thumb-slate-400/50 dark:scrollbar-track-gray-900/50 dark:scrollbar-thumb-gray-800/70 dark:hover:scrollbar-thumb-gray-700/90 h-full font-sans;
   }
 
   * {
@@ -189,7 +171,7 @@
   @layer layout {
     @layer header {
       header {
-        @apply dark:hover:from-aurora-night-slate-800 dark:hover:via-aurora-night-teal-800 dark:hover:to-aurora-night-emerald-800 fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 max-sm:bg-white/10 max-sm:px-4 max-sm:py-2 max-sm:backdrop-blur-xl max-sm:backdrop-saturate-150 dark:border-slate-700/30 dark:bg-slate-900/80 dark:hover:border-slate-600/40 dark:hover:bg-gradient-to-r dark:hover:shadow-black/50 max-sm:dark:bg-slate-900/85;
+        @apply dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 max-sm:bg-white/10 max-sm:px-4 max-sm:py-2 max-sm:backdrop-blur-xl max-sm:backdrop-saturate-150 dark:border-gray-700/40 dark:bg-gray-900/90 dark:hover:border-gray-600/50 dark:hover:bg-gray-800/95 dark:hover:shadow-black/30 max-sm:dark:bg-gray-900/95;
       }
 
       .brand {
@@ -210,79 +192,77 @@
 
       .mobile-controls {
         @apply max-sm:flex max-sm:items-center max-sm:gap-3 sm:hidden;
-      }
+        & .mobile-menu-toggle {
+          @apply max-sm:inline-flex max-sm:h-10 max-sm:w-10 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-xl max-sm:bg-white/10 max-sm:p-2 max-sm:backdrop-blur-sm max-sm:transition-all max-sm:duration-200 max-sm:hover:scale-105 max-sm:hover:bg-white/20 max-sm:active:scale-95 sm:hidden max-sm:dark:bg-slate-800/30 max-sm:dark:hover:bg-slate-700/40;
 
-      .mobile-menu-toggle {
-        @apply max-sm:inline-flex max-sm:h-10 max-sm:w-10 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-xl max-sm:bg-white/10 max-sm:p-2 max-sm:backdrop-blur-sm max-sm:transition-all max-sm:duration-200 max-sm:hover:scale-105 max-sm:hover:bg-white/20 max-sm:active:scale-95 sm:hidden max-sm:dark:bg-slate-800/30 max-sm:dark:hover:bg-slate-700/40;
+          & img {
+            @apply max-sm:h-6 max-sm:w-6 max-sm:brightness-0 max-sm:filter max-sm:transition-transform max-sm:duration-200 max-sm:dark:brightness-100;
+          }
 
-        & img {
-          @apply max-sm:h-6 max-sm:w-6 max-sm:brightness-0 max-sm:filter max-sm:transition-transform max-sm:duration-200 max-sm:dark:brightness-100;
+          &.active {
+            @apply max-sm:bg-aurora-sky/25 max-sm:dark:bg-aurora-sky/20;
+
+            & img {
+              @apply max-sm:rotate-180;
+            }
+          }
         }
       }
 
-      .mobile-menu-toggle.active {
-        @apply max-sm:bg-aurora-sky/25 max-sm:dark:bg-aurora-sky/20;
-
-        & img {
-          @apply max-sm:rotate-180;
-        }
-      }
-
-      /* Mobile menu overlay */
       .mobile-menu-overlay {
-        @apply max-sm:invisible max-sm:fixed max-sm:inset-0 max-sm:z-30 max-sm:bg-black/40 max-sm:opacity-0 max-sm:backdrop-blur-md max-sm:transition-all max-sm:duration-300 sm:hidden;
-      }
+        @apply max-sm:invisible max-sm:fixed max-sm:inset-0 max-sm:z-60 max-sm:bg-black/40 max-sm:opacity-0 max-sm:backdrop-blur-md max-sm:transition-all max-sm:duration-300 sm:hidden;
 
-      .mobile-menu-overlay.mobile-menu-open {
-        @apply max-sm:visible max-sm:opacity-100;
+        &.mobile-menu-open {
+          @apply max-sm:visible max-sm:opacity-100;
+
+          & .mobile-nav {
+            @apply max-sm:translate-x-0;
+          }
+        }
       }
 
       .mobile-nav {
         @apply max-sm:absolute max-sm:top-0 max-sm:right-0 max-sm:flex max-sm:h-full max-sm:w-80 max-sm:translate-x-full max-sm:flex-col max-sm:bg-white/95 max-sm:shadow-2xl max-sm:backdrop-blur-xl max-sm:backdrop-saturate-150 max-sm:transition-transform max-sm:duration-300 max-sm:dark:bg-slate-900/95;
-      }
 
-      .mobile-menu-overlay.mobile-menu-open .mobile-nav {
-        @apply max-sm:translate-x-0;
-      }
+        & .mobile-nav-header {
+          @apply max-sm:flex max-sm:items-center max-sm:justify-end max-sm:p-6 max-sm:pb-3;
 
-      .mobile-nav-header {
-        @apply max-sm:flex max-sm:items-center max-sm:justify-end max-sm:p-6 max-sm:pb-3;
-      }
+          & .mobile-nav-title {
+            @apply max-sm:m-0 max-sm:text-lg max-sm:font-semibold max-sm:text-slate-900 max-sm:dark:text-slate-100;
+          }
 
-      .mobile-nav-title {
-        @apply max-sm:m-0 max-sm:text-lg max-sm:font-semibold max-sm:text-slate-900 max-sm:dark:text-slate-100;
-      }
+          & .mobile-nav-close {
+            @apply max-sm:flex max-sm:h-12 max-sm:w-12 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-lg max-sm:bg-white/10 max-sm:p-2 max-sm:transition-all max-sm:duration-200 max-sm:hover:scale-105 max-sm:hover:bg-white/20 max-sm:active:scale-95 max-sm:dark:bg-slate-800/20 max-sm:dark:hover:bg-slate-700/30;
 
-      .mobile-nav-close {
-        @apply max-sm:flex max-sm:h-12 max-sm:w-12 max-sm:cursor-pointer max-sm:items-center max-sm:justify-center max-sm:rounded-lg max-sm:bg-white/10 max-sm:p-2 max-sm:transition-all max-sm:duration-200 max-sm:hover:scale-105 max-sm:hover:bg-white/20 max-sm:active:scale-95 max-sm:dark:bg-slate-800/20 max-sm:dark:hover:bg-slate-700/30;
-
-        & img {
-          @apply max-sm:h-6 max-sm:w-6 max-sm:brightness-0 max-sm:filter max-sm:transition-transform max-sm:duration-200 max-sm:dark:brightness-100;
+            & img {
+              @apply max-sm:h-6 max-sm:w-6 max-sm:brightness-0 max-sm:filter max-sm:transition-transform max-sm:duration-200 max-sm:dark:brightness-100;
+            }
+          }
         }
-      }
 
-      .mobile-nav-list {
-        @apply max-sm:m-0 max-sm:flex max-sm:flex-1 max-sm:list-none max-sm:flex-col max-sm:gap-0 max-sm:overflow-y-auto max-sm:p-0 max-sm:px-6;
-      }
+        & .mobile-nav-list {
+          @apply max-sm:m-0 max-sm:flex max-sm:flex-1 max-sm:list-none max-sm:flex-col max-sm:gap-0 max-sm:overflow-y-auto max-sm:p-0 max-sm:px-6;
 
-      .mobile-nav-item {
-        @apply max-sm:border-b max-sm:border-white/5 max-sm:last:border-b-0 max-sm:dark:border-slate-700/10;
-      }
+          & .mobile-nav-item {
+            @apply max-sm:border-b max-sm:border-white/5 max-sm:last:border-b-0 max-sm:dark:border-slate-700/10;
 
-      .mobile-nav-link {
-        @apply max-sm:flex max-sm:w-full max-sm:items-center max-sm:px-0 max-sm:py-4 max-sm:text-base max-sm:font-medium max-sm:text-slate-700 max-sm:no-underline max-sm:transition-all max-sm:duration-300 max-sm:hover:translate-x-1 max-sm:hover:bg-white/10 max-sm:hover:text-slate-900 max-sm:dark:text-slate-300 max-sm:dark:hover:bg-slate-800/20 max-sm:dark:hover:text-slate-100;
-      }
+            & .mobile-nav-link {
+              @apply max-sm:flex max-sm:w-full max-sm:items-center max-sm:px-0 max-sm:py-4 max-sm:text-base max-sm:font-medium max-sm:text-slate-700 max-sm:no-underline max-sm:transition-all max-sm:duration-300 max-sm:hover:translate-x-1 max-sm:hover:bg-white/10 max-sm:hover:text-slate-900 max-sm:dark:text-slate-300 max-sm:dark:hover:bg-slate-800/20 max-sm:dark:hover:text-slate-100;
+            }
 
-      .mobile-nav-submenu {
-        @apply max-sm:m-0 max-sm:list-none max-sm:overflow-hidden max-sm:bg-white/5 max-sm:p-0 max-sm:transition-all max-sm:duration-300 max-sm:ease-in-out max-sm:dark:bg-slate-800/10;
-      }
+            & .mobile-nav-submenu {
+              @apply max-sm:m-0 max-sm:list-none max-sm:overflow-hidden max-sm:bg-white/5 max-sm:p-0 max-sm:transition-all max-sm:duration-300 max-sm:ease-in-out max-sm:dark:bg-slate-800/10;
 
-      .mobile-nav-subitem {
-        @apply max-sm:border-b max-sm:border-white/5 max-sm:last:border-b-0 max-sm:dark:border-slate-700/10;
-      }
+              & .mobile-nav-subitem {
+                @apply max-sm:border-b max-sm:border-white/5 max-sm:last:border-b-0 max-sm:dark:border-slate-700/10;
 
-      .mobile-nav-sublink {
-        @apply max-sm:flex max-sm:w-full max-sm:items-center max-sm:py-3 max-sm:pr-0 max-sm:pl-4 max-sm:text-sm max-sm:font-normal max-sm:text-slate-600 max-sm:no-underline max-sm:transition-all max-sm:duration-300 max-sm:hover:translate-x-1 max-sm:hover:bg-white/10 max-sm:hover:text-slate-800 max-sm:dark:text-slate-400 max-sm:dark:hover:bg-slate-800/15 max-sm:dark:hover:text-slate-200;
+                & .mobile-nav-sublink {
+                  @apply max-sm:flex max-sm:w-full max-sm:items-center max-sm:py-3 max-sm:pr-0 max-sm:pl-4 max-sm:text-sm max-sm:font-normal max-sm:text-slate-600 max-sm:no-underline max-sm:transition-all max-sm:duration-300 max-sm:hover:translate-x-1 max-sm:hover:bg-white/10 max-sm:hover:text-slate-800 max-sm:dark:text-slate-400 max-sm:dark:hover:bg-slate-800/15 max-sm:dark:hover:text-slate-200;
+                }
+              }
+            }
+          }
+        }
       }
 
       #indicators {
@@ -296,11 +276,11 @@
       }
 
       #view {
-        @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 dark:border-slate-600/25 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-800/85 dark:shadow-black/40 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-slate-600/35 dark:hover:shadow-black/50;
+        @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60;
       }
 
       #syslog {
-        @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-slate-400/30 dark:shadow-black/40;
+        @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600/40 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 dark:shadow-black/50;
       }
     }
 
@@ -377,7 +357,7 @@
     .cbi-button-remove,
     .cbi-button-kill,
     .drag-handle {
-      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 focus:border-slate-400/80 focus:ring-slate-400/30 dark:border-slate-600/60 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-600/50 dark:hover:text-slate-200;
+      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 focus:border-slate-400/80 focus:ring-slate-400/30 dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:focus:ring-gray-400/40;
     }
 
     .pager {
@@ -385,11 +365,11 @@
     }
 
     .pager .text {
-      @apply text-sm font-medium text-slate-600 dark:text-slate-400;
+      @apply text-sm font-medium text-slate-600 dark:text-gray-300;
     }
 
     .pager .btn.cbi-button-neutral {
-      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 focus:border-slate-400/80 focus:ring-slate-400/30 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 dark:border-slate-600/60 dark:bg-slate-700 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-600 dark:hover:text-slate-200 dark:disabled:hover:border-slate-600/60 dark:disabled:hover:bg-slate-700 dark:disabled:hover:text-slate-300;
+      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 focus:border-slate-400/80 focus:ring-slate-400/30 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
     }
 
     .cbi-page-actions {
@@ -433,13 +413,13 @@
   @layer input {
     input[type="text"],
     input[type="password"] {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
     }
   }
 
   @layer select {
     select {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-900;
     }
 
     /* 确保所有表单控件保持一致的尺寸 */
@@ -448,17 +428,17 @@
     input[type="tel"],
     input[type="url"],
     input[type="search"] {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
     }
   }
 
   @layer textarea {
     textarea {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-h-24 w-full resize-y rounded-lg border border-slate-300/70 bg-white px-3 py-2 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 min-h-24 w-full resize-y rounded-lg border border-slate-300/70 bg-white px-3 py-2 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
     }
 
     #syslog {
-      @apply bg-slate-900 text-slate-100 dark:bg-slate-100 dark:text-slate-900;
+      @apply bg-slate-900 text-slate-100 dark:bg-gray-900 dark:text-gray-100;
     }
   }
 
@@ -815,10 +795,10 @@
     #modal_overlay {
       @apply pointer-events-none hidden bg-transparent;
       .modal {
-        @apply flex max-h-[75vh] max-w-5xl min-w-[500px] flex-col rounded-xl border border-slate-400/25 bg-white/85 px-6 shadow-xl backdrop-blur-lg backdrop-saturate-150 sm:mx-auto dark:border-slate-400/20 dark:bg-white/85 dark:shadow-black/25;
+        @apply flex max-h-[75vh] max-w-5xl min-w-[500px] flex-col rounded-xl border border-slate-400/25 bg-white/85 px-6 shadow-xl backdrop-blur-lg backdrop-saturate-150 sm:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
 
         & h4 {
-          @apply mb-4 px-6 pt-6 text-center text-lg font-semibold text-slate-900 dark:text-slate-100;
+          @apply mb-4 px-6 pt-6 text-center text-lg font-semibold text-slate-900 dark:text-gray-100;
         }
 
         & .cbi-map {
@@ -870,7 +850,7 @@
         }
 
         & pre {
-          @apply max-h-64 overflow-x-auto overflow-y-auto rounded-lg border border-slate-200/50 bg-slate-50 p-4 font-mono text-sm text-slate-700 sm:max-h-64 sm:p-4 sm:text-sm dark:border-slate-700/30 dark:bg-slate-800/50 dark:text-slate-300;
+          @apply max-h-64 overflow-x-auto overflow-y-auto rounded-lg border border-slate-200/50 bg-slate-50 p-4 font-mono text-sm text-slate-700 sm:max-h-64 sm:p-4 sm:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
 
           &.errors {
             @apply border-red-200/50 bg-red-50 text-red-700 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-300;
@@ -878,86 +858,86 @@
         }
 
         & p {
-          @apply mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400;
+          @apply mb-4 text-sm leading-relaxed text-slate-600 dark:text-gray-300;
         }
 
         & code {
-          @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-slate-700 dark:text-slate-200;
+          @apply rounded bg-slate-100 px-2 py-1 font-mono text-sm text-slate-800 dark:bg-gray-700 dark:text-gray-200;
         }
 
         & em {
-          @apply text-slate-500 italic dark:text-slate-500;
+          @apply text-slate-500 italic dark:text-gray-400;
         }
 
         & ul {
-          @apply mb-4 max-h-64 overflow-y-auto overscroll-contain rounded-lg border border-slate-200/30 bg-slate-50/50 p-4 dark:border-slate-600/20 dark:bg-slate-800/30;
+          @apply mb-4 max-h-64 overflow-y-auto overscroll-contain rounded-lg border border-slate-200/30 bg-slate-50/50 p-4 dark:border-gray-600/30 dark:bg-gray-800/50;
 
           & li {
-            @apply mb-2 text-sm text-slate-700 last:mb-0 dark:text-slate-300;
+            @apply mb-2 text-sm text-slate-700 last:mb-0 dark:text-gray-300;
 
             &:not(:last-child) {
-              @apply border-b border-slate-200/30 pb-2 dark:border-slate-600/20;
+              @apply border-b border-slate-200/30 pb-2 dark:border-gray-600/30;
             }
           }
         }
 
         & .right {
-          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 sm:flex-row sm:gap-3 dark:border-gray-600/30;
         }
 
         &.login {
-          @apply mx-auto w-full max-w-lg min-w-[500px];
+          @apply mx-auto w-full max-w-sm min-w-[320px] border border-slate-200/30 bg-white/95 px-6 py-6 shadow-lg backdrop-blur-md dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/40;
 
           & h4 {
-            @apply mb-8 text-center text-2xl font-bold text-slate-900 dark:text-slate-100;
+            @apply mb-4 text-center text-xl font-semibold text-slate-900 dark:text-gray-100;
           }
 
           & .cbi-map {
-            @apply flex-1 space-y-6;
+            @apply flex-1 space-y-4;
           }
 
           & .cbi-section {
             @apply mb-0 border-0 bg-transparent p-0 shadow-none;
 
             & .cbi-section-node {
-              @apply space-y-6;
+              @apply space-y-4;
             }
           }
 
           & .cbi-value {
-            @apply space-y-3;
+            @apply flex items-center;
 
-            &.cbi-value-title {
-              @apply mb-3 block text-sm font-medium text-slate-700 dark:text-slate-300;
+            & .cbi-value-title {
+              @apply mb-0 block w-16 flex-shrink-0 text-left text-sm font-medium text-slate-700 dark:text-gray-300;
             }
 
-            &.cbi-value-field {
-              @apply relative;
+            & .cbi-value-field {
+              @apply relative flex flex-1 justify-center;
 
               & input[type="text"],
               & input[type="password"] {
-                @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-xl border border-slate-300/50 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-400 transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-800;
+                @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 w-full max-w-xs rounded-lg border border-slate-300/60 bg-white px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition-colors duration-200 focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400;
               }
             }
           }
 
           & hr {
-            @apply my-6 h-px border-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-600;
+            @apply my-4 h-px border-0 bg-slate-200 dark:bg-gray-600;
           }
 
           & .alert-message {
-            @apply mb-6;
+            @apply mb-4;
           }
 
           & .btn.cbi-button-positive.important {
-            @apply w-full rounded-xl px-6 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none active:scale-[0.98];
+            @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/30 dark:bg-aurora-teal-500 dark:hover:bg-aurora-teal-600 mx-auto w-full rounded-lg px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 focus:ring-2 focus:outline-none;
           }
         }
       }
     }
 
     .modal-overlay-active #modal_overlay {
-      @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/45 p-4 backdrop-blur-sm;
+      @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/45 p-4 backdrop-blur-sm dark:bg-black/50;
     }
   }
 
@@ -1259,7 +1239,7 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
+      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-gray-600/60 dark:hover:scrollbar-thumb-gray-500/80;
 
       & li {
         @apply m-0 min-w-fit flex-shrink-0 list-none;
