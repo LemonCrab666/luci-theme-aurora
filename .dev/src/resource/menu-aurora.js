@@ -14,7 +14,6 @@ return baseclass.extend({
 		const closeBtn = document.getElementById('mobile-nav-close');
 		
 		if (menuToggle && overlay) {
-			// Open/close menu with toggle button
 			menuToggle.addEventListener('click', (e) => {
 				e.stopPropagation();
 				const isOpen = overlay.classList.contains('mobile-menu-open');
@@ -26,7 +25,6 @@ return baseclass.extend({
 				}
 			});
 
-			// Close menu with close button
 			if (closeBtn) {
 				closeBtn.addEventListener('click', (e) => {
 					e.stopPropagation();
@@ -34,34 +32,29 @@ return baseclass.extend({
 				});
 			}
 
-			// Close mobile menu when clicking overlay background
 			overlay.addEventListener('click', (e) => {
 				if (e.target === overlay) {
 					this.closeMobileMenu();
 				}
 			});
 
-			// Close mobile menu when pressing Escape key
 			document.addEventListener('keydown', (e) => {
 				if (e.key === 'Escape' && overlay.classList.contains('mobile-menu-open')) {
 					this.closeMobileMenu();
 				}
 			});
 
-			// Handle mobile menu item clicks (including submenu expansion)
 			document.addEventListener('click', (e) => {
 				const mobileNavLink = e.target.closest('.mobile-nav-link');
 				if (mobileNavLink) {
 					const parentItem = mobileNavLink.closest('.mobile-nav-item');
 					const submenu = parentItem ? parentItem.querySelector('.mobile-nav-submenu') : null;
 					
-					// If this link has a submenu, prevent default and toggle submenu
 					if (submenu) {
 						e.preventDefault();
 						e.stopPropagation();
 						this.toggleMobileSubmenu(parentItem);
 					}
-					// If no submenu, let the link navigate normally
 				}
 			});
 		}
@@ -75,7 +68,6 @@ return baseclass.extend({
 		menuToggle.classList.add('active');
 		menuToggle.setAttribute('aria-expanded', 'true');
 		
-		// Prevent body scrolling
 		document.body.style.overflow = 'hidden';
 	},
 
@@ -87,7 +79,6 @@ return baseclass.extend({
 		menuToggle.classList.remove('active');
 		menuToggle.setAttribute('aria-expanded', 'false');
 		
-		// Close all open submenus
 		const allItems = document.querySelectorAll('.mobile-nav-item.submenu-expanded');
 		allItems.forEach(item => {
 			item.classList.remove('submenu-expanded');
@@ -98,7 +89,6 @@ return baseclass.extend({
 			}
 		});
 		
-		// Restore body scrolling
 		document.body.style.overflow = '';
 	},
 
@@ -106,7 +96,6 @@ return baseclass.extend({
 		const submenu = parentItem.querySelector('.mobile-nav-submenu');
 		const isExpanded = parentItem.classList.contains('submenu-expanded');
 
-		// Close other open submenus (accordion behavior)
 		const allItems = document.querySelectorAll('.mobile-nav-item.submenu-expanded');
 		allItems.forEach(item => {
 			if (item !== parentItem) {
@@ -120,12 +109,10 @@ return baseclass.extend({
 		});
 
 		if (isExpanded) {
-			// Close submenu
 			parentItem.classList.remove('submenu-expanded');
 			submenu.style.maxHeight = '0';
 			submenu.style.opacity = '0';
 		} else {
-			// Open submenu
 			parentItem.classList.add('submenu-expanded');
 			submenu.style.maxHeight = submenu.scrollHeight + 'px';
 			submenu.style.opacity = '1';
@@ -138,7 +125,6 @@ return baseclass.extend({
 
 		if (!mobileNavList || children.length === 0) return;
 
-		// Clear existing mobile menu items on first render
 		if (!level) {
 			mobileNavList.innerHTML = '';
 		}
@@ -151,7 +137,6 @@ return baseclass.extend({
 			const li = E('li', { 'class': 'mobile-nav-item' });
 			
 			if (hasSubmenu) {
-				// Create main link that can expand submenu
 				const mainLink = E('a', { 
 					'class': 'mobile-nav-link',
 					'href': linkUrl
@@ -159,7 +144,6 @@ return baseclass.extend({
 				
 				li.appendChild(mainLink);
 
-				// Create submenu
 				const submenuUl = E('ul', { 
 					'class': 'mobile-nav-submenu',
 					'style': 'max-height: 0; opacity: 0;'
@@ -177,7 +161,6 @@ return baseclass.extend({
 				
 				li.appendChild(submenuUl);
 			} else {
-				// Simple link without submenu
 				li.appendChild(E('a', { 
 					'class': 'mobile-nav-link',
 					'href': linkUrl
@@ -258,7 +241,6 @@ return baseclass.extend({
 			ul.appendChild(li);
 		});
 
-		// Show navigation for desktop
 		ul.style.display = '';
 
 		return ul;
@@ -278,9 +260,7 @@ return baseclass.extend({
 			]));
 
 			if (isActive) {
-				// Render desktop menu
 				this.renderMainMenu(child, child.name);
-				// Render mobile menu
 				this.renderMobileMenu(child, child.name);
 			}
 		});

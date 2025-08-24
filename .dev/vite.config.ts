@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2025 eamonxg <eamonxiong@gmail.com>
+ * Licensed under the Apache License, Version 2.0.
+ */
+
 import { defineConfig, Plugin, ResolvedConfig, loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { resolve, join, relative, dirname } from "path";
@@ -8,7 +13,10 @@ const CURRENT_DIR = process.cwd();
 const PROJECT_ROOT = resolve(CURRENT_DIR, "..");
 const BUILD_OUTPUT = resolve(PROJECT_ROOT, "htdocs/luci-static");
 
-async function scanFiles(dir: string, extensions: string[] = []): Promise<string[]> {
+async function scanFiles(
+  dir: string,
+  extensions: string[] = [],
+): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const files: string[] = [];
 
@@ -16,7 +24,10 @@ async function scanFiles(dir: string, extensions: string[] = []): Promise<string
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
       files.push(...(await scanFiles(fullPath, extensions)));
-    } else if (entry.isFile() && (!extensions.length || extensions.some(ext => fullPath.endsWith(ext)))) {
+    } else if (
+      entry.isFile() &&
+      (!extensions.length || extensions.some((ext) => fullPath.endsWith(ext)))
+    ) {
       files.push(fullPath);
     }
   }
@@ -51,7 +62,10 @@ function createLuciJsCompressPlugin(): Plugin {
             format: { comments: false, beautify: false },
           });
 
-          const relativePath = relative(resolve(CURRENT_DIR, "src/resource"), filePath).replace(/\\/g, "/");
+          const relativePath = relative(
+            resolve(CURRENT_DIR, "src/resource"),
+            filePath,
+          ).replace(/\\/g, "/");
           const outputPath = join(outDir, "resources", relativePath);
 
           await mkdir(dirname(outputPath), { recursive: true });
@@ -68,7 +82,7 @@ function createRedirectPlugin(): Plugin {
   return {
     name: "redirect-plugin",
     apply: "serve",
-    
+
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         if (req.url === "/" || req.url === "/index.html") {
@@ -78,7 +92,7 @@ function createRedirectPlugin(): Plugin {
         }
         next();
       });
-    }
+    },
   };
 }
 
@@ -106,7 +120,6 @@ export default defineConfig(({ mode }) => {
     },
   } as const;
 
-
   return {
     plugins: [
       tailwindcss(),
@@ -122,7 +135,7 @@ export default defineConfig(({ mode }) => {
 
       rollupOptions: {
         input: {
-          main: resolve(CURRENT_DIR, "src/media/main.css")
+          main: resolve(CURRENT_DIR, "src/media/main.css"),
         },
         output: {
           assetFileNames: "aurora/[name].[ext]",
@@ -134,6 +147,6 @@ export default defineConfig(({ mode }) => {
       host: DEV_HOST,
       port: DEV_PORT,
       proxy: proxyConfig,
-    }
+    },
   };
 });

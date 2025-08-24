@@ -1,13 +1,10 @@
 {
 	"name": "luci-theme-aurora",
-	"version": "1.0.0",
 	"description": "Modern OpenWrt LuCI theme built with Vite and TailwindCSS",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "npm run clean && vite build",
-		"build:watch": "vite build --watch",
-		"preview": "vite preview",
 		"clean": "node scripts/clean.js"
 	},
 	"devDependencies": {
