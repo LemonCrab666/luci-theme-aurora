@@ -1,6 +1,6 @@
 LuCI Theme Aurora
 
-[简体中文][zh-cn-link] | English
+[简体中文](README.md) | English
 
 Overview
 
@@ -33,6 +33,4 @@ Mobile Mode
 Development
 
 As of 2025, most OpenWrt theme development still relies on outdated workflows, while modern front-end toolchains are already highly advanced.
-This is why I chose to develop the theme using Vite + TailwindCSS.
-With the power of Vite, I can fully enjoy a modern front-end development experience.
-The most exciting part — no more manually replacing CSS files on the router to see changes;
+This is why I chose to build the theme with Vite + TailwindCSS. With Vite, I can enjoy a modern development experience and instantly preview changes — no more manually replacing CSS files on the router.
