@@ -5,13 +5,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Typography System */
   --font-sans:
     "Lato", "Inter", "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
     "Helvetica", "Arial", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  /* Border Radius System */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
@@ -19,7 +17,6 @@
   --radius-2xl: 2rem;
   --radius-3xl: 3rem;
 
-  /* Aurora Color Palette - Light Mode */
   --color-aurora-green: #6ee7b7;
   --color-aurora-green-50: oklch(97.2% 0.019 158.743);
   --color-aurora-green-100: oklch(94.8% 0.045 159.652);
@@ -59,7 +56,6 @@
   --color-aurora-sky-900: oklch(37.8% 0.103 251.546);
   --color-aurora-sky-950: oklch(27.1% 0.072 253.189);
 
-  /* Aurora Color Palette - Dark Mode */
   --color-aurora-night-slate: #0f172a;
   --color-aurora-night-slate-50: oklch(96.8% 0.008 245.123);
   --color-aurora-night-slate-100: oklch(93.2% 0.018 246.084);
@@ -181,7 +177,7 @@
       .nav {
         @apply absolute left-1/2 m-0 flex -translate-x-1/2 transform list-none items-center gap-1 p-0 max-md:fixed max-md:top-16 max-md:right-0 max-md:left-0 max-md:z-40 max-md:hidden max-md:w-full max-md:translate-x-0 max-md:transform max-md:flex-col max-md:gap-0 max-md:border-t max-md:border-white/10 max-md:bg-white/95 max-md:shadow-xl max-md:backdrop-blur-xl max-md:backdrop-saturate-150 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-900/95;
 
-        & > li {
+        &>li {
           @apply relative max-md:w-full max-md:border-b max-md:border-white/5 max-md:last:border-b-0 max-md:dark:border-slate-700/10;
         }
       }
@@ -192,6 +188,7 @@
 
       .mobile-controls {
         @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center max-md:gap-2 sm:hidden;
+
         & .mobile-menu-toggle {
           @apply max-md:inline-flex max-md:h-10 max-md:w-10 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-xl max-md:bg-white/10 max-md:p-2 max-md:backdrop-blur-sm max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 sm:hidden max-md:dark:bg-slate-800/30 max-md:dark:hover:bg-slate-700/40;
 
@@ -360,6 +357,7 @@
   }
 
   @layer button {
+
     button,
     .btn,
     .cbi-button,
@@ -370,11 +368,11 @@
       @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:px-2.5 max-md:py-1 max-md:text-xs dark:focus:ring-offset-slate-900;
     }
 
-    .btn + .btn,
-    .cbi-button + .cbi-button,
-    button + button,
-    .btn + .cbi-button,
-    .cbi-button + .btn,
+    .btn+.btn,
+    .cbi-button+.cbi-button,
+    button+button,
+    .btn+.cbi-button,
+    .cbi-button+.btn,
     .cbi-section-node .cbi-button,
     .cbi-section-node .btn {
       @apply ml-2 max-md:ml-1.5;
@@ -447,6 +445,7 @@
   }
 
   @layer input {
+
     input[type="text"],
     input[type="password"] {
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
@@ -458,7 +457,7 @@
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-900;
     }
 
-    /* 确保所有表单控件保持一致的尺寸 */
+
     input[type="email"],
     input[type="number"],
     input[type="tel"],
@@ -496,22 +495,23 @@
         @apply cursor-pointer text-sm text-slate-700 transition-colors duration-200 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
       }
     }
+
     @layer controls {
       .controls {
         @apply space-y-4;
 
-        & > div {
+        &>div {
           @apply flex items-start gap-3;
 
-          & > label:first-child {
+          &>label:first-child {
             @apply min-w-[120px] text-sm font-medium text-slate-700 dark:text-slate-300;
           }
 
-          & > div {
+          &>div {
             @apply flex items-center gap-2;
           }
 
-          & > div > label {
+          &>div>label {
             @apply flex items-center;
           }
         }
@@ -520,6 +520,7 @@
   }
 
   @layer checkbox {
+
     input[type="checkbox"],
     .cbi-input-checkbox {
       @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
@@ -585,6 +586,7 @@
   }
 
   @layer dropdown {
+
     .dropdown,
     .cbi-dropdown {
       @apply relative;
@@ -611,10 +613,10 @@
 
       @apply rounded-lg border border-slate-200/60 bg-white/90 shadow-sm transition-all duration-200 hover:border-slate-300/80 hover:bg-white hover:shadow-md dark:border-slate-600/40 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
 
-      & > ul {
+      &>ul {
         @apply m-0 flex list-none items-center p-0;
 
-        & > li {
+        &>li {
           @apply m-0 hidden list-none p-0;
 
           &[selected] {
@@ -625,7 +627,7 @@
         &.dropdown {
           @apply invisible absolute left-0 z-50 mt-1 flex min-w-[140px] scale-95 flex-col overflow-auto rounded-xl border border-slate-200/60 bg-white/95 py-1 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out dark:border-slate-600/40 dark:bg-slate-800/95;
 
-          & > li {
+          &>li {
             @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 mx-1 block w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-all duration-150 ease-out dark:text-slate-300;
 
             &[selected] {
@@ -637,7 +639,7 @@
         &.preview {
           @apply flex items-center;
 
-          & > li {
+          &>li {
             @apply hidden;
 
             &[selected] {
@@ -647,19 +649,19 @@
         }
       }
 
-      &[multiple] > .more {
+      &[multiple]>.more {
         @apply block text-sm font-medium text-slate-600 dark:text-slate-400;
       }
 
-      & > .more {
+      &>.more {
         @apply hidden;
       }
 
-      & > .open {
+      &>.open {
         @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-400 transition-colors duration-150 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
       }
 
-      &[open] > ul.dropdown {
+      &[open]>ul.dropdown {
         @apply visible scale-100 opacity-100;
       }
 
@@ -674,7 +676,7 @@
       @apply h-3 w-full overflow-hidden rounded-full bg-slate-300 dark:bg-slate-700;
     }
 
-    .cbi-progressbar > div {
+    .cbi-progressbar>div {
       @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
     }
 
@@ -703,8 +705,8 @@
         @apply text-slate-400 content-['—'] dark:text-slate-500;
       }
 
-      & > *,
-      &.large > * {
+      &>*,
+      &.large>* {
         @apply mx-0.5;
       }
     }
@@ -829,6 +831,7 @@
   @layer modal {
     #modal_overlay {
       @apply pointer-events-none hidden bg-transparent;
+
       .modal {
         @apply flex max-h-[75vh] max-w-5xl min-w-[500px] flex-col rounded-xl border border-slate-300/60 bg-white/95 px-6 shadow-2xl backdrop-blur-lg backdrop-saturate-150 sm:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
 
@@ -977,13 +980,13 @@
   }
 
   @layer table {
+
     .table,
     .nft-table,
     .nft-rules {
       @apply w-full border-collapse overflow-hidden rounded-lg border border-slate-200/40 bg-white shadow-sm max-md:mx-0 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
     }
 
-    /* 简单表格 (≤2列): 保持原始表格布局 */
     .table:not(:has(tr > td:nth-child(3))),
     .nft-table:not(:has(tr > td:nth-child(3))),
     .nft-rules:not(:has(tr > td:nth-child(3))) {
@@ -1005,7 +1008,6 @@
       }
     }
 
-    /* 复杂表格 (>2列): 使用卡片式布局 */
     .table:has(tr > td:nth-child(3)),
     .nft-table:has(tr > td:nth-child(3)),
     .nft-rules:has(tr > td:nth-child(3)) {
@@ -1061,7 +1063,6 @@
       & .th {
         @apply sticky top-0 z-10 border-b border-slate-200/60 bg-white/80 px-4 py-3 text-left text-sm font-medium text-slate-900 backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-100;
 
-        /* 第一行表头圆角 */
         &:first-child {
           @apply rounded-tl-lg;
         }
@@ -1104,7 +1105,6 @@
           @apply bg-slate-50/60 dark:bg-slate-700/30;
         }
 
-        /* 最后一行添加底部圆角 - 仅桌面端 */
         &:last-child {
           & td:first-child {
             @apply sm:rounded-bl-lg;
@@ -1116,7 +1116,6 @@
         }
       }
 
-      /* 桌面端边框 */
       & tr {
         @apply sm:border-b sm:border-slate-200/40 sm:dark:border-slate-600/30;
       }
@@ -1138,29 +1137,23 @@
       }
     }
 
-    /* NFT 表格系统 - 完整嵌套结构 */
     .nft-table {
       @apply max-md:w-full max-md:overflow-x-auto;
 
-      /* 表格标题 */
       & h3 {
         @apply mb-3 border-b border-slate-200/40 pb-2 text-lg font-medium text-slate-800 max-md:mx-4 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-slate-600/30 dark:text-slate-200;
       }
 
-      /* NFT 链容器 */
       & .nft-chains {
         @apply space-y-4 max-md:space-y-2 max-md:overflow-x-auto;
 
-        /* NFT 单个链 */
         & .nft-chain {
           @apply overflow-hidden rounded-lg bg-white max-md:min-w-full max-md:rounded-none dark:bg-slate-800;
 
-          /* 链标题 */
           & h4 {
             @apply mb-3 border-b border-slate-200/40 p-4 pb-3 text-lg font-medium text-slate-800 max-md:mx-4 max-md:mb-2 max-md:p-0 max-md:pb-2 max-md:text-base dark:border-slate-600/30 dark:text-slate-200;
           }
 
-          /* 链钩子 */
           &-hook {
             @apply p-4 max-md:px-4 max-md:py-2;
 
@@ -1179,26 +1172,21 @@
         }
       }
 
-      /* NFT 规则表格 */
       & .nft-rules {
         @apply max-md:min-w-max max-md:table-auto;
 
-        /* 表格内变量样式 */
         & var {
           @apply text-slate-500 italic max-md:text-xs dark:text-slate-500;
         }
 
-        /* 表格内强调文本 */
         & em {
           @apply text-slate-400 italic max-md:text-xs dark:text-slate-500;
         }
 
-        /* 表格内链接 */
         & a {
           @apply text-slate-600 underline decoration-slate-400/50 hover:text-slate-800 max-md:text-xs max-md:break-words dark:text-slate-400 dark:hover:text-slate-200;
         }
 
-        /* 接口徽章 */
         & .ifacebadge {
           @apply max-md:mr-1 max-md:mb-1 max-md:inline-flex max-md:max-w-full max-md:px-1.5 max-md:py-0.5 max-md:text-xs max-md:break-words max-md:whitespace-normal;
 
@@ -1215,7 +1203,6 @@
           }
         }
 
-        /* NFT 集合 */
         & .nft-set {
           @apply inline-block align-middle max-md:block max-md:w-full;
 
@@ -1227,7 +1214,6 @@
             @apply inline-block px-1 max-md:inline-block max-md:px-0.5 max-md:break-words;
           }
 
-          /* 集合工具提示容器 */
           &.cbi-tooltip-container {
             @apply max-md:block max-md:w-full;
 
@@ -1241,7 +1227,6 @@
           }
         }
 
-        /* NFT 列表 */
         & .nft-list {
           @apply inline-block align-middle max-md:block max-md:w-full;
 
@@ -1254,13 +1239,11 @@
           }
         }
 
-        /* NFT 注释和计数器 */
         & .nft-comment,
         & .nft-counter {
           @apply border border-slate-200/50 bg-slate-100 text-slate-700 max-md:px-1.5 max-md:py-0.5 max-md:text-xs dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300;
         }
 
-        /* 工具提示容器优化 */
         & .cbi-tooltip-container {
           @apply max-md:inline-flex max-md:max-w-full;
 
@@ -1271,7 +1254,6 @@
       }
     }
 
-    /* CBI 段落标题 */
     .cbi-section h3 {
       @apply mt-4 mb-3 border-b border-slate-200/40 pb-2 text-lg font-medium text-slate-800 first:mt-0 max-md:mx-4 max-md:mt-3 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-slate-600/30 dark:text-slate-200;
     }
@@ -1286,14 +1268,14 @@
       @apply mb-2 block text-sm font-medium text-slate-700 max-md:mx-4 max-md:mb-1 max-md:text-sm dark:text-slate-300;
     }
 
-    .cbi-map .cbi-value > .cbi-value-field {
+    .cbi-map .cbi-value>.cbi-value-field {
       @apply flex flex-1 flex-row flex-wrap items-center gap-3 max-md:mx-4 max-md:gap-2;
 
       & br {
         @apply hidden;
       }
 
-      & > * {
+      &>* {
         @apply inline-flex items-center gap-2 max-md:gap-1;
       }
 
@@ -1310,16 +1292,16 @@
       & .cbi-value {
         @apply py-1.5 max-md:py-1;
 
-        & + .cbi-value {
+        &+.cbi-value {
           @apply mt-2 max-md:mt-1.5;
         }
       }
 
-      & > h3 {
+      &>h3 {
         @apply mt-6 max-md:mx-4 max-md:mt-4;
       }
 
-      & > .table {
+      &>.table {
         @apply mt-4 max-md:mx-0 max-md:mt-3;
       }
     }
@@ -1342,11 +1324,10 @@
       & .item {
         @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 pointer-events-none relative flex cursor-move flex-col items-start gap-3 overflow-visible rounded-lg border border-slate-200/50 bg-white/80 px-4 py-3 pr-12 transition-all duration-200 hover:border-slate-300/60 hover:bg-white hover:shadow-sm focus:ring-2 focus:outline-none max-md:gap-2 max-md:px-3 max-md:py-2 max-md:pr-10 dark:border-slate-600/40 dark:bg-slate-800/80 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10;
 
-        & > * {
+        &>* {
           @apply pointer-events-auto;
         }
 
-        /* 删除按钮样式 */
         &::after {
           @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-200/90 hover:text-slate-800 max-md:top-2 max-md:right-2 max-md:h-5 max-md:w-5 max-md:text-xs dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:bg-slate-600/60 dark:hover:text-slate-200;
           content: "×";
@@ -1446,8 +1427,8 @@
         @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
       }
 
-      & > .active {
-        & > a {
+      &>.active {
+        &>a {
           @apply font-semibold text-slate-900 dark:text-slate-100;
         }
 
