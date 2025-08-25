@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.arch }}-${{ matrix.branch }} build
+    name: `\({{ matrix.arch }}-\)`{{ matrix.branch }} build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -33,6 +33,7 @@ jobs:
           - i386_pentium4
           - x86_64
         branch:
+          - openwrt-23.05
           - openwrt-24.10
           - SNAPSHOT
         exclude:
@@ -40,36 +41,22 @@ jobs:
             branch: openwrt-23.05
 
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
         with:
           repository: LemonCrab666/luci-theme-aurora
-          ref: master
+          # ref: main  # 尝试移除或改为 master，根据仓库实际分支调整
+          # 如果私有，添加：token: ${{ secrets.GITHUB_TOKEN }} 或自定义 PAT
 
-      - name: Setup build environment
-        run: |
-          # 修复权限
-          sudo chown -R $USER:$USER .
-          # 调试：检查仓库内容
-          echo "Repository structure:"
-          ls -laR
-          git branch -a
-          # 复制源代码到 SDK 的 package/ 目录
-          mkdir -p package/luci-theme-aurora
-          cp -r ./* package/luci-theme-aurora/
-          # 调试：检查复制后的目录
-          echo "SDK package directory:"
-          ls -la package/luci-theme-aurora
-
-      - name: Build
+      - name: build
         uses: openwrt/gh-action-sdk@main
         env:
-          ARCH: ${{ matrix.arch }}-${{ matrix.branch }}
+          ARCH: `\({{ matrix.arch }}-\)`{{ matrix.branch }}
           PACKAGES: luci-theme-aurora
           NO_REFRESH_CHECK: true
 
-      - name: Upload artifacts
+      - name: upload
         uses: actions/upload-artifact@v4
         with:
-          name: aurora_${{ matrix.arch }}-${{ matrix.branch }}
-          path: bin/packages/${{ matrix.arch }}/base
+          name: aurora_`\({{ matrix.arch }}-\)`{{ matrix.branch }}
+          path: bin/packages/${{ matrix.arch }}/aurora
