@@ -41,13 +41,39 @@ jobs:
             branch: openwrt-23.05
 
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           repository: LemonCrab666/luci-theme-aurora
           ref: master
 
-      - name: build
+      - name: Setup build environment
+        run: |
+          # 修复权限
+          sudo chown -R $USER:$USER .
+          # 调试：检查仓库内容
+          echo "Repository structure:"
+          ls -laR
+          git branch -a
+
+      - name: Configure feeds
+        run: |
+          # 添加 aurora feed
+          echo "src-git aurora https://github.com/LemonCrab666/luci-theme-aurora.git" >> feeds.conf.default
+          # 更新 feeds
+          ./scripts/feeds update -a
+          # 调整 feeds 结构以符合 OpenWrt 包结构
+          mkdir -p feeds/aurora/luci-theme-aurora
+          mv feeds/aurora/* feeds/aurora/luci-theme-aurora/ 2>/dev/null || true
+          # 调试：检查 feeds 内容
+          echo "Feeds configuration:"
+          cat feeds.conf.default
+          echo "Aurora feed contents:"
+          ls -la feeds/aurora/luci-theme-aurora
+          # 安装 luci-theme-aurora
+          ./scripts/feeds install -p aurora luci-theme-aurora
+
+      - name: Build
         uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}-${{ matrix.branch }}
@@ -55,7 +81,7 @@ jobs:
           PACKAGES: luci-theme-aurora
           NO_REFRESH_CHECK: true
 
-      - name: upload
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: aurora_${{ matrix.arch }}-${{ matrix.branch }}
