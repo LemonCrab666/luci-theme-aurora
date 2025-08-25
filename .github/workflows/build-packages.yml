@@ -3,6 +3,7 @@ name: build-ipk (OpenWrt 24.10.2 x86_64)
 on:
   push:
     tags: ['*']
+  workflow_dispatch: # 添加以支持手动触发
 
 permissions:
   contents: write
