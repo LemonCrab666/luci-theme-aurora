@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: `\({{ matrix.arch }}-\)`{{ matrix.branch }} build
+    name: ${{ matrix.arch }}-${{ matrix.branch }} build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -45,18 +45,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: LemonCrab666/luci-theme-aurora
-          # ref: main  # 尝试移除或改为 master，根据仓库实际分支调整
-          # 如果私有，添加：token: ${{ secrets.GITHUB_TOKEN }} 或自定义 PAT
+          ref: master
 
       - name: build
         uses: openwrt/gh-action-sdk@main
         env:
-          ARCH: `\({{ matrix.arch }}-\)`{{ matrix.branch }}
+          ARCH: ${{ matrix.arch }}-${{ matrix.branch }}
+          FEEDNAME: aurora
           PACKAGES: luci-theme-aurora
           NO_REFRESH_CHECK: true
 
       - name: upload
         uses: actions/upload-artifact@v4
         with:
-          name: aurora_`\({{ matrix.arch }}-\)`{{ matrix.branch }}
+          name: aurora_${{ matrix.arch }}-${{ matrix.branch }}
           path: bin/packages/${{ matrix.arch }}/aurora
