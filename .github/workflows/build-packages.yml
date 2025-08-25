@@ -33,7 +33,6 @@ jobs:
           - i386_pentium4
           - x86_64
         branch:
-          - openwrt-23.05
           - openwrt-24.10
           - SNAPSHOT
         exclude:
@@ -55,29 +54,17 @@ jobs:
           echo "Repository structure:"
           ls -laR
           git branch -a
-
-      - name: Configure feeds
-        run: |
-          # 添加 aurora feed
-          echo "src-git aurora https://github.com/LemonCrab666/luci-theme-aurora.git" >> feeds.conf.default
-          # 更新 feeds
-          ./scripts/feeds update -a
-          # 调整 feeds 结构以符合 OpenWrt 包结构
-          mkdir -p feeds/aurora/luci-theme-aurora
-          mv feeds/aurora/* feeds/aurora/luci-theme-aurora/ 2>/dev/null || true
-          # 调试：检查 feeds 内容
-          echo "Feeds configuration:"
-          cat feeds.conf.default
-          echo "Aurora feed contents:"
-          ls -la feeds/aurora/luci-theme-aurora
-          # 安装 luci-theme-aurora
-          ./scripts/feeds install -p aurora luci-theme-aurora
+          # 复制源代码到 SDK 的 package/ 目录
+          mkdir -p package/luci-theme-aurora
+          cp -r ./* package/luci-theme-aurora/
+          # 调试：检查复制后的目录
+          echo "SDK package directory:"
+          ls -la package/luci-theme-aurora
 
       - name: Build
         uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}-${{ matrix.branch }}
-          FEEDNAME: aurora
           PACKAGES: luci-theme-aurora
           NO_REFRESH_CHECK: true
 
@@ -85,4 +72,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: aurora_${{ matrix.arch }}-${{ matrix.branch }}
-          path: bin/packages/${{ matrix.arch }}/aurora
+          path: bin/packages/${{ matrix.arch }}/base
