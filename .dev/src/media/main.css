@@ -434,18 +434,6 @@
     .control-group {
       @apply flex flex-wrap items-center gap-3 max-md:gap-2;
     }
-
-    .modal .button-row {
-      @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
-    }
-
-    .modal .right {
-      @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
-    }
-
-    .modal.login .btn.cbi-button-positive.important {
-      @apply from-aurora-sky to-aurora-teal focus:ring-aurora-sky/30 dark:from-aurora-sky-500 dark:to-aurora-teal-500 w-full rounded-xl bg-gradient-to-r px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none active:scale-[0.98] max-md:px-5 max-md:py-2.5 max-md:text-sm dark:focus:ring-offset-slate-900;
-    }
   }
 
   @layer input {
@@ -552,24 +540,24 @@
 
   @layer message {
     .alert-message {
-      @apply sticky top-14 z-40 mb-4 rounded-2xl border border-slate-200/30 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 p-6 shadow-sm max-md:mx-0 max-md:mb-3 max-md:rounded-xl max-md:p-4 dark:border-slate-700/30 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800;
+      @apply sticky top-14 z-40 mb-4 rounded-2xl border border-slate-200/30 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 p-6 shadow-sm max-md:mx-0 max-md:mb-3 max-md:rounded-xl max-md:p-4 dark:border-slate-600/20 dark:from-slate-800/80 dark:via-slate-800/60 dark:to-slate-800/80;
 
       &.success {
-        @apply border-emerald-200/40 bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-50 text-emerald-900 shadow-emerald-500/10 dark:border-emerald-800/30 dark:from-emerald-900 dark:via-emerald-800 dark:to-emerald-900 dark:text-emerald-100 dark:shadow-emerald-400/5;
+        @apply border-emerald-200/40 bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-50 text-emerald-900 shadow-emerald-500/10 dark:border-emerald-500/30 dark:from-emerald-900/40 dark:via-emerald-800/30 dark:to-emerald-900/40 dark:text-emerald-200 dark:shadow-emerald-400/10;
       }
 
       &.info {
-        @apply border-blue-200/40 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 text-blue-900 shadow-blue-500/10 dark:border-blue-800/30 dark:from-blue-900 dark:via-blue-800 dark:to-blue-900 dark:text-blue-100 dark:shadow-blue-400/5;
+        @apply border-blue-200/40 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 text-blue-900 shadow-blue-500/10 dark:border-blue-500/30 dark:from-blue-900/40 dark:via-blue-800/30 dark:to-blue-900/40 dark:text-blue-200 dark:shadow-blue-400/10;
       }
 
       &.warning,
       &.notice {
-        @apply border-amber-200/40 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 text-amber-900 shadow-amber-500/10 dark:border-amber-800/30 dark:from-amber-900 dark:via-amber-800 dark:to-amber-900 dark:text-amber-100 dark:shadow-amber-400/5;
+        @apply border-amber-200/40 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 text-amber-900 shadow-amber-500/10 dark:border-amber-500/30 dark:from-amber-900/40 dark:via-amber-800/30 dark:to-amber-900/40 dark:text-amber-200 dark:shadow-amber-400/10;
       }
 
       &.error,
       &.danger {
-        @apply border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-800/30 dark:from-red-900 dark:via-red-800 dark:to-red-900 dark:text-red-100 dark:shadow-red-400/5;
+        @apply border-red-200/40 bg-gradient-to-br from-red-50 via-red-100 to-red-50 text-red-900 shadow-red-500/10 dark:border-red-500/30 dark:from-red-900/40 dark:via-red-800/30 dark:to-red-900/40 dark:text-red-200 dark:shadow-red-400/10;
       }
 
       & h4 {
@@ -707,11 +695,19 @@
     .ifacebadge {
       @apply inline-flex cursor-default items-center gap-1.5 rounded-lg border border-slate-300/50 bg-white/90 px-2 py-1.5 text-xs font-medium text-slate-700 transition-all duration-200 hover:border-slate-400/60 hover:bg-white hover:shadow-sm dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
 
-      & img {
-        @apply h-5 w-5;
+      & > img {
+        @apply h-5 w-5 shrink-0;
       }
 
-      &-active {
+      & > span > .nowrap {
+        @apply block whitespace-nowrap;
+      }
+
+      & > span > .nowrap strong {
+        @apply mr-1 text-slate-500 dark:text-slate-400;
+      }
+
+      &.ifacebadge-active {
         @apply border-aurora-sky font-semibold;
       }
 
@@ -722,37 +718,7 @@
       &:empty::before {
         @apply text-slate-400 content-['—'] dark:text-slate-500;
       }
-
-      & > *,
-      &.large > * {
-        @apply mx-0.5;
-      }
     }
-
-    .nft-rules .ifacebadge {
-      @apply rounded-md border-slate-300/40 bg-white/80 px-2 py-1 text-slate-600 hover:border-slate-400/50 dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:border-slate-500/50;
-    }
-
-    .nft-set {
-      @apply inline-block align-middle;
-
-      & .nft-set-items {
-        @apply inline-block max-w-[200px] overflow-hidden align-middle text-ellipsis whitespace-nowrap;
-      }
-
-      & .nft-set-item {
-        @apply inline-block px-1;
-      }
-
-      & .ifacebadge {
-        @apply border-slate-300/30 bg-white/70 px-1.5 py-0.5 text-slate-500 hover:border-slate-400/40 dark:border-slate-600/30 dark:bg-slate-800/70 dark:text-slate-400 dark:hover:border-slate-500/40;
-
-        & img {
-          @apply h-3 w-3;
-        }
-      }
-    }
-
     .cbi-dropdown .ifacebadge {
       @apply border-slate-200/50 bg-slate-100 px-3 py-1.5 text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/50;
 
@@ -768,38 +734,25 @@
 
   @layer tooltip {
     .cbi-tooltip-container {
-      @apply relative cursor-help;
-
-      &:hover .cbi-tooltip {
-        @apply absolute z-50 block max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg dark:bg-slate-900 dark:text-slate-100;
-      }
-    }
-
-    .cbi-tooltip {
-      @apply hidden;
-
-      &.left {
-        @apply right-0 left-auto w-40 transform-none;
-      }
-
-      & .nowrap {
-        @apply whitespace-nowrap;
-      }
-
-      & strong {
-        @apply font-semibold;
-      }
-    }
-
-    .nft-set.cbi-tooltip-container {
-      @apply whitespace-nowrap;
+      @apply relative cursor-help whitespace-nowrap;
 
       & .cbi-tooltip {
-        @apply absolute top-full left-0 z-50 mt-1 max-w-xs transform-none rounded-lg border border-slate-200/60 bg-white/95 p-2 whitespace-normal shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
+        @apply hidden;
 
-        & .ifacebadge {
-          @apply mb-1 block text-xs last:mb-0;
+        &.left {
+          @apply right-0 left-auto w-40 transform-none;
         }
+
+        & .nowrap {
+          @apply whitespace-nowrap;
+        }
+
+        & strong {
+          @apply font-semibold;
+        }
+      }
+      &:hover .cbi-tooltip {
+        @apply absolute z-50 block max-w-xs rounded bg-white px-2 py-1 text-xs whitespace-nowrap text-slate-900 shadow-lg dark:bg-slate-900 dark:text-slate-100;
       }
     }
   }
@@ -838,10 +791,6 @@
         & img.middle {
           @apply inline-block align-middle;
         }
-
-        & span:not(.cbi-tooltip-container):not(.cbi-tooltip) {
-          @apply my-1 inline max-md:my-0.5 max-md:text-xs;
-        }
       }
     }
   }
@@ -850,6 +799,7 @@
     .modal-overlay-active #modal_overlay {
       @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/70 backdrop-blur-sm dark:bg-black/50;
     }
+
     #modal_overlay {
       @apply pointer-events-none hidden bg-transparent;
 
@@ -886,6 +836,51 @@
             @apply text-slate-600 italic dark:text-gray-400;
           }
         }
+
+        & .right {
+          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+        }
+        & .button-row {
+          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+        }
+      }
+    }
+
+    .modal.login {
+      @apply mx-auto w-full max-w-sm rounded-xl border border-slate-200 bg-white shadow-lg max-md:mx-4 max-md:w-11/12 dark:border-slate-700 dark:bg-slate-800;
+
+      & > h4 {
+        @apply px-6 pt-8 pb-6 text-center text-lg font-semibold text-slate-900 max-md:pt-6 max-md:pb-4 max-md:text-base dark:text-slate-100;
+      }
+      & .cbi-map {
+        @apply px-6 pb-2 max-md:px-4;
+
+        & .cbi-section {
+          @apply space-y-4 max-md:space-y-3;
+
+          & .cbi-section-node {
+            @apply space-y-4 max-md:space-y-3;
+          }
+
+          & .cbi-value {
+            @apply space-y-1;
+
+            & .cbi-value-title {
+              @apply text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
+            }
+
+            & .cbi-value-field {
+              & input[type="text"],
+              & input[type="password"] {
+                @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-500 focus:ring-2 focus:outline-none max-md:text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
+              }
+            }
+          }
+        }
+      }
+
+      & .btn.cbi-button-positive {
+        @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 mb-6 rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:mb-4 max-md:text-sm dark:focus:ring-offset-slate-800;
       }
     }
   }
@@ -894,7 +889,7 @@
     .table,
     .nft-table,
     .nft-rules {
-      @apply w-full border-collapse overflow-hidden rounded-lg border border-slate-200/40 bg-white shadow-sm max-md:mx-0 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
+      @apply w-full border-collapse overflow-visible rounded-lg border border-slate-200/40 bg-white shadow-sm max-md:mx-0 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
     }
 
     .table:not(:has(tr > td:nth-child(3))),
@@ -1044,123 +1039,6 @@
 
       &.loading {
         @apply opacity-60;
-      }
-    }
-
-    .nft-table {
-      @apply max-md:w-full max-md:overflow-x-auto;
-
-      & h3 {
-        @apply mb-3 border-b border-slate-200/40 pb-2 text-lg font-medium text-slate-800 max-md:mx-4 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-slate-600/30 dark:text-slate-200;
-      }
-
-      & .nft-chains {
-        @apply space-y-4 max-md:space-y-2 max-md:overflow-x-auto;
-
-        & .nft-chain {
-          @apply overflow-hidden rounded-lg bg-white max-md:min-w-full max-md:rounded-none dark:bg-slate-800;
-
-          & h4 {
-            @apply mb-3 border-b border-slate-200/40 p-4 pb-3 text-lg font-medium text-slate-800 max-md:mx-4 max-md:mb-2 max-md:p-0 max-md:pb-2 max-md:text-base dark:border-slate-600/30 dark:text-slate-200;
-          }
-
-          &-hook {
-            @apply p-4 max-md:px-4 max-md:py-2;
-
-            & ul {
-              @apply m-0 list-none p-0;
-            }
-
-            & li {
-              @apply mb-1 text-sm text-slate-600 last:mb-0 max-md:mb-0.5 max-md:text-xs dark:text-slate-400;
-            }
-
-            & strong {
-              @apply font-medium text-slate-800 dark:text-slate-200;
-            }
-          }
-        }
-      }
-
-      & .nft-rules {
-        @apply max-md:min-w-max max-md:table-auto;
-
-        & var {
-          @apply text-slate-500 italic max-md:text-xs dark:text-slate-500;
-        }
-
-        & em {
-          @apply text-slate-400 italic max-md:text-xs dark:text-slate-500;
-        }
-
-        & a {
-          @apply text-slate-600 underline decoration-slate-400/50 hover:text-slate-800 max-md:text-xs max-md:break-words dark:text-slate-400 dark:hover:text-slate-200;
-        }
-
-        & .ifacebadge {
-          @apply max-md:mr-1 max-md:mb-1 max-md:inline-flex max-md:max-w-full max-md:px-1.5 max-md:py-0.5 max-md:text-xs max-md:break-words max-md:whitespace-normal;
-
-          & var {
-            @apply max-md:text-xs max-md:break-words;
-          }
-
-          & strong {
-            @apply max-md:text-xs max-md:font-medium max-md:break-words;
-          }
-
-          & a {
-            @apply max-md:text-xs max-md:break-words;
-          }
-        }
-
-        & .nft-set {
-          @apply inline-block align-middle max-md:block max-md:w-full;
-
-          &-items {
-            @apply inline-block max-w-[200px] overflow-hidden align-middle text-ellipsis max-md:block max-md:max-w-full max-md:whitespace-normal;
-          }
-
-          &-item {
-            @apply inline-block px-1 max-md:inline-block max-md:px-0.5 max-md:break-words;
-          }
-
-          &.cbi-tooltip-container {
-            @apply max-md:block max-md:w-full;
-
-            & .cbi-tooltip {
-              @apply max-md:mt-2 max-md:w-full max-md:max-w-none max-md:rounded-lg max-md:border max-md:border-slate-200/60 max-md:bg-white/95 max-md:p-2 max-md:shadow-xl dark:max-md:border-slate-600/40 dark:max-md:bg-slate-800/95;
-
-              & .ifacebadge {
-                @apply max-md:mb-1 max-md:block max-md:text-xs max-md:last:mb-0;
-              }
-            }
-          }
-        }
-
-        & .nft-list {
-          @apply inline-block align-middle max-md:block max-md:w-full;
-
-          &-items {
-            @apply inline-block max-w-[200px] overflow-hidden align-middle text-ellipsis max-md:block max-md:max-w-full max-md:whitespace-normal;
-          }
-
-          &-item {
-            @apply inline-block px-1 max-md:inline-block max-md:px-0.5 max-md:break-words;
-          }
-        }
-
-        & .nft-comment,
-        & .nft-counter {
-          @apply border border-slate-200/50 bg-slate-100 text-slate-700 max-md:px-1.5 max-md:py-0.5 max-md:text-xs dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300;
-        }
-
-        & .cbi-tooltip-container {
-          @apply max-md:inline-flex max-md:max-w-full;
-
-          & .cbi-tooltip {
-            @apply max-md:w-48 max-md:text-xs max-md:break-words max-md:whitespace-normal;
-          }
-        }
       }
     }
 
