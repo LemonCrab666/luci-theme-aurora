@@ -168,11 +168,32 @@
   }
 }
 
+@layer utilities {
+  .left {
+    @apply text-left;
+  }
+  .right {
+    @apply text-right;
+  }
+  .top {
+    @apply align-top;
+  }
+  .bottom {
+    @apply align-bottom;
+  }
+  .center {
+    @apply text-center;
+  }
+  .middle {
+    @apply align-middle;
+  }
+}
+
 @layer components {
   @layer layout {
     @layer header {
       header {
-        @apply fixed top-0 right-0 left-0 z-50 flex items-center justify-between border-b border-white/10 bg-white/5 px-6 py-3 transition-all duration-300 hover:border-white/20 hover:bg-white/15 hover:shadow-lg hover:backdrop-blur-xl hover:backdrop-saturate-150 max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:border-gray-700/40 dark:bg-gray-900/90 dark:hover:border-gray-600/50 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
+        @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
       }
 
       .brand {
@@ -369,7 +390,7 @@
     .cbi-button-reload,
     .cbi-button-edit,
     .cbi-button-start {
-      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:px-2.5 max-md:py-1 max-md:text-xs dark:focus:ring-offset-slate-900;
+      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-2.5 max-md:py-1 max-md:text-xs;
     }
 
     .btn + .btn,
@@ -384,7 +405,7 @@
 
     .cbi-button-positive,
     .cbi-button-apply {
-      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 focus:ring-aurora-sky/30 focus:border-aurora-sky/70 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-2.5 max-md:py-1 max-md:text-xs;
+      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-2.5 max-md:py-1 max-md:text-xs;
     }
 
     .btn-secondary,
@@ -395,7 +416,7 @@
     .cbi-button-remove,
     .cbi-button-kill,
     .drag-handle {
-      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 focus:border-slate-400/80 focus:ring-slate-400/30 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:focus:ring-gray-400/40;
+      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
     }
 
     .pager {
@@ -407,7 +428,7 @@
     }
 
     .pager .btn.cbi-button-neutral {
-      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 focus:border-slate-400/80 focus:ring-slate-400/30 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
+      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
     }
 
     .cbi-page-actions {
@@ -569,37 +590,34 @@
       }
 
       & .right {
-        @apply mt-4 flex justify-end max-md:mt-3;
+        @apply mt-4 max-md:mt-3;
       }
     }
   }
 
   @layer dropdown {
-    .dropdown,
-    .cbi-dropdown {
+    .dropdown {
       @apply relative;
-    }
-
-    .dropdown-menu {
-      @apply invisible absolute top-full left-0 z-50 mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
-
-      & li {
-        @apply m-0 list-none;
+      &:hover {
+        .dropdown-menu {
+          @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
+        }
       }
+      .dropdown-menu {
+        @apply invisible absolute top-full left-0 z-50 mt-2 min-w-[200px] scale-95 rounded-xl border border-slate-200/70 bg-white/80 py-2 text-slate-800 opacity-0 shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-200 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:shadow-black/40;
 
-      & a {
-        @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+        & li {
+          @apply m-0 list-none;
+        }
+
+        & a {
+          @apply focus-visible:ring-aurora-sky/30 mx-2 block rounded-lg px-4 py-3 font-medium text-slate-700 transition-all duration-150 ease-out hover:translate-x-0.5 hover:bg-slate-200/60 hover:font-semibold hover:text-slate-900 hover:ring-1 hover:ring-slate-300/60 hover:ring-inset focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:text-slate-200 dark:hover:bg-slate-700/70 dark:hover:text-white dark:hover:ring-slate-600/60 dark:focus-visible:ring-offset-slate-900;
+        }
       }
-    }
-
-    .dropdown:hover .dropdown-menu {
-      @apply visible scale-100 border-slate-300/80 bg-white/85 opacity-100 shadow-2xl dark:border-slate-600/80 dark:bg-slate-900/75 dark:shadow-black/50;
     }
 
     .cbi-dropdown {
-      @apply relative inline-flex items-center;
-
-      @apply rounded-lg border border-slate-200/60 bg-white/90 shadow-sm hover:border-slate-300/80 hover:bg-white dark:border-slate-600/40 dark:bg-slate-800/90 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
+      @apply relative inline-flex items-center rounded-lg px-3 py-1.5 shadow-sm;
 
       & > ul {
         @apply m-0 list-none p-0;
@@ -624,7 +642,7 @@
         }
 
         & > li[selected] {
-          @apply flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300;
+          @apply flex items-center gap-2 text-sm font-medium;
           & > img {
             @apply mr-1 h-4 w-4 flex-none align-middle;
           }
@@ -641,10 +659,10 @@
       }
 
       & > ul.dropdown {
-        @apply invisible absolute left-0 z-50 mt-1 min-w-[140px] overflow-auto rounded-xl border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
+        @apply invisible absolute left-0 z-50 mt-1 min-w-[140px] rounded-lg border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
 
         & > li {
-          @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 mx-1 w-full cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300;
+          @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 w-full cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300;
         }
 
         & > li[selected] {
@@ -660,7 +678,7 @@
       }
 
       & > .open {
-        @apply ml-2 cursor-pointer border-l border-slate-200 px-2 py-1.5 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
+        @apply cursor-pointer border-l border-slate-200 px-2 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
       }
 
       &[open] > ul.dropdown {
@@ -768,6 +786,10 @@
       & .fade-in {
         @apply animate-pulse opacity-0;
       }
+
+      & div[style*="background:#fff"] {
+        @apply dark:border-slate-600 dark:!bg-slate-900;
+      }
     }
 
     .ifacebox {
@@ -796,12 +818,12 @@
   }
 
   @layer modal {
-    .modal-overlay-active #modal_overlay {
-      @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/70 backdrop-blur-sm dark:bg-black/50;
-    }
-
     #modal_overlay {
       @apply pointer-events-none hidden bg-transparent;
+
+      .modal-overlay-active & {
+        @apply pointer-events-auto fixed inset-0 z-100 grid place-items-center bg-white/70 backdrop-blur-sm dark:bg-black/50;
+      }
 
       & > .modal {
         @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 sm:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
@@ -838,7 +860,7 @@
         }
 
         & .right {
-          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex-shrink-0 gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
         }
         & .button-row {
           @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
@@ -889,7 +911,7 @@
     .table,
     .nft-table,
     .nft-rules {
-      @apply w-full border-collapse overflow-visible rounded-lg border border-slate-200/40 bg-white shadow-sm max-md:mx-0 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
+      @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-slate-200/40 bg-white shadow-sm max-md:mx-0 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
     }
 
     .table:not(:has(tr > td:nth-child(3))),
@@ -966,7 +988,7 @@
 
       & th,
       & .th {
-        @apply sticky top-0 z-10 border-b border-slate-200/60 bg-white/80 px-4 py-3 text-left text-sm font-medium text-slate-900 backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-100;
+        @apply sticky top-14 z-10 border-b border-slate-200/60 bg-white/80 px-4 py-3 text-left text-sm font-medium text-slate-900 backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-100;
 
         &:first-child {
           @apply rounded-tl-lg;
@@ -1007,7 +1029,7 @@
         @apply transition-colors duration-200 hover:bg-slate-50/40 dark:hover:bg-slate-700/20;
 
         &.table-titles {
-          @apply bg-slate-50/60 dark:bg-slate-700/30;
+          @apply bg-white/5 dark:bg-gray-900/90;
         }
 
         &:last-child {

@@ -8,8 +8,8 @@ include $(TOPDIR)/rules.mk
 LUCI_TITLE:=Aurora Theme (ucode)
 LUCI_DEPENDS:=+luci-base
 
-PKG_VERSION:=0.1.0
-PKG_RELEASE:=20250825
+PKG_VERSION:=0.1.1_alpha
+PKG_RELEASE:=20250826
 PKG_LICENSE:=Apache-2.0
 
 LUCI_MINIFY_CSS:=
