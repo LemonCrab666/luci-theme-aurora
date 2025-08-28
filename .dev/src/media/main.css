@@ -711,18 +711,26 @@
 
   @layer badge {
     .ifacebadge {
-      @apply inline-flex cursor-default items-center gap-1.5 rounded-lg border border-slate-300/50 bg-white/90 px-2 py-1.5 text-xs font-medium text-slate-700 transition-all duration-200 hover:border-slate-400/60 hover:bg-white hover:shadow-sm dark:border-slate-600/50 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:border-slate-500/60 dark:hover:bg-slate-800;
+      @apply inline-flex cursor-default items-center gap-2 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
 
       & > img {
-        @apply h-5 w-5 shrink-0;
+        @apply h-5 w-5 shrink-0 max-md:h-4 max-md:w-4;
       }
 
-      & > span > .nowrap {
-        @apply block whitespace-nowrap;
-      }
+      & > span {
+        @apply flex-1 space-y-0.5 leading-relaxed max-md:space-y-0;
 
-      & > span > .nowrap strong {
-        @apply mr-1 text-slate-500 dark:text-slate-400;
+        & > .nowrap {
+          @apply block text-sm leading-snug max-md:text-xs;
+
+          & strong {
+            @apply mr-1.5 font-medium text-slate-500 max-md:mr-1 dark:text-slate-400;
+          }
+
+          & + .nowrap {
+            @apply mt-0.5 max-md:mt-0;
+          }
+        }
       }
 
       &.ifacebadge-active {
@@ -730,18 +738,19 @@
       }
 
       &.large {
-        @apply inline-flex min-w-[220px] flex-1 p-2;
+        @apply min-w-[200px] flex-1 px-4 py-3 max-md:min-w-[180px] max-md:px-3 max-md:py-2.5;
       }
 
       &:empty::before {
         @apply text-slate-400 content-['—'] dark:text-slate-500;
       }
     }
+
     .cbi-dropdown .ifacebadge {
-      @apply border-slate-200/50 bg-slate-100 px-3 py-1.5 text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/50;
+      @apply border-slate-200/50 bg-slate-100/80 px-3 py-2 text-sm text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200/90 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/60;
 
       & img {
-        @apply mr-1 h-4 w-4;
+        @apply mr-2 h-4 w-4 max-md:mr-1.5;
       }
 
       & em {
@@ -777,10 +786,10 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-auto rounded-lg border border-slate-200/30 bg-white p-4 shadow-md max-md:mx-0 max-md:mb-2 max-md:rounded-none max-md:border-0 max-md:p-0 max-md:shadow-none dark:border-slate-600/25 dark:bg-slate-800;
+      @apply mb-6 overflow-visible rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mb-4 max-md:rounded-lg max-md:border-0 max-md:bg-transparent max-md:p-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:bg-transparent;
 
       & h3 {
-        @apply mb-4 border-b border-slate-200/40 pb-3 text-xl font-semibold text-slate-900 max-md:mx-4 max-md:mb-3 max-md:pb-2 max-md:text-lg dark:border-slate-600/30 dark:text-slate-100;
+        @apply mb-6 border-b border-slate-200/50 pb-4 text-xl font-semibold tracking-tight text-slate-900 max-md:mx-4 max-md:mb-4 max-md:pb-3 max-md:text-lg dark:border-slate-600/40 dark:text-slate-100;
       }
 
       & .fade-in {
@@ -790,28 +799,55 @@
       & div[style*="background:#fff"] {
         @apply dark:border-slate-600 dark:!bg-slate-900;
       }
+      & .network-status-table {
+        @apply flex flex-wrap justify-start gap-6 max-md:flex-col max-md:gap-4;
+
+        & .ifacebox {
+          @apply w-80 flex-none max-md:w-full;
+        }
+      }
     }
 
     .ifacebox {
-      @apply mx-2.5 inline-flex min-w-40 flex-col items-center overflow-visible rounded-xl border-2 border-slate-200/25 bg-white text-center leading-tight whitespace-nowrap shadow-md max-md:mx-0 max-md:min-w-32 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/20 dark:bg-slate-800;
+      @apply inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-lg border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-[240px] max-md:rounded-lg max-md:shadow-sm dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25;
 
       & .ifacebox-head {
-        @apply w-full rounded-t-sm border-b border-slate-200/40 bg-slate-50 px-3 py-2 text-center text-sm font-semibold text-slate-900 max-md:rounded-none max-md:px-2 max-md:py-1.5 max-md:text-xs dark:border-slate-600/30 dark:bg-slate-700 dark:text-slate-100;
+        @apply w-full rounded-t-lg border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-sm font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:px-3 max-md:py-2 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100;
 
         &.active {
           @apply border-aurora-sky bg-aurora-sky text-white;
         }
+
+        & strong {
+          @apply font-semibold tracking-wide;
+        }
       }
 
       & .ifacebox-body {
-        @apply flex w-full flex-col items-center justify-center p-3 max-md:p-2;
+        @apply flex w-full flex-col items-center justify-start rounded-b-lg p-4 text-center leading-relaxed max-md:p-3;
 
-        & .cbi-tooltip-container {
-          @apply relative inline cursor-help;
+        & > span {
+          @apply mb-3 w-full space-y-1.5 text-sm leading-relaxed text-slate-600 max-md:mb-2.5 max-md:space-y-1 max-md:text-xs dark:text-slate-400;
+
+          & .nowrap {
+            @apply block text-sm leading-snug max-md:text-xs;
+
+            & strong {
+              @apply mr-1.5 font-medium text-slate-500 max-md:mr-1 dark:text-slate-400;
+            }
+          }
         }
 
-        & img.middle {
-          @apply inline-block align-middle;
+        & > div {
+          @apply w-full space-y-2.5 max-md:space-y-2;
+        }
+
+        & .cbi-tooltip-container {
+          @apply relative inline-flex cursor-help items-center justify-center;
+        }
+
+        & small {
+          @apply mt-2 block text-xs text-slate-500 dark:text-slate-400;
         }
       }
     }
