@@ -111,14 +111,14 @@
   }
 
   html {
-    @apply scrollbar scrollbar-track-slate-400/5 scrollbar-thumb-slate-400/30 hover:scrollbar-thumb-slate-400/50 dark:scrollbar-track-gray-900/50 dark:scrollbar-thumb-gray-800/70 dark:hover:scrollbar-thumb-gray-700/90 h-full font-sans;
+    @apply h-full font-sans;
 
     * {
-      @apply m-0 box-border p-0;
+      @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-slate-600/60 dark:hover:scrollbar-thumb-slate-500/80 m-0 box-border p-0;
     }
 
     body {
-      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-[''] dark:bg-gradient-to-br dark:text-slate-100;
+      @apply dark:from-aurora-night-slate dark:via-aurora-night-teal dark:to-aurora-night-emerald relative min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 bg-fixed text-sm leading-relaxed font-normal text-slate-900 transition-all duration-300 before:pointer-events-none before:fixed before:inset-0 before:-z-10 before:content-['\00A0'] dark:bg-gradient-to-br dark:text-slate-100;
       h1,
       h2,
       h3,
@@ -129,27 +129,27 @@
       }
 
       h1 {
-        @apply mb-4 text-3xl;
+        @apply mb-4 pl-6 text-3xl max-md:pl-4 max-md:text-2xl;
       }
 
       h2 {
-        @apply mb-4 text-2xl;
+        @apply mb-4 pl-5 text-2xl max-md:pl-4 max-md:text-xl;
       }
 
       h3 {
-        @apply mb-4 text-xl;
+        @apply mb-4 text-xl max-md:text-lg;
       }
 
       h4 {
-        @apply mb-2 text-lg;
+        @apply mb-2 text-lg max-md:text-base;
       }
 
       h5 {
-        @apply mb-2 text-base;
+        @apply mb-2 text-base max-md:text-sm;
       }
 
       h6 {
-        @apply mb-2 text-sm;
+        @apply mb-2 text-sm max-md:text-xs;
       }
 
       hr {
@@ -167,33 +167,10 @@
   }
 }
 
-@layer utilities {
-  .left {
-    @apply text-left;
-  }
-  .right {
-    @apply text-right;
-  }
-  .top {
-    @apply align-top;
-  }
-  .bottom {
-    @apply align-bottom;
-  }
-  .center {
-    @apply text-center;
-  }
-  .middle {
-    @apply align-middle;
-  }
-}
-
 @layer components {
   @layer layout {
-    @layer header {
-      header {
-        @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
-      }
+    header {
+      @apply fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between bg-white/5 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/15 hover:shadow-lg max-md:bg-white/10 max-md:px-4 max-md:py-2 max-md:backdrop-blur-xl max-md:backdrop-saturate-150 dark:bg-gray-900/90 dark:hover:bg-gray-800/95 dark:hover:from-gray-900 dark:hover:via-gray-800 dark:hover:to-gray-900 dark:hover:shadow-black/30 max-md:dark:bg-gray-900/95;
 
       .brand {
         @apply hover:text-aurora-sky inline-block flex-shrink-0 text-xl font-semibold tracking-tight text-slate-900 no-underline transition-all duration-200 hover:-translate-y-0.5 max-md:order-1 max-md:flex-1 max-md:text-lg dark:text-slate-100;
@@ -212,34 +189,77 @@
       }
 
       .mobile-controls {
-        @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center max-md:gap-2 sm:hidden;
+        @apply max-md:order-last max-md:flex max-md:shrink-0 max-md:items-center max-md:gap-2 md:hidden;
 
         & .mobile-menu-toggle {
-          @apply max-md:inline-flex max-md:h-10 max-md:w-10 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-xl max-md:bg-white/10 max-md:p-2 max-md:backdrop-blur-sm max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 sm:hidden max-md:dark:bg-slate-800/30 max-md:dark:hover:bg-slate-700/40;
+          @apply max-md:inline-flex max-md:h-10 max-md:w-10 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-xl max-md:bg-white/10 max-md:p-2 max-md:backdrop-blur-sm max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 md:hidden max-md:dark:bg-slate-800/30 max-md:dark:hover:bg-slate-700/40;
 
-          & img {
-            @apply max-md:h-6 max-md:w-6 max-md:brightness-0 max-md:filter max-md:transition-transform max-md:duration-200 max-md:dark:brightness-100;
+          & svg {
+            @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
           }
 
           &.active {
             @apply max-md:bg-aurora-sky/25 max-md:dark:bg-aurora-sky/20;
 
-            & img {
+            & svg {
               @apply max-md:rotate-180;
             }
           }
         }
       }
 
-      .mobile-menu-overlay {
-        @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 sm:hidden;
+      #indicators {
+        @apply flex flex-row-reverse items-center max-md:order-2 max-md:shrink-0;
 
-        &.mobile-menu-open {
-          @apply max-md:visible max-md:opacity-100;
+        & span[data-indicator] {
+          @apply relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-transparent transition-all duration-200 hover:bg-white/10 active:scale-95 active:bg-white/15 max-md:h-10 max-md:w-10 dark:hover:bg-slate-800/20 dark:active:bg-slate-700/30;
 
-          & .mobile-nav {
-            @apply max-md:translate-x-0;
+          &::before {
+            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 brightness-[0.3] contrast-100 transition-opacity duration-200 content-['\00A0'];
           }
+
+          &:hover::before {
+            @apply opacity-100;
+          }
+
+          .dark &::before {
+            @apply brightness-100 invert;
+          }
+
+          &[data-indicator="poll-status"] {
+            &[data-style="active"]::before {
+              @apply bg-[url('@assets/icons/refresh.svg')];
+            }
+
+            &[data-style="inactive"]::before {
+              @apply bg-[url('@assets/icons/pause.svg')];
+            }
+          }
+
+          &[data-indicator="uci-changes"]::before {
+            @apply bg-[url('@assets/icons/setting.svg')];
+          }
+
+          &[data-style="active"] {
+            &::before {
+              @apply opacity-90;
+            }
+            &:hover::before {
+              @apply opacity-100;
+            }
+          }
+        }
+      }
+    }
+
+    .mobile-menu-overlay {
+      @apply max-md:invisible max-md:fixed max-md:inset-0 max-md:z-60 max-md:bg-black/40 max-md:opacity-0 max-md:backdrop-blur-md max-md:transition-all max-md:duration-300 md:hidden;
+
+      &.mobile-menu-open {
+        @apply max-md:visible max-md:opacity-100;
+
+        & .mobile-nav {
+          @apply max-md:translate-x-0;
         }
       }
 
@@ -256,8 +276,8 @@
           & .mobile-nav-close {
             @apply max-md:flex max-md:h-12 max-md:w-12 max-md:cursor-pointer max-md:items-center max-md:justify-center max-md:rounded-lg max-md:bg-white/10 max-md:p-2 max-md:transition-all max-md:duration-200 max-md:hover:scale-105 max-md:hover:bg-white/20 max-md:active:scale-95 max-md:dark:bg-slate-800/20 max-md:dark:hover:bg-slate-700/30;
 
-            & img {
-              @apply max-md:h-6 max-md:w-6 max-md:brightness-0 max-md:filter max-md:transition-transform max-md:duration-200 max-md:dark:brightness-100;
+            & svg {
+              @apply max-md:h-6 max-md:w-6 max-md:text-slate-900 max-md:transition-transform max-md:duration-200 max-md:dark:text-slate-100;
             }
           }
         }
@@ -286,112 +306,73 @@
           }
         }
       }
+    }
 
-      #indicators {
-        @apply flex flex-row-reverse items-center max-md:order-2 max-md:shrink-0;
+    #maincontent {
+      @apply mx-auto min-h-screen w-11/12 !max-w-6xl px-4 pt-16 max-md:w-full max-md:px-0 max-md:pt-14;
 
-        & span[data-indicator] {
-          @apply relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-transparent transition-all duration-200 hover:bg-white/10 active:scale-95 active:bg-white/15 max-md:h-10 max-md:w-10 dark:hover:bg-slate-800/30 dark:active:bg-slate-700/40;
+      #view {
+        @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 max-md:mx-0 max-md:mb-2 max-md:rounded-none max-md:border-0 max-md:bg-white/10 max-md:bg-none max-md:p-0 max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60 max-md:dark:bg-gray-900/95 max-md:dark:bg-none;
 
-          &::before {
-            @apply absolute inset-0 bg-size-[22px] bg-center bg-no-repeat opacity-70 brightness-0 filter transition-opacity duration-200 content-[''] dark:opacity-80 dark:brightness-100;
-          }
+        .cbi-map-descr {
+          @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-2 max-md:mb-3 max-md:text-sm dark:text-slate-400;
+        }
 
-          &:hover::before {
-            @apply opacity-100;
-          }
+        .cbi-title-section {
+          @apply mb-6 leading-relaxed max-md:mx-2 max-md:mb-3;
+        }
 
-          &[data-indicator="poll-status"] {
-            &[data-style="active"]::before {
-              @apply bg-[url('./images/refresh.svg')];
-            }
-
-            &[data-style="inactive"]::before {
-              @apply bg-[url('./images/pause.svg')];
-            }
-          }
-
-          &[data-indicator="uci-changes"]::before {
-            @apply bg-[url('./images/setting.svg')];
-          }
-
-          &[data-style="active"] {
-            &::before {
-              @apply opacity-90 dark:opacity-100;
-            }
-
-            &:hover::before {
-              @apply opacity-100;
-            }
-          }
+        #syslog {
+          @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
         }
       }
     }
 
-    @layer content {
-      #maincontent {
-        @apply mx-auto min-h-screen w-11/12 !max-w-6xl px-4 pt-16 max-md:w-full max-md:px-2;
+    footer {
+      @apply mt-auto flex flex-wrap items-center justify-center border-t border-slate-200 py-2 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400;
 
-        #view {
-          @apply mb-6 w-full rounded-2xl border border-slate-400/20 bg-gradient-to-br from-white/95 via-white/90 to-white/85 p-6 shadow-xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 empty:hidden hover:border-slate-400/30 hover:shadow-2xl hover:shadow-slate-400/30 max-md:mx-0 max-md:mb-4 max-md:rounded-xl max-md:p-4 dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50 dark:backdrop-blur-xl dark:backdrop-saturate-150 dark:hover:border-gray-500/40 dark:hover:shadow-black/60;
-
-          .cbi-map-descr {
-            @apply mb-6 text-sm leading-relaxed text-slate-600 max-md:mx-4 max-md:mb-4 max-md:text-sm dark:text-slate-400;
-          }
-
-          .cbi-title-section {
-            @apply mb-6 leading-relaxed max-md:mx-4 max-md:mb-4;
-          }
-
-          #syslog {
-            @apply bg-aurora-night-slate focus:border-aurora-teal focus:ring-aurora-teal/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 max-h-screen min-h-96 w-full resize-y rounded-xl border border-slate-400/25 p-6 font-sans text-xs leading-snug text-slate-200 transition-all duration-200 focus:shadow-lg focus:ring-2 focus:outline-none dark:border-gray-600/40 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/50;
-          }
-        }
+      & span {
+        @apply inline-block text-center;
       }
-    }
 
-    @layer footer {
-      footer {
-        @apply mt-auto flex flex-wrap items-center justify-center border-t border-slate-200 py-2 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400;
+      & a {
+        @apply text-aurora-sky hover:text-aurora-sky-600 no-underline;
+      }
 
-        & span {
-          @apply inline-block text-center;
+      & .breadcrumb {
+        @apply m-0 mb-4 flex rounded border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800;
+
+        & li {
+          @apply list-none;
+
+          &:not(:last-child)::after {
+            @apply px-2 text-slate-400 content-['\007C'];
+          }
+
+          &.active a {
+            @apply text-slate-600 dark:text-slate-300;
+          }
         }
 
         & a {
-          @apply text-aurora-sky hover:text-aurora-sky-600 no-underline;
+          @apply text-aurora-sky hover:text-aurora-sky-600;
         }
+      }
 
-        & .breadcrumb {
-          @apply m-0 mb-4 flex rounded border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800;
-
-          & li {
-            @apply list-none;
-
-            &:not(:last-child)::after {
-              @apply px-2 text-slate-400 content-['|'];
-            }
-
-            &.active a {
-              @apply text-slate-600 dark:text-slate-300;
-            }
-          }
-
-          & a {
-            @apply text-aurora-sky hover:text-aurora-sky-600;
-          }
-        }
-
-        & ul.breadcrumb {
-          @apply ml-auto;
-        }
+      & ul.breadcrumb {
+        @apply ml-auto;
       }
     }
   }
 
   @layer input {
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="search"] {
       @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
     }
   }
@@ -401,7 +382,7 @@
       @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
 
       &:checked::after {
-        @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.4rem] w-[0.4rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white content-[''];
+        @apply pointer-events-none absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2 text-white content-['\2022'];
       }
     }
 
@@ -444,7 +425,7 @@
       @apply text-aurora-sky focus:ring-aurora-sky/20 checked:border-aurora-sky checked:bg-aurora-sky dark:checked:border-aurora-sky-500 dark:checked:bg-aurora-sky-500 relative h-4 w-4 cursor-pointer appearance-none rounded border border-slate-300/70 bg-white shadow-sm transition-all duration-200 hover:border-slate-400/60 focus:ring-2 focus:ring-offset-1 focus:outline-none dark:border-slate-600/60 dark:bg-slate-800 dark:hover:border-slate-500/60 dark:focus:ring-offset-slate-900;
 
       &:checked::after {
-        @apply pointer-events-none absolute top-1/2 left-1/2 block h-[0.6rem] w-[0.35rem] -translate-x-1/2 -translate-y-1/2 -rotate-315 border-r border-b border-white content-[''];
+        @apply pointer-events-none absolute top-1/2 left-1/2 block -translate-x-1/2 -translate-y-1/2 text-white content-['\2713'];
       }
     }
 
@@ -475,7 +456,7 @@
     .cbi-button-reload,
     .cbi-button-edit,
     .cbi-button-start {
-      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-2.5 max-md:py-1 max-md:text-xs;
+      @apply bg-aurora-sky hover:bg-aurora-sky-600 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-white antialiased shadow-sm transition-all duration-200 max-md:px-4 max-md:py-2.5 max-md:text-sm;
     }
 
     .btn + .btn,
@@ -490,7 +471,7 @@
 
     .cbi-button-positive,
     .cbi-button-apply {
-      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-2.5 max-md:py-1 max-md:text-xs;
+      @apply border-aurora-sky/40 bg-aurora-sky/8 text-aurora-sky-700 hover:border-aurora-sky/60 hover:bg-aurora-sky/12 hover:text-aurora-sky-800 dark:border-aurora-sky/50 dark:bg-aurora-sky/15 dark:text-aurora-sky-300 dark:hover:border-aurora-sky/70 dark:hover:bg-aurora-sky/20 dark:hover:text-aurora-sky-200 border font-medium antialiased shadow-none max-md:px-4 max-md:py-2.5 max-md:text-sm;
     }
 
     .btn-secondary,
@@ -501,7 +482,7 @@
     .cbi-button-remove,
     .cbi-button-kill,
     .drag-handle {
-      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
+      @apply border border-slate-300/60 bg-slate-50 font-medium text-slate-700 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-100 hover:text-slate-800 max-md:px-4 max-md:py-2.5 max-md:text-sm dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50;
     }
 
     .pager {
@@ -513,11 +494,11 @@
     }
 
     .pager .btn.cbi-button-neutral {
-      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-2.5 max-md:py-1 max-md:text-xs dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
+      @apply border border-slate-300/60 bg-slate-100 font-medium text-slate-600 antialiased shadow-none hover:border-slate-400/60 hover:bg-slate-200 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-300/60 disabled:hover:bg-slate-100 disabled:hover:text-slate-600 max-md:px-4 max-md:py-2.5 max-md:text-sm dark:border-gray-600/60 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-500/60 dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:disabled:hover:border-gray-600/60 dark:disabled:hover:bg-gray-800 dark:disabled:hover:text-gray-100;
     }
 
     .cbi-page-actions {
-      @apply mt-6 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-4 max-md:mx-4 max-md:mt-4 max-md:gap-2 max-md:pt-3 dark:border-slate-700/30;
+      @apply mt-6 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200/50 pt-4 max-md:mx-2 max-md:mt-4 max-md:gap-2 max-md:pt-3 dark:border-slate-700/30;
     }
 
     .cbi-section-actions div {
@@ -533,7 +514,7 @@
 
       & .btn,
       & .cbi-button {
-        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:px-2 max-md:py-0.5 max-md:text-xs;
+        @apply inline-flex w-auto flex-none whitespace-nowrap max-md:px-3 max-md:py-1.5 max-md:text-sm;
       }
     }
 
@@ -550,15 +531,8 @@
 
   @layer select {
     select {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-900;
-    }
-
-    input[type="email"],
-    input[type="number"],
-    input[type="tel"],
-    input[type="url"],
-    input[type="search"] {
-      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 text-sm font-normal text-slate-900 placeholder-slate-400 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:bg-gray-900;
+      @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-teal-400 dark:focus:ring-aurora-teal-400/30 appearance-none rounded-lg border border-slate-300/70 bg-white px-3 py-1.5 pr-10 text-sm font-normal text-slate-900 shadow-sm transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none dark:border-gray-600/60 dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-900;
+      @apply bg-[url('@assets/icons/chevron-down.svg')] bg-[length:16px] bg-[right_0.75rem_center] bg-no-repeat;
     }
   }
 
@@ -634,95 +608,90 @@
 
       & > ul {
         @apply m-0 list-none p-0;
-      }
-
-      & > ul > li {
-        @apply flex items-center gap-2;
-        & > img {
-          @apply h-4 w-4 flex-none align-middle;
-        }
-        & > span {
-          @apply truncate;
-        }
-      }
-
-      & > ul.preview,
-      & > ul:not(.dropdown) {
-        @apply flex items-center;
-
         & > li {
-          @apply m-0 hidden list-none p-0;
-        }
-
-        & > li[selected] {
-          @apply flex items-center gap-2 text-sm font-medium;
-          & > img {
-            @apply mr-1 h-4 w-4 flex-none align-middle;
+          @apply m-0 flex list-none items-center gap-2 p-0 text-sm font-medium;
+          & > label {
+            @apply flex items-center gap-2;
           }
-          & > span {
+          & img {
+            @apply h-5 w-5 flex-none align-middle;
+          }
+          & span {
             @apply truncate;
           }
           & .hide-open {
-            @apply block;
-          }
-          & .hide-close {
             @apply hidden;
           }
         }
-      }
-
-      & > ul.dropdown {
-        @apply invisible absolute left-0 z-50 mt-1 min-w-[140px] rounded-lg border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
-
-        & > li {
-          @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 w-full cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300;
+        &:not(.dropdown) {
+          @apply flex items-center gap-2;
+          & > li {
+            @apply hidden;
+          }
+          & > li[selected] {
+            @apply flex;
+            & .hide-open {
+              @apply block;
+            }
+            & .hide-close {
+              @apply hidden;
+            }
+            & > form {
+              @apply hidden;
+            }
+          }
         }
+        &.dropdown {
+          @apply invisible absolute left-0 z-50 mt-1 min-w-[140px] overflow-y-auto rounded-lg border border-slate-200/60 bg-white/95 py-1 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
 
-        & > li[selected] {
-          @apply bg-aurora-sky/20 text-aurora-sky-800 dark:bg-aurora-sky/25 dark:text-aurora-sky-200;
+          & > li {
+            @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 w-full cursor-pointer rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300;
+            & .hide-close {
+              @apply flex flex-col;
+            }
+          }
+
+          & > li[selected] {
+            @apply bg-aurora-sky/20 text-aurora-sky-800 dark:bg-aurora-sky/25 dark:text-aurora-sky-200;
+          }
         }
-      }
-
-      & > .more {
-        @apply hidden;
-      }
-      &[multiple] > .more {
-        @apply block text-sm font-medium text-slate-600 dark:text-slate-400;
-      }
-
-      & > .open {
-        @apply cursor-pointer border-l border-slate-200 px-2 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
       }
 
       &[open] > ul.dropdown {
         @apply visible;
       }
-      &[open] > ul:not(.dropdown) > li[selected] {
-        & .hide-open {
-          @apply hidden;
-        }
-        & .hide-close {
-          @apply block;
-        }
+
+      & > .more {
+        @apply hidden;
+      }
+
+      & > .open {
+        @apply cursor-pointer border-l border-slate-200 px-2 text-sm text-slate-400 hover:text-slate-600 dark:border-slate-600 dark:text-slate-500 dark:hover:text-slate-300;
       }
     }
   }
 
   @layer progress {
     .cbi-progressbar {
-      @apply h-3 w-full overflow-hidden rounded-full bg-slate-300 dark:bg-slate-700;
-    }
+      @apply relative h-3 w-full cursor-help overflow-hidden rounded-full bg-slate-300 before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] max-md:h-2.5 max-md:before:text-[10px] max-md:before:leading-tight dark:bg-slate-700 before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
 
-    .cbi-progressbar > div {
-      @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
-    }
-
-    .cbi-progressbar {
-      @apply relative cursor-help before:absolute before:top-1/2 before:left-1/2 before:z-50 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-lg before:text-xs/normal before:whitespace-nowrap before:text-slate-900 before:shadow-lg before:content-[attr(title)] before:dark:border-slate-600 before:dark:bg-slate-700 before:dark:text-slate-100 dark:before:text-slate-100 before:dark:shadow-black/40;
+      & > div {
+        @apply from-aurora-sky to-aurora-teal h-full bg-gradient-to-r transition-all duration-300;
+      }
     }
   }
 
   @layer badge {
+    .zonebadge {
+      @apply rounded-sm transition-all duration-200 max-md:rounded-sm;
+
+      .cbi-dropdown & {
+        &[style*="--zone-color-rgb:238, 238, 238"] {
+          @apply dark:!bg-slate-700/60;
+        }
+      }
+    }
+
     .ifacebadge {
       @apply inline-flex cursor-default items-center gap-2 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-2 text-sm font-normal text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md max-md:gap-1.5 max-md:px-2.5 max-md:py-1.5 max-md:text-xs dark:border-slate-600/40 dark:bg-slate-800/95 dark:text-slate-300 dark:shadow-black/10 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/20;
 
@@ -755,19 +724,19 @@
       }
 
       &:empty::before {
-        @apply text-slate-400 content-['—'] dark:text-slate-500;
-      }
-    }
-
-    .cbi-dropdown .ifacebadge {
-      @apply border-slate-200/50 bg-slate-100/80 px-3 py-2 text-sm text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200/90 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/60;
-
-      & img {
-        @apply mr-2 h-4 w-4 max-md:mr-1.5;
+        @apply text-slate-400 content-['\2014'] dark:text-slate-500;
       }
 
-      & em {
-        @apply text-slate-400 italic dark:text-slate-500;
+      .cbi-dropdown & {
+        @apply border-slate-200/50 bg-slate-100/80 px-3 py-2 text-sm text-slate-700 shadow-sm hover:border-slate-300/60 hover:bg-slate-200/90 dark:border-slate-600/30 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:border-slate-500/40 dark:hover:bg-slate-600/60;
+
+        & img {
+          @apply mr-2 h-4 w-4 max-md:mr-1.5;
+        }
+
+        & em {
+          @apply text-slate-400 italic dark:text-slate-500;
+        }
       }
     }
   }
@@ -799,7 +768,11 @@
 
   @layer card {
     .cbi-section {
-      @apply mb-3 overflow-x-auto rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mx-4 max-md:mb-6 max-md:rounded-2xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 max-md:p-5 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/30;
+      @apply mb-3 overflow-visible rounded-lg border border-slate-200/40 bg-white/95 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 empty:hidden hover:border-slate-300/50 hover:shadow-xl max-md:mx-2 max-md:mb-3 max-md:rounded-2xl max-md:border max-md:border-slate-200/20 max-md:bg-white/98 max-md:p-4 max-md:shadow-lg max-md:shadow-slate-200/40 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/15 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/30;
+
+      #cbi-samba4 & {
+        @apply overflow-x-auto;
+      }
 
       & h3 {
         @apply mb-6 border-b border-slate-200/50 pb-4 text-xl font-semibold tracking-tight text-slate-900 max-md:mx-0 max-md:mb-5 max-md:border-b max-md:border-slate-200/30 max-md:pb-4 max-md:text-lg max-md:font-semibold max-md:tracking-tight dark:border-slate-600/40 dark:text-slate-100 max-md:dark:border-slate-700/20;
@@ -834,7 +807,7 @@
       @apply inline-flex min-w-40 flex-col items-stretch overflow-visible rounded-lg border border-slate-200/40 bg-white/95 text-center leading-normal shadow-md backdrop-blur-sm transition-all duration-200 hover:border-slate-300/50 hover:shadow-lg max-md:min-w-0 max-md:flex-1 max-md:rounded-xl max-md:border-slate-200/30 max-md:bg-white/98 max-md:shadow-sm max-md:shadow-slate-200/30 max-md:backdrop-blur-xl dark:border-slate-600/30 dark:bg-slate-800/95 dark:shadow-black/20 dark:hover:border-slate-500/40 dark:hover:shadow-black/25 max-md:dark:border-slate-700/20 max-md:dark:bg-slate-800/98 max-md:dark:shadow-black/20;
 
       & .ifacebox-head {
-        @apply w-full rounded-t-lg border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-sm font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-xs max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
+        @apply w-full rounded-t-lg border-b border-slate-200/50 bg-slate-50/80 px-4 py-2.5 text-center text-base font-semibold tracking-tight text-slate-900 transition-all duration-200 max-md:rounded-t-xl max-md:border-slate-200/30 max-md:bg-slate-50/90 max-md:px-3 max-md:py-2.5 max-md:text-sm max-md:font-medium dark:border-slate-600/40 dark:bg-slate-700/60 dark:text-slate-100 max-md:dark:border-slate-700/25 max-md:dark:bg-slate-700/70;
 
         &.cbi-tooltip-container {
           @apply rounded-lg border border-slate-200/50 max-md:rounded-lg max-md:border-slate-200/30 dark:border-slate-600/40 max-md:dark:border-slate-700/25;
@@ -855,8 +828,9 @@
         & strong {
           @apply font-semibold tracking-wide;
         }
-        & .zonebadge {
-          @apply rounded-sm transition-all duration-200 max-md:rounded-sm;
+
+        &[style*="background-color: rgb(238, 238, 238)"] {
+          @apply dark:!bg-slate-700/60;
         }
       }
 
@@ -864,10 +838,10 @@
         @apply flex w-full flex-col items-center justify-start rounded-b-lg p-4 text-center leading-relaxed max-md:rounded-b-xl max-md:p-3 max-md:py-3;
 
         & > span {
-          @apply mb-3 w-full space-y-1.5 text-sm leading-relaxed text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-xs max-md:leading-relaxed dark:text-slate-400;
+          @apply mb-3 w-full space-y-1.5 text-base leading-relaxed text-slate-600 max-md:mb-2 max-md:space-y-1 max-md:text-sm max-md:leading-relaxed dark:text-slate-400;
 
           & .nowrap {
-            @apply block text-sm leading-snug max-md:text-xs;
+            @apply block text-base leading-snug max-md:text-sm;
 
             & strong {
               @apply mr-1.5 font-medium text-slate-500 max-md:mr-1 dark:text-slate-400;
@@ -899,7 +873,7 @@
       }
 
       & > .modal {
-        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 sm:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
+        @apply flex max-h-11/12 w-4xl flex-col overflow-auto rounded-xl border border-slate-300/60 bg-white/95 px-6 break-words whitespace-normal shadow-2xl backdrop-blur-lg backdrop-saturate-150 max-md:w-11/12 md:mx-auto dark:border-gray-600/40 dark:bg-gray-900/95 dark:shadow-black/60;
 
         &.cbi-modal {
           @apply w-5xl max-md:w-11/12;
@@ -914,7 +888,7 @@
         }
 
         & > pre {
-          @apply overflow-auto rounded-lg border border-slate-300/60 bg-slate-100 p-4 font-mono text-sm text-slate-800 sm:p-4 sm:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
+          @apply overflow-auto rounded-lg border border-slate-300/60 bg-slate-100 p-4 font-mono text-sm text-slate-800 md:p-4 md:text-sm dark:border-gray-600/40 dark:bg-gray-800 dark:text-gray-200;
 
           &.errors {
             @apply border-red-300/60 bg-red-100 text-red-800 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-300;
@@ -933,49 +907,50 @@
         }
 
         & .right {
-          @apply flex-shrink-0 gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex-shrink-0 gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 md:flex-row md:gap-3 dark:border-slate-700/20;
         }
         & .button-row {
-          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 sm:flex-row sm:gap-3 dark:border-slate-700/20;
+          @apply flex flex-shrink-0 justify-end gap-3 border-t border-slate-200/30 p-4 max-md:gap-2 max-md:p-3 md:flex-row md:gap-3 dark:border-slate-700/20;
         }
-      }
-    }
 
-    .modal.login {
-      @apply mx-auto w-full max-w-sm rounded-xl border border-slate-200 bg-white shadow-lg max-md:mx-4 max-md:w-11/12 dark:border-slate-700 dark:bg-slate-800;
+        &.login {
+          @apply mx-auto w-full max-w-sm rounded-xl border border-slate-200 bg-white shadow-lg max-md:mx-4 max-md:w-11/12 dark:border-slate-700 dark:bg-slate-800;
 
-      & > h4 {
-        @apply px-6 pt-8 pb-6 text-center text-lg font-semibold text-slate-900 max-md:pt-6 max-md:pb-4 max-md:text-base dark:text-slate-100;
-      }
-      & .cbi-map {
-        @apply px-6 pb-2 max-md:px-4;
-
-        & .cbi-section {
-          @apply space-y-4 max-md:space-y-3;
-
-          & .cbi-section-node {
-            @apply space-y-4 max-md:space-y-3;
+          & > h4 {
+            @apply px-6 pt-8 pb-6 text-center text-lg font-semibold text-slate-900 max-md:pt-6 max-md:pb-4 max-md:text-base dark:text-slate-100;
           }
 
-          & .cbi-value {
-            @apply space-y-1;
+          & .cbi-map {
+            @apply px-6 pb-2 max-md:px-4;
 
-            & .cbi-value-title {
-              @apply text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
-            }
+            & .cbi-section {
+              @apply space-y-4 max-md:space-y-3;
 
-            & .cbi-value-field {
-              & input[type="text"],
-              & input[type="password"] {
-                @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-500 focus:ring-2 focus:outline-none max-md:text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
+              & .cbi-section-node {
+                @apply space-y-4 max-md:space-y-3;
+              }
+
+              & .cbi-value {
+                @apply space-y-1;
+
+                & .cbi-value-title {
+                  @apply text-sm font-medium text-slate-700 max-md:text-xs dark:text-slate-300;
+                }
+
+                & .cbi-value-field {
+                  & input[type="text"],
+                  & input[type="password"] {
+                    @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-500 focus:ring-2 focus:outline-none max-md:text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
+                  }
+                }
               }
             }
           }
-        }
-      }
 
-      & .btn.cbi-button-positive {
-        @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 mb-6 rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:mb-4 max-md:text-sm dark:focus:ring-offset-slate-800;
+          & .btn.cbi-button-positive {
+            @apply bg-aurora-sky hover:bg-aurora-sky-600 focus:ring-aurora-sky/20 mb-6 rounded-lg px-4 py-2 text-sm font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none max-md:mb-4 max-md:text-sm dark:focus:ring-offset-slate-800;
+          }
+        }
       }
     }
   }
@@ -984,84 +959,11 @@
     .table,
     .nft-table,
     .nft-rules {
-      @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-slate-200/40 bg-white shadow-sm max-md:mx-0 max-md:rounded-none max-md:border-0 max-md:shadow-none dark:border-slate-600/30 dark:bg-slate-800 dark:shadow-black/10;
-    }
-
-    .table:not(:has(tr > td:nth-child(3))),
-    .nft-table:not(:has(tr > td:nth-child(3))),
-    .nft-rules:not(:has(tr > td:nth-child(3))) {
-      @apply max-md:table max-md:w-full max-md:table-fixed max-md:overflow-x-auto;
+      @apply w-full border-separate border-spacing-0 overflow-visible rounded-lg border border-gray-200 bg-gradient-to-br from-white/95 via-white/90 to-white/85 shadow-sm max-md:mx-0 max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none dark:border-gray-600/30 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/85 dark:shadow-black/50;
 
       & th,
       & .th {
-        @apply max-md:table-cell max-md:px-2 max-md:py-2 max-md:text-xs;
-      }
-
-      & tr,
-      & .tr {
-        @apply max-md:table-row;
-      }
-
-      & td,
-      & .td {
-        @apply max-md:table-cell max-md:border-b max-md:border-slate-200/30 max-md:px-2 max-md:py-2 max-md:text-xs max-md:break-all dark:max-md:border-slate-600/20;
-      }
-    }
-
-    .table:has(tr > td:nth-child(3)),
-    .nft-table:has(tr > td:nth-child(3)),
-    .nft-rules:has(tr > td:nth-child(3)) {
-      @apply max-md:block max-md:w-full max-md:overflow-visible max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none max-md:dark:bg-transparent;
-
-      & th,
-      & .th {
-        @apply max-md:hidden;
-      }
-
-      & tr,
-      & .tr {
-        @apply max-md:mb-4 max-md:block max-md:rounded-xl max-md:border max-md:border-slate-200/30 max-md:bg-white max-md:p-4 max-md:shadow-md max-md:hover:shadow-lg max-md:dark:border-slate-600/20 max-md:dark:bg-slate-800;
-
-        &.table-titles {
-          @apply max-md:hidden;
-        }
-      }
-
-      & td,
-      & .td {
-        @apply max-md:block max-md:border-0 max-md:px-0 max-md:py-1 max-md:text-sm;
-
-        &[data-title] {
-          @apply max-md:relative;
-
-          &::before {
-            @apply max-md:mb-1 max-md:block max-md:text-xs max-md:font-medium max-md:text-slate-500 max-md:content-[attr(data-title)':'] max-md:dark:text-slate-400;
-          }
-        }
-
-        &.cbi-section-actions {
-          @apply max-md:mt-3 max-md:border-t max-md:border-slate-200/30 max-md:pt-3 max-md:dark:border-slate-600/20;
-
-          & div {
-            @apply max-md:flex max-md:flex-wrap max-md:justify-start max-md:gap-2;
-          }
-
-          & .btn,
-          & .cbi-button {
-            @apply max-md:min-w-0 max-md:flex-1 max-md:px-3 max-md:py-2 max-md:text-xs;
-          }
-        }
-      }
-    }
-
-    .table {
-      & .cbi-value-field {
-        @apply table-cell align-middle;
-      }
-
-      & th,
-      & .th {
-        @apply sticky top-14 z-10 border-b border-slate-200/60 bg-white/80 px-4 py-3 text-left text-sm font-medium text-slate-900 backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/80 dark:text-slate-100;
+        @apply sticky top-14 z-10 border-b border-gray-200 bg-white/80 px-4 py-3 text-left text-sm font-medium text-gray-900 backdrop-blur-sm max-md:hidden dark:border-gray-600/40 dark:bg-gray-800/90 dark:text-gray-100;
 
         &:first-child {
           @apply rounded-tl-lg;
@@ -1072,17 +974,55 @@
         }
 
         &[data-sortable-row="true"] {
-          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-slate-50/60 dark:hover:bg-slate-700/60;
+          @apply cursor-pointer transition-colors duration-200 select-none hover:bg-gray-50 dark:hover:bg-gray-700/70;
 
           &:hover::after {
-            @apply ml-2 text-xs font-normal text-slate-400 content-['↕'] dark:text-slate-500;
+            @apply ml-2 text-xs font-normal text-gray-400 content-['\2195'] dark:text-gray-400;
           }
         }
       }
 
+      & tbody,
+      & .tbody {
+        @apply max-md:block;
+      }
+
+      & tr,
+      & .tr {
+        @apply transition-colors duration-200 hover:bg-gray-50 max-md:grid max-md:grid-cols-2 max-md:items-start max-md:gap-2 max-md:border-b max-md:border-gray-200 max-md:bg-white max-md:px-3 max-md:py-3 dark:hover:bg-gray-700/50 dark:max-md:border-gray-600/40 dark:max-md:bg-gray-800/60;
+
+        &.table-titles {
+          @apply bg-gray-50/50 max-md:hidden dark:bg-gray-900/60;
+        }
+
+        &:first-child {
+          & td:first-child {
+            @apply md:rounded-tl-lg;
+          }
+
+          & td:last-child {
+            @apply md:rounded-tr-lg;
+          }
+        }
+
+        &:last-child {
+          & td:first-child {
+            @apply md:rounded-bl-lg;
+          }
+
+          & td:last-child {
+            @apply md:rounded-br-lg;
+          }
+        }
+      }
+
+      & tr {
+        @apply md:border-b md:border-gray-200 dark:md:border-gray-600/40;
+      }
+
       & td,
       & .td {
-        @apply border-b border-slate-200/50 px-4 py-3 text-sm text-slate-700 dark:border-slate-600/40 dark:text-slate-300;
+        @apply border-b border-gray-200 px-4 py-3 text-base break-words text-gray-700 max-md:border-0 max-md:px-2 max-md:py-2 dark:border-gray-600/40 dark:text-gray-200;
 
         &.left {
           @apply text-left;
@@ -1093,52 +1033,85 @@
         }
 
         &:contains("-") {
-          @apply text-slate-400 italic dark:text-slate-500;
+          @apply text-gray-400 italic dark:text-gray-400;
         }
-      }
 
-      & tr,
-      & .tr {
-        @apply transition-colors duration-200 hover:bg-slate-50/40 dark:hover:bg-slate-700/20;
-
-        &.table-titles {
-          @apply bg-white/5 dark:bg-gray-900/90;
+        &:first-child {
+          @apply max-md:w-full max-md:text-sm max-md:leading-tight max-md:font-medium max-md:tracking-wide max-md:break-words max-md:whitespace-normal max-md:text-gray-600 dark:max-md:text-gray-300;
         }
 
         &:last-child {
-          & td:first-child {
-            @apply sm:rounded-bl-lg;
-          }
+          @apply max-md:w-full max-md:text-sm max-md:leading-tight max-md:font-normal max-md:break-words max-md:text-gray-800 dark:max-md:text-gray-100;
+        }
 
-          & td:last-child {
-            @apply sm:rounded-br-lg;
+        &[data-title] {
+          @apply max-md:relative;
+
+          &::before {
+            @apply max-md:mb-1 max-md:block max-md:text-sm max-md:font-medium max-md:tracking-wide max-md:text-gray-500 max-md:uppercase max-md:content-[attr(data-title)'\003A'] dark:max-md:text-gray-400;
           }
+        }
+
+        &.col-1 {
+          @apply w-20 max-w-24 max-md:w-full max-md:max-w-none;
+        }
+
+        &.col-2 {
+          @apply w-32 max-w-40 max-md:w-full max-md:max-w-none;
+        }
+
+        &.col-10 {
+          @apply w-auto max-w-none min-w-80 max-md:w-full max-md:max-w-none max-md:min-w-0;
         }
       }
 
-      & tr {
-        @apply sm:border-b sm:border-slate-200/40 sm:dark:border-slate-600/30;
-      }
-
       & .cbi-rowstyle-1 {
-        @apply bg-white max-md:bg-white dark:bg-slate-800 max-md:dark:bg-slate-800;
+        @apply bg-white max-md:bg-gray-50/30 dark:bg-gray-800/60 max-md:dark:bg-gray-800/40;
       }
 
       & .cbi-rowstyle-2 {
-        @apply bg-slate-50/50 max-md:bg-white dark:bg-slate-700/30 max-md:dark:bg-slate-800;
+        @apply bg-gray-50/50 max-md:bg-white dark:bg-gray-700/60 max-md:dark:bg-gray-800/50;
       }
 
       &:empty::before {
-        @apply block py-12 text-center text-slate-400 content-['暂无数据'] max-md:py-8 max-md:text-xs dark:text-slate-500;
+        @apply block py-12 text-center text-gray-400 content-['\2014'] max-md:py-8 max-md:text-xs dark:text-gray-400;
+      }
+
+      & tr:not(:last-child) {
+        @apply max-md:border-b max-md:border-gray-200 max-md:dark:border-gray-600/40;
+      }
+
+      & td:first-child {
+        @apply max-md:border-b-0 max-md:pr-1 max-md:break-words max-md:whitespace-normal;
+      }
+
+      & td:last-child {
+        @apply max-md:border-b-0 max-md:pl-1 max-md:break-words max-md:whitespace-normal;
+      }
+
+      & tr {
+        @apply max-md:auto-rows-auto;
+      }
+
+      & td {
+        @apply max-md:min-w-0 max-md:break-words;
+      }
+
+      & tr:has(.cbi-progressbar) {
+        @apply max-md:grid-cols-1;
+      }
+
+      & tr:has(.cbi-progressbar) td:first-child {
+        @apply max-md:mb-2 max-md:w-full max-md:text-sm max-md:font-medium max-md:tracking-wide max-md:text-gray-600 max-md:dark:text-gray-300;
+      }
+
+      & tr:has(.cbi-progressbar) td:last-child {
+        @apply max-md:w-full;
       }
 
       &.loading {
         @apply opacity-60;
       }
-    }
-
-    .cbi-section h3 {
-      @apply mt-4 mb-3 border-b border-slate-200/40 pb-2 text-lg font-medium text-slate-800 first:mt-0 max-md:mx-4 max-md:mt-3 max-md:mb-2 max-md:pb-1.5 max-md:text-base dark:border-slate-600/30 dark:text-slate-200;
     }
   }
 
@@ -1150,7 +1123,7 @@
         @apply mt-3 max-md:mt-2;
       }
       & > .cbi-value-field {
-        @apply flex flex-1 flex-col items-stretch gap-3 max-md:mx-4 max-md:gap-2;
+        @apply flex flex-1 flex-col items-stretch gap-3 max-md:mx-2 max-md:gap-2;
 
         &:not(:has(.cbi-dynlist)) {
           @apply flex-row flex-wrap items-center;
@@ -1175,7 +1148,7 @@
     }
 
     .cbi-dynlist {
-      @apply space-y-3 max-md:mx-4 max-md:space-y-2;
+      @apply space-y-3 max-md:mx-2 max-md:space-y-2;
 
       & .item {
         @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 pointer-events-none relative flex cursor-move flex-col items-start gap-2 overflow-visible rounded-lg border border-slate-200/60 bg-white/95 px-4 py-3 pr-12 transition-all duration-200 hover:border-slate-300/70 hover:bg-white hover:shadow-md focus:ring-2 focus:outline-none max-md:gap-1.5 max-md:px-3 max-md:py-2.5 max-md:pr-10 dark:border-slate-600/40 dark:bg-slate-800/95 dark:hover:border-slate-500/50 dark:hover:bg-slate-800 dark:hover:shadow-black/10;
@@ -1185,8 +1158,7 @@
         }
 
         &::after {
-          @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 hover:border-red-200 hover:bg-red-50 hover:text-red-600 max-md:top-2.5 max-md:right-2.5 max-md:h-5 max-md:w-5 max-md:text-xs dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:border-red-700/50 dark:hover:bg-red-900/20 dark:hover:text-red-400;
-          content: "×";
+          @apply pointer-events-auto absolute top-3 right-3 inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-md border border-slate-200/50 bg-slate-100/80 text-sm font-medium text-slate-600 transition-all duration-200 content-['\00D7'] hover:border-red-200 hover:bg-red-50 hover:text-red-600 max-md:top-2.5 max-md:right-2.5 max-md:h-5 max-md:w-5 max-md:text-xs dark:border-slate-600/50 dark:bg-slate-700/50 dark:text-slate-400 dark:hover:border-red-700/50 dark:hover:bg-red-900/20 dark:hover:text-red-400;
         }
 
         & > span {
@@ -1209,51 +1181,6 @@
           @apply focus:border-aurora-sky focus:ring-aurora-sky/20 dark:focus:border-aurora-sky-400 dark:focus:ring-aurora-sky-400/20 min-w-0 flex-1 rounded-l-lg border-0 bg-transparent px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition-all duration-200 focus:ring-0 focus:outline-none max-md:px-3 max-md:py-2.5 max-md:text-sm dark:text-slate-100 dark:placeholder-slate-500;
         }
 
-        & .cbi-dropdown {
-          @apply min-w-0 flex-1 rounded-lg border-0 bg-transparent px-0 py-0 shadow-none;
-
-          & > ul:not(.dropdown) {
-            @apply px-4 py-3 max-md:px-3 max-md:py-2.5;
-
-            & > li[selected] {
-              @apply truncate text-sm text-slate-600 max-md:text-sm dark:text-slate-400;
-            }
-          }
-
-          & > ul.dropdown {
-            @apply top-full left-0 z-50 mt-2 min-w-full rounded-lg border border-slate-300/60 bg-white/95 py-2 shadow-xl backdrop-blur-sm dark:border-slate-600/40 dark:bg-slate-800/95;
-
-            & > li {
-              @apply hover:bg-aurora-sky/8 dark:hover:bg-aurora-sky/15 px-4 py-2.5 text-sm max-md:px-3 max-md:py-2;
-
-              & strong {
-                @apply font-medium text-slate-800 dark:text-slate-200;
-              }
-            }
-
-            & > li[selected] {
-              @apply bg-aurora-sky/15 text-aurora-sky-800 dark:bg-aurora-sky/20 dark:text-aurora-sky-200;
-            }
-
-            & > li:has(.create-item-input) {
-              @apply p-0;
-
-              & .create-item-input {
-                @apply w-full border-0 bg-transparent px-4 py-2.5 text-sm placeholder-slate-400 focus:outline-none max-md:px-3 max-md:py-2 dark:placeholder-slate-500;
-              }
-            }
-          }
-
-          & .more,
-          & .open {
-            @apply px-3 py-3 text-slate-400 hover:text-slate-600 max-md:px-2.5 max-md:py-2.5 max-md:text-sm dark:text-slate-500 dark:hover:text-slate-300;
-          }
-
-          & .open {
-            @apply border-l border-slate-200/60 dark:border-slate-600/50;
-          }
-        }
-
         & .cbi-button-add {
           @apply hover:bg-aurora-sky hover:border-aurora-sky dark:hover:bg-aurora-sky dark:hover:border-aurora-sky flex h-auto items-center justify-center rounded-r-lg border-l border-slate-200/60 bg-slate-50/80 px-4 py-3 text-base font-medium text-slate-600 transition-all duration-200 hover:text-white max-md:px-3 max-md:py-2.5 max-md:text-sm dark:border-slate-600/50 dark:bg-slate-700/60 dark:text-slate-400 dark:hover:text-white;
         }
@@ -1267,7 +1194,7 @@
 
   @layer segmented {
     .cbi-tabmenu {
-      @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300/60 hover:scrollbar-thumb-slate-400/80 dark:scrollbar-thumb-gray-600/60 dark:hover:scrollbar-thumb-gray-500/80 mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
+      @apply mb-1 flex items-center gap-1 overflow-x-auto overflow-y-hidden rounded-3xl border border-slate-200/40 bg-slate-100/50 p-1 dark:border-slate-700/30 dark:bg-slate-800/30;
 
       & li {
         @apply m-0 min-w-fit flex-shrink-0 list-none;
@@ -1308,13 +1235,10 @@
         @apply block px-8 py-4 text-center text-sm font-medium whitespace-nowrap text-slate-500 no-underline transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
       }
 
-      & > .active {
+      & > li.active {
+        @apply border-b-2 border-slate-900 dark:border-slate-100;
         & > a {
           @apply font-semibold text-slate-900 dark:text-slate-100;
-        }
-
-        &::after {
-          @apply absolute bottom-0 left-0 h-0.5 w-full bg-slate-900 content-[''] dark:bg-slate-100;
         }
       }
     }
@@ -1326,5 +1250,26 @@
     [id^="container."] {
       @apply relative;
     }
+  }
+}
+
+@layer utilities {
+  .left {
+    @apply md:text-left;
+  }
+  .right {
+    @apply md:text-right;
+  }
+  .top {
+    @apply md:align-top;
+  }
+  .bottom {
+    @apply md:align-bottom;
+  }
+  .center {
+    @apply md:text-center;
+  }
+  .middle {
+    @apply md:align-middle;
   }
 }
